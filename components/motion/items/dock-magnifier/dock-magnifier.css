@@ -1,0 +1,48 @@
+.mg-dock {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 24px -14px rgba(12, 23, 56, 0.4);
+}
+
+.mg-dock__item {
+  display: grid;
+  flex: none;
+  place-items: center;
+  /* The component sets --mg-dock-size on each item as the pointer moves. */
+  width: var(--mg-dock-size, 44px);
+  height: var(--mg-dock-size, 44px);
+  padding: 0;
+  border: 0;
+  border-radius: 28%;
+  background: var(--mg-accent, #164cff);
+  color: #fff;
+  font: inherit;
+  font-size: calc(var(--mg-dock-size, 44px) * 0.42);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    width 120ms ease-out,
+    height 120ms ease-out,
+    font-size 120ms ease-out;
+}
+
+.mg-dock__item:nth-child(even) {
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-dock__item:focus-visible {
+  outline: 2px solid var(--mg-green, #b6ff3b);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--mg-ink, #0c1738);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-dock__item {
+    transition: none;
+  }
+}

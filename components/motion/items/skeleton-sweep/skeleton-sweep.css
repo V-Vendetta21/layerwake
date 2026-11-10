@@ -1,0 +1,65 @@
+/* Placeholder and content share one grid cell, so the box never jumps. */
+.mg-skeleton {
+  display: grid;
+}
+
+.mg-skeleton__bones,
+.mg-skeleton__content {
+  grid-area: 1 / 1;
+  transition: opacity 400ms ease;
+}
+
+.mg-skeleton__bones {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mg-skeleton[data-loading='true'] .mg-skeleton__bones {
+  opacity: 1;
+}
+
+.mg-skeleton[data-loading='true'] .mg-skeleton__content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mg-skeleton__bone {
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.85) 50%,
+      transparent 70%
+    )
+    var(--mg-bone, #dce4f7);
+  background-size: 200% 100%;
+  background-position: 150% 0;
+}
+
+.mg-skeleton[data-loading='true'] .mg-skeleton__bone {
+  animation: mg-skeleton-sweep 1.3s ease-in-out infinite;
+}
+
+.mg-skeleton__bone:first-child {
+  height: 20px;
+}
+
+@keyframes mg-skeleton-sweep {
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-skeleton__bones,
+  .mg-skeleton__content {
+    transition: none;
+  }
+  .mg-skeleton[data-loading='true'] .mg-skeleton__bone {
+    animation: none;
+  }
+}

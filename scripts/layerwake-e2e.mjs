@@ -9,7 +9,7 @@ import { mkdtemp, readFile, stat, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { loadPlaywright, root } from './layerwake-browser.mjs';
+import { loadPlaywright, root, serveOut } from './layerwake-browser.mjs';
 
 const { chromium } = loadPlaywright();
 const results = [];
@@ -19,47 +19,6 @@ const check = (name, ok, detail = '') => {
     `${ok ? '  ok  ' : ' FAIL '} ${name}${detail ? ` — ${detail}` : ''}`
   );
 };
-
-const TYPES = {
-  '.html': 'text/html',
-  '.js': 'text/javascript',
-  '.css': 'text/css',
-  '.json': 'application/json',
-  '.woff2': 'font/woff2',
-  '.txt': 'text/plain',
-};
-
-async function serveOut() {
-  const dir = path.join(root, 'out');
-  await stat(path.join(dir, 'index.html')).catch(() => {
-    console.error('No static build found. Run "npm run build" first.');
-    process.exit(1);
-  });
-  const server = createServer(async (req, res) => {
-    const url = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-    const candidates = [url, `${url}.html`, path.join(url, 'index.html')];
-    for (const candidate of candidates) {
-      const file = path.join(dir, candidate);
-      if (!file.startsWith(dir)) break;
-      try {
-        if ((await stat(file)).isFile()) {
-          res.writeHead(200, {
-            'content-type':
-              TYPES[path.extname(file)] ?? 'application/octet-stream',
-          });
-          res.end(await readFile(file));
-          return;
-        }
-      } catch {}
-    }
-    res.writeHead(404).end('not found');
-  });
-  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-  return {
-    base: `http://127.0.0.1:${server.address().port}`,
-    close: () => server.close(),
-  };
-}
 
 const served = process.argv[2] ? null : await serveOut();
 const base = process.argv[2] ?? served.base;

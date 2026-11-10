@@ -13,7 +13,11 @@
     "demo:capture": "node scripts/layerwake-demo-capture.mjs",
     "verify:layerwake": "node scripts/layerwake-e2e.mjs",
     "deploy": "wrangler deploy",
-    "deploy:preview": "wrangler versions upload"
+    "deploy:preview": "wrangler versions upload",
+    "motion:sources": "node scripts/build-motion-sources.mjs",
+    "predev": "npm run motion:sources",
+    "prebuild": "npm run motion:sources",
+    "verify:motion": "node scripts/motion-e2e.mjs"
   },
   "dependencies": {
     "geist": "^1.3.1",

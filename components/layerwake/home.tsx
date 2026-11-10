@@ -85,6 +85,12 @@ export function HomeActions() {
       <p className='lw-hero__fine'>
         Runs entirely in your browser. No account, no upload, no API key.
       </p>
+      <p className='lw-hero__more'>
+        <Link className='lw-link' href='/motion'>
+          Browse the Motion Gallery
+        </Link>{' '}
+        for 24 copyable motion components.
+      </p>
     </>
   );
 }

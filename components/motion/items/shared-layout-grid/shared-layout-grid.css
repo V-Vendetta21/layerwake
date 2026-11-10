@@ -1,0 +1,14 @@
+.mg-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--mg-columns, 3), minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mg-layout__item {
+  min-width: 0;
+  will-change: transform;
+}

@@ -1,0 +1,46 @@
+.mg-sweep {
+  position: relative;
+  overflow: hidden;
+  padding: 2px;
+  border-radius: 16px;
+  background: var(--mg-line, #d6def2);
+}
+
+/* A large rotating gradient, clipped to the 2px frame by the inner panel. */
+.mg-sweep::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  aspect-ratio: 1;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 68%,
+    var(--mg-accent, #164cff) 86%,
+    var(--mg-green, #b6ff3b) 96%,
+    transparent 100%
+  );
+  content: '';
+  transform: translate(-50%, -50%);
+  animation: mg-sweep-turn 3.2s linear infinite;
+}
+
+.mg-sweep__inner {
+  position: relative;
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--mg-ink, #0c1738);
+}
+
+@keyframes mg-sweep-turn {
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-sweep::before {
+    animation: none;
+  }
+}

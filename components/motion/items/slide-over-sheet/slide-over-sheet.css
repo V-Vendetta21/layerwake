@@ -1,0 +1,117 @@
+.mg-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  /* Hidden content cannot be focused or read while the sheet is closed. */
+  visibility: hidden;
+  transition: visibility 0s 320ms;
+}
+
+.mg-sheet[data-contained='true'] {
+  position: absolute;
+}
+
+.mg-sheet[data-open='true'] {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.mg-sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 23, 56, 0.45);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.mg-sheet[data-open='true'] .mg-sheet__backdrop {
+  opacity: 1;
+}
+
+.mg-sheet__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(320px, 86%);
+  background: #fff;
+  box-shadow: -18px 0 40px -20px rgba(12, 23, 56, 0.5);
+  color: var(--mg-ink, #0c1738);
+  transform: translateX(100%);
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-sheet[data-open='true'] .mg-sheet__panel {
+  transform: translateX(0);
+}
+
+.mg-sheet__panel:focus {
+  outline: none;
+}
+
+.mg-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 12px 12px 18px;
+  border-bottom: 1px solid var(--mg-line, #d6def2);
+}
+
+.mg-sheet__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mg-sheet__close {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mg-sheet__close:hover {
+  background: var(--mg-foam, #f5f8ff);
+}
+
+.mg-sheet__close:focus-visible,
+.mg-sheet__body :focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-sheet__body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 18px;
+  color: #46527a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Fade instead of sliding. */
+  .mg-sheet__panel {
+    opacity: 0;
+    transform: none;
+    transition: opacity 160ms linear;
+  }
+  .mg-sheet[data-open='true'] .mg-sheet__panel {
+    opacity: 1;
+  }
+  .mg-sheet,
+  .mg-sheet__backdrop {
+    transition-duration: 0s, 160ms;
+    transition-delay: 160ms, 0s;
+  }
+  .mg-sheet[data-open='true'] {
+    transition-delay: 0s;
+  }
+}

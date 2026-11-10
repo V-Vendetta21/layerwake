@@ -1,0 +1,35 @@
+.mg-typewriter {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+}
+
+.mg-typewriter__caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 2px;
+  background: var(--mg-accent, #164cff);
+  vertical-align: text-bottom;
+  animation: mg-typewriter-blink 1s steps(1) infinite;
+}
+
+.mg-typewriter__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes mg-typewriter-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-typewriter__caret {
+    animation: none;
+  }
+}

@@ -1402,3 +1402,116 @@
     animation-duration: 0.01ms !important;
   }
 }
+
+/* -------------------------------------------------------------- site nav */
+
+.lw-home__links a[aria-current='page'] {
+  background: var(--lw-cobalt-soft);
+  color: var(--lw-ink);
+}
+.lw-hero__more {
+  margin-top: 10px;
+  color: var(--lw-ink-2);
+  font-size: 13.5px;
+}
+@media (max-width: 600px) {
+  .lw-home__nav {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    height: auto;
+    padding: 12px 0;
+  }
+  .lw-home__links {
+    flex-wrap: wrap;
+    margin-left: -10px;
+  }
+}
+
+/* ------------------------------------------------------------ scrollbars
+   Real, native scrollbars, restyled with CSS only. Scrolling itself (wheel,
+   touch, keyboard, dragging, restoration) is untouched.
+
+   Two layers:
+   1. Standard properties (Firefox, and Chromium/Safari where scrollbars are
+      overlay or auto-hiding). These keep the operating system's overlay
+      behavior.
+   2. ::-webkit-scrollbar parts, for a rounded thumb with hover and active
+      states. Styling these forces classic always-visible scrollbars, so they
+      only apply when the root has data-lw-scrollbars="classic", which a tiny
+      inline script sets when the system already shows classic scrollbars.
+
+   Everything is skipped in forced-colors mode so system colors win. */
+
+@media (forced-colors: none) {
+  html {
+    --lw-sb-thumb: #164cff;
+    --lw-sb-thumb-hover: #0f3ad6;
+    --lw-sb-thumb-active: #0c1738;
+    --lw-sb-track: #e1e8fb;
+    scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
+  }
+
+  /* Dark variant for code panes. */
+  html .lw-code,
+  html .mgx-code {
+    --lw-sb-thumb: #7f9bff;
+    --lw-sb-thumb-hover: #a9bbff;
+    --lw-sb-thumb-active: #b6ff3b;
+    --lw-sb-track: #1a2752;
+    scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
+  }
+
+  /* Captured components are previewed as they are: their scrollbars stay
+     under their own control, exactly as in the exported HTML. */
+  html .lw-render {
+    scrollbar-color: auto;
+    scrollbar-width: auto;
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    html[data-lw-scrollbars='classic'],
+    html[data-lw-scrollbars='classic'] .lw-code,
+    html[data-lw-scrollbars='classic'] .mgx-code {
+      /* Let the ::-webkit-scrollbar rules below take over. */
+      scrollbar-color: auto;
+    }
+
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+    }
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar-track,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar-track {
+      background: var(--lw-sb-track);
+    }
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar-thumb,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar-thumb {
+      /* The transparent border insets the thumb, leaving a 14px drag target. */
+      min-width: 40px;
+      min-height: 40px;
+      border: 3px solid transparent;
+      border-radius: 999px;
+      background: var(--lw-sb-thumb) padding-box;
+    }
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar-thumb:hover,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar-thumb:hover {
+      background-color: var(--lw-sb-thumb-hover);
+    }
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar-thumb:active,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar-thumb:active {
+      border-width: 2px;
+      background-color: var(--lw-sb-thumb-active);
+    }
+    html[data-lw-scrollbars='classic']::-webkit-scrollbar-corner,
+    html[data-lw-scrollbars='classic']
+      :not(.lw-render, .lw-render *)::-webkit-scrollbar-corner {
+      background: var(--lw-sb-track);
+    }
+  }
+}

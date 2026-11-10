@@ -1,0 +1,40 @@
+.mg-ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+
+.mg-ring svg {
+  position: absolute;
+  inset: 0;
+  /* Start the ring at twelve o'clock. */
+  transform: rotate(-90deg);
+}
+
+.mg-ring__track,
+.mg-ring__value {
+  fill: none;
+}
+
+.mg-ring__track {
+  stroke: var(--mg-track, #e6ecff);
+}
+
+.mg-ring__value {
+  stroke: var(--mg-accent, #164cff);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-ring__label {
+  color: var(--mg-ink, #0c1738);
+  font-size: 1.4em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-ring__value {
+    transition: none;
+  }
+}

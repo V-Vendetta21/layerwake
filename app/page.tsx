@@ -29,6 +29,7 @@ export default function LayerwakeHome() {
           <LayerwakeBrand />
         </Link>
         <div className='lw-home__links'>
+          <Link href='/motion'>Motion Gallery</Link>
           <Link href='/demo'>Demo page</Link>
           <Link href='/workspace'>Workspace</Link>
         </div>

@@ -27,6 +27,7 @@ Then open <http://localhost:3000>.
 | `/`          | Home, with a live sample, **Try demo** and **Import capture** |
 | `/workspace` | The editor (add `?demo=1` to open the demo)                   |
 | `/demo`      | An original demo card you can capture with the extension      |
+| `/motion`    | Motion Gallery: 24 copyable React motion components           |
 
 ### Build for static hosting
 
@@ -78,20 +79,40 @@ Limits: 8 levels deep, 200 layers, 512 KB. A capture that hits a limit is trimme
 
 Imports are treated as untrusted. The app checks size, schema, structure and every style value against a narrow allowlist, rejects any value that could load a resource, renders with its own elements and structured styles, and escapes edited text in exports. The preview and the exports are generated from the same model, so they agree.
 
+## Motion Gallery
+
+`/motion` is a gallery of 24 small React motion components in four groups: text and numbers, cards and buttons, layout and controls, status and feedback. Each entry has a live **Preview** and a **Code** tab with three copy buttons (usage, component, CSS), plus a link you can share (`/motion#toast-stack`).
+
+To use one in another React project:
+
+1. Copy `<name>.tsx` and `<name>.css` into the same folder. The component imports its own CSS.
+2. Import it as the usage example shows. React 18 or newer is the only requirement; there is nothing else to install.
+3. Adjust colors through the `--mg-*` custom properties in the CSS file.
+
+Every component has a reduced-motion path. Demos mount only while they are on screen.
+
+Each component lives in `components/motion/items/<name>/` as `<name>.tsx`, `<name>.css` and `demo.tsx`. The Preview tab renders `demo.tsx`; the Code tab shows those same three files, collected by `npm run motion:sources` (run automatically before `dev` and `build`, and checked by a unit test). To add a component, add a folder with those three files and a line in `components/motion/registry.ts`.
+
+## Scrollbars
+
+Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`): a cobalt thumb on a pale track, and a dark-track variant in code panes. Firefox and overlay-scrollbar systems get `scrollbar-color`, which keeps the system's auto-hide behavior. Systems with always-visible scrollbars also get a rounded thumb with hover and active states through `::-webkit-scrollbar`. Forced-colors mode is left alone, and captured component previews and exported HTML keep their own scrollbars.
+
 ## Commands
 
-| Command                    | What it does                                                               |
-| -------------------------- | -------------------------------------------------------------------------- |
-| `npm run dev`              | Start the app locally                                                      |
-| `npm run build`            | Build the static site into `out/`                                          |
-| `npm run build:extension`  | Build the extension into `extension/dist`                                  |
-| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping   |
-| `npm run typecheck`        | TypeScript check                                                           |
-| `npm run lint`             | ESLint                                                                     |
-| `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below) |
-| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                |
+| Command                    | What it does                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`              | Start the app locally                                                                                        |
+| `npm run build`            | Build the static site into `out/`                                                                            |
+| `npm run build:extension`  | Build the extension into `extension/dist`                                                                    |
+| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping                                     |
+| `npm run typecheck`        | TypeScript check                                                                                             |
+| `npm run lint`             | ESLint                                                                                                       |
+| `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below)                                   |
+| `npm run verify:motion`    | Browser run of the Motion Gallery and scrollbars, including building all 24 copied examples outside the repo |
+| `npm run motion:sources`   | Regenerate the gallery's source listing (add `-- --check` to verify)                                         |
+| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                                                  |
 
-The two browser scripts need Playwright, which is not a project dependency:
+The browser scripts need Playwright, which is not a project dependency:
 
 ```bash
 npm i --no-save playwright && npx playwright install chromium
@@ -102,6 +123,7 @@ npm i --no-save playwright && npx playwright install chromium
 ```
 app/                      routes (/, /workspace, /demo) and layerwake.css (CSS custom properties)
 components/layerwake/     workspace, tree, inspector, preview renderer, export panel
+components/motion/        Motion Gallery page, registry and the 24 components in items/
 lib/layerwake/
   schema.ts               capture format, limits and tag allowlist
   css-values.ts           the CSS property and value allowlist
