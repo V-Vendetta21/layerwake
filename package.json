@@ -9,7 +9,12 @@
     "deploy:preview": "wrangler versions upload",
     "start": "next start",
     "lint": "next lint",
-    "build:registry": "tsx scripts/registry-build.ts"
+    "build:registry": "tsx scripts/registry-build.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build:extension": "node scripts/build-extension.mjs",
+    "demo:capture": "node scripts/layerwake-demo-capture.mjs",
+    "verify:layerwake": "node scripts/layerwake-e2e.mjs"
   },
   "dependencies": {
     "@code-hike/mdx": "^0.9.0",
@@ -42,9 +47,11 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/chrome": "^0.3.7",
     "@types/node": "^20.17.9",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild": "^0.28.2",
     "eslint": "^8",
     "eslint-config-next": "^15.5.25",
     "eslint-config-prettier": "^10.1.8",
@@ -54,6 +61,7 @@
     "tailwindcss": "^4.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5",
+    "vitest": "^5.1.0",
     "wrangler": "4.132.0"
   }
 }

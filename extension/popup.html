@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Layerwake Capture</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon-48.png" alt="" width="24" height="24" />
+      <h1>Layerwake</h1>
+    </header>
+    <p class="lead">
+      Pick one component on this page. Its measurements are saved to a file on
+      your computer — nothing is uploaded.
+    </p>
+    <button id="capture" type="button">Capture component</button>
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <h2>The file includes</h2>
+    <ul id="includes"></ul>
+    <h2>It never includes</h2>
+    <ul id="excludes"></ul>
+    <p class="hint">
+      After you click, hover the page and click a component. Press
+      <kbd>Esc</kbd> to cancel.
+    </p>
+    <script src="popup.js"></script>
+  </body>
+</html>
