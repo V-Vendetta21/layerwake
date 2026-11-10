@@ -38,9 +38,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# cli
-cli/dist
-cli/node_modules
-
 # layerwake extension build
 extension/dist

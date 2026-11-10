@@ -10,7 +10,7 @@ import {
 
 export const STORAGE_KEY = 'layerwake.import';
 export const DEMO_NAME = 'Coastal card';
-export const WORKSPACE_PATH = '/layerwake/workspace';
+export const WORKSPACE_PATH = '/workspace';
 
 export interface Loaded {
   source: 'demo' | 'import';

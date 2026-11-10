@@ -176,7 +176,7 @@ export function Workspace() {
       />
 
       <header className='lw-top'>
-        <Link href='/layerwake' aria-label='Layerwake home'>
+        <Link href='/' aria-label='Layerwake home'>
           <LayerwakeBrand size={22} />
         </Link>
         {loaded ? (
@@ -414,7 +414,7 @@ function EmptyState({
         ) : null}
         <p style={{ marginTop: 20, fontSize: 13 }}>
           No capture yet? Open the{' '}
-          <Link className='lw-link' href='/layerwake/demo'>
+          <Link className='lw-link' href='/demo'>
             demo page
           </Link>{' '}
           and capture its card with the extension.

@@ -8,11 +8,9 @@ Layerwake is a browser-based tool for designers and frontend developers. Capture
 
 It runs entirely in the browser. There is no account, no server, no API key and no upload: a capture is a JSON file on your computer.
 
-> This repository started as a fork of [Motion-Primitives](#motion-primitives). That site is still here and unchanged; Layerwake lives beside it under `/layerwake`.
-
 ## Run the app
 
-Requires Node 18.18 or newer.
+Node 24 is recommended (`.nvmrc` pins it). Node 20.9 or newer also works.
 
 ```bash
 npm install
@@ -22,13 +20,13 @@ npm install
 npm run dev
 ```
 
-Then open <http://localhost:3000/layerwake>.
+Then open <http://localhost:3000>.
 
-| Route                  | What it is                                            |
-| ---------------------- | ----------------------------------------------------- |
-| `/layerwake`           | Home, with a live sample, **Try demo** and **Import capture** |
-| `/layerwake/workspace` | The workspace (add `?demo=1` to open the demo)        |
-| `/layerwake/demo`      | An original demo card you can capture with the extension |
+| Route        | What it is                                                    |
+| ------------ | ------------------------------------------------------------- |
+| `/`          | Home, with a live sample, **Try demo** and **Import capture** |
+| `/workspace` | The editor (add `?demo=1` to open the demo)                   |
+| `/demo`      | An original demo card you can capture with the extension      |
 
 ### Build for static hosting
 
@@ -53,11 +51,11 @@ npm run build:extension
 
 ## Walkthrough
 
-1. Start the app and open `/layerwake/demo`.
+1. Start the app and open `/demo`.
 2. Click the Layerwake toolbar button, then **Capture component**.
 3. Hover the weather card until the outline wraps it, then click. `↑` and `↓` move to the parent or first child, `Enter` picks, `Esc` cancels.
 4. Read the capture summary and choose **Download Layerwake JSON**.
-5. Open `/layerwake/workspace` and drop the file on the page, or use **Import capture**.
+5. Open `/workspace` and drop the file on the page, or use **Import capture**.
 6. Select `headline` in the layer tree. The same layer is outlined in the preview, and the inspector shows its measured values.
 7. Select `root` and change **Corner radius**, or select `action` and change **Fill**. The preview updates as you type. **As measured** shows the original for comparison, and **Reset changes** undoes everything.
 8. Switch **Rebuild width test** to **Compact** to see whether your variant overflows.
@@ -69,12 +67,12 @@ No extension? **Try demo** loads a ready-made capture of the same card.
 
 A capture describes one component at one viewport size. The full format is documented in [docs/layerwake/capture-format.md](docs/layerwake/capture-format.md).
 
-| Included                                              | Never included                                  |
-| ----------------------------------------------------- | ----------------------------------------------- |
-| Viewport size, each layer's position and size         | Page text, form values, attributes              |
-| Generic tag names (`div`, `button`, `h2` …)           | The page address, links, image and font URLs    |
-| An allowlist of computed styles                       | Scripts, stylesheets, cookies, browsing history |
-| The length of each piece of text                      |                                                 |
+| Included                                      | Never included                                  |
+| --------------------------------------------- | ----------------------------------------------- |
+| Viewport size, each layer's position and size | Page text, form values, attributes              |
+| Generic tag names (`div`, `button`, `h2` …)   | The page address, links, image and font URLs    |
+| An allowlist of computed styles               | Scripts, stylesheets, cookies, browsing history |
+| The length of each piece of text              |                                                 |
 
 Limits: 8 levels deep, 200 layers, 512 KB. A capture that hits a limit is trimmed, and both the extension and the app say so.
 
@@ -82,16 +80,16 @@ Imports are treated as untrusted. The app checks size, schema, structure and eve
 
 ## Commands
 
-| Command                    | What it does                                             |
-| -------------------------- | -------------------------------------------------------- |
-| `npm run dev`              | Start the app locally                                    |
-| `npm run build`            | Build the static site into `out/`                        |
-| `npm run build:extension`  | Build the extension into `extension/dist`                |
-| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping |
-| `npm run typecheck`        | TypeScript check                                         |
-| `npm run lint`             | ESLint                                                   |
+| Command                    | What it does                                                               |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `npm run dev`              | Start the app locally                                                      |
+| `npm run build`            | Build the static site into `out/`                                          |
+| `npm run build:extension`  | Build the extension into `extension/dist`                                  |
+| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping   |
+| `npm run typecheck`        | TypeScript check                                                           |
+| `npm run lint`             | ESLint                                                                     |
 | `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below) |
-| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page |
+| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                |
 
 The two browser scripts need Playwright, which is not a project dependency:
 
@@ -102,7 +100,7 @@ npm i --no-save playwright && npx playwright install chromium
 ## Where things live
 
 ```
-app/layerwake/            routes and layerwake.css (scoped styles, CSS custom properties)
+app/                      routes (/, /workspace, /demo) and layerwake.css (CSS custom properties)
 components/layerwake/     workspace, tree, inspector, preview renderer, export panel
 lib/layerwake/
   schema.ts               capture format, limits and tag allowlist
@@ -135,19 +133,13 @@ Good first changes, roughly from small to large:
 - Improve inferred names in `nameNodes` (for example, detect avatars or dividers).
 - Capture `::before` and `::after` as extra layers.
 - Add per-layer overrides so a shared token can be split.
-- Add syntax highlighting to the code view (the repo already ships Shiki).
+- Add syntax highlighting to the code view.
 - Support dark canvas backgrounds in the preview for light-on-dark components.
 
 Please keep the privacy rule intact: a capture must never contain page copy, attributes or URLs. See [CONTRIBUTING.md](CONTRIBUTING.md) for the repository's general workflow.
 
-## License
+## License and attribution
 
 [MIT](LICENCE.md).
 
----
-
-## Motion-Primitives
-
-The original project in this repository: beautifully designed, easy-to-integrate motion components for engineers and designers, built with [motion](https://motion.dev/) and [Tailwind CSS](https://tailwindcss.com/). It is served at `/` and `/docs`.
-
-Visit [motion-primitives.com/docs](http://motion-primitives.com/docs) for its documentation, and read the [contributing guide](/CONTRIBUTING.md).
+Layerwake was built on top of a fork of [Motion-Primitives](https://github.com/ibelick/motion-primitives) by ibelick, which is MIT licensed. Its site pages and components have been removed, but the project setup and Git history descend from it, so the original copyright notice in `LICENCE.md` is kept.

@@ -13,7 +13,7 @@ try {
   const page = await browser.newPage({
     viewport: { width: 1280, height: 800 },
   });
-  await page.goto(`${base}/layerwake/demo`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/demo`, { waitUntil: 'networkidle' });
   await page.addScriptTag({ content: await collectBundle() });
   const json = await page.evaluate(() => {
     const card = document.querySelector('[data-demo-component]');

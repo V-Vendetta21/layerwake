@@ -31,7 +31,7 @@ const TYPES = {
 
 async function serveOut() {
   const dir = path.join(root, 'out');
-  await stat(path.join(dir, 'layerwake.html')).catch(() => {
+  await stat(path.join(dir, 'index.html')).catch(() => {
     console.error('No static build found. Run "npm run build" first.');
     process.exit(1);
   });
@@ -98,7 +98,7 @@ try {
 
   /* ------------------------------------------------ capture (extension code) */
   const contentScript = path.join(root, 'extension/dist/content.js');
-  await page.goto(`${base}/layerwake/demo`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/demo`, { waitUntil: 'networkidle' });
   const host = page.locator('[data-layerwake]');
   const card = page.locator('[data-demo-component]');
 
@@ -145,7 +145,7 @@ try {
   check('picker cleans up after capture', (await host.count()) === 0);
 
   /* ----------------------------------------------------------------- import */
-  await page.goto(`${base}/layerwake/workspace`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/workspace`, { waitUntil: 'networkidle' });
   check(
     'workspace starts empty with both actions',
     (await page.getByRole('button', { name: 'Try demo' }).isVisible()) &&
@@ -403,7 +403,7 @@ try {
   );
 
   /* ------------------------------------------------ demo without extension */
-  await page.goto(`${base}/layerwake`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/`, { waitUntil: 'networkidle' });
   await page.locator('.lw-sample .lw-render button').click();
   check(
     'home sample is interactive',
@@ -442,7 +442,7 @@ try {
   });
   check('selection outline tracks the layer after a panel switch', aligned);
   await page.screenshot({ path: path.join(tmp, 'narrow.png') });
-  for (const route of ['/layerwake', '/layerwake/demo']) {
+  for (const route of ['/', '/demo']) {
     await page.goto(`${base}${route}`, { waitUntil: 'networkidle' });
     check(
       `${route} fits a 390px screen`,
