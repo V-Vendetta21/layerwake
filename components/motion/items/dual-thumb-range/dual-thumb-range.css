@@ -1,0 +1,116 @@
+.mg-dual {
+  position: relative;
+  height: 64px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-dual__track {
+  position: absolute;
+  top: 42px;
+  right: 11px;
+  left: 11px;
+  height: 6px;
+  border-radius: 3px;
+  background: #e1e8fb;
+}
+
+.mg-dual__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--mg-low);
+  right: calc(100% - var(--mg-high));
+  border-radius: 3px;
+  background: var(--mg-accent, #164cff);
+  transition:
+    left 120ms ease-out,
+    right 120ms ease-out;
+}
+
+.mg-dual__bubble {
+  position: absolute;
+  top: 0;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: left 120ms ease-out;
+}
+
+.mg-dual__bubble--low {
+  left: calc(11px + (100% - 22px) * var(--mg-low) / 100%);
+}
+
+.mg-dual__bubble--high {
+  left: calc(11px + (100% - 22px) * var(--mg-high) / 100%);
+}
+
+.mg-dual[data-active='0'] .mg-dual__bubble--low,
+.mg-dual[data-active='1'] .mg-dual__bubble--high {
+  background: var(--mg-accent, #164cff);
+}
+
+/* Both inputs span the track; only their thumbs take pointer input. */
+.mg-dual__input {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  height: 26px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.mg-dual__input::-webkit-slider-runnable-track {
+  background: none;
+}
+
+.mg-dual__input::-moz-range-track {
+  background: none;
+}
+
+.mg-dual__input::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--mg-accent, #164cff);
+  border-radius: 50%;
+  background: #fff;
+  pointer-events: auto;
+  cursor: grab;
+  -webkit-appearance: none;
+}
+
+.mg-dual__input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--mg-accent, #164cff);
+  border-radius: 50%;
+  background: #fff;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.mg-dual__input:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--mg-ink, #0c1738);
+  outline-offset: 2px;
+}
+
+.mg-dual__input:focus-visible::-moz-range-thumb {
+  outline: 3px solid var(--mg-ink, #0c1738);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-dual__fill,
+  .mg-dual__bubble {
+    transition: none;
+  }
+}

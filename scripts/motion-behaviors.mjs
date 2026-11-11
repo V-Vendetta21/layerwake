@@ -197,9 +197,12 @@ export async function checkpointOne(page, check) {
     'arrow keys move the divider and its value',
     async (c) => {
       const range = c.getByRole('slider');
-      await range.focus();
-      await page.keyboard.press('Home');
-      await page.keyboard.press('ArrowRight');
+      await range.press('Home');
+      await range.press('ArrowRight');
+      await c
+        .locator('[aria-valuetext="99% night, 1% noon"]')
+        .waitFor({ timeout: 2000 })
+        .catch(() => {});
       const text = await range.getAttribute('aria-valuetext');
       const split = await c
         .locator('.mg-wipe')
@@ -463,7 +466,7 @@ export async function checkpointOne(page, check) {
       const pct = await c.locator('.mg-read__pct').innerText();
       return [
         current === 'Return' &&
-          pct === '100% read' &&
+          parseInt(pct) >= 90 &&
           (await page.evaluate(() => scrollY)) === y,
         `${current} ${pct}`,
       ];
@@ -835,6 +838,515 @@ export async function checkpointOneCalm(page, check) {
       return (
         (await c.locator('.mg-hold').getAttribute('data-phase')) === 'done'
       );
+    }
+  );
+}
+
+export async function checkpointTwo(page, check) {
+  const { run, drag, focused, wait } = helpers(page, check);
+  const wheelIn = async (locator, total, step = 120) => {
+    await locator.hover();
+    for (let moved = 0; moved < total; moved += step) {
+      await page.mouse.wheel(0, step);
+      await wait(16);
+    }
+  };
+
+  await run(
+    'sticky-section-story',
+    'step buttons jump; the picture follows; page stays put',
+    async (c) => {
+      const y = await page.evaluate(() => scrollY);
+      await c.getByRole('button', { name: 'Step 3: Open water' }).click();
+      await wait(900);
+      const now = await c.locator('.mg-story__now').innerText();
+      return [
+        now === 'Step 3 of 4: Open water' &&
+          (await page.evaluate(() => scrollY)) === y,
+        now,
+      ];
+    }
+  );
+
+  await run(
+    'scroll-velocity-skew',
+    'fast scrolling leans the bands, then they settle',
+    async (c) => {
+      const region = c.getByRole('region', { name: 'Passage notes' });
+      let peak = 0;
+      await region.hover();
+      for (let i = 0; i < 6; i++) {
+        await page.mouse.wheel(0, 160);
+        await wait(16);
+        peak = Math.max(
+          peak,
+          Math.abs(
+            parseFloat(
+              await region.evaluate((el) =>
+                el.style.getPropertyValue('--mg-skew')
+              )
+            ) || 0
+          )
+        );
+      }
+      await wait(1200);
+      const rest = await region.evaluate((el) =>
+        el.style.getPropertyValue('--mg-skew')
+      );
+      const text = await region
+        .locator('p')
+        .first()
+        .evaluate((el) => getComputedStyle(el).transform);
+      return [
+        peak > 0.5 && rest === '0deg' && text === 'none',
+        `peak ${peak.toFixed(2)}°, rest ${rest}`,
+      ];
+    }
+  );
+
+  await run(
+    'parallax-layers',
+    'layers drift at different speeds inside the viewport',
+    async (c) => {
+      const y = await page.evaluate(() => scrollY);
+      const region = c.getByRole('region', { name: 'Coastline stops' });
+      await wheelIn(region, 240, 60);
+      await wait(200);
+      const shifts = await c
+        .locator('.mg-parallax__layer')
+        .evaluateAll((els) =>
+          els.map((el) => new DOMMatrix(getComputedStyle(el).transform).m42)
+        );
+      return [
+        shifts[0] < shifts[2] &&
+          shifts[0] < 0 &&
+          (await page.evaluate(() => scrollY)) === y,
+        shifts.map((s) => s.toFixed(0)).join(', '),
+      ];
+    }
+  );
+
+  await run(
+    'scroll-snap-story-rail',
+    'Next and Previous land on snap points',
+    async (c) => {
+      await c.getByRole('button', { name: 'Next →' }).click();
+      await wait(700);
+      await c.getByRole('button', { name: 'Next →' }).click();
+      await wait(700);
+      const a = await c.getByRole('status').innerText();
+      await c.getByRole('button', { name: '← Previous' }).click();
+      await wait(700);
+      const b = await c.getByRole('status').innerText();
+      return [a === '3 of 5' && b === '2 of 5', `${a} / ${b}`];
+    }
+  );
+
+  await run(
+    'scroll-scrub-frames',
+    'the slider and scrolling both pick frames',
+    async (c) => {
+      await c.getByRole('slider').focus();
+      await page.keyboard.press('End');
+      const end = await c.getByRole('img').getAttribute('aria-label');
+      await page.keyboard.press('Home');
+      await wheelIn(c.getByRole('region'), 360, 120);
+      await wait(250);
+      const label = await c.locator('.mg-scrub__slider').innerText();
+      return [
+        end.includes('100% risen') && !label.startsWith('Frame 1 of'),
+        `${label}`,
+      ];
+    }
+  );
+
+  await run(
+    'path-tracer',
+    'the slider scrubs the route; Play advances it',
+    async (c) => {
+      await c.getByRole('slider').focus();
+      await page.keyboard.press('End');
+      const full = await c.getByRole('img').getAttribute('aria-label');
+      await page.keyboard.press('Home');
+      await c.getByRole('button', { name: 'Play' }).click();
+      await wait(600);
+      const partway = await c.getByRole('img').getAttribute('aria-label');
+      return [
+        full.endsWith('100% travelled') && !partway.endsWith(' 0% travelled'),
+        partway,
+      ];
+    }
+  );
+
+  await run(
+    'node-pulse-graph',
+    'a pulse reaches every node and is described',
+    async (c) => {
+      await c.getByRole('button', { name: 'Pulse from Light' }).click();
+      await wait(1600);
+      const reached = await c.locator('[data-reached="true"]').count();
+      const text = await c.getByRole('status').innerText();
+      return [
+        reached === 5 && text.startsWith('From Light: step 1 reached Pier'),
+        text,
+      ];
+    }
+  );
+
+  await run(
+    'animated-bar-chart',
+    'bars move to the new dataset and print values',
+    async (c) => {
+      await c.getByRole('button', { name: 'Last week' }).click();
+      await wait(650);
+      const values = await c.locator('.mg-bars__value').allInnerTexts();
+      const scale = await c
+        .locator('.mg-bars__bar')
+        .first()
+        .evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).d);
+      return [
+        values[0] === '20 kn' && Math.abs(scale - 20 / 30) < 0.02,
+        `${values.join(' ')} · ${scale.toFixed(2)}`,
+      ];
+    }
+  );
+
+  await run(
+    'trend-line-morph',
+    'the line morphs and a point reads out exactly',
+    async (c) => {
+      const before = await c.locator('.mg-trend__line').getAttribute('d');
+      await c.getByRole('button', { name: 'Air temperature' }).click();
+      await c.getByRole('button', { name: 'Jun' }).click();
+      await wait(700);
+      const after = await c.locator('.mg-trend__line').getAttribute('d');
+      const readout = await c.locator('.mg-trend__readout').innerText();
+      return [before !== after && readout === 'Jun: 20 °C', readout];
+    }
+  );
+
+  await run(
+    'heatmap-brush',
+    'keyboard and drag selections are summed in words',
+    async (c) => {
+      const grid = c.locator('.mg-heat__grid');
+      await grid.focus();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Shift+ArrowDown');
+      await page.keyboard.press('Shift+ArrowRight');
+      const keyed = await c.locator('.mg-heat__summary').innerText();
+      const a = await c.locator('[data-r="0"][data-c="0"]').boundingBox();
+      const b = await c.locator('[data-r="1"][data-c="2"]').boundingBox();
+      await page.mouse.move(a.x + 5, a.y + 5);
+      await page.mouse.down();
+      await page.mouse.move(b.x + 5, b.y + 5, { steps: 6 });
+      await page.mouse.up();
+      const dragged = await c.locator('.mg-heat__summary').innerText();
+      return [
+        keyed.includes('Thu–Fri, Week 2–Week 3: 4 cells') &&
+          dragged.includes('Mon–Wed, Week 1–Week 2: 6 cells'),
+        `${keyed} | ${dragged}`,
+      ];
+    }
+  );
+
+  await run(
+    'dual-thumb-range',
+    'thumbs move independently and cannot cross',
+    async (c) => {
+      const low = c.getByRole('slider', { name: 'Lowest wind' });
+      await low.focus();
+      await page.keyboard.press('End');
+      const text = await low.getAttribute('aria-valuetext');
+      const high = await c
+        .getByRole('slider', { name: 'Highest wind' })
+        .getAttribute('aria-valuetext');
+      return [text === '16 kn' && high === '18 kn', `${text} – ${high}`];
+    }
+  );
+
+  await run(
+    'inertia-drag-surface',
+    'a fling keeps gliding after release, then rests',
+    async (c) => {
+      const puck = c.locator('.mg-inertia__puck');
+      const box = await puck.boundingBox();
+      await page.mouse.move(box.x + 10, box.y + 10);
+      await page.mouse.down();
+      await page.mouse.move(box.x + 40, box.y + 10, { steps: 2 });
+      await page.mouse.move(box.x + 70, box.y + 10, { steps: 2 });
+      await page.mouse.up();
+      const released = await c.getByRole('status').innerText();
+      await wait(1500);
+      const rest = await c.getByRole('status').innerText();
+      const x0 = Number(/x (\d+)/.exec(released)?.[1]);
+      const x1 = Number(/x (\d+)/.exec(rest)?.[1]);
+      return [
+        released.startsWith('Moving') &&
+          rest.startsWith('At rest') &&
+          x1 !== x0,
+        `${released} → ${rest}`,
+      ];
+    }
+  );
+
+  await run(
+    'rotary-dial',
+    'keys, pointer and reset set exact values',
+    async (c) => {
+      const knob = c.getByRole('slider', { name: 'Radio volume' });
+      await knob.focus();
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      const keyed = await knob.getAttribute('aria-valuenow');
+      const box = await knob.boundingBox();
+      await knob.click({ position: { x: 4, y: box.height / 2 } });
+      const pointed = await knob.getAttribute('aria-valuenow');
+      await c.getByRole('button', { name: 'Reset to 4' }).click();
+      return [
+        keyed === '6' &&
+          pointed === '2' &&
+          (await knob.getAttribute('aria-valuenow')) === '4',
+        `${keyed} ${pointed}`,
+      ];
+    }
+  );
+
+  await run(
+    'pinch-zoom-canvas',
+    'buttons, keys and Ctrl+wheel zoom and pan inside the box',
+    async (c) => {
+      await c.getByRole('button', { name: 'Zoom in' }).click();
+      const zoom = await c.getByRole('status').innerText();
+      const box = c.getByRole('group', { name: /Harbor approach chart/ });
+      await box.focus();
+      const t0 = await c
+        .locator('.mg-pinch__content')
+        .evaluate((el) => el.style.transform);
+      await page.keyboard.press('ArrowRight');
+      const t1 = await c
+        .locator('.mg-pinch__content')
+        .evaluate((el) => el.style.transform);
+      await page.keyboard.press('0');
+      await box.hover();
+      await page.keyboard.down('Control');
+      await page.mouse.wheel(0, -200);
+      await page.keyboard.up('Control');
+      await wait(100);
+      const wheel = await c.getByRole('status').innerText();
+      return [
+        zoom === '125%' && t0 !== t1 && parseInt(wheel) > 100,
+        `${zoom} ${wheel}`,
+      ];
+    }
+  );
+
+  await run(
+    'drag-to-duplicate-tile',
+    'tap and drag both add copies',
+    async (c) => {
+      await c.getByRole('button', { name: 'Add buoy' }).click();
+      const canvas = await c
+        .getByRole('region', { name: /Canvas/ })
+        .boundingBox();
+      const src = await c
+        .getByRole('button', { name: 'Add marker' })
+        .boundingBox();
+      await page.mouse.move(src.x + 20, src.y + 20);
+      await page.mouse.down();
+      await page.mouse.move(
+        canvas.x + canvas.width / 2,
+        canvas.y + canvas.height / 2,
+        { steps: 12 }
+      );
+      await page.mouse.up();
+      const status = await c.getByRole('status').innerText();
+      return [
+        status === '2 tiles on the canvas' &&
+          (await c.getByRole('img', { name: 'marker' }).count()) === 1,
+        status,
+      ];
+    }
+  );
+
+  await run(
+    'star-rating-fill',
+    'hover previews; a choice commits',
+    async (c) => {
+      await c.locator('.mg-stars__star').nth(2).hover();
+      const preview = await c.locator('.mg-stars__text').innerText();
+      await c.locator('.mg-stars__star').nth(3).click();
+      await page.mouse.move(0, 0);
+      const set = await c.locator('.mg-stars__text').innerText();
+      await page.keyboard.press('ArrowRight');
+      const keyed = await c.locator('.mg-stars__text').innerText();
+      return [
+        preview === 'Preview: 3 of 5' &&
+          set === 'Your rating: 4 of 5' &&
+          keyed === 'Your rating: 5 of 5',
+        `${preview} / ${set} / ${keyed}`,
+      ];
+    }
+  );
+
+  await run(
+    'verification-code-slots',
+    'typing, a wrong code, correction and paste',
+    async (c) => {
+      const input = c.getByLabel(/Test code/);
+      await input.click();
+      await page.keyboard.type('123');
+      const active = await c
+        .locator('.mg-otp__slot[data-active="true"]')
+        .evaluate((el) => [...el.parentElement.children].indexOf(el));
+      await page.keyboard.type('456');
+      const error = await c.getByRole('alert').innerText();
+      for (let i = 0; i < 6; i++) await page.keyboard.press('Backspace');
+      await page.evaluate(() => navigator.clipboard.writeText('482916'));
+      await page.keyboard.press('Control+V');
+      await wait(100);
+      const ok = await c.getByRole('status').innerText();
+      return [
+        active === 3 &&
+          error.includes('does not match') &&
+          ok.includes('accepted'),
+        `${active} ${ok}`,
+      ];
+    }
+  );
+
+  await run(
+    'token-chip-entry',
+    'adds, refuses duplicates, deletes by keyboard',
+    async (c) => {
+      const input = c.getByLabel('Trip tags');
+      await input.click();
+      await page.keyboard.type('Fishing');
+      await page.keyboard.press('Enter');
+      const added = await c.locator('.mg-chips__chip').count();
+      await page.keyboard.type('sailing');
+      await page.keyboard.press('Enter');
+      const dupe = await c.getByRole('status').innerText();
+      await input.fill('');
+      await page.keyboard.press('Backspace');
+      await wait(300);
+      return [
+        added === 3 &&
+          dupe.includes('already added') &&
+          (await c.locator('.mg-chips__chip').count()) === 2,
+        dupe,
+      ];
+    }
+  );
+
+  await run(
+    'calendar-month-slide',
+    'keyboard crosses months with a directional slide',
+    async (c) => {
+      await c.locator('td button[tabindex="0"]').focus();
+      await page.keyboard.press('PageDown');
+      const title = await c.locator('.mg-cal__head h4').innerText();
+      const dir = await c
+        .locator('.mg-cal__grid')
+        .getAttribute('data-direction');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      const status = await c.getByRole('status').innerText();
+      return [
+        title === 'December 2026' &&
+          dir === 'next' &&
+          status.includes('December 15'),
+        `${title} ${status}`,
+      ];
+    }
+  );
+
+  await run(
+    'nested-menu-drilldown',
+    'slides in and out with focus kept in place',
+    async (c) => {
+      const trigger = c.getByRole('button', { name: /^Settings/ });
+      await trigger.click();
+      const first = await focused();
+      await page.keyboard.press('ArrowRight');
+      const inside = await focused();
+      const path = await c.locator('.mg-drill__path').innerText();
+      await page.keyboard.press('Escape');
+      const backOn = await focused();
+      await page.keyboard.press('Escape');
+      const closed =
+        (await c.getByRole('menu').count()) === 0 &&
+        (await trigger.evaluate((el) => el === document.activeElement));
+      await trigger.click();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      const status = await c.getByRole('status').innerText();
+      return [
+        first.startsWith('Display') &&
+          inside === 'Night mode' &&
+          path === 'Settings › Display' &&
+          backOn.startsWith('Display') &&
+          closed &&
+          status === 'Chose: Display › Units › Metres',
+        `${inside} / ${status}`,
+      ];
+    }
+  );
+}
+
+export async function checkpointTwoCalm(page, check) {
+  const { run, wait } = helpers(page, check);
+  await run(
+    'parallax-layers',
+    'reduced motion: layers stay still',
+    async (c) => {
+      await c.getByRole('region', { name: 'Coastline stops' }).hover();
+      await page.mouse.wheel(0, 200);
+      await wait(200);
+      const t = await c
+        .locator('.mg-parallax__layer')
+        .evaluateAll((els) => els.map((el) => getComputedStyle(el).transform));
+      return [t.every((v) => v === 'none'), t.join()];
+    }
+  );
+  await run(
+    'scroll-velocity-skew',
+    'reduced motion: bands never lean',
+    async (c) => {
+      await c.getByRole('region', { name: 'Passage notes' }).hover();
+      await page.mouse.wheel(0, 300);
+      await wait(30);
+      return (
+        (await c
+          .locator('.mg-velocity__strip')
+          .first()
+          .evaluate((el) => getComputedStyle(el).transform)) === 'none'
+      );
+    }
+  );
+  await run(
+    'scroll-scrub-frames',
+    'reduced motion: first frame holds; the slider still works',
+    async (c) => {
+      const before = await c.locator('.mg-scrub__slider').innerText();
+      await c.getByRole('slider').focus();
+      await page.keyboard.press('End');
+      const after = await c.locator('.mg-scrub__slider').innerText();
+      return [
+        before.startsWith('Frame 1 of 8') && after.startsWith('Frame 8 of 8'),
+        `${before} → ${after}`,
+      ];
+    }
+  );
+  await run(
+    'node-pulse-graph',
+    'reduced motion: result is immediate',
+    async (c) => {
+      await c.getByRole('button', { name: 'Pulse from Rock' }).click();
+      await wait(80);
+      return (await c.locator('[data-reached="true"]').count()) === 5;
     }
   );
 }

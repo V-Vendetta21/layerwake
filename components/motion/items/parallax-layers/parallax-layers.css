@@ -1,0 +1,48 @@
+.mg-parallax {
+  --mg-scroll: 0;
+  --mg-height: 240px;
+  position: relative;
+  height: var(--mg-height);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 14px;
+  background: #dbe5ff;
+}
+
+.mg-parallax:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+/* Pinned behind the content; each layer counters part of the scroll. */
+.mg-parallax__scene {
+  position: sticky;
+  top: 0;
+  height: var(--mg-height);
+  margin-bottom: calc(var(--mg-height) * -1);
+  overflow: hidden;
+}
+
+.mg-parallax__layer {
+  position: absolute;
+  inset: 0;
+  transform: translateY(calc(var(--mg-scroll) * var(--mg-depth) * -1px));
+  will-change: transform;
+}
+
+.mg-parallax__layer > * {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mg-parallax__content {
+  position: relative;
+  padding: 150px 14px 40px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-parallax__layer {
+    transform: none;
+  }
+}

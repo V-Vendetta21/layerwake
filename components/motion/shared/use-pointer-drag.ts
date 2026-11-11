@@ -65,7 +65,7 @@ export function usePointerDrag(options: PointerDragOptions) {
     if (event.currentTarget.hasPointerCapture?.(event.pointerId))
       event.currentTarget.releasePointerCapture(event.pointerId);
     // A pause before release means the pointer was not really flung.
-    if (event.timeStamp - a.lastTime > 80) {
+    if (event.timeStamp - a.lastTime > 150) {
       a.vx = 0;
       a.vy = 0;
     }

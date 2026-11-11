@@ -1,0 +1,95 @@
+.mg-snap {
+  display: grid;
+  gap: 10px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-snap__track {
+  /* Children measure their offsets from here. */
+  position: relative;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.mg-snap__track::-webkit-scrollbar {
+  display: none;
+}
+
+.mg-snap__track:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
+
+.mg-snap__slide {
+  flex: 0 0 86%;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 14px;
+  background: var(--mg-ink, #0c1738);
+  color: #f5f8ff;
+  scroll-snap-align: start;
+}
+
+.mg-snap__slide:nth-child(even) {
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-snap__bar {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #e1e8fb;
+}
+
+.mg-snap__bar span {
+  display: block;
+  height: 100%;
+  background: var(--mg-accent, #164cff);
+  transform: scaleX(var(--mg-progress));
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.mg-snap__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mg-snap__controls span {
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-snap__controls button {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-snap__controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mg-snap__controls button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-snap__bar span {
+    transition: none;
+  }
+}

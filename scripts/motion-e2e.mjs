@@ -13,7 +13,12 @@ import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { loadPlaywright, root, serveOut } from './layerwake-browser.mjs';
-import { checkpointOne, checkpointOneCalm } from './motion-behaviors.mjs';
+import {
+  checkpointOne,
+  checkpointOneCalm,
+  checkpointTwo,
+  checkpointTwoCalm,
+} from './motion-behaviors.mjs';
 
 const { chromium } = loadPlaywright();
 const results = [];
@@ -368,6 +373,8 @@ try {
   /* ------------------------------------------- per-component behaviors */
   await page.goto(`${base}/motion`, { waitUntil: 'networkidle' });
   await checkpointOne(page, check);
+  await page.goto(`${base}/motion`, { waitUntil: 'networkidle' });
+  await checkpointTwo(page, check);
 
   /* ------------------------------------------------------------- scrollbars */
   // Overlay path (headless default): standard properties only, so the
@@ -463,6 +470,8 @@ try {
   await sb.mouse.move(1360 - 7, 300, { steps: 5 });
   await sb.mouse.up();
   const dragged = await sb.evaluate(() => window.scrollY);
+  // Let End reach the page rather than a focused tab list.
+  await sb.evaluate(() => document.activeElement?.blur());
   await sb.keyboard.press('End');
   await sb.waitForTimeout(300);
   const keyed = await sb.evaluate(() => window.scrollY);
@@ -598,6 +607,7 @@ try {
   );
   await calmPage.goto(`${base}/motion`, { waitUntil: 'networkidle' });
   await checkpointOneCalm(calmPage, check);
+  await checkpointTwoCalm(calmPage, check);
   await calm.close();
 
   /* ----------------------------------------------------------------- mobile */

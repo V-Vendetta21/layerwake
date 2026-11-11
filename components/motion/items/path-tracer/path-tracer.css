@@ -1,0 +1,50 @@
+.mg-tracer {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.mg-tracer__route,
+.mg-tracer__done {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mg-tracer__route {
+  stroke: #c3cdec;
+  stroke-width: 3;
+  stroke-dasharray: 2 6;
+}
+
+.mg-tracer__done {
+  stroke: var(--mg-accent, #164cff);
+  stroke-width: 4;
+  stroke-dasharray: 1;
+}
+
+.mg-tracer__end {
+  fill: var(--mg-ink, #0c1738);
+}
+
+.mg-tracer__label {
+  fill: var(--mg-ink, #0c1738);
+  font-size: 12px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 4px;
+}
+
+.mg-tracer__marker {
+  fill: var(--mg-green, #b6ff3b);
+  stroke: var(--mg-ink, #0c1738);
+  stroke-width: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-tracer__done {
+    transition: none;
+  }
+}

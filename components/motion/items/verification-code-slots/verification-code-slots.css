@@ -1,0 +1,112 @@
+.mg-otp {
+  display: grid;
+  gap: 6px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-otp__label {
+  font-weight: 700;
+}
+
+.mg-otp__field {
+  position: relative;
+}
+
+/* The real input sits on top, transparent, so taps and paste reach it. */
+.mg-otp__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font: inherit;
+  letter-spacing: 2em;
+  opacity: 0.01;
+}
+
+.mg-otp__slots {
+  display: grid;
+  grid-template-columns: repeat(6, 44px);
+  gap: 8px;
+}
+
+.mg-otp__slot {
+  display: grid;
+  place-items: center;
+  height: 52px;
+  border: 2px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.mg-otp__slot[data-filled='true'] {
+  border-color: var(--mg-ink, #0c1738);
+}
+
+.mg-otp__slot[data-active='true'] {
+  border-color: var(--mg-accent, #164cff);
+  box-shadow: 0 0 0 3px #e6ecff;
+  transform: translateY(-2px);
+}
+
+.mg-otp__slot[data-active='true']:empty::after {
+  width: 2px;
+  height: 22px;
+  background: var(--mg-accent, #164cff);
+  content: '';
+  animation: mg-otp-caret 1s steps(1) infinite;
+}
+
+.mg-otp[data-error='true'] .mg-otp__slots {
+  animation: mg-otp-shake 320ms ease;
+}
+
+.mg-otp[data-error='true'] .mg-otp__slot {
+  border-color: #b3122c;
+}
+
+.mg-otp__error {
+  min-height: 1.3em;
+  margin: 0;
+  color: #b3122c;
+  font-size: 13px;
+}
+
+@keyframes mg-otp-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes mg-otp-shake {
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-otp__slot {
+    transition: none;
+  }
+  .mg-otp__slot[data-active='true'] {
+    transform: none;
+  }
+  .mg-otp[data-error='true'] .mg-otp__slots,
+  .mg-otp__slot[data-active='true']:empty::after {
+    animation: none;
+  }
+}

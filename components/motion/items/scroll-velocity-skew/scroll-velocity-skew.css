@@ -1,0 +1,43 @@
+.mg-velocity {
+  --mg-skew: 0deg;
+  height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px 14px;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 12px;
+  background: #fff;
+  color: #46527a;
+}
+
+.mg-velocity:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-velocity p {
+  margin: 0 0 12px;
+}
+
+.mg-velocity__strip {
+  margin: 16px -14px;
+  padding: 10px 0;
+  overflow: hidden;
+  background: var(--mg-accent, #164cff);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transform: skewY(var(--mg-skew));
+}
+
+.mg-velocity__strip:nth-of-type(even) {
+  background: var(--mg-ink, #0c1738);
+  color: var(--mg-green, #b6ff3b);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-velocity__strip {
+    transform: none;
+  }
+}
