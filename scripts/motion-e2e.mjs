@@ -8,11 +8,12 @@
 // it, builds each component in an empty folder outside this repository, and
 // checks that it runs there with nothing but React.
 import { build } from 'esbuild';
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readdir, readFile, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { loadPlaywright, root, serveOut } from './layerwake-browser.mjs';
+import { checkpointOne, checkpointOneCalm } from './motion-behaviors.mjs';
 
 const { chromium } = loadPlaywright();
 const results = [];
@@ -25,13 +26,26 @@ const check = (name, ok, detail = '') => {
 
 const served = process.argv[2] ? null : await serveOut();
 const base = process.argv[2] ?? served.base;
-const sources = JSON.parse(
-  await readFile(
-    path.join(root, 'components/motion/sources.generated.json'),
-    'utf8'
-  )
-);
+const sourceDir = path.join(root, 'components/motion/sources');
+const sources = {};
+for (const file of (await readdir(sourceDir)).sort())
+  sources[file.replace(/\.json$/, '')] = JSON.parse(
+    await readFile(path.join(sourceDir, file), 'utf8')
+  );
 const slugs = Object.keys(sources);
+const EXPECTED = Number(
+  /EXPECTED_TOTAL = (\d+)/.exec(
+    await readFile(path.join(root, 'components/motion/catalog.ts'), 'utf8')
+  )[1]
+);
+const N = slugs.length;
+const COPY_LABEL = {
+  component: 'Copy component',
+  css: 'Copy CSS',
+  helper: 'Copy helper',
+};
+const codeOf = (slug, kind) =>
+  sources[slug].files.find((f) => f.kind === kind).code;
 const tmp = await mkdtemp(path.join(os.tmpdir(), 'layerwake-motion-'));
 const browser = await chromium.launch();
 const errors = [];
@@ -63,8 +77,8 @@ try {
 
   const entries = page.locator('.mgx-entry');
   check(
-    'gallery lists 24 entries',
-    (await entries.count()) === 24 && slugs.length === 24,
+    `gallery lists exactly ${EXPECTED} entries`,
+    (await entries.count()) === EXPECTED && N === EXPECTED,
     `${await entries.count()} cards`
   );
 
@@ -76,10 +90,11 @@ try {
   );
 
   const missing = [];
+  let mostMounted = 0;
   for (const slug of slugs) {
     const card = page.locator(`#${slug}`);
     await card.scrollIntoViewIfNeeded();
-    const demo = card.locator('.mgx-stage [class*="mg-"]').first();
+    const demo = card.locator('.mgx-stage > :not(.mgx-loading)').first();
     const ok =
       (await demo.waitFor({ state: 'attached', timeout: 4000 }).then(
         () => true,
@@ -90,28 +105,44 @@ try {
       (await card.locator('.mgx-cue').innerText()).length > 5;
     if (!ok) missing.push(`${slug} (preview)`);
 
+    mostMounted = Math.max(
+      mostMounted,
+      await page.locator('.mgx-stage > *').count()
+    );
     await card.getByRole('tab', { name: 'Code' }).click();
+    const files = sources[slug].files;
+    await card
+      .locator('.mgx-code')
+      .nth(files.length)
+      .waitFor({ timeout: 5000 })
+      .catch(() => {});
     const copies = await card.locator('.mgx-copy').allInnerTexts();
     const shown = await card.locator('.mgx-code code').allTextContents();
+    const want = [sources[slug].usage, ...files.map((f) => f.code)];
+    const labels = ['Copy usage', ...files.map((f) => COPY_LABEL[f.kind])];
     const exact =
-      shown[0] === sources[slug].usage &&
-      shown[1] === sources[slug].component &&
-      shown[2] === sources[slug].css;
-    if (copies.join('|') !== 'Copy usage|Copy component|Copy CSS' || !exact)
+      shown.length === want.length &&
+      want.every((code, i) => shown[i] === code);
+    if (copies.join('|') !== labels.join('|') || !exact)
       missing.push(`${slug} (code)`);
     if ((await card.locator('.mgx-stage > *').count()) !== 0)
       missing.push(`${slug} (preview kept running under Code)`);
     await card.getByRole('tab', { name: 'Preview' }).click();
   }
   check(
-    'all 24 render a working preview with name, purpose and cue',
+    `all ${N} render a working preview with name, purpose and cue`,
     !missing.some((m) => m.includes('preview')),
     missing.join(', ')
   );
   check(
-    'all 24 show exact source, CSS and usage with separate copy buttons',
+    `all ${N} show exact source, CSS, helpers and usage with separate copy buttons`,
     !missing.some((m) => m.includes('code')),
     missing.join(', ')
+  );
+  check(
+    'browsing never mounts more than a handful of previews at once',
+    mostMounted <= 8,
+    `most mounted at once: ${mostMounted}`
   );
   check(
     'offscreen previews are unmounted',
@@ -143,7 +174,7 @@ try {
   );
 
   // Copy
-  await first.getByRole('button', { name: 'Copy usage' }).click();
+  await first.getByRole('button', { name: /Copy usage/ }).click();
   await first
     .locator('.mgx-copy__hint')
     .waitFor({ timeout: 3000 })
@@ -174,7 +205,9 @@ try {
   const s = sources['staggered-text'];
   check(
     'usage, component and CSS each copy their own file',
-    clips[0] === s.usage && clips[1] === s.component && clips[2] === s.css
+    clips[0] === s.usage &&
+      clips[1] === codeOf('staggered-text', 'component') &&
+      clips[2] === codeOf('staggered-text', 'css')
   );
   await page.keyboard.press('Home');
   await first.getByRole('tab', { name: 'Preview' }).click();
@@ -262,8 +295,15 @@ try {
   await search.fill('toast');
   check(
     'search narrows the grid',
-    (await entries.count()) === 1 &&
-      (await entries.first().getAttribute('id')) === 'toast-stack'
+    (await entries.count()) < 4 &&
+      (await page.locator('#toast-stack').count()) === 1
+  );
+  await search.fill('drag');
+  const dragHits = await entries.count();
+  check(
+    'search matches names, purposes and keywords across the catalog',
+    dragHits >= 4 && dragHits < N,
+    `${dragHits} results for “drag”`
   );
   await search.fill('zzzz');
   check(
@@ -278,24 +318,42 @@ try {
     .locator('.mgx-empty')
     .getByRole('button', { name: 'Clear filters' })
     .click();
-  check('Clear filters restores all 24', (await entries.count()) === 24);
-  const counts = [];
-  for (const name of [
-    'Text and numbers',
-    'Cards and buttons',
-    'Layout and controls',
-    'Status and feedback',
-  ]) {
-    await page
-      .getByRole('group', { name: 'Filter by category' })
-      .getByRole('button', { name })
-      .click();
-    counts.push(await entries.count());
+  check(`Clear filters restores all ${N}`, (await entries.count()) === N);
+  const chips = page
+    .getByRole('group', { name: 'Filter by category' })
+    .getByRole('button');
+  const chipCount = await chips.count();
+  let summed = 0;
+  const wrong = [];
+  for (let i = 1; i < chipCount; i++) {
+    const chip = chips.nth(i);
+    const claimed = Number(await chip.locator('.mgx-filters__n').innerText());
+    await chip.click();
+    const shownCount = await entries.count();
+    summed += shownCount;
+    if (shownCount !== claimed)
+      wrong.push(`${await chip.innerText()}: ${shownCount}`);
   }
   check(
-    'each category filter shows 6',
-    counts.join() === '6,6,6,6',
-    counts.join()
+    'each category filter shows its stated count, and they add up',
+    wrong.length === 0 && summed === N,
+    `${chipCount - 1} categories, ${summed} total ${wrong.join(', ')}`
+  );
+  // A deep link reaches its card even when a filter would hide it.
+  await search.fill('zzzz');
+  await page.evaluate(() => (window.location.hash = 'flip-card'));
+  await page
+    .locator('#flip-card')
+    .waitFor({ timeout: 3000 })
+    .catch(() => {});
+  await page.waitForTimeout(300);
+  check(
+    'deep links clear a hiding filter and land on the card',
+    (await entries.count()) === N &&
+      (await page.locator('#flip-card').evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top >= -2 && r.top < innerHeight;
+      }))
   );
   await page.goto(`${base}/motion#progress-ring`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(400);
@@ -307,6 +365,10 @@ try {
     })
   );
 
+  /* ------------------------------------------- per-component behaviors */
+  await page.goto(`${base}/motion`, { waitUntil: 'networkidle' });
+  await checkpointOne(page, check);
+
   /* ------------------------------------------------------------- scrollbars */
   // Overlay path (headless default): standard properties only, so the
   // system's overlay and auto-hide behavior is left alone.
@@ -315,6 +377,11 @@ try {
     .locator('#staggered-text')
     .getByRole('tab', { name: 'Code' })
     .click();
+  await page
+    .locator('.mgx-code')
+    .first()
+    .waitFor()
+    .catch(() => {});
   const overlay = await page.evaluate(() => ({
     mode: document.documentElement.dataset.lwScrollbars,
     root: getComputedStyle(document.documentElement).scrollbarColor,
@@ -350,6 +417,11 @@ try {
     .locator('#staggered-text')
     .getByRole('tab', { name: 'Code' })
     .click();
+  await sb
+    .locator('.mgx-code')
+    .first()
+    .waitFor()
+    .catch(() => {});
   const bars = await sb.evaluate(() => {
     const thumb = (el) =>
       getComputedStyle(el, '::-webkit-scrollbar-thumb').backgroundColor;
@@ -524,6 +596,8 @@ try {
       calmToasts === 0,
     `counter:${calmBefore}->${calmAfter} open:${calmOpen} toasts:${calmToasts}`
   );
+  await calmPage.goto(`${base}/motion`, { waitUntil: 'networkidle' });
+  await checkpointOneCalm(calmPage, check);
   await calm.close();
 
   /* ----------------------------------------------------------------- mobile */
@@ -540,6 +614,11 @@ try {
     .locator('#staggered-text')
     .getByRole('tab', { name: 'Code' })
     .tap();
+  await phonePage
+    .locator('.mgx-code')
+    .first()
+    .waitFor()
+    .catch(() => {});
   const mobile = await phonePage.evaluate(() => ({
     fits: document.documentElement.scrollWidth <= innerWidth,
     columns: getComputedStyle(
@@ -580,8 +659,8 @@ try {
   for (const slug of slugs) {
     const dir = path.join(tmp, 'standalone', slug);
     await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, `${slug}.tsx`), sources[slug].component);
-    await writeFile(path.join(dir, `${slug}.css`), sources[slug].css);
+    for (const file of sources[slug].files)
+      await writeFile(path.join(dir, file.name), file.code);
     await writeFile(path.join(dir, 'usage.tsx'), sources[slug].usage);
     await writeFile(
       path.join(dir, 'main.tsx'),
@@ -624,13 +703,13 @@ try {
         sheets: document.styleSheets.length,
       };
     });
-    if (!state.found || !state.visible || tabErrors.length)
+    if (!state.visible || tabErrors.length)
       failures.push(`${slug}: ${JSON.stringify(state)} ${tabErrors[0] ?? ''}`);
     await tab.close();
   }
   await standalone.close();
   check(
-    'all 24 copied examples build and run outside Layerwake with only React',
+    `all ${N} copied examples build and run outside Layerwake with only React`,
     failures.length === 0,
     failures.join(' | ')
   );

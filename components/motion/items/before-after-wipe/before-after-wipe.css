@@ -1,0 +1,83 @@
+.mg-wipe {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: 14px;
+  user-select: none;
+}
+
+.mg-wipe__layer {
+  grid-area: 1 / 1;
+}
+
+.mg-wipe__layer > * {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The "after" state shows to the right of the divider. */
+.mg-wipe__layer--after {
+  clip-path: inset(0 0 0 var(--mg-split));
+}
+
+.mg-wipe__tag {
+  position: absolute;
+  top: 10px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(12, 23, 56, 0.78);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mg-wipe__tag--before {
+  left: 10px;
+}
+
+.mg-wipe__tag--after {
+  right: 10px;
+}
+
+/* The real control covers the whole image but is invisible. */
+.mg-wipe__range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  appearance: none;
+}
+
+.mg-wipe__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--mg-split);
+  width: 3px;
+  margin-left: -1.5px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(12, 23, 56, 0.3);
+  pointer-events: none;
+}
+
+.mg-wipe__handle::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--mg-accent, #164cff);
+  content: '';
+  transform: translate(-50%, -50%);
+}
+
+.mg-wipe__range:focus-visible + .mg-wipe__handle::after {
+  outline: 3px solid var(--mg-green, #b6ff3b);
+  outline-offset: 2px;
+}

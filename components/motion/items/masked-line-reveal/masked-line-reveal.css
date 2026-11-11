@@ -1,0 +1,58 @@
+.mg-lines {
+  position: relative;
+  margin: 0;
+}
+
+/* An invisible copy of the words, laid out at the real width, so the
+   component can read where the browser breaks the lines. */
+.mg-lines__measure {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mg-lines__visual {
+  display: block;
+}
+
+.mg-lines__mask {
+  display: block;
+  overflow: hidden;
+  /* Room for descenders inside the clip. */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.mg-lines__line {
+  display: block;
+  animation: mg-lines-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--mg-delay, 0ms);
+}
+
+.mg-lines[data-settled='true'] .mg-lines__line {
+  animation: none;
+}
+
+.mg-lines__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes mg-lines-up {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-lines__line {
+    animation: none;
+  }
+}

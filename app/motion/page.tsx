@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LayerwakeBrand } from '@/components/layerwake/logo';
+import { CATALOG } from '@/components/motion/catalog';
 import { MotionGallery } from '@/components/motion/gallery';
 import './motion.css';
 
 export const metadata: Metadata = {
   title: 'Motion Gallery — Layerwake',
   description:
-    '24 small, reusable React motion components with live previews and copyable source.',
+    'Small, reusable React motion components with live previews and copyable source.',
 };
 
 export default function MotionPage() {
@@ -28,11 +29,12 @@ export default function MotionPage() {
       <main>
         <header className='mgx-hero'>
           <p className='lw-eyebrow'>Motion Gallery</p>
-          <h1>24 motion components you can copy</h1>
+          <h1>{CATALOG.length} motion components you can copy</h1>
           <p>
-            Each one is a single React file and a single CSS file, with no other
-            dependencies. Try it in Preview, then take the source from Code.
-            Every component respects reduced-motion settings.
+            Each one is a React file and a CSS file, sometimes with a small
+            helper, and nothing to install beyond React. Try it in Preview, then
+            take the source from Code. Every component respects reduced-motion
+            settings.
           </p>
         </header>
         <MotionGallery />

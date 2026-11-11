@@ -1,0 +1,76 @@
+.mg-pop {
+  position: relative;
+  display: inline-block;
+}
+
+.mg-pop__trigger {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--mg-ink, #0c1738);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-pop__trigger[aria-expanded='true'] {
+  border-color: var(--mg-accent, #164cff);
+  background: #e6ecff;
+}
+
+.mg-pop__trigger:focus-visible,
+.mg-pop__close:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-pop__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: grid;
+  gap: 10px;
+  width: 210px;
+  padding: 14px;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 18px 36px -16px rgba(12, 23, 56, 0.5);
+  color: #46527a;
+  font-size: 13px;
+}
+
+/* The scale grows out of the point nearest the trigger. */
+.mg-pop__panel {
+  animation: mg-pop-in 200ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  transform-origin: var(--mg-origin);
+}
+
+.mg-pop__close {
+  justify-self: end;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--mg-accent, #164cff);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes mg-pop-in {
+  from {
+    opacity: 0;
+    scale: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-pop__panel {
+    animation: none;
+  }
+}

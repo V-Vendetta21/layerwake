@@ -1,0 +1,63 @@
+.mg-split-pane {
+  display: grid;
+  min-height: 150px;
+  overflow: hidden;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--mg-ink, #0c1738);
+  transition: grid-template-columns 160ms ease-out;
+}
+
+.mg-split-pane[data-dragging='true'] {
+  transition: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mg-split-pane__pane {
+  min-width: 0;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.mg-split-pane__handle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--mg-foam, #f5f8ff);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+/* A wider invisible hit area than the 12px you see. */
+.mg-split-pane__handle::before {
+  position: absolute;
+  inset: 0 -10px;
+  content: '';
+}
+
+.mg-split-pane__handle span {
+  width: 4px;
+  height: 36px;
+  border-radius: 2px;
+  background: #8a96bd;
+  transition: background-color 160ms ease;
+}
+
+.mg-split-pane__handle:hover span,
+.mg-split-pane[data-dragging='true'] .mg-split-pane__handle span {
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-split-pane__handle:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-split-pane,
+  .mg-split-pane__handle span {
+    transition: none;
+  }
+}

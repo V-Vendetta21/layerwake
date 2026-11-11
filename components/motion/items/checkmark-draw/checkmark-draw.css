@@ -1,0 +1,64 @@
+.mg-checkmark {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-checkmark svg {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mg-checkmark__ring {
+  stroke: #e1e8fb;
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.mg-checkmark__tick {
+  stroke: #3d6b00;
+  stroke-width: 4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.mg-checkmark[data-done='true'] .mg-checkmark__ring {
+  stroke: #3d6b00;
+  animation: mg-checkmark-ring 520ms cubic-bezier(0.6, 0, 0.3, 1) both;
+}
+
+.mg-checkmark[data-done='true'] .mg-checkmark__tick {
+  stroke-dashoffset: 0;
+  animation: mg-checkmark-tick 320ms ease-out 480ms both;
+}
+
+.mg-checkmark__label {
+  min-height: 1.4em;
+  margin: 0;
+  color: #3d6b00;
+  font-weight: 700;
+}
+
+@keyframes mg-checkmark-ring {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes mg-checkmark-tick {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-checkmark[data-done='true'] .mg-checkmark__ring,
+  .mg-checkmark[data-done='true'] .mg-checkmark__tick {
+    animation: none;
+  }
+}

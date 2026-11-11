@@ -1,0 +1,15 @@
+{
+  "usage": "import { MagneticButton } from './magnetic-button';\n\nexport default function Demo() {\n  return (\n    <div style={{ padding: 24 }}>\n      <MagneticButton strength={0.4} max={12}>\n        Cast off\n      </MagneticButton>\n    </div>\n  );\n}\n",
+  "files": [
+    {
+      "name": "magnetic-button.tsx",
+      "kind": "component",
+      "code": "'use client';\n\nimport { useRef, type ButtonHTMLAttributes, type PointerEvent } from 'react';\nimport './magnetic-button.css';\n\nexport interface MagneticButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  /** How strongly the label follows the pointer (0 to 1). */\n  strength?: number;\n  /** Furthest the label may travel, in pixels. */\n  max?: number;\n}\n\n/** The label drifts toward the pointer, within a small bound. */\nexport function MagneticButton({\n  strength = 0.35,\n  max = 10,\n  className = '',\n  children,\n  ...rest\n}: MagneticButtonProps) {\n  const label = useRef<HTMLSpanElement>(null);\n\n  const onPointerMove = (event: PointerEvent<HTMLButtonElement>) => {\n    if (event.pointerType === 'touch') return;\n    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;\n    const rect = event.currentTarget.getBoundingClientRect();\n    const clamp = (value: number) => Math.max(-max, Math.min(max, value));\n    const x = clamp((event.clientX - (rect.left + rect.width / 2)) * strength);\n    const y = clamp((event.clientY - (rect.top + rect.height / 2)) * strength);\n    if (label.current)\n      label.current.style.transform = `translate(${x}px, ${y}px)`;\n  };\n  const reset = () => {\n    if (label.current) label.current.style.transform = '';\n  };\n\n  return (\n    <button\n      type='button'\n      className={`mg-magnetic ${className}`}\n      onPointerMove={onPointerMove}\n      onPointerLeave={reset}\n      {...rest}\n    >\n      <span ref={label} className='mg-magnetic__label'>\n        {children}\n      </span>\n    </button>\n  );\n}\n"
+    },
+    {
+      "name": "magnetic-button.css",
+      "kind": "css",
+      "code": ".mg-magnetic {\n  min-height: 48px;\n  padding: 0 28px;\n  border: 0;\n  border-radius: 999px;\n  background: var(--mg-accent, #164cff);\n  color: #fff;\n  font: inherit;\n  font-weight: 600;\n  cursor: pointer;\n}\n\n.mg-magnetic:focus-visible {\n  outline: 2px solid var(--mg-ink, #0c1738);\n  outline-offset: 3px;\n}\n\n.mg-magnetic__label {\n  display: inline-block;\n  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1.3);\n  will-change: transform;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-magnetic__label {\n    transition: none;\n  }\n}\n"
+    }
+  ]
+}

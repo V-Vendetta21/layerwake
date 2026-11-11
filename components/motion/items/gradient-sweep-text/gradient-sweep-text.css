@@ -1,0 +1,52 @@
+.mg-sweeptext {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-sweeptext__band {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0 38%,
+    var(--mg-accent, #164cff) 45%,
+    #5b86ff 50%,
+    var(--mg-accent, #164cff) 55%,
+    transparent 62% 100%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  pointer-events: none;
+}
+
+.mg-sweeptext[data-playing='true'] .mg-sweeptext__band {
+  animation: mg-sweeptext-right var(--mg-duration) linear infinite;
+}
+
+.mg-sweeptext[data-playing='true'][data-direction='left'] .mg-sweeptext__band {
+  animation-direction: reverse;
+}
+
+@keyframes mg-sweeptext-right {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* Still: a fixed two-tone treatment instead of a moving band. */
+@media (prefers-reduced-motion: reduce) {
+  .mg-sweeptext__band {
+    display: none;
+  }
+  .mg-sweeptext {
+    color: var(--mg-accent, #164cff);
+  }
+}

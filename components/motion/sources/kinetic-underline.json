@@ -1,0 +1,15 @@
+{
+  "usage": "import { KineticUnderline } from './kinetic-underline';\n\nexport default function Demo() {\n  return (\n    <nav\n      aria-label='Example links'\n      style={{ display: 'flex', gap: 28, fontSize: 18 }}\n    >\n      <KineticUnderline href='#kinetic-underline'>Tides</KineticUnderline>\n      <KineticUnderline href='#kinetic-underline'>Charts</KineticUnderline>\n      <KineticUnderline href='#kinetic-underline'>Moorings</KineticUnderline>\n    </nav>\n  );\n}\n",
+  "files": [
+    {
+      "name": "kinetic-underline.tsx",
+      "kind": "component",
+      "code": "import type { AnchorHTMLAttributes } from 'react';\nimport './kinetic-underline.css';\n\n/** A link whose underline draws in from the left and leaves to the right. */\nexport function KineticUnderline({\n  className = '',\n  children,\n  ...rest\n}: AnchorHTMLAttributes<HTMLAnchorElement>) {\n  return (\n    <a className={`mg-underline ${className}`} {...rest}>\n      {children}\n    </a>\n  );\n}\n"
+    },
+    {
+      "name": "kinetic-underline.css",
+      "kind": "css",
+      "code": ".mg-underline {\n  position: relative;\n  display: inline-block;\n  padding: 4px 0;\n  color: inherit;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.mg-underline::after {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--mg-accent, #164cff);\n  content: '';\n  transform: scaleX(0);\n  transform-origin: right;\n  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);\n}\n\n.mg-underline:hover::after,\n.mg-underline:focus-visible::after {\n  transform: scaleX(1);\n  transform-origin: left;\n}\n\n.mg-underline:focus-visible {\n  outline: 2px solid var(--mg-accent, #164cff);\n  outline-offset: 4px;\n  border-radius: 2px;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-underline::after {\n    transition: none;\n  }\n}\n"
+    }
+  ]
+}

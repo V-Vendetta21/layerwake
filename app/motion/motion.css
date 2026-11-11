@@ -94,7 +94,7 @@
   border-radius: 14px;
   background: var(--lw-paper);
   /* Leave room for the sticky filter bar when jumping to an anchor. */
-  scroll-margin-top: 130px;
+  scroll-margin-top: 200px;
 }
 .mgx-entry:target {
   border-color: var(--lw-cobalt);
@@ -330,5 +330,37 @@
   }
   .mgx-stage {
     min-height: 260px;
+  }
+}
+
+.mgx-filters__n {
+  margin-left: 2px;
+  color: var(--lw-ink-3);
+  font-family: var(--lw-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+.mgx-filters button[aria-pressed='true'] .mgx-filters__n {
+  color: #b9c5e6;
+}
+.mgx-loading {
+  padding: 16px;
+  color: var(--lw-ink-2);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  /* One swipeable row of filters instead of four wrapped rows. */
+  .mgx-filters {
+    flex-wrap: nowrap;
+    width: calc(100% + 32px);
+    margin: 0 -16px;
+    padding: 2px 16px 6px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .mgx-filters button {
+    flex: none;
   }
 }

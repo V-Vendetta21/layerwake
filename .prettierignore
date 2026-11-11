@@ -1,1 +1,2 @@
-components/motion/sources.generated.json
+components/motion/sources/
+components/motion/loaders.generated.ts

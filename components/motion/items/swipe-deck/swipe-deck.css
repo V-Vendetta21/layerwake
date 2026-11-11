@@ -1,0 +1,92 @@
+.mg-deck {
+  display: grid;
+  gap: 12px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-deck__stack {
+  position: relative;
+  height: 170px;
+}
+
+.mg-deck__card,
+.mg-deck__end {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+}
+
+.mg-deck__card {
+  padding: 18px;
+  border: 1px solid var(--mg-line, #d6def2);
+  background: #fff;
+  box-shadow: 0 14px 28px -18px rgba(12, 23, 56, 0.5);
+  transition:
+    transform 380ms cubic-bezier(0.2, 0.9, 0.3, 1.1),
+    opacity 380ms ease;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mg-deck__card[data-top='true'] {
+  cursor: grab;
+}
+
+.mg-deck__card[data-leaving='true'] {
+  z-index: 20;
+  pointer-events: none;
+}
+
+.mg-deck__end {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  border: 1px dashed #b9c5e6;
+  color: #46527a;
+  text-align: center;
+}
+
+.mg-deck__end strong {
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-deck__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mg-deck__controls span {
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-deck__controls button {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-deck__controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mg-deck__controls button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-deck__card {
+    transition: none;
+  }
+}

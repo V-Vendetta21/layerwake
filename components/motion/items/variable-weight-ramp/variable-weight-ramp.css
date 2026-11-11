@@ -1,0 +1,42 @@
+.mg-weight {
+  display: inline-block;
+}
+
+.mg-weight__letter {
+  display: inline-block;
+  /* Static ramp: light on the left, heavy on the right. */
+  font-weight: calc(
+    var(--mg-min) + (var(--mg-max) - var(--mg-min)) * var(--mg-at)
+  );
+  font-variation-settings: normal;
+}
+
+.mg-weight[data-playing='true'] .mg-weight__letter {
+  animation: mg-weight-wave var(--mg-duration) ease-in-out infinite;
+  animation-delay: var(--mg-delay);
+}
+
+.mg-weight__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes mg-weight-wave {
+  0%,
+  100% {
+    font-weight: var(--mg-min);
+  }
+  50% {
+    font-weight: var(--mg-max);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-weight[data-playing='true'] .mg-weight__letter {
+    animation: none;
+  }
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { CATALOG } from '@/components/motion/catalog';
 import { useRouter } from 'next/navigation';
 import { useMemo, useRef, useState } from 'react';
 import { parsePx, px } from '@/lib/layerwake/css-values';
@@ -89,7 +90,7 @@ export function HomeActions() {
         <Link className='lw-link' href='/motion'>
           Browse the Motion Gallery
         </Link>{' '}
-        for 24 copyable motion components.
+        for {CATALOG.length} copyable motion components.
       </p>
     </>
   );

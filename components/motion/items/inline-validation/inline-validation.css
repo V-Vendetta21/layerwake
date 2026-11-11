@@ -1,0 +1,123 @@
+.mg-valid {
+  display: grid;
+  gap: 6px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-valid__label {
+  font-weight: 600;
+}
+
+.mg-valid__field {
+  position: relative;
+}
+
+.mg-valid__input {
+  width: 100%;
+  height: 44px;
+  padding: 0 40px 0 12px;
+  border: 1.5px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  transition: border-color 200ms ease;
+}
+
+.mg-valid__input:focus-visible {
+  outline: 3px solid #e6ecff;
+  border-color: var(--mg-accent, #164cff);
+}
+
+.mg-valid[data-status='error'] .mg-valid__input {
+  border-color: #b3122c;
+}
+
+.mg-valid[data-status='success'] .mg-valid__input {
+  border-color: #3d6b00;
+}
+
+/* One element draws the cross or the tick. */
+.mg-valid__icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 260ms cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.mg-valid[data-status='error'] .mg-valid__icon,
+.mg-valid[data-status='success'] .mg-valid__icon {
+  transform: scale(1);
+}
+
+.mg-valid[data-status='error'] .mg-valid__icon {
+  background: #b3122c;
+}
+
+.mg-valid[data-status='success'] .mg-valid__icon {
+  background: #3d6b00;
+}
+
+.mg-valid__icon::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+}
+
+.mg-valid[data-status='error'] .mg-valid__icon::after {
+  content: '!';
+}
+
+.mg-valid[data-status='success'] .mg-valid__icon::after {
+  content: '✓';
+}
+
+/* Fixed height, so a message appearing never pushes the layout around. */
+.mg-valid__message {
+  min-height: 2.6em;
+  margin: 0;
+  overflow: hidden;
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-valid__message > span {
+  display: block;
+  animation: mg-valid-in 220ms ease-out;
+}
+
+.mg-valid[data-status='error'] .mg-valid__message {
+  color: #b3122c;
+}
+
+.mg-valid[data-status='success'] .mg-valid__message {
+  color: #3d6b00;
+}
+
+@keyframes mg-valid-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-valid__input,
+  .mg-valid__icon {
+    transition: none;
+  }
+  .mg-valid__message > span {
+    animation: none;
+  }
+}

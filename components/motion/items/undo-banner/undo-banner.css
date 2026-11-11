@@ -1,0 +1,84 @@
+.mg-undo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  padding: 4px 4px 4px 14px;
+  border-radius: 10px;
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+  font-size: 14px;
+  animation: mg-undo-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-undo__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.mg-undo__undo,
+.mg-undo__close {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.mg-undo__undo {
+  padding: 0 10px;
+  color: var(--mg-green, #b6ff3b);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mg-undo__close {
+  font-size: 20px;
+}
+
+.mg-undo__undo:focus-visible,
+.mg-undo__close:focus-visible {
+  outline: 2px solid var(--mg-green, #b6ff3b);
+  outline-offset: -2px;
+}
+
+/* Time left, as a shrinking bar along the bottom edge. */
+.mg-undo__timer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--mg-green, #b6ff3b);
+  transform-origin: left;
+  animation: mg-undo-timer var(--mg-duration) linear forwards;
+}
+
+.mg-undo[data-held='true'] .mg-undo__timer {
+  animation-play-state: paused;
+}
+
+@keyframes mg-undo-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes mg-undo-timer {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-undo {
+    animation: none;
+  }
+}
