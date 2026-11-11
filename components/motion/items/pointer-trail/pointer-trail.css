@@ -1,0 +1,32 @@
+.mg-trail {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  overflow: hidden;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 14px;
+  background: #fff;
+  color: #46527a;
+}
+
+/* While active, touch drags draw instead of scrolling. */
+.mg-trail[data-active='true'] {
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.mg-trail__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mg-trail__content {
+  position: relative;
+  padding: 12px;
+  text-align: center;
+  pointer-events: none;
+}

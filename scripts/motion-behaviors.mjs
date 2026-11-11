@@ -216,8 +216,7 @@ export async function checkpointOne(page, check) {
     'Enter shows the lens; arrows move it',
     async (c) => {
       const stage = c.locator('.mg-lens');
-      await stage.focus();
-      await page.keyboard.press('Enter');
+      await stage.press('Enter');
       const glass = c.locator('.mg-lens__glass');
       const a = await glass.evaluate((el) => el.style.transform);
       await page.keyboard.press('ArrowRight');
@@ -301,8 +300,8 @@ export async function checkpointOne(page, check) {
       await wait(100);
       const dragged = await c.locator('.mg-dragok').getAttribute('data-done');
       await c.getByRole('button', { name: 'Reset', exact: true }).click();
-      await thumb.focus();
-      await page.keyboard.press('End');
+      await c.locator('.mg-dragok[data-done="false"]').waitFor();
+      await thumb.press('End');
       const keyed = await c.locator('.mg-dragok').getAttribute('data-done');
       return [
         short === '0' && dragged === 'true' && keyed === 'true',
@@ -570,11 +569,17 @@ export async function checkpointOne(page, check) {
     'keyboard and drag resize within bounds',
     async (c) => {
       const sep = c.getByRole('separator');
-      await sep.focus();
-      await page.keyboard.press('ArrowRight');
-      const step = await sep.getAttribute('aria-valuenow');
-      await page.keyboard.press('End');
-      const max = await sep.getAttribute('aria-valuenow');
+      const value = async (v) => {
+        await c
+          .locator(`[role="separator"][aria-valuenow="${v}"]`)
+          .waitFor({ timeout: 2000 })
+          .catch(() => {});
+        return sep.getAttribute('aria-valuenow');
+      };
+      await sep.press('ArrowRight');
+      const step = await value(45);
+      await sep.press('End');
+      const max = await value(80);
       await wait(300);
       await drag(sep, -400, 0);
       const min = await sep.getAttribute('aria-valuenow');
@@ -646,8 +651,7 @@ export async function checkpointOne(page, check) {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       const status = await c.getByRole('status').innerText();
-      await area.focus();
-      await page.keyboard.press('Shift+F10');
+      await area.press('Shift+F10');
       const keyed = await c.getByRole('menu').count();
       await page.keyboard.press('Escape');
       return [
@@ -696,8 +700,7 @@ export async function checkpointOne(page, check) {
       const msg = c.locator('.mg-valid__message');
       const h1 = (await msg.boundingBox()).height;
       await c.getByRole('button', { name: 'Br', exact: true }).click();
-      await input.focus();
-      await page.keyboard.press('Tab');
+      await input.press('Tab');
       const err = await msg.innerText();
       const invalid = await input.getAttribute('aria-invalid');
       await c.getByRole('button', { name: 'Cormorant' }).click();
@@ -1030,8 +1033,7 @@ export async function checkpointTwo(page, check) {
     'keyboard and drag selections are summed in words',
     async (c) => {
       const grid = c.locator('.mg-heat__grid');
-      await grid.focus();
-      await page.keyboard.press('ArrowRight');
+      await grid.press('ArrowRight');
       await page.keyboard.press('Shift+ArrowDown');
       await page.keyboard.press('Shift+ArrowRight');
       const keyed = await c.locator('.mg-heat__summary').innerText();
@@ -1055,8 +1057,7 @@ export async function checkpointTwo(page, check) {
     'thumbs move independently and cannot cross',
     async (c) => {
       const low = c.getByRole('slider', { name: 'Lowest wind' });
-      await low.focus();
-      await page.keyboard.press('End');
+      await low.press('End');
       const text = await low.getAttribute('aria-valuetext');
       const high = await c
         .getByRole('slider', { name: 'Highest wind' })
@@ -1095,8 +1096,7 @@ export async function checkpointTwo(page, check) {
     'keys, pointer and reset set exact values',
     async (c) => {
       const knob = c.getByRole('slider', { name: 'Radio volume' });
-      await knob.focus();
-      await page.keyboard.press('ArrowUp');
+      await knob.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
       const keyed = await knob.getAttribute('aria-valuenow');
       const box = await knob.boundingBox();
@@ -1249,7 +1249,9 @@ export async function checkpointTwo(page, check) {
       const dir = await c
         .locator('.mg-cal__grid')
         .getAttribute('data-direction');
+      await wait(150);
       await page.keyboard.press('ArrowRight');
+      await wait(150);
       await page.keyboard.press('Enter');
       const status = await c.getByRole('status').innerText();
       return [
@@ -1347,6 +1349,511 @@ export async function checkpointTwoCalm(page, check) {
       await c.getByRole('button', { name: 'Pulse from Rock' }).click();
       await wait(80);
       return (await c.locator('[data-reached="true"]').count()) === 5;
+    }
+  );
+}
+
+export async function checkpointThree(page, check) {
+  const { run, drag, focused, wait } = helpers(page, check);
+
+  await run(
+    'stacked-dialog-depth',
+    'second dialog stacks; Escape unwinds with focus return',
+    async (c) => {
+      const opener = c.getByRole('button', { name: 'Edit crew list' });
+      await opener.click();
+      const first = page.getByRole('dialog', { name: 'Crew list' });
+      await first.getByRole('button', { name: 'Remove the deckhand…' }).click();
+      const covered = await first.getAttribute('data-covered');
+      const top = page.getByRole('dialog', { name: 'Remove deckhand?' });
+      await page.keyboard.press('Tab');
+      const inTop = await page.evaluate(() =>
+        document.activeElement
+          ?.closest('dialog')
+          ?.getAttribute('aria-labelledby')
+      );
+      const topId = await top.getAttribute('aria-labelledby');
+      await page.keyboard.press('Escape');
+      await wait(100);
+      const backOn = await focused();
+      const stillFirst = await first.evaluate((d) => d.open);
+      await page.keyboard.press('Escape');
+      await wait(100);
+      const onOpener = await opener.evaluate(
+        (el) => el === document.activeElement
+      );
+      return [
+        covered === 'true' &&
+          inTop === topId &&
+          backOn === 'Remove the deckhand…' &&
+          stillFirst &&
+          onOpener,
+        `${backOn} ${onOpener}`,
+      ];
+    }
+  );
+
+  await run(
+    'list-to-detail-transition',
+    'opens detail with focus on its title; back keeps list position',
+    async (c) => {
+      const list = c.locator('.mg-l2d__list');
+      const start = await list.evaluate((el) => {
+        el.scrollTop = el.scrollHeight;
+        return el.scrollTop;
+      });
+      await c.getByRole('button', { name: /Long Strand/ }).click();
+      await wait(50);
+      const title = await page.evaluate(
+        () =>
+          document.activeElement?.tagName +
+          ':' +
+          document.activeElement?.textContent
+      );
+      await c.getByRole('button', { name: '‹ Back to list' }).click();
+      await wait(50);
+      const pos = await c
+        .locator('.mg-l2d__list')
+        .evaluate((el) => el.scrollTop);
+      const back = await focused();
+      return [
+        title === 'H3:Long Strand' &&
+          start > 0 &&
+          pos === start &&
+          back.startsWith('Long Strand'),
+        `${title} ${pos} ${back.slice(0, 20)}`,
+      ];
+    }
+  );
+
+  await run(
+    'collapsing-app-header',
+    'condenses past the threshold and keeps its action',
+    async (c) => {
+      const pageEl = c.getByRole('region', { name: 'Logbook page' });
+      await pageEl.evaluate((el) => el.scrollTo(0, 120));
+      await wait(350);
+      const compact = await pageEl.getAttribute('data-compact');
+      const h = (await c.locator('.mg-appbar__header').boundingBox()).height;
+      await c.getByRole('button', { name: 'Log entry' }).click();
+      const sub = await c.locator('.mg-appbar__titles p').textContent();
+      await pageEl.evaluate((el) => el.scrollTo(0, 40));
+      await wait(50);
+      const hysteresis = await pageEl.getAttribute('data-compact');
+      return [
+        compact === 'true' &&
+          h < 70 &&
+          sub.includes('1 new entry') &&
+          hysteresis === 'true',
+        `${h} ${sub}`,
+      ];
+    }
+  );
+
+  await run(
+    'selection-toolbar',
+    'selecting text shows the bar; Bold applies to the selection',
+    async (c) => {
+      await c.locator('.mg-seltb__text').evaluate((el) => {
+        const node = el.querySelector('span').firstChild;
+        const range = document.createRange();
+        range.setStart(node, 9);
+        range.setEnd(node, 18);
+        const sel = getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      });
+      await c
+        .getByRole('toolbar', { name: 'Format selection' })
+        .waitFor({ timeout: 2000 });
+      await c.getByRole('button', { name: 'Bold' }).click();
+      const bold = await c.locator('[data-marks~="bold"]').innerText();
+      return [bold === 'red marks', bold];
+    }
+  );
+
+  await run(
+    'route-transition-curtain',
+    'rapid navigation ends on the last view with focus on its heading',
+    async (c) => {
+      await c.getByRole('button', { name: 'Crew' }).click();
+      await c.getByRole('button', { name: 'Kit' }).click();
+      await c.getByRole('button', { name: 'Crew' }).click();
+      await wait(700);
+      const heading = await c.locator('.mg-curtain__view h3').innerText();
+      const onHeading = await c
+        .locator('.mg-curtain__view h3')
+        .evaluate((el) => el === document.activeElement);
+      const phase = await c
+        .locator('.mg-curtain__cloth')
+        .getAttribute('data-phase');
+      return [
+        heading === 'Crew' && onHeading && phase === 'idle',
+        `${heading} ${phase}`,
+      ];
+    }
+  );
+
+  const loop = async (slug, name, root, pauseName = 'Pause') =>
+    run(slug, name, async (c) => {
+      const el = c.locator(root);
+      const before = await el.getAttribute('data-playing');
+      await c.getByRole('button', { name: pauseName }).click();
+      const after = await el.getAttribute('data-playing');
+      return [before === 'true' && after === 'false', `${before} → ${after}`];
+    });
+
+  await loop(
+    'orbiting-marks',
+    'orbits run in view and Pause stops them',
+    '.mg-orbit'
+  );
+
+  await run(
+    'svg-wave-divider',
+    'the wave moves; height stays fixed; Pause holds it',
+    async (c) => {
+      const path = c.locator('.mg-wave path');
+      const a = await path.getAttribute('d');
+      await wait(250);
+      const b = await path.getAttribute('d');
+      const h1 = (await c.locator('.mg-wave').boundingBox()).height;
+      await c.getByRole('slider').first().press('End');
+      const h2 = (await c.locator('.mg-wave').boundingBox()).height;
+      await c.getByRole('button', { name: 'Pause' }).click();
+      const p1 = await path.getAttribute('d');
+      await wait(250);
+      return [
+        a !== b && h1 === h2 && p1 === (await path.getAttribute('d')),
+        `${h1}/${h2}`,
+      ];
+    }
+  );
+
+  await run(
+    'gradient-mesh-drift',
+    'palette switches and Pause stops the drift',
+    async (c) => {
+      const root = c.locator('.mg-mesh');
+      await c.getByRole('button', { name: 'Dusk' }).click();
+      const color = await root.evaluate((el) =>
+        el.style.getPropertyValue('--mg-c2')
+      );
+      await c.getByRole('button', { name: 'Pause' }).click();
+      return [
+        color === '#e2452b' &&
+          (await root.getAttribute('data-playing')) === 'false',
+        color,
+      ];
+    }
+  );
+
+  await run(
+    'scanline-sweep',
+    'one pass, then the result; replays on demand',
+    async (c) => {
+      await wait(2300);
+      const done = await c
+        .locator('.mg-scan__result')
+        .evaluate((el) => getComputedStyle(el).opacity);
+      await c.getByRole('button', { name: 'Scan again' }).click();
+      await wait(80);
+      const again = await c
+        .locator('.mg-scan__result')
+        .evaluate((el) => getComputedStyle(el).opacity);
+      return [done === '1' && Number(again) < 0.5, `${done} → ${again}`];
+    }
+  );
+
+  await run(
+    'pointer-trail',
+    'moving draws a capped trail; Stop clears it',
+    async (c) => {
+      const area = c.getByRole('group', { name: /pointer trail/ });
+      const box = await area.boundingBox();
+      await page.mouse.move(box.x + 20, box.y + 40);
+      await page.mouse.move(box.x + box.width - 20, box.y + 120, { steps: 80 });
+      const painted = await c.locator('canvas').evaluate((cv) => {
+        const d = cv
+          .getContext('2d')
+          .getImageData(0, 0, cv.width, cv.height).data;
+        let n = 0;
+        for (let i = 3; i < d.length; i += 4) if (d[i]) n++;
+        return n;
+      });
+      await c.getByRole('button', { name: 'Stop trail' }).click();
+      const cleared = await c.locator('canvas').evaluate((cv) => {
+        const d = cv
+          .getContext('2d')
+          .getImageData(0, 0, cv.width, cv.height).data;
+        return d.every((v, i) => i % 4 !== 3 || v === 0);
+      });
+      return [painted > 50 && cleared, `${painted} px`];
+    }
+  );
+
+  await run(
+    'kaleidoscope-tiles',
+    'segment count changes the mirror; Pause stops it',
+    async (c) => {
+      await c.getByRole('slider').press('End');
+      const wedges = await c.locator('.mg-kaleido__wedge').count();
+      await c.getByRole('button', { name: 'Pause' }).click();
+      return [
+        wedges === 16 &&
+          (await c.locator('.mg-kaleido').getAttribute('data-playing')) ===
+            'false',
+        `${wedges}`,
+      ];
+    }
+  );
+
+  await run(
+    'pixel-dissolve',
+    'reveals over a described image; the order repeats',
+    async (c) => {
+      const order = () =>
+        c.locator('.mg-dissolve__tiles span').evaluateAll((els) =>
+          els
+            .slice(0, 10)
+            .map((e) => e.style.getPropertyValue('--mg-delay'))
+            .join()
+        );
+      const a = await order();
+      await c.getByRole('button', { name: 'Dissolve again' }).click();
+      const b = await order();
+      const tiles = await c.locator('.mg-dissolve__tiles span').count();
+      return [
+        a === b &&
+          tiles === 96 &&
+          (await c.getByRole('img', { name: /lighthouse/ }).count()) === 1,
+        `${tiles} tiles`,
+      ];
+    }
+  );
+
+  await run(
+    'waveform-equalizer',
+    'levels move with a text summary; Pause says so',
+    async (c) => {
+      const a = await c
+        .locator('.mg-eq__bars span')
+        .first()
+        .evaluate((el) => el.style.getPropertyValue('--mg-level'));
+      await wait(300);
+      const b = await c
+        .locator('.mg-eq__bars span')
+        .first()
+        .evaluate((el) => el.style.getPropertyValue('--mg-level'));
+      await c.getByRole('button', { name: 'Pause' }).click();
+      const status = await c.getByRole('status').innerText();
+      return [a !== b && status.includes('Paused'), status];
+    }
+  );
+
+  await run(
+    'morphing-blob',
+    'choosing a shape morphs the path around a fixed center',
+    async (c) => {
+      const d0 = await c.locator('.mg-blob__shape').getAttribute('d');
+      const center = await c.locator('.mg-blob__center').getAttribute('cx');
+      await c.getByRole('radio', { name: 'star' }).click();
+      await wait(700);
+      const label = await c.getByRole('img').getAttribute('aria-label');
+      return [
+        d0 !== (await c.locator('.mg-blob__shape').getAttribute('d')) &&
+          label.endsWith('star') &&
+          center === (await c.locator('.mg-blob__center').getAttribute('cx')),
+        label,
+      ];
+    }
+  );
+
+  await run(
+    'ascii-glimmer-panel',
+    'one wave runs; the real text stays readable',
+    async (c) => {
+      const decorative = await c
+        .locator('.mg-ascii__grid')
+        .getAttribute('aria-hidden');
+      const text = await c.locator('.mg-ascii__content').innerText();
+      await c.getByRole('button', { name: 'Replay wave' }).click();
+      const iterations = await c
+        .locator('.mg-ascii__grid span')
+        .first()
+        .evaluate((el) => getComputedStyle(el).animationIterationCount);
+      return [
+        decorative === 'true' &&
+          text.includes('Weather station online') &&
+          iterations === '1',
+        iterations,
+      ];
+    }
+  );
+
+  await run(
+    'live-log-stream',
+    'keeps your place while reading; Jump to latest catches up',
+    async (c) => {
+      const list = c.getByRole('list', { name: 'Engine room log' });
+      await wait(1000);
+      await list.evaluate((el) => (el.scrollTop = 0));
+      await list.dispatchEvent('scroll');
+      await wait(2000);
+      const held = await list.evaluate((el) => el.scrollTop);
+      const jump = c.getByRole('button', { name: /Jump to latest/ });
+      const label = await jump.innerText();
+      await jump.click();
+      const bottom = await list.evaluate(
+        (el) => el.scrollHeight - el.scrollTop - el.clientHeight < 8
+      );
+      await c.getByRole('button', { name: 'Pause stream' }).click();
+      return [held === 0 && /\(\d+ new\)/.test(label) && bottom, label];
+    }
+  );
+
+  await run(
+    'chat-typing-relay',
+    'typing, then the message, as plain list items',
+    async (c) => {
+      await c.getByRole('button', { name: 'Next speaker types' }).click();
+      const typing = await c
+        .getByRole('listitem', { name: 'Harbor office is typing' })
+        .count();
+      await c.getByRole('button', { name: 'Deliver message' }).click();
+      const items = await c
+        .getByRole('list')
+        .getByRole('listitem')
+        .allInnerTexts();
+      return [
+        typing === 1 && items.length === 1 && items[0].includes('Berth B14'),
+        items.join(' | '),
+      ];
+    }
+  );
+
+  await run(
+    'theme-transition-panel',
+    'the circular reveal ends on the new theme',
+    async (c) => {
+      const toggle = c.getByRole('button', { name: 'Dark theme' });
+      await toggle.click();
+      const clip = await c
+        .locator('.mg-theme__layer--reveal')
+        .evaluate((el) => getComputedStyle(el).clipPath)
+        .catch(() => '');
+      await wait(800);
+      return [
+        clip.startsWith('circle') &&
+          (await toggle.getAttribute('aria-pressed')) === 'true' &&
+          (await c.getByRole('status').innerText()) === 'Theme: dark',
+        clip,
+      ];
+    }
+  );
+
+  await run(
+    'collision-aware-label-stack',
+    'crowded labels separate and keep leader lines',
+    async (c) => {
+      await c.getByRole('button', { name: 'Bunch at the mark' }).click();
+      await wait(500);
+      const tops = await c
+        .locator('.mg-labels__tag')
+        .evaluateAll((els) =>
+          els.map((e) => e.getBoundingClientRect().top).sort((a, b) => a - b)
+        );
+      const gaps = tops.slice(1).map((t, i) => t - tops[i]);
+      const moved = await c.locator('[data-moved="true"]').count();
+      const values = await c.locator('.mg-labels__values li').count();
+      return [
+        gaps.every((g) => g >= 14) && moved >= 3 && values === 4,
+        gaps.map((g) => g.toFixed(0)).join(','),
+      ];
+    }
+  );
+
+  await run(
+    'canvas-selection-marquee',
+    'boxes drawn in any direction select the same shapes',
+    async (c) => {
+      const cv = await c.locator('.mg-marquee-sel__canvas').boundingBox();
+      const sel = async (x0, y0, x1, y1) => {
+        await page.mouse.move(cv.x + x0, cv.y + y0);
+        await page.mouse.down();
+        await page.mouse.move(cv.x + x1, cv.y + y1, { steps: 6 });
+        await page.mouse.up();
+        return c.getByRole('status').innerText();
+      };
+      const down = await sel(10, 10, 140, 80);
+      const up = await sel(140, 80, 10, 10);
+      await c.getByRole('checkbox', { name: 'Slipway' }).check();
+      const plus = await c.getByRole('status').innerText();
+      await c.getByRole('button', { name: 'Clear selection' }).click();
+      const cleared = await c.getByRole('status').innerText();
+      return [
+        down === '2 of 5 selected' &&
+          up === down &&
+          plus === '3 of 5 selected' &&
+          cleared === '0 of 5 selected',
+        `${down} / ${up} / ${plus}`,
+      ];
+    }
+  );
+}
+
+export async function checkpointThreeCalm(page, check) {
+  const { run, wait } = helpers(page, check);
+  await run(
+    'orbiting-marks',
+    'reduced motion: orbits stay still',
+    async (c) =>
+      (await c
+        .locator('.mg-orbit__ring')
+        .first()
+        .evaluate((el) => getComputedStyle(el).animationName)) === 'none'
+  );
+  await run(
+    'theme-transition-panel',
+    'reduced motion: theme switches directly',
+    async (c) => {
+      await c.getByRole('button', { name: 'Dark theme' }).click();
+      await wait(50);
+      return (
+        (await c.locator('.mg-theme__layer--reveal').count()) === 0 &&
+        (await c.getByRole('status').innerText()) === 'Theme: dark'
+      );
+    }
+  );
+  await run(
+    'pixel-dissolve',
+    'reduced motion: image shown without tiles',
+    async (c) =>
+      (await c
+        .locator('.mg-dissolve__tiles')
+        .evaluate((el) => getComputedStyle(el).display)) === 'none'
+  );
+  await run(
+    'svg-wave-divider',
+    'reduced motion: the wave holds still',
+    async (c) => {
+      const a = await c.locator('.mg-wave path').getAttribute('d');
+      await wait(300);
+      return a === (await c.locator('.mg-wave path').getAttribute('d'));
+    }
+  );
+  await run(
+    'route-transition-curtain',
+    'reduced motion: views swap with focus on the heading',
+    async (c) => {
+      await c.getByRole('button', { name: 'Kit' }).click();
+      await wait(50);
+      return (
+        (await c.locator('.mg-curtain__view h3').innerText()) === 'Kit' &&
+        (await c
+          .locator('.mg-curtain__view h3')
+          .evaluate((el) => el === document.activeElement))
+      );
     }
   );
 }

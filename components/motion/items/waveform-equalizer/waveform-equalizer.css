@@ -1,0 +1,46 @@
+.mg-eq {
+  display: grid;
+  gap: 8px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-eq__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 120px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-eq__bars span {
+  flex: 1;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(
+    to top,
+    var(--mg-accent, #164cff),
+    #7f9bff 70%,
+    var(--mg-green, #b6ff3b)
+  );
+  transform: scaleY(var(--mg-level));
+  transform-origin: bottom;
+  transition: transform 110ms linear;
+}
+
+.mg-eq[data-playing='false'] .mg-eq__bars span {
+  opacity: 0.5;
+}
+
+.mg-eq__status {
+  margin: 0;
+  color: #46527a;
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-eq__bars span {
+    transition: none;
+  }
+}

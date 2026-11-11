@@ -18,6 +18,8 @@ import {
   checkpointOneCalm,
   checkpointTwo,
   checkpointTwoCalm,
+  checkpointThree,
+  checkpointThreeCalm,
 } from './motion-behaviors.mjs';
 
 const { chromium } = loadPlaywright();
@@ -375,6 +377,8 @@ try {
   await checkpointOne(page, check);
   await page.goto(`${base}/motion`, { waitUntil: 'networkidle' });
   await checkpointTwo(page, check);
+  await page.goto(`${base}/motion`, { waitUntil: 'networkidle' });
+  await checkpointThree(page, check);
 
   /* ------------------------------------------------------------- scrollbars */
   // Overlay path (headless default): standard properties only, so the
@@ -608,6 +612,7 @@ try {
   await calmPage.goto(`${base}/motion`, { waitUntil: 'networkidle' });
   await checkpointOneCalm(calmPage, check);
   await checkpointTwoCalm(calmPage, check);
+  await checkpointThreeCalm(calmPage, check);
   await calm.close();
 
   /* ----------------------------------------------------------------- mobile */

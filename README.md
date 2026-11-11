@@ -27,7 +27,7 @@ Then open <http://localhost:3000>.
 | `/`          | Home, with a live sample, **Try demo** and **Import capture** |
 | `/workspace` | The editor (add `?demo=1` to open the demo)                   |
 | `/demo`      | An original demo card you can capture with the extension      |
-| `/motion`    | Motion Gallery: 24 copyable React motion components           |
+| `/motion`    | Motion Gallery: 100 copyable React motion components          |
 
 ### Build for static hosting
 
@@ -81,17 +81,30 @@ Imports are treated as untrusted. The app checks size, schema, structure and eve
 
 ## Motion Gallery
 
-`/motion` is a gallery of 24 small React motion components in four groups: text and numbers, cards and buttons, layout and controls, status and feedback. Each entry has a live **Preview** and a **Code** tab with three copy buttons (usage, component, CSS), plus a link you can share (`/motion#toast-stack`).
+`/motion` is a gallery of 100 small React motion components in eleven groups: text and typography, cards and depth, buttons and actions, navigation and overlays, layout and manipulation, status and feedback, scroll-driven, data and diagrams, inputs and controls, ambient and showcase, and finished patterns. Search covers names, purposes and keywords. Every entry has a live **Preview**, a **Code** tab with a copy button per file, and a link you can share (`/motion#toast-stack`). A link always lands on its card, even if a filter would hide it.
 
 To use one in another React project:
 
-1. Copy `<name>.tsx` and `<name>.css` into the same folder. The component imports its own CSS.
-2. Import it as the usage example shows. React 18 or newer is the only requirement; there is nothing else to install.
-3. Adjust colors through the `--mg-*` custom properties in the CSS file.
+1. Copy every file the Code tab lists into one folder: the component, its CSS, and any small helpers it needs (for example `use-pointer-drag.ts`). The component imports them itself.
+2. Use it as the usage example shows. React 18 or newer and TypeScript are the only requirements; there is nothing else to install.
+3. Restyle through the `--mg-*` custom properties in the CSS file.
 
-Every component has a reduced-motion path. Demos mount only while they are on screen.
+Every component has a reduced-motion path. Previews mount only while their card is on screen, each preview is its own code chunk, and source listings load only when a Code tab opens. Continuous effects also stop in a hidden browser tab and offer Pause.
 
-Each component lives in `components/motion/items/<name>/` as `<name>.tsx`, `<name>.css` and `demo.tsx`. The Preview tab renders `demo.tsx`; the Code tab shows those same three files, collected by `npm run motion:sources` (run automatically before `dev` and `build`, and checked by a unit test). To add a component, add a folder with those three files and a line in `components/motion/registry.ts`.
+### How it is put together
+
+```
+components/motion/
+  catalog.ts             names, categories, keywords and cues (searchable immediately)
+  items/<slug>/          <slug>.tsx, <slug>.css and demo.tsx for each component
+  shared/                helpers: playback, pointer drag, dismiss, menu keys, reduced motion
+  loaders.generated.ts   lazy preview and source loaders (generated)
+  sources/<slug>.json    what the Code tab shows (generated)
+```
+
+`npm run motion:sources` regenerates the last two from `items/` (it runs automatically before `dev` and `build`). Shared helpers are listed with every component that imports them, with their imports rewritten so the copied files work side by side. A unit test checks that the catalog, the folders and the generated listings agree, that slugs are unique, that copied code imports nothing but React and its own files, and that the total is exactly 100.
+
+To add a component, add `items/<slug>/` with the three files and an entry in `catalog.ts`, then raise `EXPECTED_TOTAL`.
 
 ## Scrollbars
 
@@ -99,18 +112,18 @@ Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`):
 
 ## Commands
 
-| Command                    | What it does                                                                                                 |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `npm run dev`              | Start the app locally                                                                                        |
-| `npm run build`            | Build the static site into `out/`                                                                            |
-| `npm run build:extension`  | Build the extension into `extension/dist`                                                                    |
-| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping                                     |
-| `npm run typecheck`        | TypeScript check                                                                                             |
-| `npm run lint`             | ESLint                                                                                                       |
-| `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below)                                   |
-| `npm run verify:motion`    | Browser run of the Motion Gallery and scrollbars, including building all 24 copied examples outside the repo |
-| `npm run motion:sources`   | Regenerate the gallery's source listing (add `-- --check` to verify)                                         |
-| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                                                  |
+| Command                    | What it does                                                                                                                                                                                                                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`              | Start the app locally                                                                                                                                                                                                          |
+| `npm run build`            | Build the static site into `out/`                                                                                                                                                                                              |
+| `npm run build:extension`  | Build the extension into `extension/dist`                                                                                                                                                                                      |
+| `npm test`                 | Unit tests for capture validation, the CSS allowlist and export escaping                                                                                                                                                       |
+| `npm run typecheck`        | TypeScript check                                                                                                                                                                                                               |
+| `npm run lint`             | ESLint                                                                                                                                                                                                                         |
+| `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below)                                                                                                                                                     |
+| `npm run verify:motion`    | Browser run of the Motion Gallery and scrollbars: every preview and code tab, a primary interaction for each component added after the first 24, reduced motion, mobile, and building all 100 copied examples outside the repo |
+| `npm run motion:sources`   | Regenerate the gallery's source listing (add `-- --check` to verify)                                                                                                                                                           |
+| `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                                                                                                                                                                    |
 
 The browser scripts need Playwright, which is not a project dependency:
 

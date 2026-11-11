@@ -1,0 +1,6 @@
+.mg-wave {
+  display: block;
+  width: 100%;
+  /* Sits flush on the section below it. */
+  margin-bottom: -1px;
+}
