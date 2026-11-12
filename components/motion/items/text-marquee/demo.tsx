@@ -54,7 +54,7 @@ export default function Demo() {
             step={10}
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <button

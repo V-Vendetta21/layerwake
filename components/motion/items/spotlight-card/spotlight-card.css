@@ -13,8 +13,8 @@
   inset: 0;
   background: radial-gradient(
     200px circle at var(--mg-x, 50%) var(--mg-y, 0%),
-    rgba(100, 138, 255, 0.32),
-    rgba(0, 71, 255, 0.18) 45%,
+    rgba(220, 233, 247, 0.32),
+    rgba(234, 242, 251, 0.18) 45%,
     transparent 70%
   );
   content: '';
@@ -33,7 +33,7 @@
 }
 
 .mg-spotlight a {
-  color: #8aa8ff;
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,7 +14,7 @@
 }
 
 .mg-cmdk__open:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -63,7 +63,7 @@
 
 .mg-cmdk__input:focus {
   outline: none;
-  box-shadow: inset 0 -2px 0 var(--mg-accent-text, #648aff);
+  box-shadow: inset 0 -2px 0 var(--mg-accent-text, #dce9f7);
 }
 
 .mg-cmdk__list {
@@ -84,8 +84,8 @@
 }
 
 .mg-cmdk__option[aria-selected='true'] {
-  background: var(--mg-accent, #0047ff);
-  color: #fff;
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
 }
 
 .mg-cmdk__hint {

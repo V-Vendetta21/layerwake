@@ -45,14 +45,14 @@
   left: 18%;
   height: 100%;
   border-radius: 6px 6px 0 0;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: scaleY(var(--mg-value));
   transform-origin: bottom;
   transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .mg-bars__item:nth-child(odd) .mg-bars__bar {
-  background: #3366ff;
+  background: #eaf2fb;
 }
 
 .mg-bars__label {

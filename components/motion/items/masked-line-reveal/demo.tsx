@@ -29,7 +29,7 @@ export default function Demo() {
           max={340}
           value={width}
           onChange={(event) => setWidth(Number(event.target.value))}
-          style={{ accentColor: '#648aff' }}
+          style={{ accentColor: '#dce9f7' }}
         />
       </label>
     </div>

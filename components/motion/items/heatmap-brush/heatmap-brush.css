@@ -41,7 +41,7 @@
 }
 
 .mg-heat__grid:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 3px;
 }
 
@@ -52,20 +52,20 @@
   border-radius: 4px;
   background: color-mix(
     in srgb,
-    var(--mg-accent, #0047ff) calc(var(--mg-heat) * 85%),
+    var(--mg-accent, #eaf2fb) calc(var(--mg-heat) * 85%),
     #1b1b1b
   );
-  color: var(--mg-text, #ffffff);
+  color: #fff;
   font-variant-numeric: tabular-nums;
 }
 
 .mg-heat__cell[data-dark='true'] {
-  color: #fff;
+  color: #080808;
 }
 
 .mg-heat__brush {
   position: absolute;
-  border: 3px solid var(--mg-accent-text, #648aff);
+  border: 3px solid var(--mg-accent-text, #dce9f7);
   border-radius: 6px;
   box-shadow:
     0 0 0 1px var(--mg-text, #ffffff),

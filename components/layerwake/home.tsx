@@ -11,8 +11,8 @@ import { ComponentRender } from './render';
 import { CloseIcon } from './icons';
 
 const ACCENTS = [
-  { name: 'Electric blue', value: '#0047ff' },
-  { name: 'Deep blue', value: '#0030b0' },
+  { name: 'Snow', value: '#eaf2fb' },
+  { name: 'Frost', value: '#b9c9da' },
   { name: 'Graphite', value: '#2e2e2e' },
   { name: 'Smoke', value: '#5c5c5c' },
 ];

@@ -30,7 +30,7 @@
 }
 
 .mg-dup__source:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -54,8 +54,8 @@
 }
 
 .mg-dup__canvas[data-over='true'] {
-  border-color: var(--mg-accent-text, #648aff);
-  background: #141d38;
+  border-color: var(--mg-accent-text, #dce9f7);
+  background: #1e2329;
 }
 
 .mg-dup__hint {

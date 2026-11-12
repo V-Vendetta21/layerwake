@@ -14,7 +14,7 @@
   left: 0;
   height: 2px;
   border-radius: 2px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   content: '';
   transform: scaleX(0);
   transform-origin: right;
@@ -28,7 +28,7 @@
 }
 
 .mg-underline:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 4px;
   border-radius: 2px;
 }

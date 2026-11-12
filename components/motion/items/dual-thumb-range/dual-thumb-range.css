@@ -21,7 +21,7 @@
   left: var(--mg-low);
   right: calc(100% - var(--mg-high));
   border-radius: 3px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transition:
     left 120ms ease-out,
     right 120ms ease-out;
@@ -52,7 +52,7 @@
 
 .mg-dual[data-active='0'] .mg-dual__bubble--low,
 .mg-dual[data-active='1'] .mg-dual__bubble--high {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 /* Both inputs span the track; only their thumbs take pointer input. */
@@ -80,7 +80,7 @@
 .mg-dual__input::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
-  border: 3px solid var(--mg-accent-text, #648aff);
+  border: 3px solid var(--mg-accent-text, #dce9f7);
   border-radius: 50%;
   background: #121212;
   pointer-events: auto;
@@ -91,7 +91,7 @@
 .mg-dual__input::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  border: 3px solid var(--mg-accent-text, #648aff);
+  border: 3px solid var(--mg-accent-text, #dce9f7);
   border-radius: 50%;
   background: #121212;
   pointer-events: auto;

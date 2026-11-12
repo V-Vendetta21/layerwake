@@ -16,7 +16,7 @@
   color: #080808;
   --mg-muted: #4a4a4a;
   --mg-surface: #f0f0f0;
-  --mg-label: #0047ff;
+  --mg-label: #080808;
 }
 
 .mg-theme__layer[data-theme='dark'] {
@@ -24,7 +24,7 @@
   color: #ffffff;
   --mg-muted: #b8b8b8;
   --mg-surface: #1b1b1b;
-  --mg-label: #648aff;
+  --mg-label: #dce9f7;
 }
 
 .mg-theme__layer--reveal {
@@ -59,7 +59,7 @@
 }
 
 .mg-theme__toggle:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   box-shadow: 0 0 0 5px #080808;
   outline-offset: 2px;
 }

@@ -1,4 +1,4 @@
-/** The Layerwake mark: two offset panels and a short electric-blue trail. */
+/** The Layerwake mark: two offset panels and a short snow-white trail. */
 export function LayerwakeMark({ size = 24 }: { size?: number }) {
   return (
     <svg
@@ -19,10 +19,10 @@ export function LayerwakeMark({ size = 24 }: { size?: number }) {
         stroke='#ffffff'
         strokeWidth='2'
       />
-      <rect x='11' y='11' width='18' height='18' rx='4' fill='#0047ff' />
+      <rect x='11' y='11' width='18' height='18' rx='4' fill='#eaf2fb' />
       <path
         d='M3.5 27.5h6'
-        stroke='#648aff'
+        stroke='#dce9f7'
         strokeWidth='3'
         strokeLinecap='round'
       />

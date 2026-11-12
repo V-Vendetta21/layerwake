@@ -51,7 +51,7 @@
 
 button.mg-crumbs__link,
 button.mg-crumbs__more {
-  color: var(--mg-accent-text, #648aff);
+  color: var(--mg-accent-text, #dce9f7);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -69,7 +69,7 @@ button.mg-crumbs__more {
 .mg-crumbs__link:focus-visible,
 .mg-crumbs__more:focus-visible,
 .mg-crumbs__menu button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 1px;
 }
 
@@ -106,7 +106,7 @@ button.mg-crumbs__more {
 
 .mg-crumbs__menu button:hover,
 .mg-crumbs__menu button:focus {
-  background: #141d38;
+  background: #1e2329;
 }
 
 @keyframes mg-crumbs-in {

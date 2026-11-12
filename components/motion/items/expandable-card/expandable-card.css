@@ -28,7 +28,7 @@
 }
 
 .mg-expand__toggle:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -47,8 +47,8 @@
   flex: none;
   width: 10px;
   height: 10px;
-  border-right: 2px solid var(--mg-accent-text, #648aff);
-  border-bottom: 2px solid var(--mg-accent-text, #648aff);
+  border-right: 2px solid var(--mg-accent-text, #dce9f7);
+  border-bottom: 2px solid var(--mg-accent-text, #dce9f7);
   transform: translateY(-3px) rotate(45deg);
   transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }

@@ -7,7 +7,7 @@ function Chart() {
       <path
         d='M30 160 C80 110 110 150 150 100 S230 60 290 40'
         fill='none'
-        stroke='#648aff'
+        stroke='#dce9f7'
         strokeWidth='3'
       />
       {[

@@ -28,7 +28,7 @@
 .mg-read__fill {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: scaleY(var(--mg-progress));
   transform-origin: top;
   transition: transform 120ms linear;
@@ -59,19 +59,19 @@
 }
 
 .mg-read__rail button[aria-current] {
-  background: #141d38;
+  background: #1e2329;
   color: var(--mg-text, #ffffff);
   font-weight: 700;
 }
 
 .mg-read__rail button[aria-current]::before {
   content: '▸ ';
-  color: var(--mg-accent-text, #648aff);
+  color: var(--mg-accent-text, #dce9f7);
 }
 
 .mg-read__rail button:focus-visible,
 .mg-read__article:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 1px;
 }
 

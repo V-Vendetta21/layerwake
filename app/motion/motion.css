@@ -67,7 +67,7 @@
 .mgx-filters button[aria-pressed='true'] {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #ffffff;
+  color: #080808;
 }
 .mgx-count {
   margin-left: auto;
@@ -269,7 +269,7 @@
 .mgx-copy[data-state='copied'] {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #ffffff;
+  color: #080808;
 }
 .mgx-copy:focus-visible,
 .mgx-code:focus-visible {
@@ -342,7 +342,7 @@
   font-weight: 500;
 }
 .mgx-filters button[aria-pressed='true'] .mgx-filters__n {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(8, 8, 8, 0.72);
 }
 .mgx-loading {
   padding: 16px;

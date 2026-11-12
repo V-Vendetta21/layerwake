@@ -7,7 +7,7 @@ const KINDS = [
     label: 'buoy',
     render: () => (
       <svg viewBox='0 0 32 32' aria-hidden='true'>
-        <circle cx='16' cy='16' r='11' fill='#0047ff' />
+        <circle cx='16' cy='16' r='11' fill='#eaf2fb' />
       </svg>
     ),
   },
@@ -25,7 +25,7 @@ const KINDS = [
     label: 'hazard',
     render: () => (
       <svg viewBox='0 0 32 32' aria-hidden='true'>
-        <path d='M16 4 L29 27 H3Z' fill='#648aff' />
+        <path d='M16 4 L29 27 H3Z' fill='#dce9f7' />
       </svg>
     ),
   },

@@ -20,7 +20,7 @@
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   box-shadow:
     inset 0 0 0 6px rgba(255, 255, 255, 0.25),
     0 10px 20px -10px rgba(0, 0, 0, 0.6);
@@ -53,7 +53,7 @@
 }
 
 .mg-inertia__controls button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 

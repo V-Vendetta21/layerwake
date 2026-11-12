@@ -1,14 +1,14 @@
 .mg-split {
   position: relative;
   display: inline-flex;
-  color: #fff;
+  color: #080808;
 }
 
 .mg-split__main,
 .mg-split__caret {
   min-height: 44px;
   border: 0;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -24,13 +24,13 @@
   display: grid;
   place-items: center;
   width: 44px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  border-left: 1px solid rgba(8, 8, 8, 0.25);
   border-radius: 0 10px 10px 0;
 }
 
 .mg-split__main:hover,
 .mg-split__caret:hover {
-  background: #2a63ff;
+  background: #ffffff;
 }
 
 .mg-split__main:focus-visible,
@@ -88,11 +88,11 @@
 .mg-split__item:hover,
 .mg-split__item:focus {
   outline: none;
-  background: var(--mg-raised, #141d38);
+  background: var(--mg-raised, #1e2329);
 }
 
 .mg-split__item:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #648aff);
+  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #dce9f7);
 }
 
 @keyframes mg-split-in {

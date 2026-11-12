@@ -20,7 +20,7 @@
 }
 
 .mg-snap__track:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
   border-radius: 14px;
 }
@@ -36,7 +36,8 @@
 }
 
 .mg-snap__slide:nth-child(even) {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
 }
 
 .mg-snap__bar {
@@ -49,7 +50,7 @@
 .mg-snap__bar span {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: scaleX(var(--mg-progress));
   transform-origin: left;
   transition: transform 300ms ease;
@@ -84,7 +85,7 @@
 }
 
 .mg-snap__controls button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 

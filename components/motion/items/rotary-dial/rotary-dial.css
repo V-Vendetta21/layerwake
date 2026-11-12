@@ -15,7 +15,7 @@
 }
 
 .mg-dial__knob:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 4px;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .mg-dial__tick[data-on='true']::before {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-dial__cap {

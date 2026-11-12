@@ -7,7 +7,7 @@ const thumb = (sky: string, sea: string) => (
     aria-hidden='true'
   >
     <rect width='160' height='90' fill={sky} />
-    <circle cx='120' cy='30' r='12' fill='#0047ff' />
+    <circle cx='120' cy='30' r='12' fill='#eaf2fb' />
     <path d='M0 58 Q40 50 80 58 T160 58 V90 H0Z' fill={sea} />
   </svg>
 );
@@ -16,14 +16,14 @@ const ITEMS = [
     id: 'seal',
     title: 'Seal Cove',
     subtitle: 'Sand, 4 m · sheltered west',
-    thumb: thumb('#1b1b1b', '#0047ff'),
+    thumb: thumb('#1b1b1b', '#eaf2fb'),
     body: 'Approach on the leading line; seals haul out on the north rocks.',
   },
   {
     id: 'gull',
     title: 'Gull Point',
     subtitle: 'Weed over rock · lunch only',
-    thumb: thumb('#141d38', '#262626'),
+    thumb: thumb('#1e2329', '#262626'),
     body: 'Holding is poor. Stay for a swim, not the night.',
   },
   {
@@ -37,7 +37,7 @@ const ITEMS = [
     id: 'heron',
     title: 'Heron Creek',
     subtitle: 'Mud, 3 m · dries at springs',
-    thumb: thumb('#303030', '#0047ff'),
+    thumb: thumb('#303030', '#eaf2fb'),
     body: 'Perfectly still at night. Check the tide before you go in.',
   },
   {

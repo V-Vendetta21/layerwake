@@ -25,7 +25,7 @@
 }
 
 .mg-log__list:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .mg-log__row[data-level='info'] .mg-log__level {
-  color: #8aa8ff;
+  color: #ffffff;
 }
 
 .mg-log__row[data-level='warn'] .mg-log__level {
@@ -66,8 +66,8 @@
   padding: 0 12px;
   border: 0;
   border-radius: 999px;
-  background: var(--mg-accent, #0047ff);
-  color: var(--mg-text, #ffffff);
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
   font: inherit;
   font-size: 13px;
   font-weight: 700;

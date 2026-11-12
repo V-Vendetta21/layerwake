@@ -826,7 +826,7 @@ export const CATALOG: CatalogEntry[] = [
     category: 'ambient',
     keywords: ['gradient', 'mesh', 'background', 'aurora'],
     purpose: 'Drifts soft color fields behind a readable panel.',
-    cue: 'Runs while in view. Switch between the Electric and Graphite presets, or Pause.',
+    cue: 'Runs while in view. Switch between the Snow and Graphite presets, or Pause.',
     replays: false,
   },
   {

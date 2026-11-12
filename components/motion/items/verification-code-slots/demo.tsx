@@ -26,7 +26,7 @@ export default function Demo() {
       <span
         role='status'
         style={{
-          color: result === 'ok' ? '#8aa8ff' : '#b8b8b8',
+          color: result === 'ok' ? '#ffffff' : '#b8b8b8',
           fontSize: 13,
           fontWeight: result === 'ok' ? 700 : 400,
         }}

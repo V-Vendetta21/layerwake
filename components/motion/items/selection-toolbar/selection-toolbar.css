@@ -16,7 +16,7 @@
 }
 
 .mg-seltb__text:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .mg-seltb__text [data-marks~='highlight'] {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-seltb__bar {
@@ -65,13 +65,13 @@
 }
 
 .mg-seltb__bar button:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #648aff);
+  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #dce9f7);
 }
 
 .mg-seltb__hl {
   padding: 0 3px;
-  background: var(--mg-accent, #0047ff);
-  color: var(--mg-text, #ffffff);
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
 }
 
 .mg-seltb__fallback {

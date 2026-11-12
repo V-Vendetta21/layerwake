@@ -26,8 +26,8 @@ export default function Demo() {
         <div
           style={{
             padding: '6px 16px 18px',
-            background: '#0047ff',
-            color: '#fff',
+            background: '#eaf2fb',
+            color: '#080808',
           }}
         >
           <strong>Below</strong>
@@ -54,7 +54,7 @@ export default function Demo() {
             max={20}
             value={amplitude}
             onChange={(e) => setAmplitude(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <label style={{ display: 'grid', gap: 2 }}>
@@ -66,7 +66,7 @@ export default function Demo() {
             step={0.05}
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <button

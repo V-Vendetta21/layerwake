@@ -24,7 +24,7 @@
   position: absolute;
   border: 2px solid var(--mg-text, #ffffff);
   border-radius: 6px;
-  background: #141d38;
+  background: #1e2329;
   transition:
     background-color 120ms ease,
     box-shadow 120ms ease;
@@ -35,14 +35,14 @@
 }
 
 .mg-marquee-sel__shape[data-selected='true'] {
-  background: var(--mg-accent, #0047ff);
-  box-shadow: 0 0 0 3px var(--mg-accent-text, #648aff);
+  background: var(--mg-accent, #eaf2fb);
+  box-shadow: 0 0 0 3px var(--mg-accent-text, #dce9f7);
 }
 
 .mg-marquee-sel__box {
   position: absolute;
-  border: 1.5px dashed var(--mg-accent-text, #648aff);
-  background: rgba(0, 71, 255, 0.1);
+  border: 1.5px dashed var(--mg-accent-text, #dce9f7);
+  background: rgba(234, 242, 251, 0.1);
   pointer-events: none;
 }
 

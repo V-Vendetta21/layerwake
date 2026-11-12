@@ -11,7 +11,7 @@
 }
 
 .mg-velocity:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -23,8 +23,8 @@
   margin: 16px -14px;
   padding: 10px 0;
   overflow: hidden;
-  background: var(--mg-accent, #0047ff);
-  color: #fff;
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
   font-weight: 800;
   letter-spacing: 0.1em;
   white-space: nowrap;
@@ -33,7 +33,7 @@
 
 .mg-velocity__strip:nth-of-type(even) {
   background: var(--mg-raised, #262626);
-  color: var(--mg-accent-text, #8aa8ff);
+  color: var(--mg-accent-text, #ffffff);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -20,9 +20,9 @@
   border-radius: 3px;
   background: linear-gradient(
     to top,
-    var(--mg-accent, #0047ff),
-    #648aff 70%,
-    var(--mg-accent, #0047ff)
+    var(--mg-accent, #eaf2fb),
+    #dce9f7 70%,
+    var(--mg-accent, #eaf2fb)
   );
   transform: scaleY(var(--mg-level));
   transform-origin: bottom;

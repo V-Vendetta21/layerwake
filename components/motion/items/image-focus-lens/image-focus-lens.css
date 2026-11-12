@@ -13,7 +13,7 @@
 }
 
 .mg-lens:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 3px;
 }
 

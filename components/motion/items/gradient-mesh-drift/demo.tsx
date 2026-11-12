@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { GradientMeshDrift } from './gradient-mesh-drift';
 
-// Two presets in one palette family: a blue field and a graphite one.
+// Two presets in one palette family: a snow field and a graphite one.
 const PALETTES = {
-  electric: ['#080808', '#0047ff', '#648aff', '#2a63ff'],
+  snow: ['#080808', '#eaf2fb', '#dce9f7', '#ffffff'],
   graphite: ['#080808', '#5c5c5c', '#b8b8b8', '#262626'],
 } as const;
 const chip = (on: boolean) =>
@@ -12,15 +12,15 @@ const chip = (on: boolean) =>
     padding: '0 12px',
     border: '1px solid #474747',
     borderRadius: 8,
-    background: on ? '#0047ff' : '#121212',
-    color: on ? '#fff' : '#ffffff',
+    background: on ? '#eaf2fb' : '#121212',
+    color: on ? '#080808' : '#ffffff',
     font: 'inherit',
     fontWeight: 600,
     cursor: 'pointer',
   }) as const;
 
 export default function Demo() {
-  const [palette, setPalette] = useState<keyof typeof PALETTES>('electric');
+  const [palette, setPalette] = useState<keyof typeof PALETTES>('snow');
   const [paused, setPaused] = useState(false);
   return (
     <div style={{ display: 'grid', gap: 10, width: 340, maxWidth: '100%' }}>
@@ -40,11 +40,11 @@ export default function Demo() {
       >
         <button
           type='button'
-          aria-pressed={palette === 'electric'}
-          style={chip(palette === 'electric')}
-          onClick={() => setPalette('electric')}
+          aria-pressed={palette === 'snow'}
+          style={chip(palette === 'snow')}
+          onClick={() => setPalette('snow')}
         >
-          Electric
+          Snow
         </button>
         <button
           type='button'

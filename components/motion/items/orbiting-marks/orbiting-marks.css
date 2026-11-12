@@ -48,12 +48,12 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-orbit__ring--inner .mg-orbit__mark {
   border-radius: 2px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   box-shadow: 0 0 0 1px var(--mg-text, #ffffff);
 }
 

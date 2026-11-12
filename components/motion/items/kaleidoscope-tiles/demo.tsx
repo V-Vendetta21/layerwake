@@ -25,7 +25,7 @@ export default function Demo() {
             step={2}
             value={segments}
             onChange={(e) => setSegments(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <button

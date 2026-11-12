@@ -28,7 +28,7 @@
 }
 
 .mg-curtain__nav button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -58,7 +58,7 @@
 
 .mg-curtain__view h3:focus-visible {
   text-decoration: underline;
-  text-decoration-color: var(--mg-accent-text, #648aff);
+  text-decoration-color: var(--mg-accent-text, #dce9f7);
   text-underline-offset: 4px;
 }
 
@@ -66,7 +66,7 @@
 .mg-curtain__cloth {
   position: absolute;
   inset: 0;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: scaleX(0);
   transform-origin: left;
   pointer-events: none;

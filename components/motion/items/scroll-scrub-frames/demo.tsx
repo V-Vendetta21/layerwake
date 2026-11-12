@@ -9,10 +9,10 @@ function Sunrise({ index }: { index: number }) {
     '#262626',
     '#1b1b1b',
     '#474747',
-    '#648aff',
+    '#dce9f7',
     '#474747',
     '#1b1b1b',
-    '#141d38',
+    '#1e2329',
     '#1b1b1b',
   ][index];
   return (
@@ -26,9 +26,9 @@ function Sunrise({ index }: { index: number }) {
         cx={80 + t * 140}
         cy={150 - t * 100}
         r={16 + t * 6}
-        fill='#0047ff'
+        fill='#eaf2fb'
       />
-      <path d='M0 140 Q80 130 160 140 T320 140 V200 H0Z' fill='#0047ff' />
+      <path d='M0 140 Q80 130 160 140 T320 140 V200 H0Z' fill='#eaf2fb' />
       <path d={`M${40 + t * 180} 136 h26 l-5 7 h-16z`} fill='#1b1b1b' />
     </svg>
   );
