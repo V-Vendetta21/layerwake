@@ -21,7 +21,7 @@ export default function Demo() {
           max={100}
           value={value}
           onChange={(event) => setValue(Number(event.target.value))}
-          style={{ width: 200, height: 32, accentColor: '#648aff' }}
+          style={{ width: 200, height: 32, accentColor: '#dce9f7' }}
         />
       </label>
     </div>

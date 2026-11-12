@@ -19,7 +19,7 @@
 }
 
 .mg-chat__list:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -50,8 +50,8 @@
 
 .mg-chat__msg[data-mine='true'] .mg-chat__bubble {
   border-radius: 14px 14px 4px 14px;
-  background: var(--mg-accent, #0047ff);
-  color: #fff;
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
 }
 
 .mg-chat__msg--typing .mg-chat__bubble {

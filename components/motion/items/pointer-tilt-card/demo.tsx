@@ -14,7 +14,7 @@ export default function Demo() {
             fontSize: 12,
             fontWeight: 700,
             letterSpacing: '0.08em',
-            color: '#648aff',
+            color: '#dce9f7',
           }}
         >
           BOARDING PASS

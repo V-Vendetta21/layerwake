@@ -14,7 +14,7 @@
 
 .mg-search[data-open='true'] {
   width: 100%;
-  border-color: var(--mg-accent-text, #648aff);
+  border-color: var(--mg-accent-text, #dce9f7);
 }
 
 .mg-search:focus-within {
@@ -57,7 +57,7 @@
 }
 
 .mg-search__toggle:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 1px;
 }
 

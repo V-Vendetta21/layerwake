@@ -5,7 +5,7 @@ const LAYERS = [
     depth: 0.1,
     content: (
       <svg viewBox='0 0 340 240'>
-        <circle cx='250' cy='70' r='30' fill='#0047ff' />
+        <circle cx='250' cy='70' r='30' fill='#eaf2fb' />
       </svg>
     ),
   },
@@ -15,7 +15,7 @@ const LAYERS = [
       <svg viewBox='0 0 340 240'>
         <path
           d='M0 170 L60 110 L110 150 L170 90 L240 160 L300 120 L340 150 V240 H0Z'
-          fill='#648aff'
+          fill='#dce9f7'
         />
       </svg>
     ),
@@ -24,7 +24,7 @@ const LAYERS = [
     depth: 0.7,
     content: (
       <svg viewBox='0 0 340 240'>
-        <path d='M0 200 Q85 180 170 200 T340 200 V240 H0Z' fill='#0047ff' />
+        <path d='M0 200 Q85 180 170 200 T340 200 V240 H0Z' fill='#eaf2fb' />
       </svg>
     ),
   },

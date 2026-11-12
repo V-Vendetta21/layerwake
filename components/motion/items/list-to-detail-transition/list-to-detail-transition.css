@@ -107,15 +107,15 @@
   padding: 0 10px;
   border: 0;
   border-radius: 8px;
-  background: #141d38;
-  color: var(--mg-accent-text, #648aff);
+  background: #1e2329;
+  color: var(--mg-accent-text, #dce9f7);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 .mg-l2d button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 1px;
 }
 

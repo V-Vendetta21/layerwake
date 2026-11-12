@@ -43,8 +43,8 @@
     color: #8f8f8f;
   }
   35% {
-    color: var(--mg-accent-text, #8aa8ff);
-    text-shadow: 0 0 6px rgba(100, 138, 255, 0.6);
+    color: var(--mg-accent-text, #ffffff);
+    text-shadow: 0 0 6px rgba(220, 233, 247, 0.6);
   }
   100% {
     color: #8f8f8f;

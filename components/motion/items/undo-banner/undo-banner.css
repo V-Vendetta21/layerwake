@@ -32,7 +32,7 @@
 
 .mg-undo__undo {
   padding: 0 10px;
-  color: var(--mg-accent-text, #8aa8ff);
+  color: var(--mg-accent-text, #ffffff);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -44,7 +44,7 @@
 
 .mg-undo__undo:focus-visible,
 .mg-undo__close:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: -2px;
 }
 
@@ -55,7 +55,7 @@
   bottom: 0;
   left: 0;
   height: 3px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform-origin: left;
   animation: mg-undo-timer var(--mg-duration) linear forwards;
 }

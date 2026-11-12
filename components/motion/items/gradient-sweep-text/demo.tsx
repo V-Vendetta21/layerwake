@@ -47,7 +47,7 @@ export default function Demo() {
             step={200}
             value={duration}
             onChange={(e) => setDuration(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <button

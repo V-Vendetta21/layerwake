@@ -64,7 +64,7 @@ export default function Demo() {
             setPlaying(false);
             setProgress(Number(e.target.value) / 100);
           }}
-          style={{ accentColor: '#648aff' }}
+          style={{ accentColor: '#dce9f7' }}
         />
       </label>
       <div style={{ display: 'flex', gap: 8 }}>

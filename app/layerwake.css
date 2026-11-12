@@ -2,7 +2,7 @@
    the site is untouched. */
 
 .lw-app {
-  /* Black, white and electric blue. Every app-owned color comes from here. */
+  /* Black, white and snow white. Every app-owned color comes from here. */
   --lw-canvas: #080808;
   --lw-surface: #121212;
   --lw-raised: #1b1b1b;
@@ -12,14 +12,14 @@
   --lw-text: #ffffff;
   --lw-text-2: #b8b8b8;
   --lw-text-3: #8f8f8f;
-  /* Fills behind white text (6.3:1). */
-  --lw-accent: #0047ff;
-  --lw-accent-hover: #2a63ff;
-  --lw-accent-pressed: #0039cc;
-  /* Blue as text, icons and focus on dark surfaces (5.9:1 on surface). */
-  --lw-accent-text: #648aff;
-  --lw-accent-soft: #141d38;
-  --lw-focus: #648aff;
+  /* Snow-white fills behind near-black text. */
+  --lw-accent: #eaf2fb;
+  --lw-accent-hover: #ffffff;
+  --lw-accent-pressed: #cfdceb;
+  /* Snow white as text, icons and focus on dark surfaces. */
+  --lw-accent-text: #dce9f7;
+  --lw-accent-soft: #1e2329;
+  --lw-focus: #dce9f7;
   --lw-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
     monospace;
@@ -42,7 +42,7 @@
 
 .lw-app ::selection {
   background: var(--lw-accent);
-  color: #ffffff;
+  color: #080808;
 }
 
 .lw-app input,
@@ -102,7 +102,7 @@
 .lw-btn--primary {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #fff;
+  color: #080808;
 }
 .lw-btn--primary:hover {
   border-color: var(--lw-accent-hover);
@@ -151,8 +151,7 @@
 }
 .lw-chip--measured {
   border-color: var(--lw-text);
-  background: var(--lw-text);
-  color: var(--lw-canvas);
+  color: var(--lw-text);
 }
 .lw-chip--inferred {
   border-style: dashed;
@@ -162,7 +161,7 @@
 .lw-chip--edited {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #ffffff;
+  color: #080808;
 }
 
 /* ------------------------------------------------------------------- logo */
@@ -509,7 +508,7 @@
   background-color: #121212;
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.08),
-    0 18px 40px -16px rgba(0, 71, 255, 0.28);
+    0 18px 40px -16px rgba(234, 242, 251, 0.28);
   color: #ffffff;
   font-family:
     system-ui,
@@ -538,7 +537,8 @@
 .coast-card__badge {
   padding: 4px 10px;
   border-radius: 999px;
-  background-color: #0047ff;
+  background-color: #eaf2fb;
+  color: #080808;
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
@@ -597,8 +597,8 @@
 .coast-card__action {
   padding: 10px 16px;
   border-radius: 10px;
-  background-color: #0047ff;
-  color: #ffffff;
+  background-color: #eaf2fb;
+  color: #080808;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -606,7 +606,7 @@
   cursor: pointer;
 }
 .coast-card__action:hover {
-  background-color: #2a63ff;
+  background-color: #ffffff;
 }
 
 /* -------------------------------------------------------------- workspace */
@@ -990,7 +990,7 @@
   padding: 0 6px;
   border-radius: 3px 3px 0 0;
   background: var(--lw-accent);
-  color: #fff;
+  color: #080808;
   font-family: var(--lw-mono);
   font-size: 10.5px;
   line-height: 17px;
@@ -1027,7 +1027,7 @@
   border-radius: 50%;
   background: var(--lw-accent);
   box-shadow: 0 0 0 1px var(--lw-text);
-  color: var(--lw-text);
+  color: #080808;
   font-size: 10px;
   font-weight: 700;
   line-height: 16px;
@@ -1480,10 +1480,10 @@
 
 @media (forced-colors: none) {
   html {
-    /* Bright blue on near-black keeps the thumb at 5:1 against its track. */
-    --lw-sb-thumb: #648aff;
-    --lw-sb-thumb-hover: #8aa8ff;
-    --lw-sb-thumb-active: #ffffff;
+    /* Snow white on near-black keeps the thumb clear against its track. */
+    --lw-sb-thumb: #dce9f7;
+    --lw-sb-thumb-hover: #ffffff;
+    --lw-sb-thumb-active: #b9c9da;
     --lw-sb-track: #161616;
     scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
   }
@@ -1492,7 +1492,7 @@
   html .lw-code,
   html .mgx-code {
     --lw-sb-thumb: #5c5c5c;
-    --lw-sb-thumb-hover: #648aff;
+    --lw-sb-thumb-hover: #dce9f7;
     --lw-sb-thumb-active: #ffffff;
     --lw-sb-track: #121212;
     scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);

@@ -22,7 +22,7 @@
 }
 
 .mg-chips__box:focus-within {
-  border-color: var(--mg-accent-text, #648aff);
+  border-color: var(--mg-accent-text, #dce9f7);
   box-shadow: 0 0 0 3px #303030;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .mg-chips__chip[data-dupe='true'] {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   animation: mg-chips-nudge 360ms ease;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .mg-chips__remove:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: -3px;
 }
 

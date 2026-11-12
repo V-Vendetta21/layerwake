@@ -31,7 +31,7 @@
   width: 22%;
   height: 22%;
   border-radius: 50%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-kaleido__b {
@@ -39,7 +39,7 @@
   left: 36%;
   width: 14%;
   height: 14%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: rotate(45deg);
 }
 
@@ -49,7 +49,7 @@
   width: 6%;
   height: 30%;
   border-radius: 3px;
-  background: #648aff;
+  background: #dce9f7;
 }
 
 @keyframes mg-kaleido-turn {

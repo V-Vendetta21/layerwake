@@ -9,7 +9,7 @@
     {
       "name": "typewriter-queue.css",
       "kind": "css",
-      "code": ".mg-typewriter {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;\n  white-space: pre-wrap;\n}\n\n.mg-typewriter__caret {\n  display: inline-block;\n  width: 0.55em;\n  height: 1.1em;\n  margin-left: 2px;\n  background: var(--mg-accent, #0047ff);\n  vertical-align: text-bottom;\n  animation: mg-typewriter-blink 1s steps(1) infinite;\n}\n\n.mg-typewriter__sr {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n@keyframes mg-typewriter-blink {\n  50% {\n    opacity: 0;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-typewriter__caret {\n    animation: none;\n  }\n}\n"
+      "code": ".mg-typewriter {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;\n  white-space: pre-wrap;\n}\n\n.mg-typewriter__caret {\n  display: inline-block;\n  width: 0.55em;\n  height: 1.1em;\n  margin-left: 2px;\n  background: var(--mg-accent, #eaf2fb);\n  vertical-align: text-bottom;\n  animation: mg-typewriter-blink 1s steps(1) infinite;\n}\n\n.mg-typewriter__sr {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n@keyframes mg-typewriter-blink {\n  50% {\n    opacity: 0;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-typewriter__caret {\n    animation: none;\n  }\n}\n"
     }
   ]
 }

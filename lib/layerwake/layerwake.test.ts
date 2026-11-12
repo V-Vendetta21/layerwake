@@ -177,7 +177,7 @@ describe('capture validation', () => {
 
 describe('css allowlist', () => {
   it('normalizes colors and lengths', () => {
-    expect(sanitizeStyle('color', 'rgb(22, 76, 255)')).toBe('#164cff');
+    expect(sanitizeStyle('color', 'rgb(234, 242, 251)')).toBe('#eaf2fb');
     expect(sanitizeStyle('color', 'rgba(12, 23, 56, 0.5)')).toBe('#0c173880');
     expect(sanitizeStyle('padding-top', '12.5px')).toBe('12.5px');
     expect(sanitizeStyle('padding-top', '-4px')).toBeNull();

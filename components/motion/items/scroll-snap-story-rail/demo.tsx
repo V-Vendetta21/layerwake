@@ -20,8 +20,7 @@ export default function Demo() {
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.08em',
-                color: '#ffffff',
-                opacity: 0.85,
+                opacity: 0.8,
               }}
             >
               {time}

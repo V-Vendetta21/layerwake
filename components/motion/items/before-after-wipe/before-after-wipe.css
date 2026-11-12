@@ -72,12 +72,12 @@
   height: 36px;
   border: 3px solid #fff;
   border-radius: 50%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   content: '';
   transform: translate(-50%, -50%);
 }
 
 .mg-wipe__range:focus-visible + .mg-wipe__handle::after {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }

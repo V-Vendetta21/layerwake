@@ -21,14 +21,14 @@
 }
 
 .mg-checkmark__tick {
-  stroke: #648aff;
+  stroke: #dce9f7;
   stroke-width: 4;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
 
 .mg-checkmark[data-done='true'] .mg-checkmark__ring {
-  stroke: #648aff;
+  stroke: #dce9f7;
   animation: mg-checkmark-ring 520ms cubic-bezier(0.6, 0, 0.3, 1) both;
 }
 
@@ -40,7 +40,7 @@
 .mg-checkmark__label {
   min-height: 1.4em;
   margin: 0;
-  color: #8aa8ff;
+  color: #ffffff;
   font-weight: 700;
 }
 

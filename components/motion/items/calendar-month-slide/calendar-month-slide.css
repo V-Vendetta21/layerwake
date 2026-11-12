@@ -70,7 +70,7 @@
 }
 
 .mg-cal__grid td button:hover {
-  background: #141d38;
+  background: #1e2329;
 }
 
 .mg-cal__grid td button[data-outside='true'] {
@@ -78,8 +78,8 @@
 }
 
 .mg-cal__grid td button[data-selected='true'] {
-  background: var(--mg-accent, #0047ff);
-  color: #fff;
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;

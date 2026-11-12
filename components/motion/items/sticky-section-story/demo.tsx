@@ -41,9 +41,9 @@ function Scene({ step }: { step: number }) {
           transition: 'transform 500ms',
         }}
       >
-        <circle r='12' fill='#0047ff' />
+        <circle r='12' fill='#eaf2fb' />
       </g>
-      <path d='M0 112 Q40 104 80 112 T160 112 V160 H0Z' fill='#0047ff' />
+      <path d='M0 112 Q40 104 80 112 T160 112 V160 H0Z' fill='#eaf2fb' />
       <g
         style={{
           transform: `translateX(${t * 90}px)`,

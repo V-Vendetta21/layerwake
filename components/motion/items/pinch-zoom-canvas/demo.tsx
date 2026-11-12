@@ -30,7 +30,7 @@ function Chart() {
       <path
         d='M130 40 C170 80 210 60 250 100 S300 160 330 150'
         fill='none'
-        stroke='#648aff'
+        stroke='#dce9f7'
         strokeDasharray='4 3'
       />
       <text x='20' y='100' fontSize='10' fontWeight='700' fill='#ffffff'>

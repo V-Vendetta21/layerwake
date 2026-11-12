@@ -35,7 +35,7 @@ export default function Demo() {
             step={50}
             value={min}
             onChange={(e) => setMin(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <label style={{ display: 'grid', gap: 2 }}>
@@ -47,7 +47,7 @@ export default function Demo() {
             step={50}
             value={max}
             onChange={(e) => setMax(Number(e.target.value))}
-            style={{ accentColor: '#648aff' }}
+            style={{ accentColor: '#dce9f7' }}
           />
         </label>
         <button

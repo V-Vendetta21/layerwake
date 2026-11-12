@@ -55,7 +55,7 @@
 }
 
 .mg-otp__slot[data-active='true'] {
-  border-color: var(--mg-accent-text, #648aff);
+  border-color: var(--mg-accent-text, #dce9f7);
   box-shadow: 0 0 0 3px #303030;
   transform: translateY(-2px);
 }
@@ -63,7 +63,7 @@
 .mg-otp__slot[data-active='true']:empty::after {
   width: 2px;
   height: 22px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   content: '';
   animation: mg-otp-caret 1s steps(1) infinite;
 }

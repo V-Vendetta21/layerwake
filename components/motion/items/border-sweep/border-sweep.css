@@ -16,8 +16,8 @@
   background: conic-gradient(
     from 0deg,
     transparent 0 68%,
-    var(--mg-accent, #0047ff) 86%,
-    var(--mg-accent, #0047ff) 96%,
+    var(--mg-accent, #eaf2fb) 86%,
+    var(--mg-accent, #eaf2fb) 96%,
     transparent 100%
   );
   content: '';

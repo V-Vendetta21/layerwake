@@ -13,7 +13,7 @@
 }
 
 .mg-scrub__scroller:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .mg-scrub__slider input {
-  accent-color: var(--mg-accent-text, #648aff);
+  accent-color: var(--mg-accent-text, #dce9f7);
 }
 
 @media (prefers-reduced-motion: reduce) {

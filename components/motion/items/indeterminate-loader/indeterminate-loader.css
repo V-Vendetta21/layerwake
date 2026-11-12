@@ -19,7 +19,7 @@
   left: 0;
   width: 40%;
   border-radius: 4px;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   animation: mg-loader-run 1.3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   animation-play-state: paused;
 }
@@ -30,7 +30,7 @@
 
 .mg-loader[data-active='false'] .mg-loader__bar {
   width: 100%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   animation: mg-loader-finish 300ms ease-out;
 }
 
@@ -62,8 +62,8 @@
     animation: none;
     background: repeating-linear-gradient(
       135deg,
-      var(--mg-accent, #0047ff) 0 8px,
-      #648aff 8px 16px
+      var(--mg-accent, #eaf2fb) 0 8px,
+      #dce9f7 8px 16px
     );
   }
   .mg-loader[data-active='false'] .mg-loader__bar {

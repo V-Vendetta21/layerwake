@@ -26,7 +26,7 @@ export default function Demo() {
           style={{
             display: 'block',
             fontSize: 18,
-            color: done ? '#8aa8ff' : '#ffffff',
+            color: done ? '#ffffff' : '#ffffff',
           }}
         >
           {done ? '✓ 100 nautical miles logged' : '97 of 100 miles logged'}
@@ -43,8 +43,8 @@ export default function Demo() {
           padding: '0 16px',
           border: 0,
           borderRadius: 8,
-          background: '#0047ff',
-          color: '#fff',
+          background: '#eaf2fb',
+          color: '#080808',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

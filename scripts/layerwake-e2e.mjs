@@ -227,14 +227,14 @@ try {
   await radiusInput.fill('4');
 
   await tree.getByRole('treeitem', { name: /action/ }).click();
-  await page.getByRole('textbox', { name: 'Fill hex value' }).fill('#648aff');
+  await page.getByRole('textbox', { name: 'Fill hex value' }).fill('#dce9f7');
   const actionBg = () =>
     preview
       .locator('button')
       .evaluate((el) => getComputedStyle(el).backgroundColor);
   check(
     'palette edit updates the preview',
-    (await actionBg()) === 'rgb(100, 138, 255)'
+    (await actionBg()) === 'rgb(220, 233, 247)'
   );
   await page
     .getByRole('textbox', { name: 'Placeholder text' })
@@ -335,7 +335,7 @@ try {
   });
   check(
     'exported HTML shows the edited radius and color',
-    exported.radius === '4px' && exported.bg === 'rgb(100, 138, 255)',
+    exported.radius === '4px' && exported.bg === 'rgb(220, 233, 247)',
     JSON.stringify(exported)
   );
   check(
@@ -358,7 +358,7 @@ try {
   await page.getByRole('button', { name: /Reset changes/ }).click();
   check(
     'Reset changes restores the measured values',
-    (await radius()) === '20px' && (await actionBg()) === 'rgb(0, 71, 255)'
+    (await radius()) === '20px' && (await actionBg()) === 'rgb(234, 242, 251)'
   );
 
   /* ------------------------------------------------ demo without extension */

@@ -25,13 +25,13 @@
 }
 
 .mg-copyok__button:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
 .mg-copyok[data-phase='copied'] .mg-copyok__button {
   border-color: var(--mg-text, #ffffff);
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-copyok[data-phase='error'] .mg-copyok__button {

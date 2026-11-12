@@ -11,9 +11,9 @@
   background: linear-gradient(
     100deg,
     transparent 0 38%,
-    var(--mg-accent, #0047ff) 45%,
-    #3366ff 50%,
-    var(--mg-accent, #0047ff) 55%,
+    var(--mg-accent, #eaf2fb) 45%,
+    #eaf2fb 50%,
+    var(--mg-accent, #eaf2fb) 55%,
     transparent 62% 100%
   );
   background-size: 300% 100%;
@@ -47,6 +47,6 @@
     display: none;
   }
   .mg-sweeptext {
-    color: var(--mg-accent-text, #648aff);
+    color: var(--mg-accent-text, #dce9f7);
   }
 }

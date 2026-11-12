@@ -17,7 +17,7 @@
 }
 
 .mg-pinch__box:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .mg-pinch__controls button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 

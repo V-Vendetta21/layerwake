@@ -47,11 +47,11 @@
 
 .mg-split-pane__handle:hover span,
 .mg-split-pane[data-dragging='true'] .mg-split-pane__handle span {
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-split-pane__handle:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: -3px;
 }
 

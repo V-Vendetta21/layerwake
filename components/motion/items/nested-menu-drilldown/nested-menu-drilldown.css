@@ -17,7 +17,7 @@
 }
 
 .mg-drill__trigger:focus-visible {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .mg-drill__back {
-  color: var(--mg-accent-text, #648aff);
+  color: var(--mg-accent-text, #dce9f7);
   font-weight: 600;
 }
 
@@ -81,12 +81,12 @@
 .mg-drill__back:hover,
 .mg-drill__back:focus {
   outline: none;
-  background: #141d38;
+  background: #1e2329;
 }
 
 .mg-drill__item:focus-visible,
 .mg-drill__back:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #648aff);
+  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #dce9f7);
 }
 
 @keyframes mg-drill-in {

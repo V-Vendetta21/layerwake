@@ -39,7 +39,7 @@ export default function Demo() {
           max={520}
           value={width}
           onChange={(e) => setWidth(Number(e.target.value))}
-          style={{ accentColor: '#648aff' }}
+          style={{ accentColor: '#dce9f7' }}
         />
       </label>
       <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>

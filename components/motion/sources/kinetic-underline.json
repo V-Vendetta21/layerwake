@@ -9,7 +9,7 @@
     {
       "name": "kinetic-underline.css",
       "kind": "css",
-      "code": ".mg-underline {\n  position: relative;\n  display: inline-block;\n  padding: 4px 0;\n  color: inherit;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.mg-underline::after {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--mg-accent, #0047ff);\n  content: '';\n  transform: scaleX(0);\n  transform-origin: right;\n  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);\n}\n\n.mg-underline:hover::after,\n.mg-underline:focus-visible::after {\n  transform: scaleX(1);\n  transform-origin: left;\n}\n\n.mg-underline:focus-visible {\n  outline: 2px solid var(--mg-accent-text, #648aff);\n  outline-offset: 4px;\n  border-radius: 2px;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-underline::after {\n    transition: none;\n  }\n}\n"
+      "code": ".mg-underline {\n  position: relative;\n  display: inline-block;\n  padding: 4px 0;\n  color: inherit;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.mg-underline::after {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--mg-accent, #eaf2fb);\n  content: '';\n  transform: scaleX(0);\n  transform-origin: right;\n  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);\n}\n\n.mg-underline:hover::after,\n.mg-underline:focus-visible::after {\n  transform: scaleX(1);\n  transform-origin: left;\n}\n\n.mg-underline:focus-visible {\n  outline: 2px solid var(--mg-accent-text, #dce9f7);\n  outline-offset: 4px;\n  border-radius: 2px;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-underline::after {\n    transition: none;\n  }\n}\n"
     }
   ]
 }

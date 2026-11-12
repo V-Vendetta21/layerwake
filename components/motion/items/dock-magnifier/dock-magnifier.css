@@ -19,8 +19,8 @@
   padding: 0;
   border: 0;
   border-radius: 28%;
-  background: var(--mg-accent, #0047ff);
-  color: #fff;
+  background: var(--mg-accent, #eaf2fb);
+  color: #080808;
   font: inherit;
   font-size: calc(var(--mg-dock-size, 44px) * 0.42);
   font-weight: 700;
@@ -36,7 +36,7 @@
 }
 
 .mg-dock__item:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
   box-shadow: 0 0 0 5px var(--mg-text, #ffffff);
 }

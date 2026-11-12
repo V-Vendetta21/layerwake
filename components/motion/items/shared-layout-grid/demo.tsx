@@ -11,7 +11,7 @@ const BOATS = [
 ];
 const FILTERS = ['all', 'sail', 'motor', 'row'];
 const TONE: Record<string, string> = {
-  sail: '#0047ff',
+  sail: '#eaf2fb',
   motor: '#333333',
   row: '#5c5c5c',
 };
@@ -39,8 +39,8 @@ export default function Demo() {
               padding: '0 14px',
               border: '1px solid #474747',
               borderRadius: 999,
-              background: filter === name ? '#0047ff' : '#121212',
-              color: filter === name ? '#fff' : '#ffffff',
+              background: filter === name ? '#eaf2fb' : '#121212',
+              color: filter === name ? '#080808' : '#ffffff',
               font: 'inherit',
               fontWeight: 600,
               textTransform: 'capitalize',
@@ -61,7 +61,7 @@ export default function Demo() {
                 padding: '14px 8px',
                 borderRadius: 10,
                 background: TONE[boat.kind],
-                color: '#fff',
+                color: boat.kind === 'sail' ? '#080808' : '#ffffff',
                 fontWeight: 600,
                 textAlign: 'center',
               }}

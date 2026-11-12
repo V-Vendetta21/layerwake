@@ -54,14 +54,14 @@
 .mg-uploads__bar span {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #0047ff);
+  background: var(--mg-accent, #eaf2fb);
   transform: scaleX(var(--mg-progress));
   transform-origin: left;
   transition: transform 260ms linear;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__bar span {
-  background: #0047ff;
+  background: #eaf2fb;
 }
 
 .mg-uploads__item[data-status='failed'] .mg-uploads__bar span {
@@ -87,7 +87,7 @@
 }
 
 .mg-uploads__item button:focus-visible {
-  outline: 2px solid var(--mg-accent-text, #648aff);
+  outline: 2px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
@@ -103,13 +103,13 @@
 
 .mg-uploads__item[data-status='uploading'] .mg-uploads__icon {
   border-color: #303030;
-  border-top-color: var(--mg-accent-text, #648aff);
+  border-top-color: var(--mg-accent-text, #dce9f7);
   animation: mg-uploads-spin 900ms linear infinite;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__icon {
-  border-color: #648aff;
-  background: #0047ff;
+  border-color: #dce9f7;
+  background: #eaf2fb;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__icon::after {

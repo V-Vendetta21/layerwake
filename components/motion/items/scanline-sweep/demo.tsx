@@ -15,7 +15,7 @@ function Wiring() {
         height='40'
         rx='6'
         fill='none'
-        stroke='#648aff'
+        stroke='#dce9f7'
         strokeWidth='2'
       />
       <text x='50' y='95' textAnchor='middle' fontSize='11' fill='#b8b8b8'>
@@ -28,7 +28,7 @@ function Wiring() {
         height='60'
         rx='6'
         fill='none'
-        stroke='#648aff'
+        stroke='#dce9f7'
         strokeWidth='2'
       />
       <text x='160' y='95' textAnchor='middle' fontSize='11' fill='#b8b8b8'>

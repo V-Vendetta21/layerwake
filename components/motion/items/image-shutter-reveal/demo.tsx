@@ -9,8 +9,8 @@ function Harbor() {
       aria-label='A sailboat crossing a calm bay under a low sun'
     >
       <rect width='320' height='180' fill='#1b1b1b' />
-      <circle cx='240' cy='70' r='26' fill='#0047ff' />
-      <path d='M0 112 Q80 100 160 112 T320 112 V180 H0Z' fill='#0047ff' />
+      <circle cx='240' cy='70' r='26' fill='#eaf2fb' />
+      <path d='M0 112 Q80 100 160 112 T320 112 V180 H0Z' fill='#eaf2fb' />
       <path d='M0 132 Q80 122 160 132 T320 132 V180 H0Z' fill='#ededed' />
       <path d='M118 104 L148 104 L142 112 L124 112Z' fill='#1b1b1b' />
       <path d='M133 102 L133 58 L152 100Z' fill='#1b1b1b' />

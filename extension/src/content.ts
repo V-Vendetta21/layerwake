@@ -23,17 +23,17 @@ const STYLES = `
   position: fixed; inset: 0; z-index: 2147483647; pointer-events: none;
   font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: #ffffff;
 }
-/* A blue outline with a dark halo reads on light and dark pages alike. */
+/* A snow-white outline with a dark halo reads on light and dark pages alike. */
 .outline {
   position: fixed; left: 0; top: 0; width: 0; height: 0; display: none;
-  border: 2px solid #648aff; border-radius: 3px;
-  background: rgba(0, 71, 255, 0.1);
-  box-shadow: 0 0 0 1px #080808, 0 0 0 4px rgba(100, 138, 255, 0.45);
+  border: 2px solid #dce9f7; border-radius: 3px;
+  background: rgba(234, 242, 251, 0.1);
+  box-shadow: 0 0 0 1px #080808, 0 0 0 4px rgba(220, 233, 247, 0.45);
 }
 .outline.locked { background: transparent; }
 .tag {
   position: absolute; left: -2px; top: -22px; padding: 1px 6px;
-  background: #0047ff; color: #ffffff; border-radius: 3px 3px 0 0;
+  background: #eaf2fb; color: #080808; border-radius: 3px 3px 0 0;
   font: 11px/18px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap;
 }
 .bar, .panel {
@@ -66,14 +66,14 @@ dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; }
 dt { color: #b8b8b8; }
 dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
 ul { margin: 0; padding-left: 18px; color: #b8b8b8; }
-/* Warning: dashed outline. Done: blue outline. The words say which. */
+/* Warning: dashed outline. Done: snow outline. The words say which. */
 .warn {
   margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
   background: #1b1b1b; border: 1px dashed #b8b8b8;
 }
 .done {
   margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
-  background: #141d38; border: 1px solid #648aff;
+  background: #1e2329; border: 1px solid #dce9f7;
 }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 button {
@@ -81,9 +81,9 @@ button {
   border: 1px solid #474747; background: #1b1b1b; color: #ffffff;
 }
 button:hover { border-color: #8f8f8f; background: #262626; }
-button.primary { background: #0047ff; border-color: #0047ff; color: #ffffff; }
-button.primary:hover { background: #2a63ff; border-color: #2a63ff; }
-button:focus-visible { outline: 2px solid #648aff; outline-offset: 2px; }
+button.primary { background: #eaf2fb; border-color: #eaf2fb; color: #080808; }
+button.primary:hover { background: #ffffff; border-color: #ffffff; }
+button:focus-visible { outline: 2px solid #dce9f7; outline-offset: 2px; }
 kbd {
   padding: 0 5px; border: 1px solid #474747; border-radius: 4px; background: #1b1b1b;
   font: 11px ui-monospace, monospace; color: #ffffff;

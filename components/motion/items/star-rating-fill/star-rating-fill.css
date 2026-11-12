@@ -48,14 +48,14 @@
 
 /* Preview: outlined and dashed, so it differs from a real rating by shape. */
 .mg-stars__star[data-state='preview'] svg {
-  fill: #141d38;
-  stroke: var(--mg-accent-text, #648aff);
+  fill: #1e2329;
+  stroke: var(--mg-accent-text, #dce9f7);
   stroke-dasharray: 3 2;
   transform: scale(1.06);
 }
 
 .mg-stars__star[data-state='set'] svg {
-  fill: var(--mg-accent, #0047ff);
+  fill: var(--mg-accent, #eaf2fb);
   stroke: var(--mg-text, #ffffff);
 }
 
@@ -64,7 +64,7 @@
 }
 
 .mg-stars__input:focus-visible + svg {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 3px;
   border-radius: 6px;
 }

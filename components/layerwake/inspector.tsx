@@ -248,7 +248,7 @@ function ColorControl({
             } else {
               setMessage({
                 tone: 'error',
-                text: 'Use a hex color such as #0047FF.',
+                text: 'Use a hex color such as #EAF2FB.',
               });
             }
           }}

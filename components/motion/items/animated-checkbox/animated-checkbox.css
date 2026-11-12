@@ -35,21 +35,21 @@
 }
 
 .mg-check__input:focus-visible + .mg-check__box {
-  outline: 3px solid var(--mg-accent-text, #648aff);
+  outline: 3px solid var(--mg-accent-text, #dce9f7);
   outline-offset: 2px;
 }
 
 .mg-check[data-state='checked'] .mg-check__box,
 .mg-check[data-state='mixed'] .mg-check__box {
-  border-color: var(--mg-accent-text, #648aff);
-  background: var(--mg-accent, #0047ff);
+  border-color: var(--mg-accent-text, #dce9f7);
+  background: var(--mg-accent, #eaf2fb);
 }
 
 .mg-check__box svg {
   width: 20px;
   height: 20px;
   fill: none;
-  stroke: #fff;
+  stroke: #080808;
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
