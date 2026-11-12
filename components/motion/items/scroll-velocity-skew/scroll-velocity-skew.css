@@ -4,14 +4,14 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 12px 14px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  color: #46527a;
+  background: #121212;
+  color: #b8b8b8;
 }
 
 .mg-velocity:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -23,7 +23,7 @@
   margin: 16px -14px;
   padding: 10px 0;
   overflow: hidden;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   color: #fff;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -32,8 +32,8 @@
 }
 
 .mg-velocity__strip:nth-of-type(even) {
-  background: var(--mg-ink, #0c1738);
-  color: var(--mg-green, #b6ff3b);
+  background: var(--mg-raised, #262626);
+  color: var(--mg-accent-text, #8aa8ff);
 }
 
 @media (prefers-reduced-motion: reduce) {

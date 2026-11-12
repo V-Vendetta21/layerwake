@@ -4,13 +4,13 @@
 }
 
 .mg-blob__shape {
-  fill: var(--mg-accent, #164cff);
-  stroke: var(--mg-ink, #0c1738);
+  fill: var(--mg-accent, #0047ff);
+  stroke: var(--mg-text, #ffffff);
   stroke-width: 2;
 }
 
 .mg-blob__center {
-  fill: var(--mg-green, #b6ff3b);
+  fill: var(--mg-accent, #0047ff);
 }
 
 @media (prefers-reduced-motion: reduce) {

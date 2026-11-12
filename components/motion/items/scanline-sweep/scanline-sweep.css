@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 14px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-scan > :first-child {
@@ -17,8 +17,8 @@
   left: 0;
   top: 0;
   height: 2px;
-  background: var(--mg-green, #b6ff3b);
-  box-shadow: 0 0 12px 2px rgba(182, 255, 59, 0.45);
+  background: var(--mg-accent, #0047ff);
+  box-shadow: 0 0 12px 2px rgba(100, 138, 255, 0.45);
   opacity: 0;
   animation: mg-scan-pass var(--mg-duration) cubic-bezier(0.4, 0, 0.6, 1)
     forwards;
@@ -30,8 +30,8 @@
   bottom: 10px;
   padding: 4px 10px;
   border-radius: 6px;
-  background: var(--mg-green, #b6ff3b);
-  color: var(--mg-ink, #0c1738);
+  background: var(--mg-accent, #0047ff);
+  color: var(--mg-text, #ffffff);
   font-size: 13px;
   font-weight: 700;
   opacity: 0;

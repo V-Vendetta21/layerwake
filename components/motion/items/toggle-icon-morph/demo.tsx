@@ -24,10 +24,10 @@ export default function Demo() {
         style={{
           width: '100%',
           padding: 12,
-          border: '1px solid #d6def2',
+          border: '1px solid #303030',
           borderRadius: 10,
-          background: '#fff',
-          color: '#46527a',
+          background: '#121212',
+          color: '#b8b8b8',
         }}
       >
         Waypoint form: name, latitude, longitude.

@@ -1,7 +1,7 @@
 .mg-loader {
   display: grid;
   gap: 8px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-loader__track {
@@ -9,7 +9,7 @@
   height: 8px;
   overflow: hidden;
   border-radius: 4px;
-  background: #e1e8fb;
+  background: #262626;
 }
 
 .mg-loader__bar {
@@ -19,7 +19,7 @@
   left: 0;
   width: 40%;
   border-radius: 4px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   animation: mg-loader-run 1.3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   animation-play-state: paused;
 }
@@ -30,12 +30,12 @@
 
 .mg-loader[data-active='false'] .mg-loader__bar {
   width: 100%;
-  background: var(--mg-green, #8fd400);
+  background: var(--mg-accent, #0047ff);
   animation: mg-loader-finish 300ms ease-out;
 }
 
 .mg-loader__text {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
@@ -62,8 +62,8 @@
     animation: none;
     background: repeating-linear-gradient(
       135deg,
-      var(--mg-accent, #164cff) 0 8px,
-      #7f9bff 8px 16px
+      var(--mg-accent, #0047ff) 0 8px,
+      #648aff 8px 16px
     );
   }
   .mg-loader[data-active='false'] .mg-loader__bar {

@@ -15,10 +15,10 @@ function Wiring() {
         height='40'
         rx='6'
         fill='none'
-        stroke='#7f9bff'
+        stroke='#648aff'
         strokeWidth='2'
       />
-      <text x='50' y='95' textAnchor='middle' fontSize='11' fill='#c3cdec'>
+      <text x='50' y='95' textAnchor='middle' fontSize='11' fill='#b8b8b8'>
         Battery
       </text>
       <rect
@@ -28,19 +28,19 @@ function Wiring() {
         height='60'
         rx='6'
         fill='none'
-        stroke='#7f9bff'
+        stroke='#648aff'
         strokeWidth='2'
       />
-      <text x='160' y='95' textAnchor='middle' fontSize='11' fill='#c3cdec'>
+      <text x='160' y='95' textAnchor='middle' fontSize='11' fill='#b8b8b8'>
         Panel
       </text>
       <path
         d='M80 90 H130 M190 75 H260 M190 90 H260 M190 105 H260'
-        stroke='#c3cdec'
+        stroke='#303030'
         strokeWidth='2'
       />
       {['Nav lights', 'Radio', 'Pump'].map((t, i) => (
-        <text key={t} x='266' y={79 + i * 15} fontSize='10' fill='#c3cdec'>
+        <text key={t} x='266' y={79 + i * 15} fontSize='10' fill='#b8b8b8'>
           {t}
         </text>
       ))}
@@ -69,10 +69,10 @@ export default function Demo() {
         style={{
           minHeight: 44,
           padding: '0 16px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

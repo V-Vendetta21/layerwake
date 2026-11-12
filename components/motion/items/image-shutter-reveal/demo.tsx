@@ -8,12 +8,12 @@ function Harbor() {
       role='img'
       aria-label='A sailboat crossing a calm bay under a low sun'
     >
-      <rect width='320' height='180' fill='#dbe5ff' />
-      <circle cx='240' cy='70' r='26' fill='#b6ff3b' />
-      <path d='M0 112 Q80 100 160 112 T320 112 V180 H0Z' fill='#164cff' />
-      <path d='M0 132 Q80 122 160 132 T320 132 V180 H0Z' fill='#0c1738' />
-      <path d='M118 104 L148 104 L142 112 L124 112Z' fill='#f5f8ff' />
-      <path d='M133 102 L133 58 L152 100Z' fill='#f5f8ff' />
+      <rect width='320' height='180' fill='#1b1b1b' />
+      <circle cx='240' cy='70' r='26' fill='#0047ff' />
+      <path d='M0 112 Q80 100 160 112 T320 112 V180 H0Z' fill='#0047ff' />
+      <path d='M0 132 Q80 122 160 132 T320 132 V180 H0Z' fill='#ededed' />
+      <path d='M118 104 L148 104 L142 112 L124 112Z' fill='#1b1b1b' />
+      <path d='M133 102 L133 58 L152 100Z' fill='#1b1b1b' />
     </svg>
   );
 }
@@ -39,10 +39,10 @@ export default function Demo() {
         style={{
           minHeight: 44,
           padding: '0 16px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

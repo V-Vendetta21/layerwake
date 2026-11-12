@@ -28,7 +28,6 @@ export default function MotionPage() {
       </nav>
       <main>
         <header className='mgx-hero'>
-          <p className='lw-eyebrow'>Motion Gallery</p>
           <h1>{CATALOG.length} motion components you can copy</h1>
           <p>
             Each one is a React file and a CSS file, sometimes with a small

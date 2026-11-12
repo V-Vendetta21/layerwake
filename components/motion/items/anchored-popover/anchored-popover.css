@@ -6,23 +6,23 @@
 .mg-pop__trigger {
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 .mg-pop__trigger[aria-expanded='true'] {
-  border-color: var(--mg-accent, #164cff);
-  background: #e6ecff;
+  border-color: var(--mg-accent-text, #648aff);
+  background: #141d38;
 }
 
 .mg-pop__trigger:focus-visible,
 .mg-pop__close:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -35,11 +35,11 @@
   gap: 10px;
   width: 210px;
   padding: 14px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 18px 36px -16px rgba(12, 23, 56, 0.5);
-  color: #46527a;
+  background: #121212;
+  box-shadow: 0 18px 36px -16px rgba(0, 0, 0, 0.5);
+  color: #b8b8b8;
   font-size: 13px;
 }
 
@@ -55,7 +55,7 @@
   padding: 0 12px;
   border: 0;
   border-radius: 8px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   color: #fff;
   font: inherit;
   font-weight: 600;

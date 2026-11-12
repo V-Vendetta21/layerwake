@@ -1,7 +1,7 @@
 .mg-dual {
   position: relative;
   height: 64px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-dual__track {
@@ -11,7 +11,7 @@
   left: 11px;
   height: 6px;
   border-radius: 3px;
-  background: #e1e8fb;
+  background: #262626;
 }
 
 .mg-dual__fill {
@@ -21,7 +21,7 @@
   left: var(--mg-low);
   right: calc(100% - var(--mg-high));
   border-radius: 3px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transition:
     left 120ms ease-out,
     right 120ms ease-out;
@@ -32,7 +32,7 @@
   top: 0;
   padding: 2px 6px;
   border-radius: 6px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
@@ -52,7 +52,7 @@
 
 .mg-dual[data-active='0'] .mg-dual__bubble--low,
 .mg-dual[data-active='1'] .mg-dual__bubble--high {
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
 }
 
 /* Both inputs span the track; only their thumbs take pointer input. */
@@ -80,9 +80,9 @@
 .mg-dual__input::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
-  border: 3px solid var(--mg-accent, #164cff);
+  border: 3px solid var(--mg-accent-text, #648aff);
   border-radius: 50%;
-  background: #fff;
+  background: #121212;
   pointer-events: auto;
   cursor: grab;
   -webkit-appearance: none;
@@ -91,20 +91,20 @@
 .mg-dual__input::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  border: 3px solid var(--mg-accent, #164cff);
+  border: 3px solid var(--mg-accent-text, #648aff);
   border-radius: 50%;
-  background: #fff;
+  background: #121212;
   pointer-events: auto;
   cursor: grab;
 }
 
 .mg-dual__input:focus-visible::-webkit-slider-thumb {
-  outline: 3px solid var(--mg-ink, #0c1738);
+  outline: 3px solid var(--mg-text, #ffffff);
   outline-offset: 2px;
 }
 
 .mg-dual__input:focus-visible::-moz-range-thumb {
-  outline: 3px solid var(--mg-ink, #0c1738);
+  outline: 3px solid var(--mg-text, #ffffff);
   outline-offset: 2px;
 }
 

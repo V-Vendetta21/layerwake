@@ -8,7 +8,7 @@ export default function Demo() {
   return (
     <div style={{ display: 'grid', gap: 14, justifyItems: 'center' }}>
       {/* Inherits the page font. Layerwake uses Inter, a variable font. */}
-      <p style={{ margin: 0, fontSize: 34, color: '#0c1738' }}>
+      <p style={{ margin: 0, fontSize: 34, color: '#ffffff' }}>
         <VariableWeightRamp
           text='Heavy weather'
           min={min}
@@ -22,7 +22,7 @@ export default function Demo() {
           flexWrap: 'wrap',
           gap: 12,
           alignItems: 'end',
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >
@@ -35,7 +35,7 @@ export default function Demo() {
             step={50}
             value={min}
             onChange={(e) => setMin(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <label style={{ display: 'grid', gap: 2 }}>
@@ -47,7 +47,7 @@ export default function Demo() {
             step={50}
             value={max}
             onChange={(e) => setMax(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <button
@@ -57,10 +57,10 @@ export default function Demo() {
           style={{
             minHeight: 40,
             padding: '0 14px',
-            border: '1px solid #b9c5e6',
+            border: '1px solid #474747',
             borderRadius: 8,
-            background: '#fff',
-            color: '#0c1738',
+            background: '#121212',
+            color: '#ffffff',
             font: 'inherit',
             fontWeight: 600,
             cursor: 'pointer',

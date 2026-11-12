@@ -16,7 +16,7 @@ export default function Demo() {
         <strong style={{ display: 'block', fontSize: 18 }}>
           Harbor kayak tour
         </strong>
-        <span style={{ display: 'block', marginTop: 6, color: '#46527a' }}>
+        <span style={{ display: 'block', marginTop: 6, color: '#b8b8b8' }}>
           Two hours along the sea caves. Gear included.
         </span>
         <span
@@ -24,7 +24,7 @@ export default function Demo() {
             display: 'block',
             marginTop: 14,
             fontSize: 12,
-            color: '#46527a',
+            color: '#b8b8b8',
           }}
         >
           Lift the corner ↘

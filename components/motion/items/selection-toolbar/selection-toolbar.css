@@ -2,21 +2,21 @@
   position: relative;
   display: grid;
   gap: 10px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-seltb__text {
   margin: 0;
   padding: 12px 14px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
+  background: #121212;
   line-height: 1.6;
   user-select: text;
 }
 
 .mg-seltb__text:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .mg-seltb__text [data-marks~='highlight'] {
-  background: var(--mg-green, #b6ff3b);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-seltb__bar {
@@ -41,8 +41,8 @@
   gap: 2px;
   padding: 4px;
   border-radius: 10px;
-  background: var(--mg-ink, #0c1738);
-  box-shadow: 0 12px 24px -12px rgba(12, 23, 56, 0.7);
+  background: var(--mg-raised, #262626);
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.7);
   animation: mg-seltb-in 160ms ease-out;
 }
 
@@ -65,22 +65,22 @@
 }
 
 .mg-seltb__bar button:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--mg-green, #b6ff3b);
+  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #648aff);
 }
 
 .mg-seltb__hl {
   padding: 0 3px;
-  background: var(--mg-green, #b6ff3b);
-  color: var(--mg-ink, #0c1738);
+  background: var(--mg-accent, #0047ff);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-seltb__fallback {
   justify-self: start;
   min-height: 40px;
   padding: 0 12px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 8px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-weight: 600;

@@ -20,7 +20,7 @@
 
 .mg-shutter__slat {
   flex: 1;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
   /* Slight overlap hides hairline gaps between slats. */
   margin-right: -1px;
   transform-origin: left center;
@@ -29,7 +29,7 @@
 }
 
 .mg-shutter__slat:nth-child(even) {
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
 }
 
 @keyframes mg-shutter-open {

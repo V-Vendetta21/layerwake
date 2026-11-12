@@ -27,7 +27,7 @@ export function SvgWaveDivider({
   amplitude = 10,
   speed = 0.25,
   height = 48,
-  fill = '#164cff',
+  fill = '#0047ff',
   paused = false,
   className = '',
 }: SvgWaveDividerProps) {

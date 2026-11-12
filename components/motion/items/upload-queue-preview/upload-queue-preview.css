@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-uploads__item {
@@ -12,9 +12,9 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
+  background: #121212;
   animation: mg-uploads-in 260ms ease-out;
 }
 
@@ -40,7 +40,7 @@
 
 .mg-uploads__row span,
 .mg-uploads__state {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 12px;
 }
 
@@ -48,37 +48,37 @@
   height: 6px;
   overflow: hidden;
   border-radius: 3px;
-  background: #e1e8fb;
+  background: #262626;
 }
 
 .mg-uploads__bar span {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transform: scaleX(var(--mg-progress));
   transform-origin: left;
   transition: transform 260ms linear;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__bar span {
-  background: #3d6b00;
+  background: #0047ff;
 }
 
 .mg-uploads__item[data-status='failed'] .mg-uploads__bar span {
-  background: #b3122c;
+  background: #262626;
 }
 
 .mg-uploads__item[data-status='canceled'] .mg-uploads__bar span {
-  background: #8a96bd;
+  background: #5c5c5c;
 }
 
 .mg-uploads__item button {
   flex: none;
   min-height: 40px;
   padding: 0 12px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 8px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-size: 13px;
@@ -87,7 +87,7 @@
 }
 
 .mg-uploads__item button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -97,19 +97,19 @@
   flex: none;
   width: 22px;
   height: 22px;
-  border: 2px solid #8a96bd;
+  border: 2px solid #5c5c5c;
   border-radius: 50%;
 }
 
 .mg-uploads__item[data-status='uploading'] .mg-uploads__icon {
-  border-color: #e1e8fb;
-  border-top-color: var(--mg-accent, #164cff);
+  border-color: #303030;
+  border-top-color: var(--mg-accent-text, #648aff);
   animation: mg-uploads-spin 900ms linear infinite;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__icon {
-  border-color: #3d6b00;
-  background: #3d6b00;
+  border-color: #648aff;
+  background: #0047ff;
 }
 
 .mg-uploads__item[data-status='completed'] .mg-uploads__icon::after {
@@ -125,9 +125,9 @@
 }
 
 .mg-uploads__item[data-status='failed'] .mg-uploads__icon {
-  border-color: #b3122c;
+  border-color: #ffffff;
   border-radius: 4px;
-  background: #b3122c;
+  background: #262626;
 }
 
 .mg-uploads__item[data-status='failed'] .mg-uploads__icon::after {
@@ -147,7 +147,7 @@
   left: 3px;
   width: 12px;
   height: 2px;
-  background: #8a96bd;
+  background: #5c5c5c;
   content: '';
 }
 

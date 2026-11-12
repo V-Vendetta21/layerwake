@@ -276,7 +276,7 @@ describe('model and export', () => {
     const tokens = JSON.parse(tokensJson(model, edits, 'x'));
     expect(tokens.tokens.color.surface).toMatchObject({
       value: '#ff00aa',
-      measured: '#ffffff',
+      measured: '#121212',
       edited: true,
     });
     // Unedited output still carries the measured value.

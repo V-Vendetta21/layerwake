@@ -13,7 +13,7 @@
 }
 
 .mg-lens:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 3px;
 }
 
@@ -25,8 +25,8 @@
   border: 3px solid #fff;
   border-radius: 50%;
   box-shadow:
-    0 0 0 1px rgba(12, 23, 56, 0.35),
-    0 14px 30px -12px rgba(12, 23, 56, 0.6);
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 14px 30px -12px rgba(0, 0, 0, 0.6);
   pointer-events: none;
   animation: mg-lens-in 160ms ease-out;
 }

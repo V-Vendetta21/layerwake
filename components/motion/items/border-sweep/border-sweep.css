@@ -3,7 +3,7 @@
   overflow: hidden;
   padding: 2px;
   border-radius: 16px;
-  background: var(--mg-line, #d6def2);
+  background: var(--mg-line, #303030);
 }
 
 /* A large rotating gradient, clipped to the 2px frame by the inner panel. */
@@ -16,8 +16,8 @@
   background: conic-gradient(
     from 0deg,
     transparent 0 68%,
-    var(--mg-accent, #164cff) 86%,
-    var(--mg-green, #b6ff3b) 96%,
+    var(--mg-accent, #0047ff) 86%,
+    var(--mg-accent, #0047ff) 96%,
     transparent 100%
   );
   content: '';
@@ -29,8 +29,8 @@
   position: relative;
   padding: 20px;
   border-radius: 14px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
 }
 
 @keyframes mg-sweep-turn {

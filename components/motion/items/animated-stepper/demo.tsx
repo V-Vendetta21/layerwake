@@ -9,10 +9,10 @@ export default function Demo() {
     ({
       minHeight: 44,
       padding: '0 16px',
-      border: '1px solid #b9c5e6',
+      border: '1px solid #474747',
       borderRadius: 8,
-      background: '#fff',
-      color: disabled ? '#6b7699' : '#0c1738',
+      background: '#121212',
+      color: disabled ? '#8f8f8f' : '#ffffff',
       font: 'inherit',
       fontWeight: 600,
       cursor: disabled ? 'default' : 'pointer',

@@ -5,7 +5,7 @@ const LAYERS = [
     depth: 0.1,
     content: (
       <svg viewBox='0 0 340 240'>
-        <circle cx='250' cy='70' r='30' fill='#b6ff3b' />
+        <circle cx='250' cy='70' r='30' fill='#0047ff' />
       </svg>
     ),
   },
@@ -15,7 +15,7 @@ const LAYERS = [
       <svg viewBox='0 0 340 240'>
         <path
           d='M0 170 L60 110 L110 150 L170 90 L240 160 L300 120 L340 150 V240 H0Z'
-          fill='#7f9bff'
+          fill='#648aff'
         />
       </svg>
     ),
@@ -24,7 +24,7 @@ const LAYERS = [
     depth: 0.7,
     content: (
       <svg viewBox='0 0 340 240'>
-        <path d='M0 200 Q85 180 170 200 T340 200 V240 H0Z' fill='#164cff' />
+        <path d='M0 200 Q85 180 170 200 T340 200 V240 H0Z' fill='#0047ff' />
       </svg>
     ),
   },
@@ -33,8 +33,8 @@ const card = {
   margin: '0 0 12px',
   padding: 14,
   borderRadius: 10,
-  background: 'rgba(255,255,255,0.94)',
-  color: '#0c1738',
+  background: 'rgba(18, 18, 18, 0.94)',
+  color: '#ffffff',
 } as const;
 
 export default function Demo() {

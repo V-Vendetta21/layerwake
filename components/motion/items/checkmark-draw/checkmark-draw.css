@@ -2,7 +2,7 @@
   display: grid;
   gap: 10px;
   justify-items: center;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-checkmark svg {
@@ -12,7 +12,7 @@
 }
 
 .mg-checkmark__ring {
-  stroke: #e1e8fb;
+  stroke: #303030;
   stroke-width: 3;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
@@ -21,14 +21,14 @@
 }
 
 .mg-checkmark__tick {
-  stroke: #3d6b00;
+  stroke: #648aff;
   stroke-width: 4;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
 
 .mg-checkmark[data-done='true'] .mg-checkmark__ring {
-  stroke: #3d6b00;
+  stroke: #648aff;
   animation: mg-checkmark-ring 520ms cubic-bezier(0.6, 0, 0.3, 1) both;
 }
 
@@ -40,7 +40,7 @@
 .mg-checkmark__label {
   min-height: 1.4em;
   margin: 0;
-  color: #3d6b00;
+  color: #8aa8ff;
   font-weight: 700;
 }
 

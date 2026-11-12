@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-stars__legend {
@@ -36,8 +36,8 @@
 .mg-stars__star svg {
   width: 32px;
   height: 32px;
-  fill: #fff;
-  stroke: #8a96bd;
+  fill: #121212;
+  stroke: #5c5c5c;
   stroke-width: 1.5;
   stroke-linejoin: round;
   transition:
@@ -48,15 +48,15 @@
 
 /* Preview: outlined and dashed, so it differs from a real rating by shape. */
 .mg-stars__star[data-state='preview'] svg {
-  fill: #e6ecff;
-  stroke: var(--mg-accent, #164cff);
+  fill: #141d38;
+  stroke: var(--mg-accent-text, #648aff);
   stroke-dasharray: 3 2;
   transform: scale(1.06);
 }
 
 .mg-stars__star[data-state='set'] svg {
-  fill: var(--mg-accent, #164cff);
-  stroke: var(--mg-ink, #0c1738);
+  fill: var(--mg-accent, #0047ff);
+  stroke: var(--mg-text, #ffffff);
 }
 
 .mg-stars__star[data-pop='true'] svg {
@@ -64,7 +64,7 @@
 }
 
 .mg-stars__input:focus-visible + svg {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -79,7 +79,7 @@
 
 .mg-stars__text {
   margin: 6px 0 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

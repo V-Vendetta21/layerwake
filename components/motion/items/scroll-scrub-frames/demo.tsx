@@ -6,14 +6,14 @@ const FRAMES = 8;
 function Sunrise({ index }: { index: number }) {
   const t = index / (FRAMES - 1);
   const sky = [
-    '#0c1738',
-    '#25345f',
-    '#46527a',
-    '#7f9bff',
-    '#b9c5e6',
-    '#dbe5ff',
-    '#e6ecff',
-    '#f5f8ff',
+    '#262626',
+    '#1b1b1b',
+    '#474747',
+    '#648aff',
+    '#474747',
+    '#1b1b1b',
+    '#141d38',
+    '#1b1b1b',
   ][index];
   return (
     <svg
@@ -26,10 +26,10 @@ function Sunrise({ index }: { index: number }) {
         cx={80 + t * 140}
         cy={150 - t * 100}
         r={16 + t * 6}
-        fill='#b6ff3b'
+        fill='#0047ff'
       />
-      <path d='M0 140 Q80 130 160 140 T320 140 V200 H0Z' fill='#164cff' />
-      <path d={`M${40 + t * 180} 136 h26 l-5 7 h-16z`} fill='#f5f8ff' />
+      <path d='M0 140 Q80 130 160 140 T320 140 V200 H0Z' fill='#0047ff' />
+      <path d={`M${40 + t * 180} 136 h26 l-5 7 h-16z`} fill='#1b1b1b' />
     </svg>
   );
 }

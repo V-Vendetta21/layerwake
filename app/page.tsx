@@ -38,9 +38,6 @@ export default function LayerwakeHome() {
       <main>
         <section className='lw-hero'>
           <div>
-            <p className='lw-eyebrow'>
-              Capture <b>→</b> Inspect <b>→</b> Rebuild <b>→</b> Export
-            </p>
             <h1>
               See how interfaces are built. <span>Make them your own.</span>
             </h1>

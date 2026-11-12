@@ -22,10 +22,10 @@ export default function Demo() {
             style={{
               minHeight: 40,
               padding: '0 12px',
-              border: '1px solid #b9c5e6',
+              border: '1px solid #474747',
               borderRadius: 8,
-              background: series === key ? '#164cff' : '#fff',
-              color: series === key ? '#fff' : '#0c1738',
+              background: series === key ? '#0047ff' : '#121212',
+              color: series === key ? '#fff' : '#ffffff',
               font: 'inherit',
               fontWeight: 600,
               cursor: 'pointer',

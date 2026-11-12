@@ -6,7 +6,7 @@ const button = {
   padding: '0 18px',
   border: 0,
   borderRadius: 8,
-  background: '#164cff',
+  background: '#0047ff',
   color: '#fff',
   font: 'inherit',
   fontWeight: 600,

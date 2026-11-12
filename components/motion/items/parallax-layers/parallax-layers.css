@@ -6,11 +6,11 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: 14px;
-  background: #dbe5ff;
+  background: #1b1b1b;
 }
 
 .mg-parallax:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 

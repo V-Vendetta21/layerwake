@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-kaleido__wedge {
@@ -31,7 +31,7 @@
   width: 22%;
   height: 22%;
   border-radius: 50%;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-kaleido__b {
@@ -39,7 +39,7 @@
   left: 36%;
   width: 14%;
   height: 14%;
-  background: var(--mg-green, #b6ff3b);
+  background: var(--mg-accent, #0047ff);
   transform: rotate(45deg);
 }
 
@@ -49,7 +49,7 @@
   width: 6%;
   height: 30%;
   border-radius: 3px;
-  background: #7f9bff;
+  background: #648aff;
 }
 
 @keyframes mg-kaleido-turn {

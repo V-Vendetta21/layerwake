@@ -13,16 +13,18 @@
 
 .mg-theme__layer[data-theme='light'] {
   background: #ffffff;
-  color: #0c1738;
-  --mg-muted: #46527a;
-  --mg-surface: #f5f8ff;
+  color: #080808;
+  --mg-muted: #4a4a4a;
+  --mg-surface: #f0f0f0;
+  --mg-label: #0047ff;
 }
 
 .mg-theme__layer[data-theme='dark'] {
-  background: #0c1738;
-  color: #f5f8ff;
-  --mg-muted: #c3cdec;
-  --mg-surface: #1a2752;
+  background: #080808;
+  color: #ffffff;
+  --mg-muted: #b8b8b8;
+  --mg-surface: #1b1b1b;
+  --mg-label: #648aff;
 }
 
 .mg-theme__layer--reveal {
@@ -38,24 +40,27 @@
   top: 12px;
   right: 12px;
   z-index: 2;
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid #b9c5e6;
+  border: 1px solid #c8c8c8;
   border-radius: 50%;
-  background: #fff;
-  color: #0c1738;
+  background: #ffffff;
+  color: #080808;
   font-size: 20px;
   cursor: pointer;
 }
 
 .mg-theme__toggle[data-theme='dark'] {
-  border-color: #3a4b7d;
-  background: #1a2752;
-  color: #b6ff3b;
+  border-color: #474747;
+  background: #1b1b1b;
+  color: #ffffff;
 }
 
 .mg-theme__toggle:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
+  box-shadow: 0 0 0 5px #080808;
   outline-offset: 2px;
 }
 

@@ -38,8 +38,8 @@
   gap: 8px;
   padding: 6px 6px 6px 14px;
   border-radius: 12px;
-  background: var(--mg-ink, #0c1738);
-  box-shadow: 0 12px 28px -12px rgba(12, 23, 56, 0.6);
+  background: var(--mg-raised, #262626);
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.6);
   color: #fff;
   animation: mg-toast-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -66,7 +66,7 @@
 }
 
 .mg-toasts__close:focus-visible {
-  outline: 2px solid var(--mg-green, #b6ff3b);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: -2px;
 }
 

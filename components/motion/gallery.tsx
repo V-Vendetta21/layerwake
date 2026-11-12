@@ -9,6 +9,11 @@ import {
   useState,
   type KeyboardEvent,
 } from 'react';
+import {
+  InteractIcon,
+  ReplayIcon,
+  ResetIcon,
+} from '@/components/layerwake/icons';
 import { CATALOG, CATEGORIES } from './catalog';
 import { DEMOS, SOURCES } from './loaders.generated';
 import type { CatalogEntry, MotionCategory, MotionSource } from './types';
@@ -285,7 +290,7 @@ function Entry({ entry }: { entry: CatalogEntry }) {
             onClick={() => setRun((n) => n + 1)}
             aria-label={`${entry.replays ? 'Replay' : 'Reset'} ${entry.name}`}
           >
-            <span aria-hidden='true'>↻</span>{' '}
+            {entry.replays ? <ReplayIcon /> : <ResetIcon />}{' '}
             {entry.replays ? 'Replay' : 'Reset'}
           </button>
         ) : null}
@@ -312,7 +317,7 @@ function Entry({ entry }: { entry: CatalogEntry }) {
           ) : null}
         </div>
         <p className='mgx-cue'>
-          <span aria-hidden='true'>☞</span> {entry.cue}
+          <InteractIcon /> {entry.cue}
         </p>
       </div>
       <div

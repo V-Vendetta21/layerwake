@@ -1,5 +1,5 @@
 {
-  "usage": "import { HoverLiftCard } from './hover-lift-card';\n\nexport default function Demo() {\n  return (\n    <HoverLiftCard\n      href='#hover-lift-card'\n      style={{ width: 260, maxWidth: '100%' }}\n    >\n      <strong style={{ display: 'block', fontSize: 17 }}>Harbor guide</strong>\n      <span style={{ display: 'block', marginTop: 6, color: '#46527a' }}>\n        Berths, fuel docks and where to find coffee before six.\n      </span>\n    </HoverLiftCard>\n  );\n}\n",
+  "usage": "import { HoverLiftCard } from './hover-lift-card';\n\nexport default function Demo() {\n  return (\n    <HoverLiftCard\n      href='#hover-lift-card'\n      style={{ width: 260, maxWidth: '100%' }}\n    >\n      <strong style={{ display: 'block', fontSize: 17 }}>Harbor guide</strong>\n      <span style={{ display: 'block', marginTop: 6, color: '#b8b8b8' }}>\n        Berths, fuel docks and where to find coffee before six.\n      </span>\n    </HoverLiftCard>\n  );\n}\n",
   "files": [
     {
       "name": "hover-lift-card.tsx",
@@ -9,7 +9,7 @@
     {
       "name": "hover-lift-card.css",
       "kind": "css",
-      "code": ".mg-lift {\n  display: block;\n  padding: 20px;\n  border: 1px solid var(--mg-line, #d6def2);\n  border-radius: 14px;\n  background: #fff;\n  box-shadow: 0 1px 2px rgba(12, 23, 56, 0.08);\n  color: var(--mg-ink, #0c1738);\n  text-decoration: none;\n  transition:\n    transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),\n    box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1),\n    border-color 240ms ease;\n}\n\n.mg-lift:hover,\n.mg-lift:focus-visible {\n  border-color: var(--mg-accent, #164cff);\n  box-shadow: 0 18px 36px -14px rgba(22, 76, 255, 0.45);\n  transform: translateY(-6px);\n}\n\n.mg-lift:focus-visible {\n  outline: 2px solid var(--mg-accent, #164cff);\n  outline-offset: 3px;\n}\n\n.mg-lift:active {\n  transform: translateY(-2px);\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-lift,\n  .mg-lift:hover,\n  .mg-lift:focus-visible,\n  .mg-lift:active {\n    transform: none;\n    transition: none;\n  }\n}\n"
+      "code": ".mg-lift {\n  display: block;\n  padding: 20px;\n  border: 1px solid var(--mg-line, #303030);\n  border-radius: 14px;\n  background: #121212;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);\n  color: var(--mg-text, #ffffff);\n  text-decoration: none;\n  transition:\n    transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),\n    box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1),\n    border-color 240ms ease;\n}\n\n.mg-lift:hover,\n.mg-lift:focus-visible {\n  border-color: var(--mg-accent-text, #648aff);\n  box-shadow: 0 18px 36px -14px rgba(0, 71, 255, 0.45);\n  transform: translateY(-6px);\n}\n\n.mg-lift:focus-visible {\n  outline: 2px solid var(--mg-accent-text, #648aff);\n  outline-offset: 3px;\n}\n\n.mg-lift:active {\n  transform: translateY(-2px);\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-lift,\n  .mg-lift:hover,\n  .mg-lift:focus-visible,\n  .mg-lift:active {\n    transform: none;\n    transition: none;\n  }\n}\n"
     }
   ]
 }

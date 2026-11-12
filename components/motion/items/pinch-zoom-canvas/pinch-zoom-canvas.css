@@ -1,23 +1,23 @@
 .mg-pinch {
   display: grid;
   gap: 8px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-pinch__box {
   position: relative;
   height: 200px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
+  background: #121212;
   cursor: grab;
   /* Every touch gesture in here is ours; the rest of the page is untouched. */
   touch-action: none;
 }
 
 .mg-pinch__box:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -50,9 +50,9 @@
   min-width: 44px;
   min-height: 44px;
   padding: 0 10px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 8px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -65,7 +65,7 @@
 }
 
 .mg-pinch__controls button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 

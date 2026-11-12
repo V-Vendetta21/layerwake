@@ -8,15 +8,15 @@ function Lighthouse() {
       role='img'
       aria-label='A striped lighthouse on a rock at dusk'
     >
-      <rect width='300' height='200' fill='#25345f' />
-      <circle cx='230' cy='50' r='18' fill='#b6ff3b' />
-      <path d='M120 160 L132 70 H160 L172 160Z' fill='#f5f8ff' />
+      <rect width='300' height='200' fill='#1b1b1b' />
+      <circle cx='230' cy='50' r='18' fill='#0047ff' />
+      <path d='M120 160 L132 70 H160 L172 160Z' fill='#1b1b1b' />
       <path
         d='M126 115 H166 L168 130 H124Z M129 90 H163 L164 100 H128Z'
-        fill='#e2452b'
+        fill='#648aff'
       />
-      <rect x='134' y='56' width='24' height='14' fill='#b6ff3b' />
-      <path d='M0 160 Q75 150 150 160 T300 160 V200 H0Z' fill='#164cff' />
+      <rect x='134' y='56' width='24' height='14' fill='#0047ff' />
+      <path d='M0 160 Q75 150 150 160 T300 160 V200 H0Z' fill='#0047ff' />
     </svg>
   );
 }
@@ -42,10 +42,10 @@ export default function Demo() {
         style={{
           minHeight: 44,
           padding: '0 16px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

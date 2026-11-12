@@ -8,7 +8,7 @@
   width: 0.55em;
   height: 1.1em;
   margin-left: 2px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   vertical-align: text-bottom;
   animation: mg-typewriter-blink 1s steps(1) infinite;
 }

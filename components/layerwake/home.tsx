@@ -8,12 +8,13 @@ import { parsePx, px } from '@/lib/layerwake/css-values';
 import { EMPTY_EDITS, type Edits } from '@/lib/layerwake/model';
 import { loadDemo, loadFile, remember, WORKSPACE_PATH } from './capture-io';
 import { ComponentRender } from './render';
+import { CloseIcon } from './icons';
 
 const ACCENTS = [
-  { name: 'Cobalt', value: '#164cff' },
-  { name: 'Ink', value: '#0c1738' },
-  { name: 'Kelp', value: '#0b7a5c' },
-  { name: 'Coral', value: '#e2452b' },
+  { name: 'Electric blue', value: '#0047ff' },
+  { name: 'Deep blue', value: '#0030b0' },
+  { name: 'Graphite', value: '#2e2e2e' },
+  { name: 'Smoke', value: '#5c5c5c' },
 ];
 
 export function HomeActions() {
@@ -79,7 +80,7 @@ export function HomeActions() {
             aria-label='Dismiss'
             onClick={() => setError(null)}
           >
-            ×
+            <CloseIcon />
           </button>
         </div>
       ) : null}
@@ -180,7 +181,7 @@ export function HomeSample() {
                   min={0}
                   max={40}
                   step={1}
-                  style={{ width: '100%', accentColor: 'var(--lw-cobalt)' }}
+                  style={{ width: '100%', accentColor: 'var(--lw-accent)' }}
                   value={
                     parsePx(edits.tokens[radius.id] ?? radius.original) ?? 0
                   }

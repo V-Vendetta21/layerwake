@@ -1,7 +1,7 @@
 .mg-curtain {
   display: grid;
   gap: 8px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-curtain__nav {
@@ -12,9 +12,9 @@
 .mg-curtain__nav button {
   min-height: 40px;
   padding: 0 12px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 8px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -22,13 +22,13 @@
 }
 
 .mg-curtain__nav button[aria-current='page'] {
-  border-color: var(--mg-ink, #0c1738);
-  background: var(--mg-ink, #0c1738);
+  border-color: var(--mg-text, #ffffff);
+  background: var(--mg-raised, #262626);
   color: #fff;
 }
 
 .mg-curtain__nav button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -36,19 +36,19 @@
   position: relative;
   min-height: 170px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
+  background: #121212;
 }
 
 .mg-curtain__view {
   padding: 14px;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 .mg-curtain__view h3 {
   margin: 0 0 6px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-size: 18px;
 }
 
@@ -58,7 +58,7 @@
 
 .mg-curtain__view h3:focus-visible {
   text-decoration: underline;
-  text-decoration-color: var(--mg-accent, #164cff);
+  text-decoration-color: var(--mg-accent-text, #648aff);
   text-underline-offset: 4px;
 }
 
@@ -66,7 +66,7 @@
 .mg-curtain__cloth {
   position: absolute;
   inset: 0;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transform: scaleX(0);
   transform-origin: left;
   pointer-events: none;

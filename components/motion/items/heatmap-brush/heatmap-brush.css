@@ -1,14 +1,14 @@
 .mg-heat {
   display: grid;
   gap: 4px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-size: 11px;
 }
 
 .mg-heat__head {
   display: grid;
   grid-template-columns: 52px repeat(var(--mg-cols), minmax(0, 1fr));
-  color: #46527a;
+  color: #b8b8b8;
   text-align: center;
 }
 
@@ -19,7 +19,7 @@
 
 .mg-heat__rows {
   display: grid;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 .mg-heat__rows span {
@@ -41,7 +41,7 @@
 }
 
 .mg-heat__grid:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 3px;
 }
 
@@ -52,10 +52,10 @@
   border-radius: 4px;
   background: color-mix(
     in srgb,
-    var(--mg-accent, #164cff) calc(var(--mg-heat) * 85%),
-    #f5f8ff
+    var(--mg-accent, #0047ff) calc(var(--mg-heat) * 85%),
+    #1b1b1b
   );
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-variant-numeric: tabular-nums;
 }
 
@@ -65,11 +65,11 @@
 
 .mg-heat__brush {
   position: absolute;
-  border: 3px solid var(--mg-green, #b6ff3b);
+  border: 3px solid var(--mg-accent-text, #648aff);
   border-radius: 6px;
   box-shadow:
-    0 0 0 1px var(--mg-ink, #0c1738),
-    inset 0 0 0 1px var(--mg-ink, #0c1738);
+    0 0 0 1px var(--mg-text, #ffffff),
+    inset 0 0 0 1px var(--mg-text, #ffffff);
   pointer-events: none;
   transition:
     left 200ms ease,
@@ -81,7 +81,7 @@
 .mg-heat__summary {
   min-height: 2.6em;
   margin: 6px 0 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

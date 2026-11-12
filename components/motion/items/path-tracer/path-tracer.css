@@ -13,23 +13,23 @@
 }
 
 .mg-tracer__route {
-  stroke: #c3cdec;
+  stroke: #303030;
   stroke-width: 3;
   stroke-dasharray: 2 6;
 }
 
 .mg-tracer__done {
-  stroke: var(--mg-accent, #164cff);
+  stroke: var(--mg-accent-text, #648aff);
   stroke-width: 4;
   stroke-dasharray: 1;
 }
 
 .mg-tracer__end {
-  fill: var(--mg-ink, #0c1738);
+  fill: var(--mg-raised, #262626);
 }
 
 .mg-tracer__label {
-  fill: var(--mg-ink, #0c1738);
+  fill: var(--mg-text, #ffffff);
   font-size: 12px;
   font-weight: 700;
   paint-order: stroke;
@@ -38,8 +38,8 @@
 }
 
 .mg-tracer__marker {
-  fill: var(--mg-green, #b6ff3b);
-  stroke: var(--mg-ink, #0c1738);
+  fill: var(--mg-accent, #0047ff);
+  stroke: var(--mg-text, #ffffff);
   stroke-width: 2;
 }
 

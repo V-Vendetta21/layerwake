@@ -28,6 +28,7 @@ import { Inspector } from './inspector';
 import { LayerwakeBrand } from './logo';
 import { LayerTree, TokenGroups } from './panels';
 import { ComponentRender } from './render';
+import { CloseIcon } from './icons';
 
 type Panel = 'layers' | 'preview' | 'inspect' | 'export';
 type WidthMode = 'captured' | 'compact' | 'fill';
@@ -259,7 +260,7 @@ export function Workspace() {
                 aria-label='Dismiss'
                 onClick={() => setError(null)}
               >
-                ×
+                <CloseIcon />
               </button>
             </div>
           ) : null}

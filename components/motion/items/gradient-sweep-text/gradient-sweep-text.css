@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
   margin: 0;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-sweeptext__band {
@@ -11,9 +11,9 @@
   background: linear-gradient(
     100deg,
     transparent 0 38%,
-    var(--mg-accent, #164cff) 45%,
-    #5b86ff 50%,
-    var(--mg-accent, #164cff) 55%,
+    var(--mg-accent, #0047ff) 45%,
+    #3366ff 50%,
+    var(--mg-accent, #0047ff) 55%,
     transparent 62% 100%
   );
   background-size: 300% 100%;
@@ -47,6 +47,6 @@
     display: none;
   }
   .mg-sweeptext {
-    color: var(--mg-accent, #164cff);
+    color: var(--mg-accent-text, #648aff);
   }
 }

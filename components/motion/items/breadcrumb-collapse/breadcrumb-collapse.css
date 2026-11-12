@@ -1,7 +1,7 @@
 .mg-crumbs {
   position: relative;
   min-width: 0;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-crumbs__list,
@@ -29,7 +29,7 @@
 
 .mg-crumbs__item + .mg-crumbs__item::before {
   margin: 0 4px;
-  color: #8a96bd;
+  color: #8f8f8f;
   content: '/';
 }
 
@@ -51,7 +51,7 @@
 
 button.mg-crumbs__link,
 button.mg-crumbs__more {
-  color: var(--mg-accent, #164cff);
+  color: var(--mg-accent-text, #648aff);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -69,7 +69,7 @@ button.mg-crumbs__more {
 .mg-crumbs__link:focus-visible,
 .mg-crumbs__more:focus-visible,
 .mg-crumbs__menu button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 1px;
 }
 
@@ -81,10 +81,10 @@ button.mg-crumbs__more {
   display: grid;
   min-width: 160px;
   padding: 6px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 14px 28px -14px rgba(12, 23, 56, 0.45);
+  background: #121212;
+  box-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.45);
   animation: mg-crumbs-menu 160ms ease-out;
 }
 
@@ -98,7 +98,7 @@ button.mg-crumbs__more {
   border: 0;
   border-radius: 6px;
   background: none;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -106,7 +106,7 @@ button.mg-crumbs__more {
 
 .mg-crumbs__menu button:hover,
 .mg-crumbs__menu button:focus {
-  background: #e6ecff;
+  background: #141d38;
 }
 
 @keyframes mg-crumbs-in {

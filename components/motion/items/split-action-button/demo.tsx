@@ -32,7 +32,7 @@ export default function Demo() {
           )
         }
       />
-      <span role='status' style={{ color: '#46527a' }}>
+      <span role='status' style={{ color: '#b8b8b8' }}>
         {outcome}
       </span>
     </div>

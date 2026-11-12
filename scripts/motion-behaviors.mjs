@@ -1535,13 +1535,13 @@ export async function checkpointThree(page, check) {
     'palette switches and Pause stops the drift',
     async (c) => {
       const root = c.locator('.mg-mesh');
-      await c.getByRole('button', { name: 'Dusk' }).click();
+      await c.getByRole('button', { name: 'Graphite' }).click();
       const color = await root.evaluate((el) =>
         el.style.getPropertyValue('--mg-c2')
       );
       await c.getByRole('button', { name: 'Pause' }).click();
       return [
-        color === '#e2452b' &&
+        color === '#5c5c5c' &&
           (await root.getAttribute('data-playing')) === 'false',
         color,
       ];

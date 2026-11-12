@@ -17,7 +17,7 @@ export default function Demo() {
         <strong style={{ display: 'block', fontSize: 17 }}>
           Morning report
         </strong>
-        <span style={{ display: 'block', marginTop: 6, color: '#46527a' }}>
+        <span style={{ display: 'block', marginTop: 6, color: '#b8b8b8' }}>
           Visibility is good and the bar is safe to cross until noon.
         </span>
       </SkeletonSweep>
@@ -29,10 +29,10 @@ export default function Demo() {
           justifySelf: 'start',
           minHeight: 44,
           padding: '0 14px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: loading ? '#6b7699' : '#0c1738',
+          background: '#121212',
+          color: loading ? '#8f8f8f' : '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: loading ? 'default' : 'pointer',

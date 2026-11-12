@@ -20,12 +20,12 @@
 
 .mg-stepper::before {
   right: calc(50% / var(--mg-count));
-  background: var(--mg-line, #d6def2);
+  background: var(--mg-line, #303030);
 }
 
 .mg-stepper::after {
   width: calc((100% - 100% / var(--mg-count)) * var(--mg-progress));
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transition: width 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -40,13 +40,13 @@
   border: 0;
   border-radius: 10px;
   background: none;
-  color: #46527a;
+  color: #b8b8b8;
   font: inherit;
   cursor: pointer;
 }
 
 .mg-stepper__button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -55,9 +55,9 @@
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 2px solid var(--mg-line, #d6def2);
+  border: 2px solid var(--mg-line, #303030);
   border-radius: 50%;
-  background: #fff;
+  background: #121212;
   font-weight: 700;
   transition:
     background-color 300ms ease 150ms,
@@ -67,19 +67,19 @@
 }
 
 .mg-stepper__step[data-state='done'] .mg-stepper__dot {
-  border-color: var(--mg-accent, #164cff);
-  background: var(--mg-accent, #164cff);
+  border-color: var(--mg-accent-text, #648aff);
+  background: var(--mg-accent, #0047ff);
   color: #fff;
 }
 
 .mg-stepper__step[data-state='current'] .mg-stepper__dot {
-  border-color: var(--mg-accent, #164cff);
-  color: var(--mg-ink, #0c1738);
+  border-color: var(--mg-accent-text, #648aff);
+  color: var(--mg-text, #ffffff);
   transform: scale(1.12);
 }
 
 .mg-stepper__step[data-state='current'] .mg-stepper__name {
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-weight: 600;
 }
 

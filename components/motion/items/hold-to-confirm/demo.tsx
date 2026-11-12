@@ -12,7 +12,7 @@ export default function Demo() {
         resetKey={resetKey}
         onConfirm={() => setDeleted((n) => n + 1)}
       />
-      <span style={{ color: '#46527a', fontSize: 13 }}>
+      <span style={{ color: '#b8b8b8', fontSize: 13 }}>
         Confirmed {deleted} {deleted === 1 ? 'time' : 'times'}
       </span>
       <button
@@ -21,10 +21,10 @@ export default function Demo() {
         style={{
           minHeight: 40,
           padding: '0 14px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

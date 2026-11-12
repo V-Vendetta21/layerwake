@@ -60,10 +60,10 @@ export default function Demo() {
             style={{
               minHeight: 40,
               padding: '0 10px',
-              border: '1px solid #b9c5e6',
+              border: '1px solid #474747',
               borderRadius: 8,
-              background: source === n.id ? '#0c1738' : '#fff',
-              color: source === n.id ? '#fff' : '#0c1738',
+              background: source === n.id ? '#0047ff' : '#121212',
+              color: source === n.id ? '#fff' : '#ffffff',
               font: 'inherit',
               fontSize: 13,
               fontWeight: 600,
@@ -74,7 +74,7 @@ export default function Demo() {
           </button>
         ))}
       </div>
-      <p role='status' style={{ margin: 0, color: '#46527a', fontSize: 13 }}>
+      <p role='status' style={{ margin: 0, color: '#b8b8b8', fontSize: 13 }}>
         {summary}
       </p>
     </div>

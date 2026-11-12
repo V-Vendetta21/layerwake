@@ -18,7 +18,7 @@ interface Piece {
   style: CSSProperties;
 }
 
-const DEFAULT_COLORS = ['#164cff', '#b6ff3b', '#0c1738', '#7f9bff'];
+const DEFAULT_COLORS = ['#0047ff', '#0047ff', '#262626', '#648aff'];
 
 /** Small seeded generator so every burst looks the same. */
 function random(seed: number) {

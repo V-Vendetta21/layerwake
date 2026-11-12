@@ -128,7 +128,7 @@ const BLOCK_TAGS = [
 const INLINE_TAGS = ['span', 'a', 'strong', 'em', 'small', 'label'];
 
 const IMAGE_PLACEHOLDER =
-  'repeating-linear-gradient(135deg, #dce4f7 0 6px, #edf1fb 6px 12px)';
+  'repeating-linear-gradient(135deg, #2a2a2a 0 6px, #1b1b1b 6px 12px)';
 
 const num = (value: string | undefined): number => {
   if (value === undefined) return 0;

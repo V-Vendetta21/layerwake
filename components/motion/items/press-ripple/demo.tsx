@@ -8,7 +8,7 @@ export default function Demo() {
       <RippleButton onClick={() => setCount((c) => c + 1)}>
         Ring the bell
       </RippleButton>
-      <span role='status' style={{ color: '#46527a' }}>
+      <span role='status' style={{ color: '#b8b8b8' }}>
         Rung {count} {count === 1 ? 'time' : 'times'}
       </span>
     </div>

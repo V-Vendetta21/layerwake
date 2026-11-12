@@ -34,7 +34,7 @@ export function DemoCard() {
           className='coast-card__icon'
           viewBox='0 0 24 24'
           fill='none'
-          stroke='#164CFF'
+          stroke='#648aff'
           strokeWidth='2'
           strokeLinecap='round'
           aria-hidden='true'

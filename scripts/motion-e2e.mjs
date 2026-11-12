@@ -406,9 +406,9 @@ try {
   check(
     'overlay scrollbars: colored with standard properties, still overlay',
     overlay.mode === 'overlay' &&
-      overlay.root === 'rgb(22, 76, 255) rgb(225, 232, 251)' &&
-      overlay.code === 'rgb(127, 155, 255) rgb(26, 39, 82)' &&
-      overlay.thumb !== 'rgb(22, 76, 255)' &&
+      overlay.root === 'rgb(100, 138, 255) rgb(22, 22, 22)' &&
+      overlay.code === 'rgb(92, 92, 92) rgb(18, 18, 18)' &&
+      overlay.thumb !== 'rgb(100, 138, 255)' &&
       overlay.gutter === 0,
     JSON.stringify(overlay)
   );
@@ -455,7 +455,7 @@ try {
   check(
     'document scrollbar: rounded cobalt thumb (Chromium)',
     bars.mode === 'classic' &&
-      ['rgb(22, 76, 255)', 'rgb(15, 58, 214)'].includes(bars.root) &&
+      ['rgb(100, 138, 255)', 'rgb(138, 168, 255)'].includes(bars.root) &&
       bars.rootRadius !== '0px' &&
       bars.rootWidth === '14px' &&
       bars.gutter === 14,
@@ -463,8 +463,8 @@ try {
   );
   check(
     'code panes use the dark-track variant, both axes',
-    bars.code === 'rgb(127, 155, 255)' &&
-      bars.codeTrack === 'rgb(26, 39, 82)' &&
+    bars.code === 'rgb(92, 92, 92)' &&
+      bars.codeTrack === 'rgb(18, 18, 18)' &&
       bars.codeHeight === '14px'
   );
 
@@ -512,16 +512,16 @@ try {
   });
   check(
     'workspace layer tree and inspector scrollbars are styled',
-    ws.left === 'rgb(22, 76, 255)' &&
-      ws.right === 'rgb(22, 76, 255)' &&
+    ws.left === 'rgb(100, 138, 255)' &&
+      ws.right === 'rgb(100, 138, 255)' &&
       ws.scrolls &&
       ws.gutter >= 14,
     JSON.stringify(ws)
   );
   check(
     'captured component previews keep their own scrollbars',
-    ws.render !== 'rgb(22, 76, 255)' &&
-      ws.child !== 'rgb(22, 76, 255)' &&
+    ws.render !== 'rgb(100, 138, 255)' &&
+      ws.child !== 'rgb(100, 138, 255)' &&
       ws.renderColor === 'auto'
   );
   await sb.screenshot({ path: path.join(tmp, 'scrollbars-workspace.png') });
@@ -538,7 +538,7 @@ try {
   );
   check(
     'forced colors: custom scrollbar colors are not applied',
-    forcedThumb !== 'rgb(22, 76, 255)',
+    forcedThumb !== 'rgb(100, 138, 255)',
     forcedThumb
   );
   await forced.close();

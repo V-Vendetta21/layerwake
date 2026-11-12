@@ -3,7 +3,7 @@
   grid-template-columns: 120px minmax(0, 1fr);
   gap: 12px;
   height: 240px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-read__rail {
@@ -22,13 +22,13 @@
   width: 4px;
   overflow: hidden;
   border-radius: 2px;
-  background: var(--mg-line, #d6def2);
+  background: var(--mg-line, #303030);
 }
 
 .mg-read__fill {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transform: scaleY(var(--mg-progress));
   transform-origin: top;
   transition: transform 120ms linear;
@@ -49,7 +49,7 @@
   border: 0;
   border-radius: 6px;
   background: none;
-  color: #46527a;
+  color: #b8b8b8;
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -59,25 +59,25 @@
 }
 
 .mg-read__rail button[aria-current] {
-  background: #e6ecff;
-  color: var(--mg-ink, #0c1738);
+  background: #141d38;
+  color: var(--mg-text, #ffffff);
   font-weight: 700;
 }
 
 .mg-read__rail button[aria-current]::before {
   content: '▸ ';
-  color: var(--mg-accent, #164cff);
+  color: var(--mg-accent-text, #648aff);
 }
 
 .mg-read__rail button:focus-visible,
 .mg-read__article:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 1px;
 }
 
 .mg-read__pct {
   margin-top: auto;
-  color: #46527a;
+  color: #b8b8b8;
   font-variant-numeric: tabular-nums;
 }
 
@@ -87,15 +87,15 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 4px 14px 80px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  color: #46527a;
+  background: #121212;
+  color: #b8b8b8;
 }
 
 .mg-read__article h4 {
   margin: 14px 0 6px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-size: 15px;
 }
 

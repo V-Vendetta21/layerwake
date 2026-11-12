@@ -13,10 +13,10 @@ const PORTS = [
 const button = {
   minHeight: 40,
   padding: '0 12px',
-  border: '1px solid #b9c5e6',
+  border: '1px solid #474747',
   borderRadius: 8,
-  background: '#fff',
-  color: '#0c1738',
+  background: '#121212',
+  color: '#ffffff',
   font: 'inherit',
   fontWeight: 600,
   cursor: 'pointer',
@@ -41,7 +41,7 @@ export default function Demo() {
           flexWrap: 'wrap',
           gap: 8,
           alignItems: 'end',
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >
@@ -54,7 +54,7 @@ export default function Demo() {
             step={10}
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <button

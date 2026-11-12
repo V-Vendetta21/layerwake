@@ -1,15 +1,15 @@
 .mg-drill {
   position: relative;
   display: inline-block;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-drill__trigger {
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -17,7 +17,7 @@
 }
 
 .mg-drill__trigger:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -28,17 +28,17 @@
   z-index: 10;
   width: 230px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 18px 34px -16px rgba(12, 23, 56, 0.5);
+  background: #121212;
+  box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.5);
 }
 
 .mg-drill__path {
   margin: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--mg-line, #d6def2);
-  color: #46527a;
+  border-bottom: 1px solid var(--mg-line, #303030);
+  color: #b8b8b8;
   font-size: 12px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .mg-drill__back {
-  color: var(--mg-accent, #164cff);
+  color: var(--mg-accent-text, #648aff);
   font-weight: 600;
 }
 
@@ -81,12 +81,12 @@
 .mg-drill__back:hover,
 .mg-drill__back:focus {
   outline: none;
-  background: #e6ecff;
+  background: #141d38;
 }
 
 .mg-drill__item:focus-visible,
 .mg-drill__back:focus-visible {
-  box-shadow: inset 0 0 0 2px var(--mg-accent, #164cff);
+  box-shadow: inset 0 0 0 2px var(--mg-accent-text, #648aff);
 }
 
 @keyframes mg-drill-in {

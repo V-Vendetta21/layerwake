@@ -23,10 +23,10 @@ export default function Demo() {
             style={{
               minHeight: 40,
               padding: '0 12px',
-              border: '1px solid #b9c5e6',
+              border: '1px solid #474747',
               borderRadius: 8,
-              background: shape === s ? '#0c1738' : '#fff',
-              color: shape === s ? '#fff' : '#0c1738',
+              background: shape === s ? '#0047ff' : '#121212',
+              color: shape === s ? '#fff' : '#ffffff',
               font: 'inherit',
               fontWeight: 600,
               textTransform: 'capitalize',

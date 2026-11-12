@@ -42,10 +42,10 @@
 
 .mg-marquee__copy li {
   padding: 8px 14px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 999px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   font-weight: 600;
   white-space: nowrap;
 }

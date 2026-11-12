@@ -5,8 +5,8 @@
   min-height: 32px;
   padding: 0 14px 0 10px;
   border-radius: 999px;
-  background: #e6ecff;
-  color: #0c1738;
+  background: #141d38;
+  color: #ffffff;
   font-weight: 600;
   transition:
     background-color 300ms ease,
@@ -14,17 +14,17 @@
 }
 
 .mg-badge[data-status='loading'] {
-  background: #164cff;
+  background: #0047ff;
   color: #fff;
 }
 
 .mg-badge[data-status='success'] {
-  background: #b6ff3b;
-  color: #0c1738;
+  background: #0047ff;
+  color: #ffffff;
 }
 
 .mg-badge[data-status='error'] {
-  background: #b3122c;
+  background: #262626;
   color: #fff;
 }
 

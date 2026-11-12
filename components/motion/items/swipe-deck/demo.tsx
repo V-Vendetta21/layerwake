@@ -24,7 +24,7 @@ export default function Demo() {
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.08em',
-                color: '#164cff',
+                color: '#648aff',
               }}
             >
               ANCHORAGE
@@ -32,7 +32,7 @@ export default function Demo() {
             <strong style={{ display: 'block', margin: '6px 0', fontSize: 20 }}>
               {a.name}
             </strong>
-            <span style={{ color: '#46527a' }}>{a.note}</span>
+            <span style={{ color: '#b8b8b8' }}>{a.note}</span>
           </>
         )}
       />

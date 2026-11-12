@@ -13,10 +13,10 @@
   gap: 6px;
   min-height: 48px;
   padding: 0 4px 0 0;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 10px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -26,8 +26,8 @@
 
 .mg-reorder__row[data-dragging='true'] {
   z-index: 2;
-  border-color: var(--mg-accent, #164cff);
-  box-shadow: 0 14px 28px -14px rgba(12, 23, 56, 0.55);
+  border-color: var(--mg-accent-text, #648aff);
+  box-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.55);
   transition: none;
 }
 
@@ -36,7 +36,7 @@
   place-items: center;
   align-self: stretch;
   width: 36px;
-  color: #8a96bd;
+  color: #8f8f8f;
   letter-spacing: -2px;
   cursor: grab;
   touch-action: none;
@@ -60,31 +60,31 @@
   border: 0;
   border-radius: 8px;
   background: none;
-  color: var(--mg-accent, #164cff);
+  color: var(--mg-accent-text, #648aff);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
 .mg-reorder__move:hover {
-  background: #e6ecff;
+  background: #141d38;
 }
 
 .mg-reorder__move:disabled {
-  color: #c3cbe0;
+  color: #7a7a7a;
   cursor: default;
   background: none;
 }
 
 .mg-reorder__move:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: -2px;
 }
 
 .mg-reorder__status {
   min-height: 1.3em;
   margin: 8px 0 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

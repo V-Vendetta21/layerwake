@@ -21,9 +21,9 @@ export default function Demo() {
         width: 320,
         maxWidth: '100%',
         padding: 12,
-        border: '1px solid #d6def2',
+        border: '1px solid #303030',
         borderRadius: 12,
-        background: '#fff',
+        background: '#121212',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -41,7 +41,7 @@ export default function Demo() {
           margin: '10px 0 0',
           padding: 0,
           listStyle: 'none',
-          color: '#46527a',
+          color: '#b8b8b8',
           minHeight: 132,
         }}
       >

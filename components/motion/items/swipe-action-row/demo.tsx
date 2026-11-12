@@ -12,7 +12,7 @@ const ACTIONS = [
 ];
 
 export default function Demo() {
-  const [log, setLog] = useState('Swipe a row left, or use ⋯.');
+  const [log, setLog] = useState('Swipe a row left, or use its More button.');
   return (
     <div style={{ display: 'grid', gap: 8, width: 320, maxWidth: '100%' }}>
       {MESSAGES.map((m) => (
@@ -25,10 +25,10 @@ export default function Demo() {
           }
         >
           <strong style={{ display: 'block', fontSize: 14 }}>{m}</strong>
-          <span style={{ color: '#46527a', fontSize: 12 }}>Harbor office</span>
+          <span style={{ color: '#b8b8b8', fontSize: 12 }}>Harbor office</span>
         </SwipeActionRow>
       ))}
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         {log}
       </span>
     </div>

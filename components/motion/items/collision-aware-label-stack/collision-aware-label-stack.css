@@ -1,19 +1,19 @@
 .mg-labels {
   margin: 0;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-labels svg {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
+  background: #121212;
 }
 
 .mg-labels__point {
-  fill: var(--mg-accent, #164cff);
+  fill: var(--mg-accent-text, #648aff);
   stroke: #fff;
   stroke-width: 1.5;
   transition:
@@ -23,13 +23,13 @@
 
 .mg-labels__leader {
   fill: none;
-  stroke: #8a96bd;
+  stroke: #5c5c5c;
   stroke-width: 1;
   transition: d 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .mg-labels__item[data-moved='true'] .mg-labels__leader {
-  stroke: var(--mg-accent, #164cff);
+  stroke: var(--mg-accent-text, #648aff);
   stroke-dasharray: 3 2;
 }
 
@@ -38,12 +38,12 @@
 }
 
 .mg-labels__tag rect {
-  fill: var(--mg-foam, #f5f8ff);
-  stroke: var(--mg-line, #d6def2);
+  fill: var(--mg-text, #ffffff);
+  stroke: var(--mg-line, #303030);
 }
 
 .mg-labels__tag text {
-  fill: var(--mg-ink, #0c1738);
+  fill: var(--mg-text, #ffffff);
   font-size: 10px;
   font-weight: 600;
 }
@@ -54,7 +54,7 @@
   gap: 2px 12px;
   margin: 8px 0 0;
   padding: 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 12px;
   list-style: none;
 }

@@ -1,7 +1,7 @@
 .mg-otp {
   display: grid;
   gap: 6px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-otp__label {
@@ -38,9 +38,9 @@
   display: grid;
   place-items: center;
   height: 52px;
-  border: 2px solid var(--mg-line-strong, #b9c5e6);
+  border: 2px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
+  background: #121212;
   font-size: 22px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -51,19 +51,19 @@
 }
 
 .mg-otp__slot[data-filled='true'] {
-  border-color: var(--mg-ink, #0c1738);
+  border-color: var(--mg-text, #ffffff);
 }
 
 .mg-otp__slot[data-active='true'] {
-  border-color: var(--mg-accent, #164cff);
-  box-shadow: 0 0 0 3px #e6ecff;
+  border-color: var(--mg-accent-text, #648aff);
+  box-shadow: 0 0 0 3px #303030;
   transform: translateY(-2px);
 }
 
 .mg-otp__slot[data-active='true']:empty::after {
   width: 2px;
   height: 22px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   content: '';
   animation: mg-otp-caret 1s steps(1) infinite;
 }
@@ -73,13 +73,13 @@
 }
 
 .mg-otp[data-error='true'] .mg-otp__slot {
-  border-color: #b3122c;
+  border-color: #ffffff;
 }
 
 .mg-otp__error {
   min-height: 1.3em;
   margin: 0;
-  color: #b3122c;
+  color: #ffffff;
   font-size: 13px;
 }
 
