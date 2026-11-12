@@ -15,9 +15,9 @@ export default function Demo() {
         maxWidth: '100%',
         height: 220,
         overflow: 'hidden',
-        border: '1px solid #d6def2',
+        border: '1px solid #303030',
         borderRadius: 14,
-        background: '#fff',
+        background: '#121212',
       }}
     >
       <ConfettiBurst fire={fire} />
@@ -26,12 +26,12 @@ export default function Demo() {
           style={{
             display: 'block',
             fontSize: 18,
-            color: done ? '#3d6b00' : '#0c1738',
+            color: done ? '#8aa8ff' : '#ffffff',
           }}
         >
           {done ? '✓ 100 nautical miles logged' : '97 of 100 miles logged'}
         </strong>
-        <span style={{ color: '#46527a', fontSize: 13 }}>
+        <span style={{ color: '#b8b8b8', fontSize: 13 }}>
           {done ? 'Badge earned: Coastal Century' : 'Three miles to go'}
         </span>
       </div>
@@ -43,7 +43,7 @@ export default function Demo() {
           padding: '0 16px',
           border: 0,
           borderRadius: 8,
-          background: '#164cff',
+          background: '#0047ff',
           color: '#fff',
           font: 'inherit',
           fontWeight: 600,

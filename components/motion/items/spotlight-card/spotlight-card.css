@@ -2,10 +2,10 @@
   position: relative;
   overflow: hidden;
   padding: 24px;
-  border: 1px solid #25345f;
+  border: 1px solid #303030;
   border-radius: 16px;
-  background: var(--mg-ink, #0c1738);
-  color: #f5f8ff;
+  background: var(--mg-raised, #262626);
+  color: #ffffff;
 }
 
 .mg-spotlight::before {
@@ -13,8 +13,8 @@
   inset: 0;
   background: radial-gradient(
     200px circle at var(--mg-x, 50%) var(--mg-y, 0%),
-    rgba(182, 255, 59, 0.32),
-    rgba(22, 76, 255, 0.18) 45%,
+    rgba(100, 138, 255, 0.32),
+    rgba(0, 71, 255, 0.18) 45%,
     transparent 70%
   );
   content: '';
@@ -33,7 +33,7 @@
 }
 
 .mg-spotlight a {
-  color: #b6ff3b;
+  color: #8aa8ff;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,7 +14,7 @@ export default function Demo() {
             fontSize: 12,
             fontWeight: 700,
             letterSpacing: '0.08em',
-            color: '#164cff',
+            color: '#648aff',
           }}
         >
           BOARDING PASS
@@ -22,7 +22,7 @@ export default function Demo() {
         <strong style={{ display: 'block', margin: '8px 0 4px', fontSize: 22 }}>
           Isles ferry
         </strong>
-        <span style={{ color: '#46527a' }}>Deck B · Departs 07:40</span>
+        <span style={{ color: '#b8b8b8' }}>Deck B · Departs 07:40</span>
       </PointerTiltCard>
       <button
         type='button'
@@ -31,10 +31,10 @@ export default function Demo() {
         style={{
           minHeight: 44,
           padding: '0 16px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

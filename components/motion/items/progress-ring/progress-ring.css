@@ -17,17 +17,17 @@
 }
 
 .mg-ring__track {
-  stroke: var(--mg-track, #e6ecff);
+  stroke: var(--mg-track, #303030);
 }
 
 .mg-ring__value {
-  stroke: var(--mg-accent, #164cff);
+  stroke: var(--mg-accent-text, #648aff);
   stroke-linecap: round;
   transition: stroke-dashoffset 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .mg-ring__label {
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-size: 1.4em;
   font-weight: 700;
   font-variant-numeric: tabular-nums;

@@ -2,10 +2,10 @@
   display: grid;
   min-height: 150px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   transition: grid-template-columns 160ms ease-out;
 }
 
@@ -25,7 +25,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  background: var(--mg-foam, #f5f8ff);
+  background: var(--mg-raised, #1b1b1b);
   cursor: col-resize;
   touch-action: none;
 }
@@ -41,17 +41,17 @@
   width: 4px;
   height: 36px;
   border-radius: 2px;
-  background: #8a96bd;
+  background: #5c5c5c;
   transition: background-color 160ms ease;
 }
 
 .mg-split-pane__handle:hover span,
 .mg-split-pane[data-dragging='true'] .mg-split-pane__handle span {
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-split-pane__handle:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: -3px;
 }
 

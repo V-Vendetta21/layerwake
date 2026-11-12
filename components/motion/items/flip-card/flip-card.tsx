@@ -49,7 +49,7 @@ export function FlipCard({
         <div ref={frontFace} className='mg-flip__face' aria-hidden={flipped}>
           <div className='mg-flip__content'>{front}</div>
           <button type='button' className='mg-flip__button' onClick={flip}>
-            {showBackLabel} ↻
+            {showBackLabel}
           </button>
         </div>
         <div
@@ -59,7 +59,7 @@ export function FlipCard({
         >
           <div className='mg-flip__content'>{back}</div>
           <button type='button' className='mg-flip__button' onClick={flip}>
-            ↺ {showFrontLabel}
+            {showFrontLabel}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, type KeyboardEvent } from 'react';
+import { ContainerIcon, ControlIcon, ImageIcon, TextIcon } from './icons';
 import {
   isEdited,
   tokenValue,
@@ -12,11 +13,11 @@ import {
   type TokenGroup,
 } from '@/lib/layerwake/model';
 
-const GLYPH: Record<ModelNode['slot'], string> = {
-  container: '▢',
-  text: 'T',
-  image: '▨',
-  control: '▭',
+const GLYPH: Record<ModelNode['slot'], typeof ContainerIcon> = {
+  container: ContainerIcon,
+  text: TextIcon,
+  image: ImageIcon,
+  control: ControlIcon,
 };
 
 export function LayerTree({
@@ -82,7 +83,10 @@ export function LayerTree({
             onKeyDown={(event) => onKeyDown(event, node)}
           >
             <span className='lw-tree__glyph' aria-hidden='true'>
-              {GLYPH[node.slot]}
+              {(() => {
+                const Glyph = GLYPH[node.slot];
+                return <Glyph size={14} />;
+              })()}
             </span>
             <span className='lw-tree__name'>{node.name}</span>
             {node.notes.length > 0 ? (
@@ -129,7 +133,7 @@ function TokenSample({ token, value }: { token: Token; value: string }) {
         className='lw-token__swatch'
         style={{
           borderRadius: `min(${value}, 8px)`,
-          borderColor: 'var(--lw-ink)',
+          borderColor: 'var(--lw-text)',
         }}
       />
     );
@@ -138,8 +142,8 @@ function TokenSample({ token, value }: { token: Token; value: string }) {
       <span
         className='lw-token__swatch'
         style={{
-          boxShadow: '1px 2px 4px rgba(12,23,56,.45)',
-          background: '#fff',
+          boxShadow: '1px 2px 4px rgba(0, 0, 0,.45)',
+          background: '#121212',
         }}
       />
     );

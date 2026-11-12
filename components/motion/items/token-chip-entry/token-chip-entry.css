@@ -1,7 +1,7 @@
 .mg-chips {
   display: grid;
   gap: 6px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-chips__label {
@@ -15,15 +15,15 @@
   gap: 6px;
   min-height: 48px;
   padding: 6px;
-  border: 1.5px solid var(--mg-line-strong, #b9c5e6);
+  border: 1.5px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
+  background: #121212;
   cursor: text;
 }
 
 .mg-chips__box:focus-within {
-  border-color: var(--mg-accent, #164cff);
-  box-shadow: 0 0 0 3px #e6ecff;
+  border-color: var(--mg-accent-text, #648aff);
+  box-shadow: 0 0 0 3px #303030;
 }
 
 .mg-chips__list {
@@ -39,7 +39,7 @@
   gap: 2px;
   padding-left: 10px;
   border-radius: 999px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -51,7 +51,7 @@
 }
 
 .mg-chips__chip[data-dupe='true'] {
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   animation: mg-chips-nudge 360ms ease;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .mg-chips__remove:focus-visible {
-  outline: 2px solid var(--mg-green, #b6ff3b);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: -3px;
 }
 
@@ -89,13 +89,13 @@
 .mg-chips__help,
 .mg-chips__status {
   margin: 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 12px;
 }
 
 .mg-chips__status {
   min-height: 1.3em;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   font-size: 13px;
 }
 

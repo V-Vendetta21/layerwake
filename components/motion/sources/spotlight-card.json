@@ -1,5 +1,5 @@
 {
-  "usage": "import { SpotlightCard } from './spotlight-card';\n\nexport default function Demo() {\n  return (\n    <SpotlightCard style={{ width: 300, maxWidth: '100%' }}>\n      <h3 style={{ margin: 0, fontSize: 18 }}>Night watch</h3>\n      <p style={{ margin: '8px 0 12px', color: '#c3cdec' }}>\n        Move the pointer across this card to steer the light.\n      </p>\n      <a href='#spotlight-card'>Read the log</a>\n    </SpotlightCard>\n  );\n}\n",
+  "usage": "import { SpotlightCard } from './spotlight-card';\n\nexport default function Demo() {\n  return (\n    <SpotlightCard style={{ width: 300, maxWidth: '100%' }}>\n      <h3 style={{ margin: 0, fontSize: 18 }}>Night watch</h3>\n      <p style={{ margin: '8px 0 12px', color: '#b8b8b8' }}>\n        Move the pointer across this card to steer the light.\n      </p>\n      <a href='#spotlight-card'>Read the log</a>\n    </SpotlightCard>\n  );\n}\n",
   "files": [
     {
       "name": "spotlight-card.tsx",
@@ -9,7 +9,7 @@
     {
       "name": "spotlight-card.css",
       "kind": "css",
-      "code": ".mg-spotlight {\n  position: relative;\n  overflow: hidden;\n  padding: 24px;\n  border: 1px solid #25345f;\n  border-radius: 16px;\n  background: var(--mg-ink, #0c1738);\n  color: #f5f8ff;\n}\n\n.mg-spotlight::before {\n  position: absolute;\n  inset: 0;\n  background: radial-gradient(\n    200px circle at var(--mg-x, 50%) var(--mg-y, 0%),\n    rgba(182, 255, 59, 0.32),\n    rgba(22, 76, 255, 0.18) 45%,\n    transparent 70%\n  );\n  content: '';\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 300ms ease;\n}\n\n.mg-spotlight:hover::before,\n.mg-spotlight:focus-within::before {\n  opacity: 1;\n}\n\n.mg-spotlight > * {\n  position: relative;\n}\n\n.mg-spotlight a {\n  color: #b6ff3b;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-spotlight::before {\n    transition: none;\n  }\n}\n"
+      "code": ".mg-spotlight {\n  position: relative;\n  overflow: hidden;\n  padding: 24px;\n  border: 1px solid #303030;\n  border-radius: 16px;\n  background: var(--mg-raised, #262626);\n  color: #ffffff;\n}\n\n.mg-spotlight::before {\n  position: absolute;\n  inset: 0;\n  background: radial-gradient(\n    200px circle at var(--mg-x, 50%) var(--mg-y, 0%),\n    rgba(100, 138, 255, 0.32),\n    rgba(0, 71, 255, 0.18) 45%,\n    transparent 70%\n  );\n  content: '';\n  opacity: 0;\n  pointer-events: none;\n  transition: opacity 300ms ease;\n}\n\n.mg-spotlight:hover::before,\n.mg-spotlight:focus-within::before {\n  opacity: 1;\n}\n\n.mg-spotlight > * {\n  position: relative;\n}\n\n.mg-spotlight a {\n  color: #8aa8ff;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-spotlight::before {\n    transition: none;\n  }\n}\n"
     }
   ]
 }

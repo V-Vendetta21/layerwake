@@ -4,7 +4,7 @@
   align-items: center;
   gap: 10px;
   min-height: 44px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
   cursor: pointer;
 }
 
@@ -26,23 +26,23 @@
   place-items: center;
   width: 24px;
   height: 24px;
-  border: 2px solid #8a96bd;
+  border: 2px solid #5c5c5c;
   border-radius: 6px;
-  background: #fff;
+  background: #121212;
   transition:
     background-color 200ms ease,
     border-color 200ms ease;
 }
 
 .mg-check__input:focus-visible + .mg-check__box {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
 .mg-check[data-state='checked'] .mg-check__box,
 .mg-check[data-state='mixed'] .mg-check__box {
-  border-color: var(--mg-accent, #164cff);
-  background: var(--mg-accent, #164cff);
+  border-color: var(--mg-accent-text, #648aff);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-check__box svg {

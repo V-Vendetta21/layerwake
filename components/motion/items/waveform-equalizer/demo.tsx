@@ -16,7 +16,7 @@ export default function Demo() {
           display: 'flex',
           gap: 10,
           alignItems: 'end',
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >
@@ -29,7 +29,7 @@ export default function Demo() {
             step={0.2}
             value={sensitivity}
             onChange={(e) => setSensitivity(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <button
@@ -39,10 +39,10 @@ export default function Demo() {
           style={{
             minHeight: 40,
             padding: '0 14px',
-            border: '1px solid #b9c5e6',
+            border: '1px solid #474747',
             borderRadius: 8,
-            background: '#fff',
-            color: '#0c1738',
+            background: '#121212',
+            color: '#ffffff',
             font: 'inherit',
             fontWeight: 600,
             cursor: 'pointer',

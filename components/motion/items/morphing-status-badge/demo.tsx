@@ -4,10 +4,10 @@ import { StatusBadge, type BadgeStatus } from './morphing-status-badge';
 const button = {
   minHeight: 44,
   padding: '0 14px',
-  border: '1px solid #b9c5e6',
+  border: '1px solid #474747',
   borderRadius: 8,
-  background: '#fff',
-  color: '#0c1738',
+  background: '#121212',
+  color: '#ffffff',
   font: 'inherit',
   fontWeight: 600,
   cursor: 'pointer',

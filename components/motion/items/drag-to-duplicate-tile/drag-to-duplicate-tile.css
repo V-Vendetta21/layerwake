@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 10px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-dup__palette {
@@ -11,9 +11,9 @@
   gap: 8px;
   align-content: start;
   padding: 8px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: var(--mg-foam, #f5f8ff);
+  background: var(--mg-raised, #1b1b1b);
 }
 
 .mg-dup__source {
@@ -22,15 +22,15 @@
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
+  background: #121212;
   cursor: grab;
   touch-action: none;
 }
 
 .mg-dup__source:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -45,17 +45,17 @@
   position: relative;
   min-height: 180px;
   overflow: hidden;
-  border: 1px dashed #b9c5e6;
+  border: 1px dashed #474747;
   border-radius: 12px;
-  background: #fff;
+  background: #121212;
   transition:
     border-color 150ms ease,
     background-color 150ms ease;
 }
 
 .mg-dup__canvas[data-over='true'] {
-  border-color: var(--mg-accent, #164cff);
-  background: #e6ecff;
+  border-color: var(--mg-accent-text, #648aff);
+  background: #141d38;
 }
 
 .mg-dup__hint {
@@ -63,7 +63,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  color: #6b7699;
+  color: #8f8f8f;
   font-size: 13px;
 }
 
@@ -87,13 +87,13 @@
   z-index: 5;
   opacity: 0.8;
   pointer-events: none;
-  filter: drop-shadow(0 8px 10px rgba(12, 23, 56, 0.35));
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
 }
 
 .mg-dup__status {
   grid-column: 1 / -1;
   margin: 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

@@ -2,7 +2,7 @@
   position: relative;
   display: grid;
   gap: 8px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-log__list {
@@ -12,8 +12,8 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: 12px;
-  background: var(--mg-ink, #0c1738);
-  color: #e8edff;
+  background: var(--mg-raised, #262626);
+  color: #e8e8e8;
   font:
     12px/1.5 ui-monospace,
     SFMono-Regular,
@@ -25,7 +25,7 @@
 }
 
 .mg-log__list:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .mg-log__row time {
-  color: #7f8bb3;
+  color: #8f8f8f;
 }
 
 .mg-log__level {
@@ -47,15 +47,15 @@
 }
 
 .mg-log__row[data-level='info'] .mg-log__level {
-  color: #7f9bff;
+  color: #8aa8ff;
 }
 
 .mg-log__row[data-level='warn'] .mg-log__level {
-  color: #f5b13c;
+  color: #d6d6d6;
 }
 
 .mg-log__row[data-level='error'] .mg-log__level {
-  color: #ff7a8a;
+  color: #ffffff;
 }
 
 .mg-log__jump {
@@ -66,8 +66,8 @@
   padding: 0 12px;
   border: 0;
   border-radius: 999px;
-  background: var(--mg-green, #b6ff3b);
-  color: var(--mg-ink, #0c1738);
+  background: var(--mg-accent, #0047ff);
+  color: var(--mg-text, #ffffff);
   font: inherit;
   font-size: 13px;
   font-weight: 700;
@@ -87,7 +87,7 @@
   align-items: center;
   gap: 6px;
   min-height: 36px;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

@@ -1,6 +1,6 @@
 .mg-bars {
   margin: 0;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-bars__caption {
@@ -35,7 +35,7 @@
 .mg-bars__track {
   position: relative;
   width: 100%;
-  border-bottom: 2px solid var(--mg-ink, #0c1738);
+  border-bottom: 2px solid var(--mg-text, #ffffff);
 }
 
 .mg-bars__bar {
@@ -45,18 +45,18 @@
   left: 18%;
   height: 100%;
   border-radius: 6px 6px 0 0;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transform: scaleY(var(--mg-value));
   transform-origin: bottom;
   transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .mg-bars__item:nth-child(odd) .mg-bars__bar {
-  background: #5b86ff;
+  background: #3366ff;
 }
 
 .mg-bars__label {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 12px;
 }
 

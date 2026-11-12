@@ -106,9 +106,27 @@ components/motion/
 
 To add a component, add `items/<slug>/` with the three files and an entry in `catalog.ts`, then raise `EXPECTED_TOTAL`.
 
+## Color
+
+Layerwake is dark-first: black canvas, white text, and electric blue as the only accent hue. Every app-owned color is a token at the top of `app/layerwake.css`.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--lw-canvas` | `#080808` | Page and workspace background |
+| `--lw-surface` | `#121212` | Cards, panels, menus, overlays |
+| `--lw-raised` / `--lw-raised-2` | `#1B1B1B` / `#262626` | Hover, nested panels, code panes |
+| `--lw-text` / `--lw-text-2` / `--lw-text-3` | `#FFFFFF` / `#B8B8B8` / `#8F8F8F` | Primary, secondary, and tertiary text |
+| `--lw-line` / `--lw-line-strong` | `#303030` / `#474747` | Dividers and control outlines |
+| `--lw-accent` | `#0047FF` | Primary buttons and selected fills (white text on it is 6.3:1) |
+| `--lw-accent-text` | `#648AFF` | Links, focus rings and active indicators on dark (5.9:1 on surface) |
+
+Blue marks actions and selection only. Error and warning states use shape and wording instead of a second hue: errors get a solid white outline and a round "!" mark, warnings a dashed outline and a triangle.
+
+Gallery components take the same palette as defaults through `--mg-*` custom properties (`--mg-accent`, `--mg-accent-text`, `--mg-text`, `--mg-raised`, `--mg-line` and so on), so a copied component can be re-themed without editing its CSS. Captured components are rendered with their own captured colors.
+
 ## Scrollbars
 
-Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`): a cobalt thumb on a pale track, and a dark-track variant in code panes. Firefox and overlay-scrollbar systems get `scrollbar-color`, which keeps the system's auto-hide behavior. Systems with always-visible scrollbars also get a rounded thumb with hover and active states through `::-webkit-scrollbar`. Forced-colors mode is left alone, and captured component previews and exported HTML keep their own scrollbars.
+Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`): a bright electric-blue thumb on a near-black track, and a quieter neutral thumb in code panes. Firefox and overlay-scrollbar systems get `scrollbar-color`, which keeps the system's auto-hide behavior. Systems with always-visible scrollbars also get a rounded thumb with hover and active states through `::-webkit-scrollbar`. Forced-colors mode is left alone, and captured component previews and exported HTML keep their own scrollbars.
 
 ## Commands
 

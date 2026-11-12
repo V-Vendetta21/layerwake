@@ -11,7 +11,7 @@
   padding: 0 3px;
   box-sizing: content-box;
   border-radius: 6px;
-  background: var(--mg-green, #b6ff3b);
+  background: var(--mg-accent, #0047ff);
   transition:
     transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
     width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);

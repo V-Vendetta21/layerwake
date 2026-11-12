@@ -5,7 +5,7 @@
   overflow: hidden;
   padding: 24px 16px;
   border-radius: 14px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-ascii__grid {
@@ -13,7 +13,7 @@
   inset: 8px;
   display: grid;
   align-content: space-between;
-  color: #3a4b7d;
+  color: #8f8f8f;
   font:
     12px/1.2 ui-monospace,
     SFMono-Regular,
@@ -32,22 +32,22 @@
   position: relative;
   padding: 14px 18px;
   border-radius: 10px;
-  background: var(--mg-ink, #0c1738);
-  box-shadow: 0 0 0 1px #3a4b7d;
-  color: #f5f8ff;
+  background: var(--mg-raised, #262626);
+  box-shadow: 0 0 0 1px #474747;
+  color: #ffffff;
   text-align: center;
 }
 
 @keyframes mg-ascii-glim {
   0% {
-    color: #3a4b7d;
+    color: #8f8f8f;
   }
   35% {
-    color: var(--mg-green, #b6ff3b);
-    text-shadow: 0 0 6px rgba(182, 255, 59, 0.6);
+    color: var(--mg-accent-text, #8aa8ff);
+    text-shadow: 0 0 6px rgba(100, 138, 255, 0.6);
   }
   100% {
-    color: #3a4b7d;
+    color: #8f8f8f;
   }
 }
 

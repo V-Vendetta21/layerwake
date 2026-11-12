@@ -29,9 +29,9 @@ export default function Demo() {
         // Stop the page from scrolling when this area reaches its end.
         overscrollBehavior: 'contain',
         padding: 12,
-        border: '1px solid #d6def2',
+        border: '1px solid #303030',
         borderRadius: 12,
-        background: '#fff',
+        background: '#121212',
       }}
     >
       <ul
@@ -49,8 +49,8 @@ export default function Demo() {
               style={{
                 padding: '14px 12px',
                 borderRadius: 8,
-                background: '#f5f8ff',
-                color: '#0c1738',
+                background: '#1b1b1b',
+                color: '#ffffff',
               }}
             >
               {entry}

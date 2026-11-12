@@ -11,22 +11,22 @@ export default function Demo() {
         style={{
           overflow: 'hidden',
           borderRadius: 14,
-          border: '1px solid #d6def2',
+          border: '1px solid #303030',
         }}
       >
-        <div style={{ padding: '18px 16px 6px', background: '#fff' }}>
+        <div style={{ padding: '18px 16px 6px', background: '#121212' }}>
           <strong>Above the waterline</strong>
-          <p style={{ margin: '4px 0 0', color: '#46527a', fontSize: 13 }}>
+          <p style={{ margin: '4px 0 0', color: '#b8b8b8', fontSize: 13 }}>
             Trip details and booking.
           </p>
         </div>
-        <div style={{ background: '#fff' }}>
+        <div style={{ background: '#121212' }}>
           <SvgWaveDivider amplitude={amplitude} speed={speed} paused={paused} />
         </div>
         <div
           style={{
             padding: '6px 16px 18px',
-            background: '#164cff',
+            background: '#0047ff',
             color: '#fff',
           }}
         >
@@ -42,7 +42,7 @@ export default function Demo() {
           flexWrap: 'wrap',
           gap: 10,
           alignItems: 'end',
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >
@@ -54,7 +54,7 @@ export default function Demo() {
             max={20}
             value={amplitude}
             onChange={(e) => setAmplitude(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <label style={{ display: 'grid', gap: 2 }}>
@@ -66,7 +66,7 @@ export default function Demo() {
             step={0.05}
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <button
@@ -76,10 +76,10 @@ export default function Demo() {
           style={{
             minHeight: 40,
             padding: '0 14px',
-            border: '1px solid #b9c5e6',
+            border: '1px solid #474747',
             borderRadius: 8,
-            background: '#fff',
-            color: '#0c1738',
+            background: '#121212',
+            color: '#ffffff',
             font: 'inherit',
             fontWeight: 600,
             cursor: 'pointer',

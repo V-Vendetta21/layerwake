@@ -9,7 +9,7 @@ export default function Demo() {
       <OrbitingMarks paused={paused} speed={speed}>
         <span>
           <strong style={{ display: 'block', fontSize: 20 }}>12</strong>
-          <span style={{ fontSize: 11, color: '#46527a' }}>boats out</span>
+          <span style={{ fontSize: 11, color: '#b8b8b8' }}>boats out</span>
         </span>
       </OrbitingMarks>
       <div
@@ -17,7 +17,7 @@ export default function Demo() {
           display: 'flex',
           gap: 8,
           alignItems: 'end',
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >
@@ -30,7 +30,7 @@ export default function Demo() {
             step={0.5}
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            style={{ accentColor: '#164cff' }}
+            style={{ accentColor: '#648aff' }}
           />
         </label>
         <button
@@ -40,10 +40,10 @@ export default function Demo() {
           style={{
             minHeight: 40,
             padding: '0 14px',
-            border: '1px solid #b9c5e6',
+            border: '1px solid #474747',
             borderRadius: 8,
-            background: '#fff',
-            color: '#0c1738',
+            background: '#121212',
+            color: '#ffffff',
             font: 'inherit',
             fontWeight: 600,
             cursor: 'pointer',

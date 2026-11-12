@@ -1,13 +1,13 @@
 .mg-expand {
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   transition: box-shadow 300ms ease;
 }
 
 .mg-expand[data-open='true'] {
-  box-shadow: 0 16px 32px -18px rgba(12, 23, 56, 0.4);
+  box-shadow: 0 16px 32px -18px rgba(0, 0, 0, 0.4);
 }
 
 .mg-expand__toggle {
@@ -28,7 +28,7 @@
 }
 
 .mg-expand__toggle:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -39,7 +39,7 @@
 
 .mg-expand__summary {
   margin-top: 2px;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 0.92em;
 }
 
@@ -47,8 +47,8 @@
   flex: none;
   width: 10px;
   height: 10px;
-  border-right: 2px solid var(--mg-accent, #164cff);
-  border-bottom: 2px solid var(--mg-accent, #164cff);
+  border-right: 2px solid var(--mg-accent-text, #648aff);
+  border-bottom: 2px solid var(--mg-accent-text, #648aff);
   transform: translateY(-3px) rotate(45deg);
   transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -82,7 +82,7 @@
 
 .mg-expand__body {
   padding: 0 18px 18px;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 @media (prefers-reduced-motion: reduce) {

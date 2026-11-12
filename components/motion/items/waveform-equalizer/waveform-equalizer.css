@@ -1,7 +1,7 @@
 .mg-eq {
   display: grid;
   gap: 8px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-eq__bars {
@@ -11,7 +11,7 @@
   height: 120px;
   padding: 10px;
   border-radius: 12px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-eq__bars span {
@@ -20,9 +20,9 @@
   border-radius: 3px;
   background: linear-gradient(
     to top,
-    var(--mg-accent, #164cff),
-    #7f9bff 70%,
-    var(--mg-green, #b6ff3b)
+    var(--mg-accent, #0047ff),
+    #648aff 70%,
+    var(--mg-accent, #0047ff)
   );
   transform: scaleY(var(--mg-level));
   transform-origin: bottom;
@@ -35,7 +35,7 @@
 
 .mg-eq__status {
   margin: 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 

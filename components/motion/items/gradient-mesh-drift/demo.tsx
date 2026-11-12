@@ -1,25 +1,26 @@
 import { useState } from 'react';
 import { GradientMeshDrift } from './gradient-mesh-drift';
 
+// Two presets in one palette family: a blue field and a graphite one.
 const PALETTES = {
-  tide: ['#dbe5ff', '#164cff', '#7f9bff', '#b6ff3b'],
-  dusk: ['#25345f', '#e2452b', '#7f9bff', '#f5b13c'],
+  electric: ['#080808', '#0047ff', '#648aff', '#2a63ff'],
+  graphite: ['#080808', '#5c5c5c', '#b8b8b8', '#262626'],
 } as const;
 const chip = (on: boolean) =>
   ({
     minHeight: 40,
     padding: '0 12px',
-    border: '1px solid #b9c5e6',
+    border: '1px solid #474747',
     borderRadius: 8,
-    background: on ? '#0c1738' : '#fff',
-    color: on ? '#fff' : '#0c1738',
+    background: on ? '#0047ff' : '#121212',
+    color: on ? '#fff' : '#ffffff',
     font: 'inherit',
     fontWeight: 600,
     cursor: 'pointer',
   }) as const;
 
 export default function Demo() {
-  const [palette, setPalette] = useState<keyof typeof PALETTES>('tide');
+  const [palette, setPalette] = useState<keyof typeof PALETTES>('electric');
   const [paused, setPaused] = useState(false);
   return (
     <div style={{ display: 'grid', gap: 10, width: 340, maxWidth: '100%' }}>
@@ -28,7 +29,7 @@ export default function Demo() {
         paused={paused}
       >
         <strong style={{ display: 'block' }}>Members’ evening</strong>
-        <span style={{ color: '#46527a', fontSize: 14 }}>
+        <span style={{ color: '#b8b8b8', fontSize: 14 }}>
           Thursday at the boathouse, 19:00.
         </span>
       </GradientMeshDrift>
@@ -39,19 +40,19 @@ export default function Demo() {
       >
         <button
           type='button'
-          aria-pressed={palette === 'tide'}
-          style={chip(palette === 'tide')}
-          onClick={() => setPalette('tide')}
+          aria-pressed={palette === 'electric'}
+          style={chip(palette === 'electric')}
+          onClick={() => setPalette('electric')}
         >
-          Tide
+          Electric
         </button>
         <button
           type='button'
-          aria-pressed={palette === 'dusk'}
-          style={chip(palette === 'dusk')}
-          onClick={() => setPalette('dusk')}
+          aria-pressed={palette === 'graphite'}
+          style={chip(palette === 'graphite')}
+          onClick={() => setPalette('graphite')}
         >
-          Dusk
+          Graphite
         </button>
         <button
           type='button'

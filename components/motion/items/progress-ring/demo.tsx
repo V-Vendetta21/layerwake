@@ -13,7 +13,7 @@ export default function Demo() {
   return (
     <div style={{ display: 'grid', gap: 14, justifyItems: 'center' }}>
       <ProgressRing value={value} label='Fuel level' />
-      <label style={{ display: 'grid', gap: 4, color: '#46527a' }}>
+      <label style={{ display: 'grid', gap: 4, color: '#b8b8b8' }}>
         Set the level
         <input
           type='range'
@@ -21,7 +21,7 @@ export default function Demo() {
           max={100}
           value={value}
           onChange={(event) => setValue(Number(event.target.value))}
-          style={{ width: 200, height: 32, accentColor: '#164cff' }}
+          style={{ width: 200, height: 32, accentColor: '#648aff' }}
         />
       </label>
     </div>

@@ -1,6 +1,6 @@
 .mg-flip {
   perspective: 900px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-flip__inner {
@@ -21,16 +21,16 @@
   grid-area: 1 / 1;
   min-height: 170px;
   padding: 20px;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 16px;
-  background: #fff;
+  background: #121212;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
 .mg-flip__face--back {
-  background: var(--mg-ink, #0c1738);
-  color: #f5f8ff;
+  background: var(--mg-raised, #262626);
+  color: #ffffff;
   transform: rotateY(180deg);
 }
 
@@ -48,7 +48,7 @@
 }
 
 .mg-flip__button:focus-visible {
-  outline: 3px solid var(--mg-green, #b6ff3b);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 

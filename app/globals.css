@@ -3,5 +3,6 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
-  background: #f5f8ff;
+  background: #080808;
+  color-scheme: dark;
 }

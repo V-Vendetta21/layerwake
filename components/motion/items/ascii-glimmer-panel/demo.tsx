@@ -17,7 +17,7 @@ export default function Demo() {
         <strong style={{ display: 'block', fontSize: 18 }}>
           Weather station online
         </strong>
-        <span style={{ fontSize: 13, color: '#c3cdec' }}>
+        <span style={{ fontSize: 13, color: '#b8b8b8' }}>
           Last reading 2 minutes ago
         </span>
       </AsciiGlimmerPanel>
@@ -27,10 +27,10 @@ export default function Demo() {
         style={{
           minHeight: 44,
           padding: '0 16px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',

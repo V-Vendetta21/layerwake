@@ -13,9 +13,9 @@ export default function Demo() {
         minWidth: 240,
         margin: 0,
         padding: '8px 16px',
-        border: '1px solid #d6def2',
+        border: '1px solid #303030',
         borderRadius: 12,
-        background: '#fff',
+        background: '#121212',
       }}
     >
       <legend style={{ padding: '0 4px', fontWeight: 700 }}>Crew aboard</legend>

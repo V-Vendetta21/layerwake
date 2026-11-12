@@ -14,7 +14,7 @@ export default function Demo() {
           padding: '0 16px',
           border: 0,
           borderRadius: 8,
-          background: done ? '#0c1738' : '#164cff',
+          background: done ? '#0047ff' : '#0047ff',
           color: '#fff',
           font: 'inherit',
           fontWeight: 600,

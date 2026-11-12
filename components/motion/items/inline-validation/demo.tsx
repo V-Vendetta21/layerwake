@@ -13,10 +13,10 @@ const check = (value: string): ValidationResult => {
 const chip = {
   minHeight: 36,
   padding: '0 10px',
-  border: '1px solid #b9c5e6',
+  border: '1px solid #474747',
   borderRadius: 999,
-  background: '#fff',
-  color: '#0c1738',
+  background: '#121212',
+  color: '#ffffff',
   font: 'inherit',
   fontSize: 13,
   cursor: 'pointer',
@@ -40,7 +40,7 @@ export default function Demo() {
           gap: 6,
           alignItems: 'center',
           fontSize: 13,
-          color: '#46527a',
+          color: '#b8b8b8',
         }}
       >
         Try:

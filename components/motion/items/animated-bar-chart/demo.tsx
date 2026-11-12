@@ -32,10 +32,10 @@ export default function Demo() {
             style={{
               minHeight: 40,
               padding: '0 12px',
-              border: '1px solid #b9c5e6',
+              border: '1px solid #474747',
               borderRadius: 8,
-              background: set === key ? '#0c1738' : '#fff',
-              color: set === key ? '#fff' : '#0c1738',
+              background: set === key ? '#0047ff' : '#121212',
+              color: set === key ? '#fff' : '#ffffff',
               font: 'inherit',
               fontWeight: 600,
               cursor: 'pointer',

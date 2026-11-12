@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-swipe__actions {
@@ -16,7 +16,7 @@
 .mg-swipe__actions button {
   flex: 1;
   border: 0;
-  background: #25345f;
+  background: #1b1b1b;
   color: #fff;
   font: inherit;
   font-size: 13px;
@@ -25,11 +25,11 @@
 }
 
 .mg-swipe__actions button[data-tone='danger'] {
-  background: #b3122c;
+  background: #262626;
 }
 
 .mg-swipe__actions button:focus-visible {
-  outline: 3px solid var(--mg-green, #b6ff3b);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: -3px;
 }
 
@@ -40,8 +40,8 @@
   gap: 8px;
   min-height: 56px;
   padding-left: 14px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   /* Horizontal drags are ours; vertical swipes still scroll the page. */
   touch-action: pan-y;
   transition: transform 300ms cubic-bezier(0.2, 0.9, 0.3, 1.1);
@@ -67,13 +67,13 @@
   border: 0;
   border-radius: 8px;
   background: none;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 22px;
   cursor: pointer;
 }
 
 .mg-swipe__more:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: -2px;
 }
 

@@ -7,7 +7,7 @@ const thumb = (sky: string, sea: string) => (
     aria-hidden='true'
   >
     <rect width='160' height='90' fill={sky} />
-    <circle cx='120' cy='30' r='12' fill='#b6ff3b' />
+    <circle cx='120' cy='30' r='12' fill='#0047ff' />
     <path d='M0 58 Q40 50 80 58 T160 58 V90 H0Z' fill={sea} />
   </svg>
 );
@@ -16,35 +16,35 @@ const ITEMS = [
     id: 'seal',
     title: 'Seal Cove',
     subtitle: 'Sand, 4 m · sheltered west',
-    thumb: thumb('#dbe5ff', '#164cff'),
+    thumb: thumb('#1b1b1b', '#0047ff'),
     body: 'Approach on the leading line; seals haul out on the north rocks.',
   },
   {
     id: 'gull',
     title: 'Gull Point',
     subtitle: 'Weed over rock · lunch only',
-    thumb: thumb('#e6ecff', '#0c1738'),
+    thumb: thumb('#141d38', '#262626'),
     body: 'Holding is poor. Stay for a swim, not the night.',
   },
   {
     id: 'strand',
     title: 'Long Strand',
     subtitle: 'Sand, 6 m · swell in a southerly',
-    thumb: thumb('#f5f8ff', '#25345f'),
+    thumb: thumb('#1b1b1b', '#1b1b1b'),
     body: 'Big beach, beach bar, and a long dinghy row.',
   },
   {
     id: 'heron',
     title: 'Heron Creek',
     subtitle: 'Mud, 3 m · dries at springs',
-    thumb: thumb('#c3cdec', '#164cff'),
+    thumb: thumb('#303030', '#0047ff'),
     body: 'Perfectly still at night. Check the tide before you go in.',
   },
   {
     id: 'otter',
     title: 'Otter Bay',
     subtitle: 'Sand and weed, 5 m',
-    thumb: thumb('#dbe5ff', '#46527a'),
+    thumb: thumb('#1b1b1b', '#474747'),
     body: 'Good shelter from everything but the east.',
   },
 ];

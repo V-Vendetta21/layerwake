@@ -14,7 +14,7 @@ export default function Demo() {
         labels={['Lowest wind', 'Highest wind']}
         format={(v) => `${v} kn`}
       />
-      <span style={{ color: '#46527a', fontSize: 13 }}>
+      <span style={{ color: '#b8b8b8', fontSize: 13 }}>
         Show days with {range[0]}–{range[1]} knots of wind.
       </span>
     </div>

@@ -47,7 +47,7 @@ export default function Demo() {
       />
       <span
         role='status'
-        style={{ marginTop: 180, color: '#46527a', fontSize: 13 }}
+        style={{ marginTop: 180, color: '#b8b8b8', fontSize: 13 }}
       >
         {chosen}
       </span>

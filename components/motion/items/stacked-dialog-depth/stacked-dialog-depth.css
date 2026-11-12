@@ -1,11 +1,11 @@
 .mg-stack {
   width: min(360px, calc(100% - 32px));
   padding: 0;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 30px 60px -24px rgba(12, 23, 56, 0.55);
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+  color: var(--mg-text, #ffffff);
   transition:
     transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
     filter 280ms ease;
@@ -22,7 +22,7 @@
 }
 
 .mg-stack::backdrop {
-  background: rgba(12, 23, 56, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .mg-stack__head {
@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 8px 8px 18px;
-  border-bottom: 1px solid var(--mg-line, #d6def2);
+  border-bottom: 1px solid var(--mg-line, #303030);
 }
 
 .mg-stack__head h2 {
@@ -53,11 +53,11 @@
   display: grid;
   gap: 12px;
   padding: 16px 18px 18px;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 .mg-stack button:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 

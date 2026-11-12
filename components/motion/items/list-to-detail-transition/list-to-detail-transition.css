@@ -1,10 +1,10 @@
 .mg-l2d {
   height: 280px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-l2d__list {
@@ -32,7 +32,7 @@
 }
 
 .mg-l2d__list button:hover {
-  background: #f5f8ff;
+  background: #1b1b1b;
 }
 
 .mg-l2d__list button > span:last-child {
@@ -40,7 +40,7 @@
 }
 
 .mg-l2d__list button > span:last-child span {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
@@ -91,12 +91,12 @@
 
 .mg-l2d__sub {
   margin: 0;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
 .mg-l2d__body {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 14px;
   animation: mg-l2d-fade 300ms ease 120ms both;
 }
@@ -107,15 +107,15 @@
   padding: 0 10px;
   border: 0;
   border-radius: 8px;
-  background: #e6ecff;
-  color: var(--mg-accent, #164cff);
+  background: #141d38;
+  color: var(--mg-accent-text, #648aff);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 .mg-l2d button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 1px;
 }
 

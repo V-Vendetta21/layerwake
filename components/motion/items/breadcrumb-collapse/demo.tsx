@@ -19,9 +19,9 @@ export default function Demo() {
           width,
           maxWidth: '100%',
           padding: '0 8px',
-          border: '1px dashed #b9c5e6',
+          border: '1px dashed #474747',
           borderRadius: 8,
-          background: '#fff',
+          background: '#121212',
         }}
       >
         <BreadcrumbCollapse
@@ -30,7 +30,7 @@ export default function Demo() {
         />
       </div>
       <label
-        style={{ display: 'grid', gap: 2, color: '#46527a', fontSize: 13 }}
+        style={{ display: 'grid', gap: 2, color: '#b8b8b8', fontSize: 13 }}
       >
         Container width: {width}px
         <input
@@ -39,10 +39,10 @@ export default function Demo() {
           max={520}
           value={width}
           onChange={(e) => setWidth(Number(e.target.value))}
-          style={{ accentColor: '#164cff' }}
+          style={{ accentColor: '#648aff' }}
         />
       </label>
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         {went ? `Would open: ${went}` : 'Widen it to bring the crumbs back.'}
       </span>
     </div>

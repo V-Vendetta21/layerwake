@@ -13,7 +13,7 @@ export default function Demo() {
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.08em',
-                color: t === 'dark' ? '#b6ff3b' : '#164cff',
+                color: 'var(--mg-label)',
               }}
             >
               {t === 'dark' ? 'NIGHT WATCH' : 'DAY WATCH'}
@@ -37,7 +37,7 @@ export default function Demo() {
           </>
         )}
       </ThemeTransitionPanel>
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         Theme: {theme}
       </span>
     </div>

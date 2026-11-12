@@ -14,7 +14,7 @@ export default function Demo() {
   return (
     <div style={{ display: 'grid', gap: 10, justifyItems: 'center' }}>
       <Dock items={items} label='Apps' />
-      <span role='status' style={{ color: '#46527a' }}>
+      <span role='status' style={{ color: '#b8b8b8' }}>
         Open: {chosen}
       </span>
     </div>

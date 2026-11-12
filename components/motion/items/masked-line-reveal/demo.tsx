@@ -20,7 +20,7 @@ export default function Demo() {
         />
       </div>
       <label
-        style={{ display: 'grid', gap: 4, color: '#46527a', fontSize: 13 }}
+        style={{ display: 'grid', gap: 4, color: '#b8b8b8', fontSize: 13 }}
       >
         Text width: {width}px (lines reflow)
         <input
@@ -29,7 +29,7 @@ export default function Demo() {
           max={340}
           value={width}
           onChange={(event) => setWidth(Number(event.target.value))}
-          style={{ accentColor: '#164cff' }}
+          style={{ accentColor: '#648aff' }}
         />
       </label>
     </div>

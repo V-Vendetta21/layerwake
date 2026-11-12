@@ -458,7 +458,7 @@ export const CATALOG: CatalogEntry[] = [
     category: 'navigation',
     keywords: ['swipe', 'list', 'archive', 'delete'],
     purpose: 'Uncovers a row’s actions with a sideways swipe.',
-    cue: 'Swipe a row left, or tap ⋯ to show its actions.',
+    cue: 'Swipe a row left, or tap its More button.',
     replays: false,
   },
   {
@@ -468,7 +468,7 @@ export const CATALOG: CatalogEntry[] = [
     keywords: ['sortable', 'drag and drop', 'reorder', 'list'],
     purpose:
       'Reorders a list by dragging, with rows sliding aside to make room.',
-    cue: 'Drag a row by its ⋮⋮ handle, or use the ↑ ↓ buttons.',
+    cue: 'Drag a row by its grip, or use the ↑ ↓ buttons.',
     replays: false,
   },
   {
@@ -826,7 +826,7 @@ export const CATALOG: CatalogEntry[] = [
     category: 'ambient',
     keywords: ['gradient', 'mesh', 'background', 'aurora'],
     purpose: 'Drifts soft color fields behind a readable panel.',
-    cue: 'Runs while in view. Switch palette, or Pause.',
+    cue: 'Runs while in view. Switch between the Electric and Graphite presets, or Pause.',
     replays: false,
   },
   {

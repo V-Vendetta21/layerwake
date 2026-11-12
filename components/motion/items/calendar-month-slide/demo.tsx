@@ -10,7 +10,7 @@ export default function Demo() {
         onChange={setDate}
         label='Departure date'
       />
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         Departure:{' '}
         {date
           ? date.toLocaleDateString(undefined, {

@@ -60,9 +60,9 @@ export default function Demo() {
               alignItems: 'center',
               justifyContent: 'space-between',
               padding: '4px 4px 4px 12px',
-              border: '1px solid #d6def2',
+              border: '1px solid #303030',
               borderRadius: 10,
-              background: '#fff',
+              background: '#121212',
             }}
           >
             {task}
@@ -73,10 +73,10 @@ export default function Demo() {
               style={{
                 minHeight: 36,
                 padding: '0 10px',
-                border: '1px solid #b9c5e6',
+                border: '1px solid #474747',
                 borderRadius: 8,
-                background: '#fff',
-                color: '#0c1738',
+                background: '#121212',
+                color: '#ffffff',
                 font: 'inherit',
                 fontSize: 13,
                 cursor: 'pointer',
@@ -87,7 +87,7 @@ export default function Demo() {
           </li>
         ))}
         {tasks.length === 0 ? (
-          <li style={{ color: '#46527a' }}>Everything is archived.</li>
+          <li style={{ color: '#b8b8b8' }}>Everything is archived.</li>
         ) : null}
       </ul>
       <div style={{ minHeight: 52 }}>

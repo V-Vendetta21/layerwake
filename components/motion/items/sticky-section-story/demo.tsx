@@ -32,7 +32,7 @@ function Scene({ step }: { step: number }) {
         width='160'
         height='160'
         rx='14'
-        fill={step === 0 ? '#25345f' : '#dbe5ff'}
+        fill={step === 0 ? '#1b1b1b' : '#1b1b1b'}
         style={{ transition: 'fill 500ms' }}
       />
       <g
@@ -41,17 +41,17 @@ function Scene({ step }: { step: number }) {
           transition: 'transform 500ms',
         }}
       >
-        <circle r='12' fill='#b6ff3b' />
+        <circle r='12' fill='#0047ff' />
       </g>
-      <path d='M0 112 Q40 104 80 112 T160 112 V160 H0Z' fill='#164cff' />
+      <path d='M0 112 Q40 104 80 112 T160 112 V160 H0Z' fill='#0047ff' />
       <g
         style={{
           transform: `translateX(${t * 90}px)`,
           transition: 'transform 500ms',
         }}
       >
-        <path d='M20 106 h28 l-5 7 h-18z' fill='#f5f8ff' />
-        <path d='M33 104 V76 L46 102Z' fill='#f5f8ff' />
+        <path d='M20 106 h28 l-5 7 h-18z' fill='#1b1b1b' />
+        <path d='M33 104 V76 L46 102Z' fill='#1b1b1b' />
       </g>
     </svg>
   );

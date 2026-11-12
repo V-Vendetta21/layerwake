@@ -65,7 +65,7 @@ export function PointerTrail({
       const t = 1 - (now - d.born) / life;
       ctx.beginPath();
       ctx.fillStyle =
-        i % 3 === 0 ? `rgba(182, 255, 59, ${t})` : `rgba(22, 76, 255, ${t})`;
+        i % 3 === 0 ? `rgba(100, 138, 255, ${t})` : `rgba(0, 71, 255, ${t})`;
       ctx.arc(d.x * ratio, d.y * ratio, (2 + 6 * t) * ratio, 0, Math.PI * 2);
       ctx.fill();
     });

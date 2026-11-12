@@ -23,7 +23,7 @@ const ACTION_WIDTH = 84;
 
 /**
  * Swipe the row left to uncover its actions; it snaps open or closed. Up and
- * down still scroll on touch. The "⋯" button does the same without a
+ * down still scroll on touch. The "more" button does the same without a
  * gesture, and hidden actions stay out of the tab order.
  */
 export function SwipeActionRow({
@@ -109,7 +109,11 @@ export function SwipeActionRow({
             setOpen((value) => !value);
           }}
         >
-          ⋯
+          <svg width='18' height='18' viewBox='0 0 18 18' aria-hidden='true'>
+            <circle cx='4' cy='9' r='1.6' fill='currentColor' />
+            <circle cx='9' cy='9' r='1.6' fill='currentColor' />
+            <circle cx='14' cy='9' r='1.6' fill='currentColor' />
+          </svg>
         </button>
       </div>
     </div>

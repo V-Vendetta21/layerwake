@@ -6,13 +6,13 @@
 }
 
 .mg-pulse__edge {
-  stroke: #c3cdec;
+  stroke: #303030;
   stroke-width: 2;
 }
 
 .mg-pulse__dot {
-  fill: #fff;
-  stroke: #8a96bd;
+  fill: #121212;
+  stroke: #5c5c5c;
   stroke-width: 2;
   transition:
     fill 200ms ease,
@@ -21,7 +21,7 @@
 
 .mg-pulse__ring {
   fill: none;
-  stroke: var(--mg-green, #8fd400);
+  stroke: var(--mg-accent-text, #648aff);
   stroke-width: 3;
   opacity: 0;
   transform-box: fill-box;
@@ -29,8 +29,8 @@
 }
 
 .mg-pulse__node[data-reached='true'] .mg-pulse__dot {
-  fill: var(--mg-accent, #164cff);
-  stroke: var(--mg-ink, #0c1738);
+  fill: var(--mg-accent, #0047ff);
+  stroke: var(--mg-text, #ffffff);
 }
 
 .mg-pulse__node[data-reached='true'] .mg-pulse__ring {
@@ -43,14 +43,14 @@
 }
 
 .mg-pulse__node text {
-  fill: var(--mg-ink, #0c1738);
+  fill: var(--mg-text, #ffffff);
   font-size: 11px;
   font-weight: 600;
 }
 
 .mg-pulse__spark {
-  fill: var(--mg-green, #b6ff3b);
-  stroke: var(--mg-ink, #0c1738);
+  fill: var(--mg-accent, #0047ff);
+  stroke: var(--mg-text, #ffffff);
   stroke-width: 1.5;
 }
 

@@ -12,10 +12,10 @@
   min-height: 44px;
   justify-content: center;
   padding: 0 16px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -25,19 +25,19 @@
 }
 
 .mg-copyok__button:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
 .mg-copyok[data-phase='copied'] .mg-copyok__button {
-  border-color: var(--mg-ink, #0c1738);
-  background: var(--mg-green, #b6ff3b);
+  border-color: var(--mg-text, #ffffff);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-copyok[data-phase='error'] .mg-copyok__button {
-  border-color: #b3122c;
-  background: #ffeef0;
-  color: #8a0c20;
+  border-color: #ffffff;
+  background: #262626;
+  color: #ffffff;
 }
 
 .mg-copyok__icon {
@@ -79,7 +79,7 @@
 .mg-copyok__status {
   min-height: 1.2em;
   max-width: 240px;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 12.5px;
   text-align: center;
 }

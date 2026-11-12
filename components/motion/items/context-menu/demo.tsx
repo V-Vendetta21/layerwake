@@ -21,11 +21,11 @@ export default function Demo() {
         }
       >
         <strong>Chart area</strong>
-        <p style={{ margin: '6px 0 0', color: '#46527a', fontSize: 13 }}>
+        <p style={{ margin: '6px 0 0', color: '#b8b8b8', fontSize: 13 }}>
           The menu opens where you click.
         </p>
       </ContextMenu>
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         {last}
       </span>
     </div>

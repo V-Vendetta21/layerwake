@@ -1,7 +1,7 @@
 .mg-scrub {
   display: grid;
   gap: 10px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-scrub__scroller {
@@ -9,11 +9,11 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: 14px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
 }
 
 .mg-scrub__scroller:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -37,12 +37,12 @@
 .mg-scrub__slider {
   display: grid;
   gap: 4px;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
 .mg-scrub__slider input {
-  accent-color: var(--mg-accent, #164cff);
+  accent-color: var(--mg-accent-text, #648aff);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,11 +7,11 @@ function Chart() {
       aria-hidden='true'
       preserveAspectRatio='xMidYMid slice'
     >
-      <rect width='340' height='200' fill='#dbe5ff' />
+      <rect width='340' height='200' fill='#1b1b1b' />
       <path
         d='M0 0 H120 Q140 60 110 120 Q90 170 120 200 H0Z'
-        fill='#f5f8ff'
-        stroke='#0c1738'
+        fill='#1b1b1b'
+        stroke='#ffffff'
       />
       {[
         [180, 60],
@@ -21,8 +21,8 @@ function Chart() {
         [290, 140],
       ].map(([x, y], i) => (
         <g key={i}>
-          <circle cx={x} cy={y} r='3' fill='#0c1738' />
-          <text x={x + 5} y={y - 4} fontSize='6' fill='#0c1738'>
+          <circle cx={x} cy={y} r='3' fill='#ededed' />
+          <text x={x + 5} y={y - 4} fontSize='6' fill='#ffffff'>
             {(i + 3) * 2}m
           </text>
         </g>
@@ -30,10 +30,10 @@ function Chart() {
       <path
         d='M130 40 C170 80 210 60 250 100 S300 160 330 150'
         fill='none'
-        stroke='#164cff'
+        stroke='#648aff'
         strokeDasharray='4 3'
       />
-      <text x='20' y='100' fontSize='10' fontWeight='700' fill='#0c1738'>
+      <text x='20' y='100' fontSize='10' fontWeight='700' fill='#ffffff'>
         Quay
       </text>
     </svg>

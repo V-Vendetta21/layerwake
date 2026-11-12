@@ -32,10 +32,10 @@
   background: linear-gradient(
       100deg,
       transparent 30%,
-      rgba(255, 255, 255, 0.85) 50%,
+      rgba(255, 255, 255, 0.14) 50%,
       transparent 70%
     )
-    var(--mg-bone, #dce4f7);
+    var(--mg-bone, #1b1b1b);
   background-size: 200% 100%;
   background-position: 150% 0;
 }

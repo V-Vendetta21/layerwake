@@ -1,12 +1,12 @@
 .mg-accordion {
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 12px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-accordion__item + .mg-accordion__item {
-  border-top: 1px solid var(--mg-line, #d6def2);
+  border-top: 1px solid var(--mg-line, #303030);
 }
 
 .mg-accordion__heading {
@@ -32,7 +32,7 @@
 }
 
 .mg-accordion__button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: -2px;
   border-radius: 10px;
 }
@@ -53,7 +53,7 @@
   width: 12px;
   height: 2px;
   border-radius: 2px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   content: '';
   transition: transform 380ms cubic-bezier(0.3, 1.5, 0.5, 1);
 }
@@ -91,7 +91,7 @@
 
 .mg-accordion__body {
   padding: 0 16px 16px;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 @media (prefers-reduced-motion: reduce) {

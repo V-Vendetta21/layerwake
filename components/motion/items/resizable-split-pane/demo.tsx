@@ -12,7 +12,7 @@ export default function Demo() {
         start={
           <>
             <strong>Chart</strong>
-            <p style={{ margin: '6px 0 0', color: '#46527a', fontSize: 13 }}>
+            <p style={{ margin: '6px 0 0', color: '#b8b8b8', fontSize: 13 }}>
               Approach from the south-west.
             </p>
           </>
@@ -20,13 +20,13 @@ export default function Demo() {
         end={
           <>
             <strong>Notes</strong>
-            <p style={{ margin: '6px 0 0', color: '#46527a', fontSize: 13 }}>
+            <p style={{ margin: '6px 0 0', color: '#b8b8b8', fontSize: 13 }}>
               Watch for pots near the green buoy.
             </p>
           </>
         }
       />
-      <span style={{ color: '#46527a', fontSize: 13 }}>
+      <span style={{ color: '#b8b8b8', fontSize: 13 }}>
         Split: {split}% / {100 - split}% (20–80% allowed)
       </span>
     </div>

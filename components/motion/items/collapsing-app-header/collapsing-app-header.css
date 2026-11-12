@@ -2,14 +2,14 @@
   height: 260px;
   overflow-y: auto;
   overscroll-behavior: contain;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
-  color: var(--mg-ink, #0c1738);
+  background: #121212;
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-appbar:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 
@@ -24,7 +24,7 @@
   /* Height is fixed per state, so nothing below the header jumps. */
   height: 110px;
   padding: 14px;
-  background: linear-gradient(160deg, var(--mg-accent, #164cff), #0f3ad6);
+  background: linear-gradient(160deg, var(--mg-accent, #0047ff), #2a63ff);
   color: #fff;
   transition:
     height 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -35,7 +35,7 @@
   align-items: center;
   height: 56px;
   padding: 8px 14px;
-  box-shadow: 0 8px 18px -12px rgba(12, 23, 56, 0.7);
+  box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.7);
 }
 
 .mg-appbar__titles h3 {
@@ -68,8 +68,8 @@
   padding: 0 14px;
   border: 0;
   border-radius: 8px;
-  background: var(--mg-green, #b6ff3b);
-  color: var(--mg-ink, #0c1738);
+  background: var(--mg-accent, #0047ff);
+  color: var(--mg-text, #ffffff);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -82,7 +82,7 @@
 
 .mg-appbar__content {
   padding: 12px 14px 40px;
-  color: #46527a;
+  color: #b8b8b8;
 }
 
 .mg-appbar__content p {

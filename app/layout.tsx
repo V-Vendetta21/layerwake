@@ -1,6 +1,6 @@
 import './globals.css';
 import './layerwake.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 
@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   title: 'Layerwake — See how interfaces are built. Make them your own.',
   description:
     'Capture one UI component, inspect its spacing, type and color decisions, rebuild your own variant and export design tokens and starter code.',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#080808',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({

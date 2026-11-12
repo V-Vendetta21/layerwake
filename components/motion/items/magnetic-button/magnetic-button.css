@@ -3,7 +3,7 @@
   padding: 0 28px;
   border: 0;
   border-radius: 999px;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   color: #fff;
   font: inherit;
   font-weight: 600;
@@ -11,7 +11,7 @@
 }
 
 .mg-magnetic:focus-visible {
-  outline: 2px solid var(--mg-ink, #0c1738);
+  outline: 2px solid var(--mg-text, #ffffff);
   outline-offset: 3px;
 }
 

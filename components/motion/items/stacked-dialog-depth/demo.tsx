@@ -6,7 +6,7 @@ const button = {
   padding: '0 16px',
   border: 0,
   borderRadius: 8,
-  background: '#164cff',
+  background: '#0047ff',
   color: '#fff',
   font: 'inherit',
   fontWeight: 600,
@@ -14,9 +14,9 @@ const button = {
 } as const;
 const plain = {
   ...button,
-  border: '1px solid #b9c5e6',
-  background: '#fff',
-  color: '#0c1738',
+  border: '1px solid #474747',
+  background: '#121212',
+  color: '#ffffff',
 } as const;
 
 export default function Demo() {
@@ -28,7 +28,7 @@ export default function Demo() {
       <button type='button' style={button} onClick={() => setFirst(true)}>
         Edit crew list
       </button>
-      <span role='status' style={{ color: '#46527a', fontSize: 13 }}>
+      <span role='status' style={{ color: '#b8b8b8', fontSize: 13 }}>
         {log}
       </span>
       <StackedDialog

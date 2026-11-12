@@ -20,7 +20,7 @@
 .mg-dissolve__tiles span {
   /* A hair of overlap hides seams between tiles. */
   margin: -0.5px;
-  background: var(--mg-ink, #0c1738);
+  background: var(--mg-raised, #262626);
   animation: mg-dissolve-out 160ms steps(2, end) forwards;
   animation-delay: calc(200ms + var(--mg-delay));
 }

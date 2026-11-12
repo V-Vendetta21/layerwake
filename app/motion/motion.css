@@ -13,12 +13,8 @@
 .mgx-hero p:last-child {
   max-width: 62ch;
   margin-top: 12px;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
   font-size: 16px;
-}
-.mgx-hero .lw-eyebrow {
-  margin-bottom: 10px;
-  color: var(--lw-cobalt);
 }
 
 .mgx-controls {
@@ -33,7 +29,7 @@
   padding: 12px 24px;
   border-top: 1px solid var(--lw-line);
   border-bottom: 1px solid var(--lw-line);
-  background: rgba(245, 248, 255, 0.94);
+  background: rgba(8, 8, 8, 0.92);
   backdrop-filter: blur(8px);
 }
 .mgx-search {
@@ -50,29 +46,32 @@
   flex-wrap: wrap;
   gap: 6px;
 }
+.mgx-filters button:active {
+  background: var(--lw-raised-2);
+}
 .mgx-filters button {
   min-height: 40px;
   padding: 0 14px;
   border: 1px solid var(--lw-line-strong);
   border-radius: 999px;
-  background: var(--lw-paper);
-  color: var(--lw-ink-2);
+  background: var(--lw-surface);
+  color: var(--lw-text-2);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
 }
 .mgx-filters button:hover {
-  border-color: var(--lw-cobalt);
-  color: var(--lw-ink);
+  border-color: var(--lw-accent-text);
+  color: var(--lw-text);
 }
 .mgx-filters button[aria-pressed='true'] {
-  border-color: var(--lw-ink);
-  background: var(--lw-ink);
-  color: #fff;
+  border-color: var(--lw-accent);
+  background: var(--lw-accent);
+  color: #ffffff;
 }
 .mgx-count {
   margin-left: auto;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
   font-size: 13px;
 }
 .mgx-count button {
@@ -92,13 +91,13 @@
   overflow: hidden;
   border: 1px solid var(--lw-line-strong);
   border-radius: 14px;
-  background: var(--lw-paper);
+  background: var(--lw-surface);
   /* Leave room for the sticky filter bar when jumping to an anchor. */
   scroll-margin-top: 200px;
 }
 .mgx-entry:target {
-  border-color: var(--lw-cobalt);
-  box-shadow: 0 0 0 3px var(--lw-cobalt-soft);
+  border-color: var(--lw-accent-text);
+  box-shadow: 0 0 0 3px var(--lw-accent-soft);
 }
 .mgx-entry__head {
   display: flex;
@@ -119,11 +118,11 @@
 }
 .mgx-entry__head h2 a:hover span,
 .mgx-entry__head h2 a:focus-visible span {
-  color: var(--lw-cobalt);
+  color: var(--lw-accent-text);
 }
 .mgx-entry__head p {
   margin-top: 2px;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
 }
 .mgx-entry__head .lw-chip {
   flex: none;
@@ -146,7 +145,7 @@
   position: relative;
   min-height: 44px;
   padding: 0 2px;
-  color: var(--lw-ink-3);
+  color: var(--lw-text-3);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -158,13 +157,13 @@
   left: 0;
   height: 2px;
   border-radius: 2px 2px 0 0;
-  background: var(--lw-cobalt);
+  background: var(--lw-accent);
   content: '';
   transform: scaleX(0);
   transition: transform 200ms var(--lw-ease);
 }
 .mgx-tabs button[aria-selected='true'] {
-  color: var(--lw-ink);
+  color: var(--lw-text);
 }
 .mgx-tabs button[aria-selected='true']::after {
   transform: scaleX(1);
@@ -176,13 +175,13 @@
   min-height: 36px;
   padding: 0 10px;
   border-radius: 8px;
-  color: var(--lw-cobalt-deep);
+  color: var(--lw-accent-text);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
 }
 .mgx-replay:hover {
-  background: var(--lw-cobalt-soft);
+  background: var(--lw-accent-soft);
 }
 
 .mgx-stage {
@@ -203,36 +202,36 @@
   gap: 8px;
   padding: 9px 16px;
   border-top: 1px solid var(--lw-line);
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
   font-size: 12.5px;
 }
 .mgx-cue span {
-  color: var(--lw-cobalt);
+  color: var(--lw-accent-text);
 }
 
 .mgx-steps {
   display: grid;
   gap: 4px;
   padding: 12px 16px 12px 36px;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
   font-size: 13px;
   list-style: decimal;
 }
 .mgx-steps strong {
-  color: var(--lw-ink);
+  color: var(--lw-text);
 }
 .mgx-steps code {
   padding: 1px 5px;
   border: 1px solid var(--lw-line);
   border-radius: 4px;
-  background: var(--lw-foam);
-  color: var(--lw-ink);
+  background: var(--lw-raised);
+  color: var(--lw-text);
   font-family: var(--lw-mono);
   font-size: 12px;
 }
 .mgx-file {
-  border-top: 1px solid #25345f;
-  background: var(--lw-ink);
+  border-top: 1px solid var(--lw-line);
+  background: var(--lw-raised);
 }
 .mgx-file__head {
   display: flex;
@@ -240,11 +239,11 @@
   align-items: center;
   gap: 6px 10px;
   padding: 8px 8px 8px 16px;
-  border-bottom: 1px solid #25345f;
-  color: #c3cdec;
+  border-bottom: 1px solid var(--lw-line);
+  color: var(--lw-text-2);
 }
 .mgx-file__name {
-  color: #fff;
+  color: var(--lw-text);
   font-family: var(--lw-mono);
   font-size: 12.5px;
 }
@@ -255,28 +254,30 @@
 .mgx-copy {
   min-height: 36px;
   padding: 0 12px;
-  border: 1px solid #3a4b7d;
+  border: 1px solid var(--lw-line-strong);
   border-radius: 8px;
-  color: #fff;
+  background: var(--lw-surface);
+  color: var(--lw-text);
   font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
 }
 .mgx-copy:hover {
-  border-color: #7f9bff;
+  border-color: var(--lw-text-3);
+  background: var(--lw-raised-2);
 }
 .mgx-copy[data-state='copied'] {
-  border-color: var(--lw-green);
-  background: var(--lw-green);
-  color: var(--lw-ink);
+  border-color: var(--lw-accent);
+  background: var(--lw-accent);
+  color: #ffffff;
 }
 .mgx-copy:focus-visible,
 .mgx-code:focus-visible {
-  outline-color: var(--lw-green);
+  outline-color: var(--lw-accent-text);
 }
 .mgx-copy__hint {
   flex-basis: 100%;
-  color: var(--lw-green);
+  color: var(--lw-accent-text);
   font-size: 12px;
   text-align: right;
 }
@@ -285,7 +286,7 @@
   margin: 0;
   overflow: auto;
   padding: 12px 16px;
-  color: #e8edff;
+  color: #e8e8e8;
   font-family: var(--lw-mono);
   font-size: 12.5px;
   line-height: 1.6;
@@ -301,7 +302,7 @@
   padding: 56px 24px;
   border: 1.5px dashed var(--lw-line-strong);
   border-radius: 14px;
-  background: var(--lw-paper);
+  background: var(--lw-surface);
   text-align: center;
 }
 .mgx-empty h2 {
@@ -310,7 +311,7 @@
 }
 .mgx-empty p {
   max-width: 46ch;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
 }
 
 @media (max-width: 600px) {
@@ -335,17 +336,17 @@
 
 .mgx-filters__n {
   margin-left: 2px;
-  color: var(--lw-ink-3);
+  color: var(--lw-text-3);
   font-family: var(--lw-mono);
   font-size: 11px;
   font-weight: 500;
 }
 .mgx-filters button[aria-pressed='true'] .mgx-filters__n {
-  color: #b9c5e6;
+  color: rgba(255, 255, 255, 0.82);
 }
 .mgx-loading {
   padding: 16px;
-  color: var(--lw-ink-2);
+  color: var(--lw-text-2);
   font-size: 13px;
 }
 

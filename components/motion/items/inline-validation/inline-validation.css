@@ -1,7 +1,7 @@
 .mg-valid {
   display: grid;
   gap: 6px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-valid__label {
@@ -16,25 +16,25 @@
   width: 100%;
   height: 44px;
   padding: 0 40px 0 12px;
-  border: 1.5px solid var(--mg-line-strong, #b9c5e6);
+  border: 1.5px solid var(--mg-line-strong, #474747);
   border-radius: 10px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   transition: border-color 200ms ease;
 }
 
 .mg-valid__input:focus-visible {
-  outline: 3px solid #e6ecff;
-  border-color: var(--mg-accent, #164cff);
+  outline: 3px solid #303030;
+  border-color: var(--mg-accent-text, #648aff);
 }
 
 .mg-valid[data-status='error'] .mg-valid__input {
-  border-color: #b3122c;
+  border-color: #ffffff;
 }
 
 .mg-valid[data-status='success'] .mg-valid__input {
-  border-color: #3d6b00;
+  border-color: #648aff;
 }
 
 /* One element draws the cross or the tick. */
@@ -56,11 +56,11 @@
 }
 
 .mg-valid[data-status='error'] .mg-valid__icon {
-  background: #b3122c;
+  background: #262626;
 }
 
 .mg-valid[data-status='success'] .mg-valid__icon {
-  background: #3d6b00;
+  background: #0047ff;
 }
 
 .mg-valid__icon::after {
@@ -88,7 +88,7 @@
   min-height: 2.6em;
   margin: 0;
   overflow: hidden;
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
@@ -98,11 +98,11 @@
 }
 
 .mg-valid[data-status='error'] .mg-valid__message {
-  color: #b3122c;
+  color: #ffffff;
 }
 
 .mg-valid[data-status='success'] .mg-valid__message {
-  color: #3d6b00;
+  color: #8aa8ff;
 }
 
 @keyframes mg-valid-in {

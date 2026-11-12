@@ -18,12 +18,12 @@
 }
 
 .mg-glitch__layer--a {
-  color: var(--mg-accent, #164cff);
+  color: var(--mg-accent-text, #648aff);
   animation: mg-glitch-a 720ms cubic-bezier(0.3, 0.7, 0.3, 1) both;
 }
 
 .mg-glitch__layer--b {
-  color: var(--mg-green, #8fd400);
+  color: var(--mg-accent-text, #8aa8ff);
   animation: mg-glitch-b 720ms cubic-bezier(0.3, 0.7, 0.3, 1) both;
 }
 

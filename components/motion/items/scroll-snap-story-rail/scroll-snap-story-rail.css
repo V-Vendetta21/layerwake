@@ -1,7 +1,7 @@
 .mg-snap {
   display: grid;
   gap: 10px;
-  color: var(--mg-ink, #0c1738);
+  color: var(--mg-text, #ffffff);
 }
 
 .mg-snap__track {
@@ -20,7 +20,7 @@
 }
 
 .mg-snap__track:focus-visible {
-  outline: 3px solid var(--mg-accent, #164cff);
+  outline: 3px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
   border-radius: 14px;
 }
@@ -30,26 +30,26 @@
   min-height: 150px;
   padding: 18px;
   border-radius: 14px;
-  background: var(--mg-ink, #0c1738);
-  color: #f5f8ff;
+  background: var(--mg-raised, #262626);
+  color: #ffffff;
   scroll-snap-align: start;
 }
 
 .mg-snap__slide:nth-child(even) {
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
 }
 
 .mg-snap__bar {
   height: 4px;
   overflow: hidden;
   border-radius: 2px;
-  background: #e1e8fb;
+  background: #262626;
 }
 
 .mg-snap__bar span {
   display: block;
   height: 100%;
-  background: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #0047ff);
   transform: scaleX(var(--mg-progress));
   transform-origin: left;
   transition: transform 300ms ease;
@@ -62,16 +62,16 @@
 }
 
 .mg-snap__controls span {
-  color: #46527a;
+  color: #b8b8b8;
   font-size: 13px;
 }
 
 .mg-snap__controls button {
   min-height: 44px;
   padding: 0 12px;
-  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border: 1px solid var(--mg-line-strong, #474747);
   border-radius: 8px;
-  background: #fff;
+  background: #121212;
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -84,7 +84,7 @@
 }
 
 .mg-snap__controls button:focus-visible {
-  outline: 2px solid var(--mg-accent, #164cff);
+  outline: 2px solid var(--mg-accent-text, #648aff);
   outline-offset: 2px;
 }
 

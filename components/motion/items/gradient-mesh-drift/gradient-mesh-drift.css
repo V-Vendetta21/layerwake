@@ -61,9 +61,9 @@
   max-width: 260px;
   padding: 18px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 12px 30px -18px rgba(12, 23, 56, 0.6);
-  color: var(--mg-ink, #0c1738);
+  background: rgba(18, 18, 18, 0.94);
+  box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.6);
+  color: var(--mg-text, #ffffff);
 }
 
 @keyframes mg-mesh-drift {

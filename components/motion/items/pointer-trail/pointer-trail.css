@@ -4,10 +4,10 @@
   place-items: center;
   min-height: 190px;
   overflow: hidden;
-  border: 1px solid var(--mg-line, #d6def2);
+  border: 1px solid var(--mg-line, #303030);
   border-radius: 14px;
-  background: #fff;
-  color: #46527a;
+  background: #121212;
+  color: #b8b8b8;
 }
 
 /* While active, touch drags draw instead of scrolling. */

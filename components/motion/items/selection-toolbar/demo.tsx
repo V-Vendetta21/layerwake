@@ -34,7 +34,7 @@ export default function Demo() {
           padding: '0 10px',
           border: 0,
           background: 'none',
-          color: '#164cff',
+          color: '#648aff',
           font: 'inherit',
           fontSize: 13,
           textDecoration: 'underline',

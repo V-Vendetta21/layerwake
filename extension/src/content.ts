@@ -21,23 +21,24 @@ const STYLES = `
 * { box-sizing: border-box; }
 .layer {
   position: fixed; inset: 0; z-index: 2147483647; pointer-events: none;
-  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: #0c1738;
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: #ffffff;
 }
+/* A blue outline with a dark halo reads on light and dark pages alike. */
 .outline {
   position: fixed; left: 0; top: 0; width: 0; height: 0; display: none;
-  border: 2px solid #164cff; border-radius: 3px;
-  background: rgba(22, 76, 255, 0.08);
-  box-shadow: 0 0 0 1px #ffffff, 0 0 0 4px rgba(182, 255, 59, 0.55);
+  border: 2px solid #648aff; border-radius: 3px;
+  background: rgba(0, 71, 255, 0.1);
+  box-shadow: 0 0 0 1px #080808, 0 0 0 4px rgba(100, 138, 255, 0.45);
 }
 .outline.locked { background: transparent; }
 .tag {
   position: absolute; left: -2px; top: -22px; padding: 1px 6px;
-  background: #164cff; color: #fff; border-radius: 3px 3px 0 0;
+  background: #0047ff; color: #ffffff; border-radius: 3px 3px 0 0;
   font: 11px/18px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap;
 }
 .bar, .panel {
-  pointer-events: auto; background: #ffffff; border: 1px solid #c9d3ee;
-  box-shadow: 0 12px 32px rgba(12, 23, 56, 0.22); border-radius: 10px;
+  pointer-events: auto; background: #121212; border: 1px solid #303030;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); border-radius: 10px;
 }
 .bar {
   position: fixed; left: 50%; top: 12px; transform: translateX(-50%);
@@ -45,11 +46,11 @@ const STYLES = `
   max-width: calc(100vw - 24px);
 }
 .bar strong { font-weight: 650; }
-.bar span { color: #46527a; }
+.bar span { color: #b8b8b8; }
 .message {
   position: fixed; left: 50%; top: 64px; transform: translateX(-50%);
   max-width: min(420px, calc(100vw - 24px)); padding: 8px 12px; border-radius: 8px;
-  background: #0c1738; color: #fff; pointer-events: none;
+  background: #ffffff; color: #080808; pointer-events: none;
 }
 .message:empty { display: none; }
 .panel {
@@ -59,30 +60,33 @@ const STYLES = `
 h2 { margin: 0 0 10px; font-size: 15px; font-weight: 650; }
 h3 {
   margin: 12px 0 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; color: #46527a;
+  text-transform: uppercase; color: #b8b8b8;
 }
 dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; }
-dt { color: #46527a; }
+dt { color: #b8b8b8; }
 dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
-ul { margin: 0; padding-left: 18px; }
+ul { margin: 0; padding-left: 18px; color: #b8b8b8; }
+/* Warning: dashed outline. Done: blue outline. The words say which. */
 .warn {
   margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
-  background: #fff6db; border: 1px solid #ecd28a;
+  background: #1b1b1b; border: 1px dashed #b8b8b8;
 }
 .done {
   margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
-  background: #f0ffd6; border: 1px solid #a8e23a;
+  background: #141d38; border: 1px solid #648aff;
 }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 button {
   font: inherit; font-weight: 600; padding: 7px 12px; border-radius: 8px; cursor: pointer;
-  border: 1px solid #c9d3ee; background: #fff; color: #0c1738;
+  border: 1px solid #474747; background: #1b1b1b; color: #ffffff;
 }
-button.primary { background: #164cff; border-color: #164cff; color: #fff; }
-button:focus-visible { outline: 2px solid #0c1738; outline-offset: 2px; }
+button:hover { border-color: #8f8f8f; background: #262626; }
+button.primary { background: #0047ff; border-color: #0047ff; color: #ffffff; }
+button.primary:hover { background: #2a63ff; border-color: #2a63ff; }
+button:focus-visible { outline: 2px solid #648aff; outline-offset: 2px; }
 kbd {
-  padding: 0 5px; border: 1px solid #c9d3ee; border-radius: 4px; background: #f5f8ff;
-  font: 11px ui-monospace, monospace; color: #0c1738;
+  padding: 0 5px; border: 1px solid #474747; border-radius: 4px; background: #1b1b1b;
+  font: 11px ui-monospace, monospace; color: #ffffff;
 }
 @media (prefers-reduced-motion: no-preference) {
   .outline { transition: left 60ms, top 60ms, width 60ms, height 60ms; }

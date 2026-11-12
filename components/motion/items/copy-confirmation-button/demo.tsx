@@ -11,9 +11,9 @@ export default function Demo() {
       <code
         style={{
           padding: '6px 12px',
-          border: '1px solid #d6def2',
+          border: '1px solid #303030',
           borderRadius: 8,
-          background: '#fff',
+          background: '#121212',
           fontSize: 18,
         }}
       >
@@ -30,7 +30,7 @@ export default function Demo() {
           alignItems: 'center',
           gap: 8,
           minHeight: 40,
-          color: '#46527a',
+          color: '#b8b8b8',
           fontSize: 13,
         }}
       >

@@ -18,7 +18,7 @@ export default function Demo() {
         label='Open command palette'
         onRun={(c) => setLast(c.label)}
       />
-      <span role='status' style={{ color: '#46527a' }}>
+      <span role='status' style={{ color: '#b8b8b8' }}>
         {last ? `Ran: ${last}` : 'Press Ctrl+K or ⌘K, or use the button.'}
       </span>
     </div>

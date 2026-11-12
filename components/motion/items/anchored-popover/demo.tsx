@@ -14,16 +14,16 @@ export default function Demo() {
         maxWidth: '100%',
         height: 230,
         padding: 12,
-        border: '1px dashed #b9c5e6',
+        border: '1px dashed #474747',
         borderRadius: 12,
       }}
     >
       <AnchoredPopover label='Wind info' title='Wind information'>
-        <strong style={{ color: '#0c1738' }}>West 12 kn</strong>
+        <strong style={{ color: '#ffffff' }}>West 12 kn</strong>
         <span>Gusting 18 kn after 15:00.</span>
       </AnchoredPopover>
       <AnchoredPopover label='Tide info' title='Tide information'>
-        <strong style={{ color: '#0c1738' }}>Flooding</strong>
+        <strong style={{ color: '#ffffff' }}>Flooding</strong>
         <span>High water at 14:20, 4.6 m.</span>
       </AnchoredPopover>
     </div>

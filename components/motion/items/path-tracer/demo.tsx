@@ -5,10 +5,10 @@ const ROUTE = 'M20 150 C70 150 70 60 130 70 S200 150 250 110 S290 30 310 30';
 const button = {
   minHeight: 44,
   padding: '0 14px',
-  border: '1px solid #b9c5e6',
+  border: '1px solid #474747',
   borderRadius: 8,
-  background: '#fff',
-  color: '#0c1738',
+  background: '#121212',
+  color: '#ffffff',
   font: 'inherit',
   fontWeight: 600,
   cursor: 'pointer',
@@ -52,7 +52,7 @@ export default function Demo() {
         label='Route from the harbor to the lighthouse'
       />
       <label
-        style={{ display: 'grid', gap: 2, color: '#46527a', fontSize: 13 }}
+        style={{ display: 'grid', gap: 2, color: '#b8b8b8', fontSize: 13 }}
       >
         Route progress: {Math.round(progress * 100)}%
         <input
@@ -64,7 +64,7 @@ export default function Demo() {
             setPlaying(false);
             setProgress(Number(e.target.value) / 100);
           }}
-          style={{ accentColor: '#164cff' }}
+          style={{ accentColor: '#648aff' }}
         />
       </label>
       <div style={{ display: 'flex', gap: 8 }}>

@@ -7,7 +7,7 @@ const KINDS = [
     label: 'buoy',
     render: () => (
       <svg viewBox='0 0 32 32' aria-hidden='true'>
-        <circle cx='16' cy='16' r='11' fill='#164cff' />
+        <circle cx='16' cy='16' r='11' fill='#0047ff' />
       </svg>
     ),
   },
@@ -16,7 +16,7 @@ const KINDS = [
     label: 'marker',
     render: () => (
       <svg viewBox='0 0 32 32' aria-hidden='true'>
-        <rect x='6' y='6' width='20' height='20' rx='3' fill='#0c1738' />
+        <rect x='6' y='6' width='20' height='20' rx='3' fill='#ededed' />
       </svg>
     ),
   },
@@ -25,7 +25,7 @@ const KINDS = [
     label: 'hazard',
     render: () => (
       <svg viewBox='0 0 32 32' aria-hidden='true'>
-        <path d='M16 4 L29 27 H3Z' fill='#e2452b' />
+        <path d='M16 4 L29 27 H3Z' fill='#648aff' />
       </svg>
     ),
   },
@@ -51,10 +51,10 @@ export default function Demo() {
           justifySelf: 'start',
           minHeight: 40,
           padding: '0 14px',
-          border: '1px solid #b9c5e6',
+          border: '1px solid #474747',
           borderRadius: 8,
-          background: '#fff',
-          color: '#0c1738',
+          background: '#121212',
+          color: '#ffffff',
           font: 'inherit',
           fontWeight: 600,
           cursor: 'pointer',
