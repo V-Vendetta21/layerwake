@@ -1,0 +1,40 @@
+.mg-underline {
+  position: relative;
+  display: inline-block;
+  padding: 4px 0;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mg-underline::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mg-accent, #164cff);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.mg-underline:hover::after,
+.mg-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.mg-underline:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-underline::after {
+    transition: none;
+  }
+}

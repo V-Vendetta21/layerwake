@@ -1,0 +1,56 @@
+.mg-scrub {
+  display: grid;
+  gap: 10px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-scrub__scroller {
+  height: 200px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 14px;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-scrub__scroller:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-scrub__stage {
+  position: sticky;
+  top: 0;
+  height: 200px;
+}
+
+.mg-scrub__stage > * {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scroll distance: four screens' worth for the whole sequence. */
+.mg-scrub__spacer {
+  height: 600px;
+}
+
+.mg-scrub__slider {
+  display: grid;
+  gap: 4px;
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-scrub__slider input {
+  accent-color: var(--mg-accent, #164cff);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The scroll area does not scrub; only the slider changes frames. */
+  .mg-scrub__spacer {
+    height: 0;
+  }
+  .mg-scrub__scroller {
+    overflow: hidden;
+  }
+}

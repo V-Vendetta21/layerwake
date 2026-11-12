@@ -1,0 +1,72 @@
+.mg-theme {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  isolation: isolate;
+}
+
+.mg-theme__layer {
+  min-height: 200px;
+  padding: 18px;
+  transition: none;
+}
+
+.mg-theme__layer[data-theme='light'] {
+  background: #ffffff;
+  color: #0c1738;
+  --mg-muted: #46527a;
+  --mg-surface: #f5f8ff;
+}
+
+.mg-theme__layer[data-theme='dark'] {
+  background: #0c1738;
+  color: #f5f8ff;
+  --mg-muted: #c3cdec;
+  --mg-surface: #1a2752;
+}
+
+.mg-theme__layer--reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  clip-path: circle(0 at var(--mg-x) var(--mg-y));
+  animation: mg-theme-grow 560ms cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+
+.mg-theme__toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #b9c5e6;
+  border-radius: 50%;
+  background: #fff;
+  color: #0c1738;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mg-theme__toggle[data-theme='dark'] {
+  border-color: #3a4b7d;
+  background: #1a2752;
+  color: #b6ff3b;
+}
+
+.mg-theme__toggle:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+@keyframes mg-theme-grow {
+  to {
+    clip-path: circle(var(--mg-r) at var(--mg-x) var(--mg-y));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-theme__layer--reveal {
+    display: none;
+  }
+}

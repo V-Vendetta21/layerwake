@@ -1,0 +1,68 @@
+.mg-flip {
+  perspective: 900px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-flip__inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+
+.mg-flip[data-flipped='true'] .mg-flip__inner {
+  transform: rotateY(180deg);
+}
+
+.mg-flip__face {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  grid-area: 1 / 1;
+  min-height: 170px;
+  padding: 20px;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 16px;
+  background: #fff;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.mg-flip__face--back {
+  background: var(--mg-ink, #0c1738);
+  color: #f5f8ff;
+  transform: rotateY(180deg);
+}
+
+.mg-flip__button {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-flip__button:focus-visible {
+  outline: 3px solid var(--mg-green, #b6ff3b);
+  outline-offset: 2px;
+}
+
+/* Instant swap: no rotation, just show the right face. */
+@media (prefers-reduced-motion: reduce) {
+  .mg-flip__inner {
+    transition: none;
+    transform: none !important;
+  }
+  .mg-flip__face--back {
+    transform: none;
+  }
+  .mg-flip[data-flipped='true'] .mg-flip__face:not(.mg-flip__face--back),
+  .mg-flip[data-flipped='false'] .mg-flip__face--back {
+    visibility: hidden;
+  }
+}

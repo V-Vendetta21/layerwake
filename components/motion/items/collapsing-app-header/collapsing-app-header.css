@@ -1,0 +1,98 @@
+.mg-appbar {
+  height: 260px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-appbar:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-appbar__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  /* Height is fixed per state, so nothing below the header jumps. */
+  height: 110px;
+  padding: 14px;
+  background: linear-gradient(160deg, var(--mg-accent, #164cff), #0f3ad6);
+  color: #fff;
+  transition:
+    height 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-appbar[data-compact='true'] .mg-appbar__header {
+  align-items: center;
+  height: 56px;
+  padding: 8px 14px;
+  box-shadow: 0 8px 18px -12px rgba(12, 23, 56, 0.7);
+}
+
+.mg-appbar__titles h3 {
+  margin: 0;
+  font-size: 24px;
+  transform-origin: left center;
+  transition: font-size 260ms ease;
+}
+
+.mg-appbar[data-compact='true'] .mg-appbar__titles h3 {
+  font-size: 16px;
+}
+
+.mg-appbar__titles p {
+  margin: 4px 0 0;
+  opacity: 0.85;
+  font-size: 13px;
+  transition: opacity 160ms ease;
+}
+
+.mg-appbar[data-compact='true'] .mg-appbar__titles p {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.mg-appbar__action button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--mg-green, #b6ff3b);
+  color: var(--mg-ink, #0c1738);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mg-appbar__action button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.mg-appbar__content {
+  padding: 12px 14px 40px;
+  color: #46527a;
+}
+
+.mg-appbar__content p {
+  margin: 0 0 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-appbar__header,
+  .mg-appbar__titles h3,
+  .mg-appbar__titles p {
+    transition: none;
+  }
+}

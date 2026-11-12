@@ -1,0 +1,42 @@
+.mg-emphasis {
+  position: relative;
+  margin: 0;
+}
+
+.mg-emphasis__mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 -3px;
+  padding: 0 3px;
+  box-sizing: content-box;
+  border-radius: 6px;
+  background: var(--mg-green, #b6ff3b);
+  transition:
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-emphasis__word {
+  position: relative;
+  /* Reserve bold width so the line does not shift as emphasis moves. */
+  display: inline-grid;
+}
+
+.mg-emphasis__word::after {
+  height: 0;
+  overflow: hidden;
+  content: attr(data-word);
+  font-weight: 800;
+  visibility: hidden;
+}
+
+.mg-emphasis__word[data-active='true'] {
+  font-weight: 800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-emphasis__mark {
+    transition: none;
+  }
+}

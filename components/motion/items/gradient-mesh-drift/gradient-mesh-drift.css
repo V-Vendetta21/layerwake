@@ -1,0 +1,79 @@
+.mg-mesh {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  overflow: hidden;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--mg-c1);
+  isolation: isolate;
+  transition: background-color 600ms ease;
+}
+
+.mg-mesh__blob {
+  position: absolute;
+  z-index: -1;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(36px);
+  opacity: 0.85;
+  animation: mg-mesh-drift 14s ease-in-out infinite alternate;
+  animation-play-state: paused;
+  transition: background-color 600ms ease;
+}
+
+.mg-mesh[data-playing='true'] .mg-mesh__blob {
+  animation-play-state: running;
+}
+
+.mg-mesh__blob--1 {
+  top: -20%;
+  left: -15%;
+  background: var(--mg-c2);
+}
+
+.mg-mesh__blob--2 {
+  right: -20%;
+  bottom: -25%;
+  background: var(--mg-c3);
+  animation-delay: -4s;
+}
+
+.mg-mesh__blob--3 {
+  top: 10%;
+  right: -10%;
+  width: 45%;
+  background: var(--mg-c4);
+  animation-delay: -8s;
+}
+
+.mg-mesh__blob--4 {
+  bottom: -15%;
+  left: 10%;
+  width: 40%;
+  background: var(--mg-c2);
+  animation-delay: -11s;
+}
+
+.mg-mesh__panel {
+  max-width: 260px;
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 30px -18px rgba(12, 23, 56, 0.6);
+  color: var(--mg-ink, #0c1738);
+}
+
+@keyframes mg-mesh-drift {
+  to {
+    transform: translate(30%, 18%) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-mesh__blob {
+    animation: none;
+  }
+}

@@ -1,0 +1,38 @@
+.mg-rotate {
+  margin: 0;
+  font-weight: 700;
+}
+
+.mg-rotate__window {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.mg-rotate__phrase {
+  display: inline-block;
+  color: var(--mg-accent, #164cff);
+  animation: mg-rotate-in 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.mg-rotate__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes mg-rotate-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-rotate__phrase {
+    animation: none;
+  }
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { CATALOG } from '@/components/motion/catalog';
 import { useRouter } from 'next/navigation';
 import { useMemo, useRef, useState } from 'react';
 import { parsePx, px } from '@/lib/layerwake/css-values';
@@ -84,6 +85,12 @@ export function HomeActions() {
       ) : null}
       <p className='lw-hero__fine'>
         Runs entirely in your browser. No account, no upload, no API key.
+      </p>
+      <p className='lw-hero__more'>
+        <Link className='lw-link' href='/motion'>
+          Browse the Motion Gallery
+        </Link>{' '}
+        for {CATALOG.length} copyable motion components.
       </p>
     </>
   );

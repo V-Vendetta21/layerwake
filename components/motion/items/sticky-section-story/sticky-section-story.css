@@ -1,0 +1,105 @@
+.mg-story {
+  display: grid;
+  gap: 10px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-story__scroller {
+  /* Children measure their offsets from here. */
+  position: relative;
+  height: 230px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.mg-story__scroller:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-story__layout {
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+.mg-story__pin {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 228px;
+  display: grid;
+  place-items: center;
+}
+
+.mg-story__steps {
+  margin: 0;
+  padding: 90px 0 120px;
+  list-style: none;
+}
+
+.mg-story__step {
+  min-height: 150px;
+  opacity: 0.35;
+  transition: opacity 300ms ease;
+}
+
+.mg-story__step[data-active='true'] {
+  opacity: 1;
+}
+
+.mg-story__step h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.mg-story__step p {
+  margin: 0;
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-story__jumps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.mg-story__jumps button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 50%;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mg-story__jumps button[aria-current] {
+  border-color: var(--mg-ink, #0c1738);
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+}
+
+.mg-story__jumps button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-story__now {
+  color: #46527a;
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-story__step {
+    transition: none;
+  }
+}

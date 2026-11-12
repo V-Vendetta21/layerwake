@@ -1,0 +1,27 @@
+.mg-counter {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.mg-counter__slot {
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+}
+
+.mg-counter__reel {
+  display: flex;
+  flex-direction: column;
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-counter__reel > span {
+  height: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-counter__reel {
+    transition: none;
+  }
+}

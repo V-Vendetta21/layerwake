@@ -1,0 +1,72 @@
+.mg-loader {
+  display: grid;
+  gap: 8px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-loader__track {
+  position: relative;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #e1e8fb;
+}
+
+.mg-loader__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  border-radius: 4px;
+  background: var(--mg-accent, #164cff);
+  animation: mg-loader-run 1.3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-play-state: paused;
+}
+
+.mg-loader[data-playing='true'] .mg-loader__bar {
+  animation-play-state: running;
+}
+
+.mg-loader[data-active='false'] .mg-loader__bar {
+  width: 100%;
+  background: var(--mg-green, #8fd400);
+  animation: mg-loader-finish 300ms ease-out;
+}
+
+.mg-loader__text {
+  color: #46527a;
+  font-size: 13px;
+}
+
+@keyframes mg-loader-run {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes mg-loader-finish {
+  from {
+    transform: scaleX(0.4);
+    transform-origin: left;
+  }
+}
+
+/* Still: a static, striped bar; the label says "Loading…". */
+@media (prefers-reduced-motion: reduce) {
+  .mg-loader__bar {
+    width: 100%;
+    animation: none;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--mg-accent, #164cff) 0 8px,
+      #7f9bff 8px 16px
+    );
+  }
+  .mg-loader[data-active='false'] .mg-loader__bar {
+    animation: none;
+  }
+}

@@ -1,0 +1,77 @@
+.mg-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--mg-ink, #0c1738);
+  cursor: pointer;
+}
+
+/* The real checkbox sits on top of the drawn box, invisible but clickable. */
+.mg-check__input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mg-check__box {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #8a96bd;
+  border-radius: 6px;
+  background: #fff;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.mg-check__input:focus-visible + .mg-check__box {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-check[data-state='checked'] .mg-check__box,
+.mg-check[data-state='mixed'] .mg-check__box {
+  border-color: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-check__box svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mg-check__tick,
+.mg-check__dash {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 260ms ease-out;
+}
+
+.mg-check[data-state='checked'] .mg-check__tick,
+.mg-check[data-state='mixed'] .mg-check__dash {
+  stroke-dashoffset: 0;
+  transition-delay: 60ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-check__box,
+  .mg-check__tick,
+  .mg-check__dash {
+    transition: none;
+  }
+}

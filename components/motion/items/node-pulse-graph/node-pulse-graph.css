@@ -1,0 +1,75 @@
+.mg-pulse {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.mg-pulse__edge {
+  stroke: #c3cdec;
+  stroke-width: 2;
+}
+
+.mg-pulse__dot {
+  fill: #fff;
+  stroke: #8a96bd;
+  stroke-width: 2;
+  transition:
+    fill 200ms ease,
+    stroke 200ms ease;
+}
+
+.mg-pulse__ring {
+  fill: none;
+  stroke: var(--mg-green, #8fd400);
+  stroke-width: 3;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.mg-pulse__node[data-reached='true'] .mg-pulse__dot {
+  fill: var(--mg-accent, #164cff);
+  stroke: var(--mg-ink, #0c1738);
+}
+
+.mg-pulse__node[data-reached='true'] .mg-pulse__ring {
+  animation: mg-pulse-ring 600ms ease-out;
+}
+
+/* The source node is drawn as a square-ish badge so it differs by shape too. */
+.mg-pulse__node[data-source='true'] .mg-pulse__dot {
+  stroke-width: 4;
+}
+
+.mg-pulse__node text {
+  fill: var(--mg-ink, #0c1738);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mg-pulse__spark {
+  fill: var(--mg-green, #b6ff3b);
+  stroke: var(--mg-ink, #0c1738);
+  stroke-width: 1.5;
+}
+
+@keyframes mg-pulse-ring {
+  from {
+    opacity: 1;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-pulse__dot {
+    transition: none;
+  }
+  .mg-pulse__node[data-reached='true'] .mg-pulse__ring {
+    animation: none;
+  }
+}

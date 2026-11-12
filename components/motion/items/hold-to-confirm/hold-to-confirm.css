@@ -1,0 +1,92 @@
+.mg-hold {
+  display: inline-grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.mg-hold__button {
+  position: relative;
+  min-width: 220px;
+  min-height: 52px;
+  overflow: hidden;
+  padding: 0 22px;
+  border: 2px solid #b3122c;
+  border-radius: 12px;
+  background: #fff;
+  color: #b3122c;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.mg-hold__button:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 3px;
+}
+
+.mg-hold__fill {
+  position: absolute;
+  inset: 0;
+  background: rgba(179, 18, 44, 0.2);
+  transform: scaleX(var(--mg-progress));
+  transform-origin: left center;
+}
+
+/* Spring back smoothly when released early. */
+.mg-hold[data-phase='idle'] .mg-hold__fill {
+  transition: transform 220ms ease-out;
+}
+
+.mg-hold__label {
+  position: relative;
+}
+
+.mg-hold[data-phase='done'] .mg-hold__button {
+  border-color: var(--mg-ink, #0c1738);
+  cursor: default;
+}
+
+.mg-hold[data-phase='done'] .mg-hold__fill {
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-hold[data-phase='done'] .mg-hold__label {
+  color: #fff;
+}
+
+.mg-hold__alt {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--mg-accent, #164cff);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.mg-hold__alt:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-hold__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-hold[data-phase='idle'] .mg-hold__fill {
+    transition: none;
+  }
+}

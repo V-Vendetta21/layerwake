@@ -1,0 +1,83 @@
+.mg-orbit {
+  --mg-size: 220px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--mg-size);
+  height: var(--mg-size);
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-orbit__ring {
+  position: absolute;
+  border: 1px dashed #c3cdec;
+  border-radius: 50%;
+  animation: mg-orbit-spin calc(16s / var(--mg-speed)) linear infinite;
+  animation-play-state: paused;
+}
+
+.mg-orbit__ring--outer {
+  inset: 0;
+}
+
+.mg-orbit__ring--inner {
+  inset: 42px;
+  animation-direction: reverse;
+  animation-duration: calc(10s / var(--mg-speed));
+}
+
+.mg-orbit[data-playing='true'] .mg-orbit__ring {
+  animation-play-state: running;
+}
+
+/* Each arm points from the center to the ring at its angle. */
+.mg-orbit__arm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 0;
+  transform: rotate(var(--mg-angle));
+  transform-origin: left center;
+}
+
+.mg-orbit__mark {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-orbit__ring--inner .mg-orbit__mark {
+  border-radius: 2px;
+  background: var(--mg-green, #b6ff3b);
+  box-shadow: 0 0 0 1px var(--mg-ink, #0c1738);
+}
+
+.mg-orbit__center {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 10px 22px -12px rgba(12, 23, 56, 0.5);
+  text-align: center;
+}
+
+@keyframes mg-orbit-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-orbit__ring {
+    animation: none;
+  }
+}

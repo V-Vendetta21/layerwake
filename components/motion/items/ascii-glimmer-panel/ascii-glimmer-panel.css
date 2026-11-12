@@ -1,0 +1,58 @@
+.mg-ascii {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px 16px;
+  border-radius: 14px;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-ascii__grid {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  align-content: space-between;
+  color: #3a4b7d;
+  font:
+    12px/1.2 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  text-align: center;
+  user-select: none;
+}
+
+.mg-ascii__grid span {
+  animation: mg-ascii-glim 520ms ease-out both;
+  animation-delay: var(--mg-delay);
+}
+
+.mg-ascii__content {
+  position: relative;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--mg-ink, #0c1738);
+  box-shadow: 0 0 0 1px #3a4b7d;
+  color: #f5f8ff;
+  text-align: center;
+}
+
+@keyframes mg-ascii-glim {
+  0% {
+    color: #3a4b7d;
+  }
+  35% {
+    color: var(--mg-green, #b6ff3b);
+    text-shadow: 0 0 6px rgba(182, 255, 59, 0.6);
+  }
+  100% {
+    color: #3a4b7d;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-ascii__grid span {
+    animation: none;
+  }
+}

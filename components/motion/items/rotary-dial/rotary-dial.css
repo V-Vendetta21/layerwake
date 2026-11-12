@@ -1,0 +1,79 @@
+.mg-dial {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-dial__knob {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.mg-dial__knob:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 4px;
+}
+
+.mg-dial__tick {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 50%;
+  margin-left: -1.5px;
+  transform-origin: bottom center;
+}
+
+.mg-dial__tick::before {
+  display: block;
+  width: 3px;
+  height: 10px;
+  border-radius: 2px;
+  background: #c3cdec;
+  content: '';
+  transition: background-color 150ms ease;
+}
+
+.mg-dial__tick[data-on='true']::before {
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-dial__cap {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #dbe5ff);
+  box-shadow:
+    0 0 0 1px var(--mg-line, #d6def2),
+    0 10px 18px -10px rgba(12, 23, 56, 0.6);
+  transition: transform 220ms cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.mg-dial__pointer {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 6px;
+  height: 22px;
+  margin-left: -3px;
+  border-radius: 3px;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-dial__value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-dial__cap,
+  .mg-dial__tick::before {
+    transition: none;
+  }
+}

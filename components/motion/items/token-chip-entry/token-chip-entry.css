@@ -1,0 +1,130 @@
+.mg-chips {
+  display: grid;
+  gap: 6px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-chips__label {
+  font-weight: 700;
+}
+
+.mg-chips__box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 6px;
+  border: 1.5px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 10px;
+  background: #fff;
+  cursor: text;
+}
+
+.mg-chips__box:focus-within {
+  border-color: var(--mg-accent, #164cff);
+  box-shadow: 0 0 0 3px #e6ecff;
+}
+
+.mg-chips__list {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mg-chips__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding-left: 10px;
+  border-radius: 999px;
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  animation: mg-chips-in 220ms cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.mg-chips__chip[data-leaving='true'] {
+  animation: mg-chips-out 180ms ease-in forwards;
+}
+
+.mg-chips__chip[data-dupe='true'] {
+  background: var(--mg-accent, #164cff);
+  animation: mg-chips-nudge 360ms ease;
+}
+
+.mg-chips__remove {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.mg-chips__remove:focus-visible {
+  outline: 2px solid var(--mg-green, #b6ff3b);
+  outline-offset: -3px;
+}
+
+.mg-chips__input {
+  flex: 1;
+  min-width: 90px;
+  height: 34px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+
+.mg-chips__input:focus {
+  outline: none;
+}
+
+.mg-chips__help,
+.mg-chips__status {
+  margin: 0;
+  color: #46527a;
+  font-size: 12px;
+}
+
+.mg-chips__status {
+  min-height: 1.3em;
+  color: var(--mg-ink, #0c1738);
+  font-size: 13px;
+}
+
+@keyframes mg-chips-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes mg-chips-out {
+  to {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes mg-chips-nudge {
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-chips__chip,
+  .mg-chips__chip[data-dupe='true'] {
+    animation: none;
+  }
+}

@@ -1,0 +1,125 @@
+.mg-log {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-log__list {
+  height: 190px;
+  margin: 0;
+  padding: 6px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 12px;
+  background: var(--mg-ink, #0c1738);
+  color: #e8edff;
+  font:
+    12px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  list-style: none;
+  /* Keeps the reading position steady as rows are added below it. */
+  overflow-anchor: auto;
+}
+
+.mg-log__list:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-log__row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 8px;
+  padding: 2px 12px;
+  animation: mg-log-in 240ms ease-out;
+}
+
+.mg-log__row time {
+  color: #7f8bb3;
+}
+
+.mg-log__level {
+  min-width: 42px;
+  font-weight: 700;
+}
+
+.mg-log__row[data-level='info'] .mg-log__level {
+  color: #7f9bff;
+}
+
+.mg-log__row[data-level='warn'] .mg-log__level {
+  color: #f5b13c;
+}
+
+.mg-log__row[data-level='error'] .mg-log__level {
+  color: #ff7a8a;
+}
+
+.mg-log__jump {
+  position: absolute;
+  top: 146px;
+  left: 50%;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--mg-green, #b6ff3b);
+  color: var(--mg-ink, #0c1738);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.6);
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: mg-log-in 200ms ease-out;
+}
+
+.mg-log__jump:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.mg-log__announce {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  color: #46527a;
+  font-size: 13px;
+}
+
+.mg-log__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@keyframes mg-log-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.mg-log__jump {
+  animation-name: mg-log-jump;
+}
+
+@keyframes mg-log-jump {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-log__row,
+  .mg-log__jump {
+    animation: none;
+  }
+}

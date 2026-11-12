@@ -1,0 +1,41 @@
+.mg-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mg-confetti__piece {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  border-radius: 2px;
+  opacity: 0;
+  animation: mg-confetti-fly 1100ms cubic-bezier(0.15, 0.6, 0.35, 1) forwards;
+  animation-delay: var(--mg-delay);
+}
+
+@keyframes mg-confetti-fly {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    /* Out along the burst angle, then a little gravity. */
+    transform: translate(
+        calc(-50% + var(--mg-x)),
+        calc(-50% + var(--mg-y) + 60px)
+      )
+      rotate(var(--mg-r));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-confetti {
+    display: none;
+  }
+}

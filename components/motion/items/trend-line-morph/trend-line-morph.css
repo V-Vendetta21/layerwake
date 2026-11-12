@@ -1,0 +1,78 @@
+.mg-trend {
+  display: grid;
+  gap: 8px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-trend svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mg-trend__grid {
+  stroke: #e1e8fb;
+}
+
+.mg-trend__axis {
+  fill: #6b7699;
+  font-size: 9px;
+}
+
+.mg-trend__line {
+  fill: none;
+  stroke: var(--mg-accent, #164cff);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.mg-trend__point {
+  fill: #fff;
+  stroke: var(--mg-accent, #164cff);
+  stroke-width: 2;
+}
+
+.mg-trend__point[data-selected='true'] {
+  fill: var(--mg-green, #b6ff3b);
+  stroke: var(--mg-ink, #0c1738);
+}
+
+.mg-trend__picker {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 4px;
+}
+
+.mg-trend__picker button {
+  min-height: 36px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mg-trend__picker button[aria-pressed='true'] {
+  border-color: var(--mg-ink, #0c1738);
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+}
+
+.mg-trend__picker button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 1px;
+}
+
+.mg-trend__readout {
+  margin: 0;
+  color: #46527a;
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-trend__point {
+    transition: none;
+  }
+}

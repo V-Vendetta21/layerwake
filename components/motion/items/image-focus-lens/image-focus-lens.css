@@ -1,0 +1,55 @@
+.mg-lens {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  cursor: zoom-in;
+  touch-action: pan-y;
+}
+
+.mg-lens > :first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mg-lens:focus-visible {
+  outline: 3px solid var(--mg-accent, #164cff);
+  outline-offset: 3px;
+}
+
+.mg-lens__glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(12, 23, 56, 0.35),
+    0 14px 30px -12px rgba(12, 23, 56, 0.6);
+  pointer-events: none;
+  animation: mg-lens-in 160ms ease-out;
+}
+
+.mg-lens__zoom {
+  transform-origin: 0 0;
+}
+
+.mg-lens__zoom > * {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes mg-lens-in {
+  from {
+    opacity: 0;
+    scale: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-lens__glass {
+    animation: none;
+  }
+}

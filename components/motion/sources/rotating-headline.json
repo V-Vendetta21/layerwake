@@ -1,0 +1,15 @@
+{
+  "usage": "import { RotatingHeadline } from './rotating-headline';\n\nconst PHRASES = ['small screens', 'slow networks', 'tired eyes', 'real people'];\n\nexport default function Demo() {\n  return (\n    <div style={{ fontSize: 26 }}>\n      <RotatingHeadline prefix='Design for' phrases={PHRASES} interval={1800} />\n    </div>\n  );\n}\n",
+  "files": [
+    {
+      "name": "rotating-headline.tsx",
+      "kind": "component",
+      "code": "'use client';\n\nimport { useEffect, useState } from 'react';\nimport './rotating-headline.css';\n\nexport interface RotatingHeadlineProps {\n  /** Text that stays put, shown before the rotating phrase. */\n  prefix: string;\n  /** Keep this array stable (define it outside the component). */\n  phrases: string[];\n  /** Time each phrase stays on screen, in milliseconds. */\n  interval?: number;\n  className?: string;\n}\n\n/** Swaps through a set of phrases. With reduced motion the swap is instant. */\nexport function RotatingHeadline({\n  prefix,\n  phrases,\n  interval = 2200,\n  className = '',\n}: RotatingHeadlineProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const timer = window.setInterval(\n      () => setIndex((current) => (current + 1) % phrases.length),\n      interval\n    );\n    return () => window.clearInterval(timer);\n  }, [phrases, interval]);\n\n  return (\n    <p className={`mg-rotate ${className}`}>\n      <span className='mg-rotate__sr'>\n        {prefix} {phrases.join(', ')}\n      </span>\n      <span aria-hidden='true'>\n        {prefix}{' '}\n        <span className='mg-rotate__window'>\n          <span key={index} className='mg-rotate__phrase'>\n            {phrases[index]}\n          </span>\n        </span>\n      </span>\n    </p>\n  );\n}\n"
+    },
+    {
+      "name": "rotating-headline.css",
+      "kind": "css",
+      "code": ".mg-rotate {\n  margin: 0;\n  font-weight: 700;\n}\n\n.mg-rotate__window {\n  display: inline-block;\n  overflow: hidden;\n  vertical-align: bottom;\n}\n\n.mg-rotate__phrase {\n  display: inline-block;\n  color: var(--mg-accent, #164cff);\n  animation: mg-rotate-in 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;\n}\n\n.mg-rotate__sr {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n@keyframes mg-rotate-in {\n  from {\n    opacity: 0;\n    transform: translateY(100%);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .mg-rotate__phrase {\n    animation: none;\n  }\n}\n"
+    }
+  ]
+}

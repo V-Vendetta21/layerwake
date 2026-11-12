@@ -1,0 +1,45 @@
+.mg-shutter {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.mg-shutter > :first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mg-shutter__slats {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+}
+
+.mg-shutter__slat {
+  flex: 1;
+  background: var(--mg-ink, #0c1738);
+  /* Slight overlap hides hairline gaps between slats. */
+  margin-right: -1px;
+  transform-origin: left center;
+  animation: mg-shutter-open 520ms cubic-bezier(0.6, 0, 0.2, 1) forwards;
+  animation-delay: calc(200ms + var(--mg-delay));
+}
+
+.mg-shutter__slat:nth-child(even) {
+  background: var(--mg-accent, #164cff);
+}
+
+@keyframes mg-shutter-open {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-shutter__slats {
+    display: none;
+  }
+}

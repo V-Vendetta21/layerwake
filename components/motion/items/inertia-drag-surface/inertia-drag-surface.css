@@ -1,0 +1,70 @@
+.mg-inertia {
+  display: grid;
+  gap: 10px;
+  color: var(--mg-ink, #0c1738);
+}
+
+.mg-inertia__stage {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 14px;
+  background:
+    radial-gradient(#c7d2ef 1px, transparent 1px) 0 0 / 16px 16px,
+    #fff;
+}
+
+.mg-inertia__puck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: var(--mg-accent, #164cff);
+  box-shadow:
+    inset 0 0 0 6px rgba(255, 255, 255, 0.25),
+    0 10px 20px -10px rgba(12, 23, 56, 0.6);
+  cursor: grab;
+  touch-action: none;
+}
+
+.mg-inertia__puck[data-moving='true'] {
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-inertia__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.mg-inertia__controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--mg-line-strong, #b9c5e6);
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-inertia__controls button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-inertia__pos {
+  color: #46527a;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-inertia__puck {
+    transition: none;
+  }
+}

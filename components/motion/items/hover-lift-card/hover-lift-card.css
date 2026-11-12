@@ -1,0 +1,40 @@
+.mg-lift {
+  display: block;
+  padding: 20px;
+  border: 1px solid var(--mg-line, #d6def2);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(12, 23, 56, 0.08);
+  color: var(--mg-ink, #0c1738);
+  text-decoration: none;
+  transition:
+    transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 240ms ease;
+}
+
+.mg-lift:hover,
+.mg-lift:focus-visible {
+  border-color: var(--mg-accent, #164cff);
+  box-shadow: 0 18px 36px -14px rgba(22, 76, 255, 0.45);
+  transform: translateY(-6px);
+}
+
+.mg-lift:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 3px;
+}
+
+.mg-lift:active {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-lift,
+  .mg-lift:hover,
+  .mg-lift:focus-visible,
+  .mg-lift:active {
+    transform: none;
+    transition: none;
+  }
+}

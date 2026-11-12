@@ -1,0 +1,57 @@
+.mg-ripple {
+  position: relative;
+  min-height: 48px;
+  overflow: hidden;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--mg-ink, #0c1738);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-ripple:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 3px;
+}
+
+.mg-ripple__label {
+  position: relative;
+  z-index: 1;
+}
+
+.mg-ripple__wave {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--mg-green, #b6ff3b);
+  opacity: 0.45;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: mg-ripple-out 620ms ease-out forwards;
+}
+
+@keyframes mg-ripple-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes mg-ripple-fade {
+  from {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-ripple__wave {
+    animation: mg-ripple-fade 300ms linear forwards;
+  }
+}

@@ -1,0 +1,366 @@
+/* Motion Gallery page chrome. The components themselves carry their own CSS
+   in components/motion/items and do not depend on anything here. */
+
+.mgx-hero {
+  padding: 40px 0 28px;
+}
+.mgx-hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.mgx-hero p:last-child {
+  max-width: 62ch;
+  margin-top: 12px;
+  color: var(--lw-ink-2);
+  font-size: 16px;
+}
+.mgx-hero .lw-eyebrow {
+  margin-bottom: 10px;
+  color: var(--lw-cobalt);
+}
+
+.mgx-controls {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 -24px;
+  padding: 12px 24px;
+  border-top: 1px solid var(--lw-line);
+  border-bottom: 1px solid var(--lw-line);
+  background: rgba(245, 248, 255, 0.94);
+  backdrop-filter: blur(8px);
+}
+.mgx-search {
+  flex: 1 1 220px;
+  max-width: 320px;
+}
+.mgx-search input {
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+}
+.mgx-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mgx-filters button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--lw-line-strong);
+  border-radius: 999px;
+  background: var(--lw-paper);
+  color: var(--lw-ink-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mgx-filters button:hover {
+  border-color: var(--lw-cobalt);
+  color: var(--lw-ink);
+}
+.mgx-filters button[aria-pressed='true'] {
+  border-color: var(--lw-ink);
+  background: var(--lw-ink);
+  color: #fff;
+}
+.mgx-count {
+  margin-left: auto;
+  color: var(--lw-ink-2);
+  font-size: 13px;
+}
+.mgx-count button {
+  cursor: pointer;
+}
+
+.mgx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 20px;
+  align-items: start;
+  padding-top: 24px;
+}
+
+.mgx-entry {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--lw-line-strong);
+  border-radius: 14px;
+  background: var(--lw-paper);
+  /* Leave room for the sticky filter bar when jumping to an anchor. */
+  scroll-margin-top: 200px;
+}
+.mgx-entry:target {
+  border-color: var(--lw-cobalt);
+  box-shadow: 0 0 0 3px var(--lw-cobalt-soft);
+}
+.mgx-entry__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 10px;
+}
+.mgx-entry__head h2 {
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.mgx-entry__head h2 a span {
+  color: var(--lw-line-strong);
+  font-family: var(--lw-mono);
+  font-weight: 400;
+}
+.mgx-entry__head h2 a:hover span,
+.mgx-entry__head h2 a:focus-visible span {
+  color: var(--lw-cobalt);
+}
+.mgx-entry__head p {
+  margin-top: 2px;
+  color: var(--lw-ink-2);
+}
+.mgx-entry__head .lw-chip {
+  flex: none;
+  margin-top: 3px;
+}
+
+/* Preview / Code tabs with an underline under the active tab. */
+.mgx-tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 16px;
+  border-bottom: 1px solid var(--lw-line);
+}
+.mgx-tabs {
+  display: flex;
+  gap: 20px;
+}
+.mgx-tabs button {
+  position: relative;
+  min-height: 44px;
+  padding: 0 2px;
+  color: var(--lw-ink-3);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mgx-tabs button::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--lw-cobalt);
+  content: '';
+  transform: scaleX(0);
+  transition: transform 200ms var(--lw-ease);
+}
+.mgx-tabs button[aria-selected='true'] {
+  color: var(--lw-ink);
+}
+.mgx-tabs button[aria-selected='true']::after {
+  transform: scaleX(1);
+}
+.mgx-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: var(--lw-cobalt-deep);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mgx-replay:hover {
+  background: var(--lw-cobalt-soft);
+}
+
+.mgx-stage {
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+  padding: 24px 16px;
+  /* Demos set their own type; start them from a neutral base. */
+  font-size: 15px;
+  line-height: 1.5;
+}
+.mgx-stage > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.mgx-cue {
+  display: flex;
+  gap: 8px;
+  padding: 9px 16px;
+  border-top: 1px solid var(--lw-line);
+  color: var(--lw-ink-2);
+  font-size: 12.5px;
+}
+.mgx-cue span {
+  color: var(--lw-cobalt);
+}
+
+.mgx-steps {
+  display: grid;
+  gap: 4px;
+  padding: 12px 16px 12px 36px;
+  color: var(--lw-ink-2);
+  font-size: 13px;
+  list-style: decimal;
+}
+.mgx-steps strong {
+  color: var(--lw-ink);
+}
+.mgx-steps code {
+  padding: 1px 5px;
+  border: 1px solid var(--lw-line);
+  border-radius: 4px;
+  background: var(--lw-foam);
+  color: var(--lw-ink);
+  font-family: var(--lw-mono);
+  font-size: 12px;
+}
+.mgx-file {
+  border-top: 1px solid #25345f;
+  background: var(--lw-ink);
+}
+.mgx-file__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  padding: 8px 8px 8px 16px;
+  border-bottom: 1px solid #25345f;
+  color: #c3cdec;
+}
+.mgx-file__name {
+  color: #fff;
+  font-family: var(--lw-mono);
+  font-size: 12.5px;
+}
+.mgx-file__note {
+  margin-right: auto;
+  font-size: 12px;
+}
+.mgx-copy {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid #3a4b7d;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mgx-copy:hover {
+  border-color: #7f9bff;
+}
+.mgx-copy[data-state='copied'] {
+  border-color: var(--lw-green);
+  background: var(--lw-green);
+  color: var(--lw-ink);
+}
+.mgx-copy:focus-visible,
+.mgx-code:focus-visible {
+  outline-color: var(--lw-green);
+}
+.mgx-copy__hint {
+  flex-basis: 100%;
+  color: var(--lw-green);
+  font-size: 12px;
+  text-align: right;
+}
+.mgx-code {
+  max-height: 280px;
+  margin: 0;
+  overflow: auto;
+  padding: 12px 16px;
+  color: #e8edff;
+  font-family: var(--lw-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  tab-size: 2;
+  white-space: pre;
+}
+
+.mgx-empty {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin-top: 24px;
+  padding: 56px 24px;
+  border: 1.5px dashed var(--lw-line-strong);
+  border-radius: 14px;
+  background: var(--lw-paper);
+  text-align: center;
+}
+.mgx-empty h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.mgx-empty p {
+  max-width: 46ch;
+  color: var(--lw-ink-2);
+}
+
+@media (max-width: 600px) {
+  .mgx-controls {
+    position: static;
+    margin: 0 -16px;
+    padding: 12px 16px;
+  }
+  .mgx-search {
+    max-width: none;
+  }
+  .mgx-count {
+    margin-left: 0;
+  }
+  .mgx-entry {
+    scroll-margin-top: 16px;
+  }
+  .mgx-stage {
+    min-height: 260px;
+  }
+}
+
+.mgx-filters__n {
+  margin-left: 2px;
+  color: var(--lw-ink-3);
+  font-family: var(--lw-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+.mgx-filters button[aria-pressed='true'] .mgx-filters__n {
+  color: #b9c5e6;
+}
+.mgx-loading {
+  padding: 16px;
+  color: var(--lw-ink-2);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  /* One swipeable row of filters instead of four wrapped rows. */
+  .mgx-filters {
+    flex-wrap: nowrap;
+    width: calc(100% + 32px);
+    margin: 0 -16px;
+    padding: 2px 16px 6px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .mgx-filters button {
+    flex: none;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "usage": "import { ScrambleText } from './scramble-text';\n\nexport default function Demo() {\n  return (\n    <p style={{ margin: 0, fontSize: 20, fontWeight: 600 }}>\n      <ScrambleText text='SIGNAL ACQUIRED 0427' duration={1200} />\n    </p>\n  );\n}\n",
+  "files": [
+    {
+      "name": "scramble-text.tsx",
+      "kind": "component",
+      "code": "'use client';\n\nimport { useEffect, useState } from 'react';\nimport './scramble-text.css';\n\nexport interface ScrambleTextProps {\n  text: string;\n  /** Time for the whole string to resolve, in milliseconds. */\n  duration?: number;\n  /** Characters used while a letter is unresolved. */\n  charset?: string;\n  className?: string;\n}\n\n/** Letters resolve left to right. Change `text` or remount to replay. */\nexport function ScrambleText({\n  text,\n  duration = 1100,\n  charset = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#%&',\n  className = '',\n}: ScrambleTextProps) {\n  const [output, setOutput] = useState(text);\n\n  useEffect(() => {\n    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {\n      setOutput(text);\n      return;\n    }\n    let frame = 0;\n    let last = 0;\n    const start = performance.now();\n    const tick = (now: number) => {\n      const progress = Math.min(1, (now - start) / duration);\n      if (now - last > 40 || progress === 1) {\n        last = now;\n        const settled = Math.floor(progress * text.length);\n        setOutput(\n          text\n            .split('')\n            .map((char, index) =>\n              index < settled || char === ' '\n                ? char\n                : charset[Math.floor(Math.random() * charset.length)]\n            )\n            .join('')\n        );\n      }\n      if (progress < 1) frame = requestAnimationFrame(tick);\n    };\n    frame = requestAnimationFrame(tick);\n    return () => cancelAnimationFrame(frame);\n  }, [text, duration, charset]);\n\n  return (\n    <span className={`mg-scramble ${className}`}>\n      <span className='mg-scramble__sr'>{text}</span>\n      <span aria-hidden='true'>{output}</span>\n    </span>\n  );\n}\n"
+    },
+    {
+      "name": "scramble-text.css",
+      "kind": "css",
+      "code": ".mg-scramble {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;\n  font-variant-numeric: tabular-nums;\n  letter-spacing: 0.02em;\n  white-space: pre-wrap;\n}\n\n.mg-scramble__sr {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n"
+    }
+  ]
+}

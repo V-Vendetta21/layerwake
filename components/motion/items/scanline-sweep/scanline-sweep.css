@@ -1,0 +1,75 @@
+.mg-scan {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-scan > :first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mg-scan__line {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: var(--mg-green, #b6ff3b);
+  box-shadow: 0 0 12px 2px rgba(182, 255, 59, 0.45);
+  opacity: 0;
+  animation: mg-scan-pass var(--mg-duration) cubic-bezier(0.4, 0, 0.6, 1)
+    forwards;
+}
+
+.mg-scan__result {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--mg-green, #b6ff3b);
+  color: var(--mg-ink, #0c1738);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  animation: mg-scan-done 260ms ease-out forwards;
+  animation-delay: var(--mg-duration);
+}
+
+@keyframes mg-scan-pass {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 2px);
+    opacity: 0;
+  }
+}
+
+@keyframes mg-scan-done {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-scan__line {
+    display: none;
+  }
+  .mg-scan__result {
+    opacity: 1;
+    animation: none;
+  }
+}

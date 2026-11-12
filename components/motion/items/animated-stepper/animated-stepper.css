@@ -1,0 +1,95 @@
+.mg-stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--mg-count), minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The track runs between the centers of the first and last dots. */
+.mg-stepper::before,
+.mg-stepper::after {
+  position: absolute;
+  top: 21px;
+  left: calc(50% / var(--mg-count));
+  height: 3px;
+  border-radius: 3px;
+  content: '';
+}
+
+.mg-stepper::before {
+  right: calc(50% / var(--mg-count));
+  background: var(--mg-line, #d6def2);
+}
+
+.mg-stepper::after {
+  width: calc((100% - 100% / var(--mg-count)) * var(--mg-progress));
+  background: var(--mg-accent, #164cff);
+  transition: width 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mg-stepper__button {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  width: 100%;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: #46527a;
+  font: inherit;
+  cursor: pointer;
+}
+
+.mg-stepper__button:focus-visible {
+  outline: 2px solid var(--mg-accent, #164cff);
+  outline-offset: 2px;
+}
+
+.mg-stepper__dot {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--mg-line, #d6def2);
+  border-radius: 50%;
+  background: #fff;
+  font-weight: 700;
+  transition:
+    background-color 300ms ease 150ms,
+    border-color 300ms ease 150ms,
+    color 300ms ease 150ms,
+    transform 300ms cubic-bezier(0.3, 1.5, 0.5, 1) 150ms;
+}
+
+.mg-stepper__step[data-state='done'] .mg-stepper__dot {
+  border-color: var(--mg-accent, #164cff);
+  background: var(--mg-accent, #164cff);
+  color: #fff;
+}
+
+.mg-stepper__step[data-state='current'] .mg-stepper__dot {
+  border-color: var(--mg-accent, #164cff);
+  color: var(--mg-ink, #0c1738);
+  transform: scale(1.12);
+}
+
+.mg-stepper__step[data-state='current'] .mg-stepper__name {
+  color: var(--mg-ink, #0c1738);
+  font-weight: 600;
+}
+
+.mg-stepper__name {
+  font-size: 0.86em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-stepper::after,
+  .mg-stepper__dot {
+    transition: none;
+  }
+}

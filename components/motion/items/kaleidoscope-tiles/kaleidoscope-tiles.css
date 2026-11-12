@@ -1,0 +1,65 @@
+.mg-kaleido {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--mg-ink, #0c1738);
+}
+
+.mg-kaleido__wedge {
+  position: absolute;
+  inset: 0;
+}
+
+.mg-kaleido__shapes {
+  position: absolute;
+  inset: 0;
+  animation: mg-kaleido-turn 18s linear infinite;
+  animation-play-state: paused;
+}
+
+.mg-kaleido[data-playing='true'] .mg-kaleido__shapes {
+  animation-play-state: running;
+}
+
+.mg-kaleido__shapes > span {
+  position: absolute;
+}
+
+.mg-kaleido__a {
+  top: 14%;
+  left: 44%;
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  background: var(--mg-accent, #164cff);
+}
+
+.mg-kaleido__b {
+  top: 30%;
+  left: 36%;
+  width: 14%;
+  height: 14%;
+  background: var(--mg-green, #b6ff3b);
+  transform: rotate(45deg);
+}
+
+.mg-kaleido__c {
+  top: 4%;
+  left: 52%;
+  width: 6%;
+  height: 30%;
+  border-radius: 3px;
+  background: #7f9bff;
+}
+
+@keyframes mg-kaleido-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-kaleido__shapes {
+    animation: none;
+  }
+}

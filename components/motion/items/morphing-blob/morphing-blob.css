@@ -1,0 +1,20 @@
+.mg-blob {
+  display: block;
+  overflow: visible;
+}
+
+.mg-blob__shape {
+  fill: var(--mg-accent, #164cff);
+  stroke: var(--mg-ink, #0c1738);
+  stroke-width: 2;
+}
+
+.mg-blob__center {
+  fill: var(--mg-green, #b6ff3b);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-blob__shape {
+    transition: none;
+  }
+}
