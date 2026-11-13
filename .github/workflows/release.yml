@@ -1,0 +1,43 @@
+name: Release
+
+# Pushing a tag like v1.0.0 builds everything and publishes a GitHub release
+# with the built site, the Chrome extension and the full source attached.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run build:extension
+      - name: Package assets
+        run: |
+          V="${GITHUB_REF_NAME}"
+          (cd out && zip -qr "../layerwake-site-$V.zip" .)
+          (cd extension/dist && zip -qr "../../layerwake-extension-$V.zip" .)
+          git archive --format=zip --prefix="layerwake-$V/" -o "layerwake-source-$V.zip" HEAD
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V="${GITHUB_REF_NAME}"
+          gh release create "$V" \
+            --title "Layerwake $V" \
+            --notes-file .github/RELEASE_NOTES.md \
+            "layerwake-site-$V.zip" \
+            "layerwake-extension-$V.zip" \
+            "layerwake-source-$V.zip"
