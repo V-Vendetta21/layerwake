@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PauseIcon, PlayIcon } from './icons';
 
 /**
- * The home page's looping background: a blurred black-and-white sea, held
+ * The home page's looping background: a high-contrast black-and-white sea, held
  * under a dark wash so text keeps its contrast. It never plays for people who
  * ask for reduced motion, and a button pauses it for everyone else.
  */
