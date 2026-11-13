@@ -88,3 +88,15 @@ export const ArrowIcon = (p: IconProps) => (
     <path d='M3 8h10M9 4l4 4-4 4' />
   </Icon>
 );
+
+export const PauseIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d='M5.5 3.5v9M10.5 3.5v9' />
+  </Icon>
+);
+
+export const PlayIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d='M5 3.5v9l7-4.5z' />
+  </Icon>
+);

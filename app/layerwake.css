@@ -178,9 +178,71 @@
 /* ------------------------------------------------------------------- home */
 
 .lw-home {
+  /* Lifted a step so muted text clears 4.5:1 over the brightest foam. */
+  --lw-text-3: #a8a8a8;
+  position: relative;
+  z-index: 1;
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 24px 64px;
+}
+
+/* Looping sea behind the home page. The wash keeps its brightest frame at
+   about #3a3a3a, so every text token stays above 4.5:1. */
+.lw-backdrop {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  background: var(--lw-canvas);
+  pointer-events: none;
+}
+.lw-backdrop__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Scaled past the edges so the blur never shows a soft border. */
+  transform: scale(1.06);
+}
+.lw-backdrop::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 8, 8, 0.55) 0%,
+      rgba(8, 8, 8, 0) 30%,
+      rgba(8, 8, 8, 0) 70%,
+      rgba(8, 8, 8, 0.6) 100%
+    ),
+    rgba(8, 8, 8, 0.8);
+  content: '';
+}
+.lw-backdrop__toggle {
+  position: fixed;
+  z-index: 2;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--lw-line-strong);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.8);
+  color: var(--lw-text-2);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    color 150ms var(--lw-ease),
+    border-color 150ms var(--lw-ease);
+}
+.lw-backdrop__toggle:hover {
+  border-color: var(--lw-text-3);
+  color: var(--lw-text);
+}
+.lw-backdrop__toggle:active {
+  background: var(--lw-raised-2);
 }
 .lw-home__nav {
   display: flex;
