@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { HomeBackdrop } from '@/components/layerwake/backdrop';
+import { WaveBackdrop } from '@/components/layerwake/backdrop';
 import { HomeActions, HomeSample } from '@/components/layerwake/home';
 import { LayerwakeBrand } from '@/components/layerwake/logo';
 
@@ -25,7 +25,7 @@ const STEPS = [
 export default function LayerwakeHome() {
   return (
     <div className='lw-home'>
-      <HomeBackdrop />
+      <WaveBackdrop />
       <nav className='lw-home__nav' aria-label='Layerwake'>
         <Link href='/' aria-label='Layerwake home'>
           <LayerwakeBrand />

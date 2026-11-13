@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { WaveBackdrop } from '@/components/layerwake/backdrop';
 import { LayerwakeBrand } from '@/components/layerwake/logo';
 import { CATALOG } from '@/components/motion/catalog';
 import { MotionGallery } from '@/components/motion/gallery';
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function MotionPage() {
   return (
     <div className='lw-home mgx'>
+      <WaveBackdrop blurred />
       <nav className='lw-home__nav' aria-label='Layerwake'>
         <Link href='/' aria-label='Layerwake home'>
           <LayerwakeBrand />

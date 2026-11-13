@@ -25,6 +25,7 @@ import {
 } from './capture-io';
 import { ExportPanel, type Status } from './export-panel';
 import { Inspector } from './inspector';
+import { WaveBackdrop } from './backdrop';
 import { LayerwakeBrand } from './logo';
 import { LayerTree, TokenGroups } from './panels';
 import { ComponentRender } from './render';
@@ -381,7 +382,8 @@ function EmptyState({
   onDemo: () => void;
 }) {
   return (
-    <div className='lw-empty lw-dots'>
+    <div className='lw-empty'>
+      <WaveBackdrop blurred contained />
       <div className='lw-drop'>
         <h1>Bring in a component</h1>
         <p>
