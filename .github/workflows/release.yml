@@ -1,10 +1,16 @@
 name: Release
 
-# Pushing a tag like v1.0.0 builds everything and publishes a GitHub release
-# with the built site, the Chrome extension and the full source attached.
+# Pushing a tag like v1.0.0, or running this workflow by hand with a version,
+# builds everything and publishes a GitHub release with the built site, the
+# Chrome extension and the full source attached.
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release tag to create, e.g. v1.0.0'
+        required: true
 
 permissions:
   contents: write
@@ -14,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Resolve version
+        run: echo "V=${{ inputs.version || github.ref_name }}" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -26,7 +34,6 @@ jobs:
       - run: npm run build:extension
       - name: Package assets
         run: |
-          V="${GITHUB_REF_NAME}"
           (cd out && zip -qr "../layerwake-site-$V.zip" .)
           (cd extension/dist && zip -qr "../../layerwake-extension-$V.zip" .)
           git archive --format=zip --prefix="layerwake-$V/" -o "layerwake-source-$V.zip" HEAD
@@ -34,8 +41,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          V="${GITHUB_REF_NAME}"
           gh release create "$V" \
+            --target "$GITHUB_SHA" \
             --title "Layerwake $V" \
             --notes-file .github/RELEASE_NOTES.md \
             "layerwake-site-$V.zip" \
