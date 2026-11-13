@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { WaveBackdrop } from '@/components/layerwake/backdrop';
 import { DemoCard } from '@/components/layerwake/demo-card';
 import { LayerwakeBrand } from '@/components/layerwake/logo';
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function DemoPage() {
   return (
     <div className='lw-demo'>
+      <WaveBackdrop blurred />
       <nav className='lw-home__nav' aria-label='Layerwake'>
         <Link href='/' aria-label='Layerwake home'>
           <LayerwakeBrand />
