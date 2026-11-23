@@ -699,6 +699,8 @@ try {
     );
     const entry = page.locator('#theme-transition-panel');
     await entry.getByRole('tab', { name: 'Code' }).click();
+    // The source loads on demand, so wait for the panel before reading it.
+    await entry.locator('.mgx-codepanel').waitFor({ timeout: 15000 });
     const names = await entry.locator('.mgx-file__name').allInnerTexts();
     const copies = await entry.locator('.mgx-copy').allInnerTexts();
     check(
