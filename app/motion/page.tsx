@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { WaveBackdrop } from '@/components/layerwake/backdrop';
-import { LayerwakeBrand } from '@/components/layerwake/logo';
+import { SiteNav } from '@/components/layerwake/site-nav';
 import { CATALOG } from '@/components/motion/catalog';
 import { MotionGallery } from '@/components/motion/gallery';
 import './motion.css';
@@ -16,18 +15,13 @@ export default function MotionPage() {
   return (
     <div className='lw-home mgx'>
       <WaveBackdrop blurred />
-      <nav className='lw-home__nav' aria-label='Layerwake'>
-        <Link href='/' aria-label='Layerwake home'>
-          <LayerwakeBrand />
-        </Link>
-        <div className='lw-home__links'>
-          <Link href='/motion' aria-current='page'>
-            Motion Gallery
-          </Link>
-          <Link href='/demo'>Demo page</Link>
-          <Link href='/workspace'>Workspace</Link>
-        </div>
-      </nav>
+      <SiteNav
+        links={[
+          { href: '/motion', label: 'Motion Gallery', current: true },
+          { href: '/demo', label: 'Demo page' },
+          { href: '/workspace', label: 'Workspace' },
+        ]}
+      />
       <main>
         <header className='mgx-hero'>
           <h1>{CATALOG.length} motion components you can copy</h1>

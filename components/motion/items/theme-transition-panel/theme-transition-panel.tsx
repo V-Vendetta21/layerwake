@@ -1,7 +1,13 @@
 'use client';
 
 import { useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import {
+  REVEAL_EASING,
+  REVEAL_MS,
+  revealCircle,
+} from '../../shared/circle-reveal';
 import { useReducedMotion } from '../../shared/use-reduced-motion';
+import { MoonIcon, SunIcon } from './theme-icons';
 import './theme-transition-panel.css';
 
 export interface ThemeTransitionPanelProps {
@@ -14,7 +20,10 @@ export interface ThemeTransitionPanelProps {
 
 /**
  * Switching theme reveals the new one as a circle growing out of the toggle.
- * The effect is confined to this panel, not the page. With reduced motion the
+ * The effect is confined to this panel, so the page around it keeps its own
+ * theme: the state is yours and `onThemeChange` fires when the circle has
+ * filled the panel. To theme a whole page instead, see ThemeToggle in
+ * site-theme-toggle.tsx, which uses the same circle. With reduced motion the
  * theme simply switches.
  */
 export function ThemeTransitionPanel({
@@ -35,6 +44,7 @@ export function ThemeTransitionPanel({
   const reduced = useReducedMotion();
 
   const flip = () => {
+    if (reveal) return; // finish the current reveal first
     const next = theme === 'light' ? 'dark' : 'light';
     if (reduced || !panel.current || !toggle.current) {
       onThemeChange(next);
@@ -42,9 +52,7 @@ export function ThemeTransitionPanel({
     }
     const p = panel.current.getBoundingClientRect();
     const t = toggle.current.getBoundingClientRect();
-    const x = t.left + t.width / 2 - p.left;
-    const y = t.top + t.height / 2 - p.top;
-    const r = Math.hypot(Math.max(x, p.width - x), Math.max(y, p.height - y));
+    const { x, y, r } = revealCircle(t, p);
     setReveal({ to: next, x, y, r, key: Date.now() });
   };
 
@@ -64,6 +72,8 @@ export function ThemeTransitionPanel({
               '--mg-x': `${reveal.x}px`,
               '--mg-y': `${reveal.y}px`,
               '--mg-r': `${reveal.r}px`,
+              '--mg-reveal-ms': `${REVEAL_MS}ms`,
+              '--mg-reveal-easing': REVEAL_EASING,
             } as CSSProperties
           }
           onAnimationEnd={() => {
@@ -81,31 +91,9 @@ export function ThemeTransitionPanel({
         data-theme={theme}
         aria-pressed={theme === 'dark'}
         aria-label='Dark theme'
-        disabled={reveal !== null}
         onClick={flip}
       >
-        {theme === 'dark' ? (
-          <svg width='20' height='20' viewBox='0 0 20 20' aria-hidden='true'>
-            <path
-              d='M15.5 12.5A6.5 6.5 0 0 1 7.5 4.5a6.5 6.5 0 1 0 8 8Z'
-              fill='currentColor'
-            />
-          </svg>
-        ) : (
-          <svg
-            width='20'
-            height='20'
-            viewBox='0 0 20 20'
-            aria-hidden='true'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='1.6'
-            strokeLinecap='round'
-          >
-            <circle cx='10' cy='10' r='3.5' />
-            <path d='M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4' />
-          </svg>
-        )}
+        {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
       </button>
     </div>
   );

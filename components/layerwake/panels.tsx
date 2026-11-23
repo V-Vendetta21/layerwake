@@ -142,8 +142,8 @@ function TokenSample({ token, value }: { token: Token; value: string }) {
       <span
         className='lw-token__swatch'
         style={{
-          boxShadow: '1px 2px 4px rgba(0, 0, 0,.45)',
-          background: '#121212',
+          boxShadow: '1px 2px 4px var(--lw-shadow-sample)',
+          background: 'var(--lw-surface)',
         }}
       />
     );

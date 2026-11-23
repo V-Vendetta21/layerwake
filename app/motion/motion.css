@@ -19,7 +19,7 @@
 
 .mgx-controls {
   position: sticky;
-  top: 0;
+  top: var(--lw-nav-h, 64px);
   z-index: 20;
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +29,7 @@
   padding: 12px 24px;
   border-top: 1px solid var(--lw-line);
   border-bottom: 1px solid var(--lw-line);
-  background: rgba(8, 8, 8, 0.92);
+  background: var(--lw-scrim);
   backdrop-filter: blur(8px);
 }
 .mgx-search {
@@ -67,7 +67,7 @@
 .mgx-filters button[aria-pressed='true'] {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
 }
 .mgx-count {
   margin-left: auto;
@@ -93,7 +93,7 @@
   border-radius: 14px;
   background: var(--lw-surface);
   /* Leave room for the sticky filter bar when jumping to an anchor. */
-  scroll-margin-top: 200px;
+  scroll-margin-top: 264px;
 }
 .mgx-entry:target {
   border-color: var(--lw-accent-text);
@@ -126,7 +126,31 @@
 }
 .mgx-entry__head .lw-chip {
   flex: none;
+}
+.mgx-entry__meta {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
   margin-top: 3px;
+}
+/* A component the site itself runs on. */
+.mgx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px 0 6px;
+  border: 1px solid var(--lw-text);
+  border-radius: 4px;
+  color: var(--lw-text);
+  font-size: 12px;
+  font-weight: 600;
+  /* Shown exactly as written, unlike the category chip beside it. */
+  text-transform: none;
+  white-space: nowrap;
 }
 
 /* Preview / Code tabs with an underline under the active tab. */
@@ -269,7 +293,7 @@
 .mgx-copy[data-state='copied'] {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
 }
 .mgx-copy:focus-visible,
 .mgx-code:focus-visible {
@@ -286,7 +310,7 @@
   margin: 0;
   overflow: auto;
   padding: 12px 16px;
-  color: #e8e8e8;
+  color: var(--lw-code-text);
   font-family: var(--lw-mono);
   font-size: 12.5px;
   line-height: 1.6;
@@ -315,6 +339,17 @@
 }
 
 @media (max-width: 600px) {
+  /* Room for the title: the star badge and category drop below it. */
+  .mgx-entry__head--badged {
+    flex-wrap: wrap;
+  }
+  .mgx-entry__head--badged > div:first-child {
+    flex: 1 1 100%;
+  }
+  .mgx-entry__head--badged .mgx-entry__meta {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
   .mgx-controls {
     position: static;
     margin: 0 -16px;
@@ -342,7 +377,7 @@
   font-weight: 500;
 }
 .mgx-filters button[aria-pressed='true'] .mgx-filters__n {
-  color: rgba(8, 8, 8, 0.72);
+  color: color-mix(in srgb, var(--lw-on-accent) 72%, transparent);
 }
 .mgx-loading {
   padding: 16px;

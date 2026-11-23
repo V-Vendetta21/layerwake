@@ -24,17 +24,25 @@ export interface CatalogEntry {
   cue: string;
   /** True when the demo plays on entry, so "Replay" is the natural control. */
   replays: boolean;
+  /**
+   * Set when this component powers part of Layerwake itself. The gallery shows
+   * a star and "Used in this site" beside the title; this text explains it.
+   */
+  usedInSite?: string;
 }
 
 export interface MotionFile {
   name: string;
-  kind: 'component' | 'css' | 'helper';
+  kind: 'component' | 'css' | 'helper' | 'usage';
   code: string;
 }
 
 export interface MotionSource {
   /** The usage example. It is the file the Preview tab renders. */
   usage: string;
-  /** Component first, then its CSS, then any helpers it imports. */
+  /**
+   * Component first, then its CSS, then any helpers it imports. Extra usage
+   * examples (kind 'usage') are shown beside the main one, not copied along.
+   */
   files: MotionFile[];
 }

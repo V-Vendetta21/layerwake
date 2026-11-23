@@ -106,27 +106,38 @@ components/motion/
 
 To add a component, add `items/<slug>/` with the three files and an entry in `catalog.ts`, then raise `EXPECTED_TOTAL`.
 
-## Color
+## Color and theme
 
-Layerwake is dark-first: black canvas, white text, and snow white as the accent. Every app-owned color is a token at the top of `app/layerwake.css`.
+Layerwake has two themes, dark and light, with black, white and neutral grays. The accent follows the same idea in both: the highest-contrast ink. In dark that is snow white with near-black labels; in light it is ink black with white labels. Every app-owned color is a token at the top of `app/layerwake.css`, in one dark set (the default) and one light set that `<html data-theme='light'>` switches on.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--lw-canvas` | `#080808` | Page and workspace background |
-| `--lw-surface` | `#121212` | Cards, panels, menus, overlays |
-| `--lw-raised` / `--lw-raised-2` | `#1B1B1B` / `#262626` | Hover, nested panels, code panes |
-| `--lw-text` / `--lw-text-2` / `--lw-text-3` | `#FFFFFF` / `#B8B8B8` / `#8F8F8F` | Primary, secondary, and tertiary text |
-| `--lw-line` / `--lw-line-strong` | `#303030` / `#474747` | Dividers and control outlines |
-| `--lw-accent` | `#EAF2FB` | Primary buttons and selected fills (near-black `#080808` text on it is 17.7:1) |
-| `--lw-accent-text` | `#DCE9F7` | Links, focus rings and active indicators on dark (15.2:1 on surface) |
+| Token | Dark | Light | Use |
+| --- | --- | --- | --- |
+| `--lw-canvas` | `#080808` | `#F5F5F5` | Page and workspace background |
+| `--lw-surface` | `#121212` | `#FFFFFF` | Cards, panels, menus, overlays |
+| `--lw-raised` / `--lw-raised-2` | `#1B1B1B` / `#262626` | `#F0F0F0` / `#E6E6E6` | Hover, nested panels, code panes |
+| `--lw-text` / `-2` / `-3` | `#FFFFFF` / `#B8B8B8` / `#8F8F8F` | `#0A0A0A` / `#404040` / `#666666` | Primary, secondary, tertiary text |
+| `--lw-line` / `--lw-line-strong` | `#303030` / `#474747` | `#E0E0E0` / `#C2C2C2` | Dividers and control outlines |
+| `--lw-accent` / `--lw-on-accent` | `#EAF2FB` / `#080808` | `#111111` / `#FFFFFF` | Primary buttons and selected fills, and the label on them |
+| `--lw-accent-text` | `#DCE9F7` | `#0A0A0A` | Links, focus rings and active indicators |
 
-Snow white marks actions and selection only. Error and warning states use shape and wording instead of a second hue: errors get a solid white outline and a round "!" mark, warnings a dashed outline and a triangle.
+Every text pairing clears 4.5:1 in both themes. Accent marks actions and selection only. Error and warning states use shape and wording instead of a second hue: errors get a solid outline and a round "!" mark, warnings a dashed outline and a triangle. To change the accent (to a blue, say), change `--lw-accent`, `--lw-accent-hover`, `--lw-accent-pressed`, `--lw-on-accent`, `--lw-accent-text`, `--lw-accent-soft` and `--lw-focus` in each set.
 
-Gallery components take the same palette as defaults through `--mg-*` custom properties (`--mg-accent`, `--mg-accent-text`, `--mg-text`, `--mg-raised`, `--mg-line` and so on), so a copied component can be re-themed without editing its CSS. Captured components are rendered with their own captured colors.
+Gallery components take the same palette as defaults through `--mg-*` custom properties (`--mg-accent`, `--mg-accent-text`, `--mg-text`, `--mg-raised`, `--mg-line` and so on), so a copied component can be re-themed without editing its CSS. Gallery preview stages stay dark in both themes (`.lw-island-dark`), because the components were designed against a dark stage. Imported captures keep their own measured colors in both themes, and so does the built-in demo capture.
+
+### The theme switch
+
+The sun/moon button is in the header of the home, gallery and demo pages and in the workspace toolbar. It reveals the new theme as a circle growing from the button, across the whole document.
+
+- **It reuses a gallery component.** The Motion Gallery's Theme Transition Panel (starred "Used in this site") has two parts. The panel confines the circle to its own box. `ThemeToggle` runs the same circle over the whole page, using the View Transitions API where it exists. Both take their geometry, duration and easing from `components/motion/shared/circle-reveal.ts`. The panel's Code tab shows the panel, the site integration (`usage-site.tsx`) and every file they need.
+- **One state.** `<html data-theme>` is the source of truth, read by every control on every route through `createSiteTheme` (`components/layerwake/theme.ts`). Nothing remounts when it changes.
+- **Remembered.** An explicit choice is saved in `localStorage` under `layerwake.theme` and followed across open tabs. First-time visitors get dark. A tiny script in `<head>` applies the saved theme before the first paint, and also sets `<meta name="theme-color">`.
+- **Fallbacks.** Without the View Transitions API, or with reduced motion, the theme switches at once. If storage is blocked the switch still works for the session. Fast repeated clicks run in order and the last one wins.
+
+`npm run verify:theme` exercises all of this in a browser.
 
 ## Scrollbars
 
-Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`): a snow-white thumb on a near-black track, and a quieter neutral thumb in code panes. Firefox and overlay-scrollbar systems get `scrollbar-color`, which keeps the system's auto-hide behavior. Systems with always-visible scrollbars also get a rounded thumb with hover and active states through `::-webkit-scrollbar`. Forced-colors mode is left alone, and captured component previews and exported HTML keep their own scrollbars.
+Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`): a snow-white thumb on a near-black track in dark, an ink thumb on a pale track in light, and a quieter neutral thumb in code panes. Firefox and overlay-scrollbar systems get `scrollbar-color`, which keeps the system's auto-hide behavior. Systems with always-visible scrollbars also get a rounded thumb with hover and active states through `::-webkit-scrollbar`. Forced-colors mode is left alone, and captured component previews and exported HTML keep their own scrollbars.
 
 ## Commands
 
@@ -140,6 +151,7 @@ Layerwake restyles the browser's real scrollbars with CSS (`app/layerwake.css`):
 | `npm run lint`             | ESLint                                                                                                                                                                                                                         |
 | `npm run verify:layerwake` | Browser run of the whole loop against `out/` (needs Playwright, see below)                                                                                                                                                     |
 | `npm run verify:motion`    | Browser run of the Motion Gallery and scrollbars: every preview and code tab, a primary interaction for each component added after the first 24, reduced motion, mobile, and building all 100 copied examples outside the repo |
+| `npm run verify:theme`     | Browser run of the site-wide theme switch: the circle's origin and size, saved choice and first paint, tab sync, reduced motion and failing transitions, rapid clicks, and edits surviving a switch |
 | `npm run motion:sources`   | Regenerate the gallery's source listing (add `-- --check` to verify)                                                                                                                                                           |
 | `npm run demo:capture`     | Regenerate the bundled demo capture from the live demo page                                                                                                                                                                    |
 
@@ -154,7 +166,7 @@ npm i --no-save playwright && npx playwright install chromium
 ```
 app/                      routes (/, /workspace, /demo) and layerwake.css (CSS custom properties)
 components/layerwake/     workspace, tree, inspector, preview renderer, export panel
-components/motion/        Motion Gallery page, registry and the 24 components in items/
+components/motion/        Motion Gallery page, registry, shared helpers and the components in items/
 lib/layerwake/
   schema.ts               capture format, limits and tag allowlist
   css-values.ts           the CSS property and value allowlist

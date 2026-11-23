@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { WaveBackdrop } from '@/components/layerwake/backdrop';
 import { HomeActions, HomeSample } from '@/components/layerwake/home';
-import { LayerwakeBrand } from '@/components/layerwake/logo';
+import { SiteNav } from '@/components/layerwake/site-nav';
 
 const STEPS = [
   {
@@ -26,16 +26,13 @@ export default function LayerwakeHome() {
   return (
     <div className='lw-home'>
       <WaveBackdrop />
-      <nav className='lw-home__nav' aria-label='Layerwake'>
-        <Link href='/' aria-label='Layerwake home'>
-          <LayerwakeBrand />
-        </Link>
-        <div className='lw-home__links'>
-          <Link href='/motion'>Motion Gallery</Link>
-          <Link href='/demo'>Demo page</Link>
-          <Link href='/workspace'>Workspace</Link>
-        </div>
-      </nav>
+      <SiteNav
+        links={[
+          { href: '/motion', label: 'Motion Gallery' },
+          { href: '/demo', label: 'Demo page' },
+          { href: '/workspace', label: 'Workspace' },
+        ]}
+      />
 
       <main>
         <section className='lw-hero'>

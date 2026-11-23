@@ -27,6 +27,7 @@ import { ExportPanel, type Status } from './export-panel';
 import { Inspector } from './inspector';
 import { WaveBackdrop } from './backdrop';
 import { LayerwakeBrand } from './logo';
+import { SiteThemeToggle } from './theme-toggle';
 import { LayerTree, TokenGroups } from './panels';
 import { ComponentRender } from './render';
 import { CloseIcon } from './icons';
@@ -203,6 +204,7 @@ export function Workspace() {
           <button type='button' className='lw-btn' onClick={openPicker}>
             Import capture
           </button>
+          <SiteThemeToggle />
         </div>
       </header>
 

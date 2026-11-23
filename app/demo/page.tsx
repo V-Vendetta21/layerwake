@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { WaveBackdrop } from '@/components/layerwake/backdrop';
 import { DemoCard } from '@/components/layerwake/demo-card';
-import { LayerwakeBrand } from '@/components/layerwake/logo';
+import { SiteNav } from '@/components/layerwake/site-nav';
 
 export const metadata: Metadata = {
   title: 'Demo component — Layerwake',
@@ -12,15 +12,12 @@ export default function DemoPage() {
   return (
     <div className='lw-demo'>
       <WaveBackdrop blurred />
-      <nav className='lw-home__nav' aria-label='Layerwake'>
-        <Link href='/' aria-label='Layerwake home'>
-          <LayerwakeBrand />
-        </Link>
-        <div className='lw-home__links'>
-          <Link href='/motion'>Motion Gallery</Link>
-          <Link href='/workspace'>Workspace</Link>
-        </div>
-      </nav>
+      <SiteNav
+        links={[
+          { href: '/motion', label: 'Motion Gallery' },
+          { href: '/workspace', label: 'Workspace' },
+        ]}
+      />
 
       <h1>A component to practice on</h1>
       <p className='lw-demo__lede'>

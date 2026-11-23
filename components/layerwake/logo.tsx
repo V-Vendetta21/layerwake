@@ -1,4 +1,7 @@
-/** The Layerwake mark: two offset panels and a short snow-white trail. */
+/**
+ * The Layerwake mark: two offset panels and a short trail. It takes its colors
+ * from the theme tokens, so it reads on both the dark and the light canvas.
+ */
 export function LayerwakeMark({ size = 24 }: { size?: number }) {
   return (
     <svg
@@ -15,16 +18,22 @@ export function LayerwakeMark({ size = 24 }: { size?: number }) {
         width='18'
         height='18'
         rx='4'
-        fill='#1b1b1b'
-        stroke='#ffffff'
         strokeWidth='2'
+        style={{ fill: 'var(--lw-raised)', stroke: 'var(--lw-text)' }}
       />
-      <rect x='11' y='11' width='18' height='18' rx='4' fill='#eaf2fb' />
+      <rect
+        x='11'
+        y='11'
+        width='18'
+        height='18'
+        rx='4'
+        style={{ fill: 'var(--lw-accent)' }}
+      />
       <path
         d='M3.5 27.5h6'
-        stroke='#dce9f7'
         strokeWidth='3'
         strokeLinecap='round'
+        style={{ stroke: 'var(--lw-accent-text)' }}
       />
     </svg>
   );
