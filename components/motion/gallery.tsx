@@ -13,6 +13,7 @@ import {
   InteractIcon,
   ReplayIcon,
   ResetIcon,
+  StarIcon,
 } from '@/components/layerwake/icons';
 import { CATALOG, CATEGORIES } from './catalog';
 import { DEMOS, SOURCES } from './loaders.generated';
@@ -124,11 +125,13 @@ const COPY_LABEL = {
   component: 'Copy component',
   css: 'Copy CSS',
   helper: 'Copy helper',
+  usage: 'Copy site usage',
 };
 const NOTE = {
   component: 'Component source',
   css: 'Required styles',
   helper: 'Required helper',
+  usage: 'Production example: theme a whole page',
 };
 
 function CodePanel({ entry }: { entry: CatalogEntry }) {
@@ -158,7 +161,10 @@ function CodePanel({ entry }: { entry: CatalogEntry }) {
       </p>
     );
 
-  const helpers = source.files.filter((file) => file.kind === 'helper');
+  // Usage examples are read, not copied along with the component.
+  const usages = source.files.filter((file) => file.kind === 'usage');
+  const files = source.files.filter((file) => file.kind !== 'usage');
+  const helpers = files.filter((file) => file.kind === 'helper');
   return (
     <div className='mgx-codepanel'>
       <ol className='mgx-steps'>
@@ -167,10 +173,9 @@ function CodePanel({ entry }: { entry: CatalogEntry }) {
           packages to install.
         </li>
         <li>
-          Copy{' '}
-          {source.files.length === 2 ? 'both' : `all ${source.files.length}`}{' '}
-          files below into one folder:{' '}
-          {source.files.map((file, index) => (
+          Copy {files.length === 2 ? 'both' : `all ${files.length}`} files below
+          into one folder:{' '}
+          {files.map((file, index) => (
             <span key={file.name}>
               {index > 0 ? ', ' : ''}
               <code>{file.name}</code>
@@ -190,7 +195,16 @@ function CodePanel({ entry }: { entry: CatalogEntry }) {
         copyLabel='Copy usage'
         code={source.usage}
       />
-      {source.files.map((file) => (
+      {usages.map((file) => (
+        <CodeBlock
+          key={file.name}
+          file={file.name}
+          note={NOTE.usage}
+          copyLabel={COPY_LABEL.usage}
+          code={file.code}
+        />
+      ))}
+      {files.map((file) => (
         <CodeBlock
           key={file.name}
           file={file.name}
@@ -246,7 +260,9 @@ function Entry({ entry }: { entry: CatalogEntry }) {
   const Demo = DEMOS[entry.slug];
   return (
     <article ref={card} id={entry.slug} className='mgx-entry' data-view={view}>
-      <header className='mgx-entry__head'>
+      <header
+        className={`mgx-entry__head${entry.usedInSite ? ' mgx-entry__head--badged' : ''}`}
+      >
         <div>
           <h2>
             <a href={`#${entry.slug}`} title='Link to this component'>
@@ -256,7 +272,24 @@ function Entry({ entry }: { entry: CatalogEntry }) {
           </h2>
           <p>{entry.purpose}</p>
         </div>
-        <span className='lw-chip'>{LABEL[entry.category]}</span>
+        <div className='mgx-entry__meta'>
+          {entry.usedInSite ? (
+            <>
+              <span
+                className='mgx-badge'
+                title={entry.usedInSite}
+                aria-describedby={`${id}-used`}
+              >
+                <StarIcon size={12} />
+                Used in this site
+              </span>
+              <span id={`${id}-used`} className='lw-sr'>
+                {entry.usedInSite}
+              </span>
+            </>
+          ) : null}
+          <span className='lw-chip'>{LABEL[entry.category]}</span>
+        </div>
       </header>
 
       <div className='mgx-tabbar'>
@@ -303,7 +336,7 @@ function Entry({ entry }: { entry: CatalogEntry }) {
         hidden={view !== 'preview'}
         className='mgx-preview'
       >
-        <div className='mgx-stage lw-dots'>
+        <div className='mgx-stage lw-dots lw-island-dark'>
           {inView && view === 'preview' && Demo ? (
             <Suspense
               fallback={

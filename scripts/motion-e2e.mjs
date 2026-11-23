@@ -125,8 +125,19 @@ try {
       .catch(() => {});
     const copies = await card.locator('.mgx-copy').allInnerTexts();
     const shown = await card.locator('.mgx-code code').allTextContents();
-    const want = [sources[slug].usage, ...files.map((f) => f.code)];
-    const labels = ['Copy usage', ...files.map((f) => COPY_LABEL[f.kind])];
+    // Extra usage examples (kind 'usage') sit right after the main usage.
+    const examples = files.filter((f) => f.kind === 'usage');
+    const parts = files.filter((f) => f.kind !== 'usage');
+    const want = [
+      sources[slug].usage,
+      ...examples.map((f) => f.code),
+      ...parts.map((f) => f.code),
+    ];
+    const labels = [
+      'Copy usage',
+      ...examples.map(() => 'Copy site usage'),
+      ...parts.map((f) => COPY_LABEL[f.kind]),
+    ];
     const exact =
       shown.length === want.length &&
       want.every((code, i) => shown[i] === code);

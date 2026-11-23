@@ -1,8 +1,10 @@
 import './globals.css';
 import './layerwake.css';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
+import { THEME_COLORS, THEME_KEY } from '@/components/layerwake/theme-config';
+import { themeInitScript } from '@/components/motion/items/theme-transition-panel/site-theme-script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,10 +21,15 @@ export const metadata: Metadata = {
     'Capture one UI component, inspect its spacing, type and color decisions, rebuild your own variant and export design tokens and starter code.',
 };
 
-export const viewport: Viewport = {
-  themeColor: '#080808',
-  colorScheme: 'dark',
-};
+/**
+ * Applies the saved theme before the first paint. First-time visitors get the
+ * dark theme. The <meta name="theme-color"> is written by hand (not through
+ * the viewport export) so this script can update it before anything renders.
+ */
+const THEME_SCRIPT = themeInitScript({
+  storageKey: THEME_KEY,
+  colors: THEME_COLORS,
+});
 
 export default function RootLayout({
   children,
@@ -32,6 +39,12 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
+        <meta
+          name='theme-color'
+          content={THEME_COLORS.dark}
+          suppressHydrationWarning
+        />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: SCROLLBAR_SCRIPT }} />
       </head>
       <body className={`${inter.className} ${GeistMono.variable} antialiased`}>

@@ -1,8 +1,12 @@
 /* Layerwake — scoped styles. Everything lives under .lw-app so the rest of
    the site is untouched. */
 
-.lw-app {
-  /* Black, white and snow white. Every app-owned color comes from here. */
+/* Theme tokens. Every app-owned color comes from here, in two sets:
+   dark (the default) and light, which <html data-theme='light'> switches on.
+   .lw-island-dark re-applies the dark set inside a light page, for surfaces
+   that are always dark (gallery preview stages). */
+.lw-app,
+.lw-island-dark {
   --lw-canvas: #080808;
   --lw-surface: #121212;
   --lw-raised: #1b1b1b;
@@ -12,14 +16,36 @@
   --lw-text: #ffffff;
   --lw-text-2: #b8b8b8;
   --lw-text-3: #8f8f8f;
-  /* Snow-white fills behind near-black text. */
+  /* The accent: snow-white fills with near-black labels on top. */
   --lw-accent: #eaf2fb;
   --lw-accent-hover: #ffffff;
   --lw-accent-pressed: #cfdceb;
-  /* Snow white as text, icons and focus on dark surfaces. */
+  --lw-on-accent: #080808;
+  /* Accent as text, icons and focus on dark surfaces. */
   --lw-accent-text: #dce9f7;
   --lw-accent-soft: #1e2329;
   --lw-focus: #dce9f7;
+  --lw-dots: #242424;
+  --lw-scrim: rgba(8, 8, 8, 0.92);
+  --lw-shadow: rgba(0, 0, 0, 0.35);
+  --lw-shadow-sample: rgba(0, 0, 0, 0.45);
+  --lw-code-text: #e8e8e8;
+  /* Pages that sit on the looping sea: text lifted to clear 4.5:1 over the
+     brightest foam, and the wash that darkens the video. */
+  --lw-sea-text-2: #d0d0d0;
+  --lw-sea-text-3: #c0c0c0;
+  --lw-sea-wash: rgba(8, 8, 8, 0.72);
+  --lw-sea-edge: rgba(8, 8, 8, 0.5);
+  --lw-sea-clear: rgba(8, 8, 8, 0);
+  --lw-float-bg: rgba(18, 18, 18, 0.8);
+}
+
+.lw-island-dark {
+  color: var(--lw-text);
+  color-scheme: dark;
+}
+
+.lw-app {
   --lw-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
     monospace;
@@ -32,17 +58,60 @@
   color-scheme: dark;
   font-size: 14px;
   line-height: 1.5;
+  /* The sticky header's full-width backing must not add a scrollbar. */
+  overflow-x: clip;
 }
 
-.lw-app *,
-.lw-app *::before,
-.lw-app *::after {
+/* Light: white and soft grays, with ink-black fills for the accent. */
+html[data-theme='light'] .lw-app {
+  --lw-canvas: #f5f5f5;
+  --lw-surface: #ffffff;
+  --lw-raised: #f0f0f0;
+  --lw-raised-2: #e6e6e6;
+  --lw-line: #e0e0e0;
+  --lw-line-strong: #c2c2c2;
+  --lw-text: #0a0a0a;
+  --lw-text-2: #404040;
+  --lw-text-3: #666666;
+  --lw-accent: #111111;
+  --lw-accent-hover: #333333;
+  --lw-accent-pressed: #000000;
+  --lw-on-accent: #ffffff;
+  --lw-accent-text: #0a0a0a;
+  --lw-accent-soft: #ebebeb;
+  --lw-focus: #0a0a0a;
+  --lw-dots: #dadada;
+  --lw-scrim: rgba(245, 245, 245, 0.94);
+  --lw-shadow: rgba(0, 0, 0, 0.16);
+  --lw-shadow-sample: rgba(0, 0, 0, 0.25);
+  --lw-code-text: #1a1a1a;
+  --lw-sea-text-2: #2a2a2a;
+  --lw-sea-text-3: #444444;
+  --lw-sea-wash: rgba(255, 255, 255, 0.8);
+  --lw-sea-edge: rgba(255, 255, 255, 0.55);
+  --lw-sea-clear: rgba(255, 255, 255, 0);
+  --lw-float-bg: rgba(255, 255, 255, 0.85);
+
+  color-scheme: light;
+}
+
+/* A default border color for the app's own UI. Imported components are left
+   alone, so their rendering never depends on the site theme. */
+.lw-app :where(*:not(.lw-render, .lw-render *)),
+.lw-app :where(*:not(.lw-render, .lw-render *))::before,
+.lw-app :where(*:not(.lw-render, .lw-render *))::after {
   border-color: var(--lw-line);
+}
+
+/* Browser defaults inside an imported component match the exported HTML, in
+   either site theme. */
+.lw-render {
+  color-scheme: light;
 }
 
 .lw-app ::selection {
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
 }
 
 .lw-app input,
@@ -102,7 +171,7 @@
 .lw-btn--primary {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
 }
 .lw-btn--primary:hover {
   border-color: var(--lw-accent-hover);
@@ -161,7 +230,7 @@
 .lw-chip--edited {
   border-color: var(--lw-accent);
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
 }
 
 /* ------------------------------------------------------------------- logo */
@@ -177,16 +246,16 @@
 
 /* ------------------------------------------------------------------- home */
 
-/* Pages that sit on the sea. Secondary and muted text are lifted so they clear
-   4.5:1 over the brightest foam. */
+/* Pages that sit on the sea use the lifted text tokens. */
 .lw-home,
 .lw-demo,
 .lw-empty {
-  --lw-text-2: #d0d0d0;
-  --lw-text-3: #c0c0c0;
+  --lw-text-2: var(--lw-sea-text-2);
+  --lw-text-3: var(--lw-sea-text-3);
 }
 .lw-home,
 .lw-demo {
+  --lw-nav-h: 64px;
   position: relative;
   z-index: 1;
 }
@@ -196,8 +265,9 @@
   padding: 0 24px 64px;
 }
 
-/* Looping sea behind the home page. The wash keeps its brightest frame at
-   about #4d4d4d, so every text token stays above 4.5:1. */
+/* Looping sea behind the page. In the dark theme the wash keeps its brightest
+   frame at about #4d4d4d; in the light theme it is a white wash. Either way
+   every text token stays above 4.5:1. */
 .lw-backdrop {
   position: fixed;
   z-index: -1;
@@ -221,12 +291,12 @@
   background:
     linear-gradient(
       180deg,
-      rgba(8, 8, 8, 0.5) 0%,
-      rgba(8, 8, 8, 0) 30%,
-      rgba(8, 8, 8, 0) 70%,
-      rgba(8, 8, 8, 0.5) 100%
+      var(--lw-sea-edge) 0%,
+      var(--lw-sea-clear) 30%,
+      var(--lw-sea-clear) 70%,
+      var(--lw-sea-edge) 100%
     ),
-    rgba(8, 8, 8, 0.72);
+    var(--lw-sea-wash);
   content: '';
 }
 .lw-backdrop__toggle {
@@ -240,7 +310,7 @@
   height: 36px;
   border: 1px solid var(--lw-line-strong);
   border-radius: 999px;
-  background: rgba(18, 18, 18, 0.8);
+  background: var(--lw-float-bg);
   color: var(--lw-text-2);
   cursor: pointer;
   backdrop-filter: blur(6px);
@@ -255,17 +325,58 @@
 .lw-backdrop__toggle:active {
   background: var(--lw-raised-2);
 }
+/* The header stays put while the page scrolls, so the theme switch is always
+   within reach. Its backing runs the full width of the viewport. */
 .lw-home__nav {
-  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-areas: 'brand links toggle';
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
-  height: 64px;
+  height: var(--lw-nav-h);
+  isolation: isolate;
+}
+.lw-home__nav::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
   border-bottom: 1px solid var(--lw-line);
+  background: var(--lw-scrim);
+  content: '';
+}
+.lw-home__brand {
+  grid-area: brand;
 }
 .lw-home__links {
   display: flex;
+  grid-area: links;
   gap: 4px;
+  justify-self: end;
+}
+.lw-home__nav .lw-theme-toggle {
+  grid-area: toggle;
+}
+
+/* The sun/moon button. It borrows the gallery's Theme Transition Panel circle;
+   these properties dress it in the site's tokens. */
+.lw-theme-toggle {
+  --mg-theme-btn-border: var(--lw-line-strong);
+  --mg-theme-btn-bg: var(--lw-surface);
+  --mg-theme-btn-fg: var(--lw-text);
+  --mg-theme-btn-ring: var(--lw-focus);
+  transition:
+    background-color 120ms var(--lw-ease),
+    border-color 120ms var(--lw-ease);
+}
+.lw-theme-toggle:hover {
+  --mg-theme-btn-border: var(--lw-text-3);
+  --mg-theme-btn-bg: var(--lw-raised-2);
+}
+.lw-theme-toggle:active {
+  --mg-theme-btn-bg: var(--lw-line);
 }
 .lw-home__links a {
   padding: 6px 10px;
@@ -370,7 +481,7 @@
   border: 1px solid var(--lw-line-strong);
   border-radius: 14px;
   background: var(--lw-surface);
-  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 24px 60px -30px var(--lw-shadow);
 }
 .lw-sample__bar {
   display: flex;
@@ -564,7 +675,7 @@
 
 .lw-dots {
   background-color: var(--lw-canvas);
-  background-image: radial-gradient(#242424 1px, transparent 1px);
+  background-image: radial-gradient(var(--lw-dots) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
@@ -717,6 +828,7 @@
 }
 .lw-top__actions {
   display: flex;
+  align-items: center;
   gap: 8px;
   margin-left: auto;
 }
@@ -1041,7 +1153,11 @@
   pointer-events: none;
   border: 2px solid var(--lw-accent-text);
   border-radius: 2px;
-  box-shadow: 0 0 0 1px var(--lw-canvas);
+  /* A halo on both sides keeps the outline visible on dark and light
+     captured components alike. */
+  box-shadow:
+    0 0 0 1px var(--lw-canvas),
+    inset 0 0 0 1px var(--lw-canvas);
   transition:
     transform 160ms var(--lw-ease),
     width 160ms var(--lw-ease),
@@ -1050,7 +1166,7 @@
 .lw-outline--hover {
   z-index: 1;
   border: 1px dashed var(--lw-accent-text);
-  box-shadow: none;
+  box-shadow: 0 0 0 1px var(--lw-canvas);
   transition: none;
 }
 .lw-outline__tag {
@@ -1063,7 +1179,7 @@
   padding: 0 6px;
   border-radius: 3px 3px 0 0;
   background: var(--lw-accent);
-  color: #080808;
+  color: var(--lw-on-accent);
   font-family: var(--lw-mono);
   font-size: 10.5px;
   line-height: 17px;
@@ -1073,7 +1189,7 @@
   width: 6px;
   height: 6px;
   border-radius: 1px;
-  background: #ffffff;
+  background: var(--lw-on-accent);
   content: '';
 }
 
@@ -1100,7 +1216,7 @@
   border-radius: 50%;
   background: var(--lw-accent);
   box-shadow: 0 0 0 1px var(--lw-text);
-  color: #080808;
+  color: var(--lw-on-accent);
   font-size: 10px;
   font-weight: 700;
   line-height: 16px;
@@ -1339,7 +1455,7 @@
   overflow: auto;
   padding: 14px;
   background: var(--lw-raised);
-  color: #e8e8e8;
+  color: var(--lw-code-text);
   font-family: var(--lw-mono);
   font-size: 12.5px;
   line-height: 1.6;
@@ -1414,8 +1530,8 @@
   display: grid;
   place-items: center;
   border: 3px dashed var(--lw-accent-text);
-  background: rgba(230, 236, 255, 0.92);
-  color: var(--lw-accent-text);
+  background: var(--lw-scrim);
+  color: var(--lw-text);
   font-size: 20px;
   font-weight: 700;
   pointer-events: none;
@@ -1530,15 +1646,20 @@
   font-size: 13.5px;
 }
 @media (max-width: 600px) {
+  /* The toggle stays beside the brand; the links drop to their own row. */
   .lw-home__nav {
-    flex-wrap: wrap;
+    grid-template-areas:
+      'brand toggle'
+      'links links';
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 4px 12px;
     height: auto;
-    padding: 12px 0;
+    padding: 8px 0;
   }
   .lw-home__links {
     flex-wrap: wrap;
     margin-left: -10px;
+    justify-self: start;
   }
 }
 
@@ -1558,12 +1679,22 @@
    Everything is skipped in forced-colors mode so system colors win. */
 
 @media (forced-colors: none) {
-  html {
+  html,
+  .lw-island-dark {
     /* Snow white on near-black keeps the thumb clear against its track. */
     --lw-sb-thumb: #dce9f7;
     --lw-sb-thumb-hover: #ffffff;
     --lw-sb-thumb-active: #b9c9da;
     --lw-sb-track: #161616;
+    scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
+  }
+
+  /* Light theme: an ink thumb on a pale track. */
+  html[data-theme='light'] {
+    --lw-sb-thumb: #7a7a7a;
+    --lw-sb-thumb-hover: #0a0a0a;
+    --lw-sb-thumb-active: #000000;
+    --lw-sb-track: #ececec;
     scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
   }
 
@@ -1574,6 +1705,14 @@
     --lw-sb-thumb-hover: #dce9f7;
     --lw-sb-thumb-active: #ffffff;
     --lw-sb-track: #121212;
+    scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
+  }
+  html[data-theme='light'] .lw-code,
+  html[data-theme='light'] .mgx-code {
+    --lw-sb-thumb: #b5b5b5;
+    --lw-sb-thumb-hover: #0a0a0a;
+    --lw-sb-thumb-active: #000000;
+    --lw-sb-track: #f0f0f0;
     scrollbar-color: var(--lw-sb-thumb) var(--lw-sb-track);
   }
 

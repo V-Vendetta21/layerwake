@@ -52,7 +52,9 @@ export async function collectSources() {
     ];
     for (const name of names) {
       if ([`${slug}.tsx`, `${slug}.css`, 'demo.tsx'].includes(name)) continue;
-      files.push({ name, kind: 'helper', code: await read(name) });
+      // usage-*.tsx files are examples to copy from, not files to copy along.
+      const kind = /^usage-.*\.tsx$/.test(name) ? 'usage' : 'helper';
+      files.push({ name, kind, code: await read(name) });
     }
     const seen = new Set();
     for (const file of [...files])
